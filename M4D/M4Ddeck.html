@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>M4D Open Innovation Challenge 2026 | Digital Extension Track</title>
+    <meta name="description"
+        content="Bridging the Last Mile in Agriculture - Accountable, AI-Powered Digital Extension for Smallholder Farmers">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap');
+
+        :root {
+            --orange: #E9A117;
+            --green: #1B4F32;
+            --brown: #7A431D;
+            --cream: #FCF9F5;
+            --teal: #1a8a7d;
+        }
+
+        body,
+        html {
+            margin: 0;
+            padding: 0;
+            font-family: 'Montserrat', sans-serif;
+            color: #2D3748;
+            overflow-x: hidden;
+            background: transparent;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            color: var(--green);
+            font-weight: 700;
+        }
+
+        .fixed-bg {
+            position: fixed;
+            inset: 0;
+            z-index: 0;
+            background-color: var(--cream);
+            background-image: url('../Images/FullBackground.png');
+            background-size: 100% 100%;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        .slides-container {
+            height: 100vh;
+            overflow-y: scroll;
+            scroll-snap-type: y mandatory;
+            position: relative;
+            z-index: 1;
+        }
+
+        section {
+            height: 100vh;
+            width: 100vw;
+            scroll-snap-align: center;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.78);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            box-shadow: 0 8px 32px rgba(27, 79, 50, 0.06);
+            border-radius: 20px;
+            z-index: 10;
+            padding: 2.5rem;
+        }
+
+        .gradient-text {
+            background: linear-gradient(110deg, var(--green) 0%, var(--orange) 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: inline-block;
+        }
+
+        .anim-element {
+            opacity: 0;
+            transform: translateY(28px);
+            transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        section.active .anim-element {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .slide-right {
+            transform: translateX(-40px);
+        }
+
+        section.active .slide-right {
+            transform: translateX(0);
+        }
+
+        .slide-left {
+            transform: translateX(40px);
+        }
+
+        section.active .slide-left {
+            transform: translateX(0);
+        }
+
+        .delay-1 {
+            transition-delay: .12s;
+        }
+
+        .delay-2 {
+            transition-delay: .24s;
+        }
+
+        .delay-3 {
+            transition-delay: .36s;
+        }
+
+        .delay-4 {
+            transition-delay: .48s;
+        }
+
+        .delay-5 {
+            transition-delay: .6s;
+        }
+
+        .fixed-logo {
+            position: fixed;
+            top: 1.5rem;
+            left: 2rem;
+            z-index: 50;
+        }
+
+        .fixed-logo img {
+            height: 4rem;
+            object-fit: contain;
+        }
+
+        .nav-dots {
+            position: fixed;
+            right: 2rem;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 50;
+            display: flex;
+            flex-direction: column;
+            gap: .8rem;
+        }
+
+        .nav-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: rgba(27, 79, 50, 0.25);
+            transition: all .3s ease;
+        }
+
+        .nav-dot.active {
+            background: var(--orange);
+            transform: scale(1.4);
+            box-shadow: 0 0 8px rgba(233, 161, 23, 0.4);
+        }
+
+        .accent-bar {
+            height: 4px;
+            width: 60px;
+            background: var(--orange);
+            border-radius: 4px;
+        }
+
+        .icon-circle {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            flex-shrink: 0;
+        }
+
+        .puzzle-piece {
+            border-radius: 16px;
+            padding: 1.2rem 1.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .puzzle-piece::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+        }
+
+        .step-card {
+            background: rgba(255, 255, 255, 0.6);
+            border-radius: 16px;
+            padding: 1.2rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .step-card .step-num {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 0.85rem;
+            margin: 0 auto 0.6rem;
+        }
+
+        @media print {
+            .slides-container {
+                height: auto;
+                overflow: visible;
+                scroll-snap-type: none;
+            }
+
+            section {
+                page-break-after: always;
+                height: 100vh;
+            }
+
+            .fixed-logo,
+            .nav-dots {
+                display: none !important;
+            }
+
+            .anim-element {
+                opacity: 1 !important;
+                transform: none !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="fixed-bg"></div>
+
+    <div class="nav-dots" id="navDotsContainer"></div>
+
+    <main class="slides-container" id="scroller">
+
+        <!-- SLIDE 1: Title -->
+        <section id="slide-1" class="active">
+            <div class="container mx-auto px-8 z-10 relative">
+                <div class="max-w-3xl mx-auto">
+                    <div class="glass-card anim-element flex flex-col items-center text-center">
+                        <p class="text-sm font-bold tracking-widest text-[#E9A117] uppercase mb-3 anim-element delay-1">
+                            M4D Open Innovation Challenge 2026 | Digital Extension Track</p>
+                        <h1 class="text-4xl md:text-5xl font-black mb-4 leading-tight anim-element delay-1"><span
+                                class="gradient-text">We Make Agricultural Livelihood Projects Better and Smarter at
+                                Scale</span></h1>
+                        <div class="accent-bar mb-4 mx-auto anim-element delay-2"></div>
+                        <p class="text-lg text-gray-600 leading-relaxed anim-element delay-2">AI-Powered, comprehensive,
+                            and holistic Digital Extension for building more resilient and sustainable supply chains</p>
+                        <div class="flex items-center justify-center gap-8 mt-10 anim-element delay-3">
+                            <img src="../Images/man_circle_only.png" alt="iNua" class="h-32 rounded-full">
+                            <img src="../Images/AgriFriend 1.png" alt="AgriFriend" class="h-28">
+                            <img src="../Images/Keder Group.png" alt="Kedar Group" class="h-32">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SLIDE 2: The Problem -->
+        <section id="slide-2">
+            <div class="mx-auto px-4 z-10 relative w-full">
+                <div class="glass-card mx-auto anim-element" style="padding:2rem 2.5rem;max-width:85vw;">
+                    <div class="text-center mb-4 anim-element delay-1">
+                        <p class="text-sm font-bold tracking-widest text-[#E9A117] uppercase mb-2">The Challenge</p>
+                        <h2 class="text-4xl font-extrabold mb-2">The Disconnect in Rural Agriculture</h2>
+                        <div class="accent-bar mx-auto mb-4"></div>
+                    </div>
+                    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5 anim-element delay-2">
+                        <div class="bg-white/60 rounded-2xl p-5 border-l-4 border-red-500">
+                            <h3 class="text-lg font-bold text-red-600 mb-2">Fragmented Systems</h3>
+                            <p class="text-sm text-gray-700 leading-relaxed">In rural areas, smallholder farmers are
+                                often served through fragmented, manual, and infrequent extension systems that struggle
+                                to deliver timely, accountable, and consistent support at scale.</p>
+                        </div>
+                        <div class="bg-white/60 rounded-2xl p-5 border-l-4 border-[#E9A117]">
+                            <h3 class="text-lg font-bold text-[#E9A117] mb-2">Paper & Manual Reliance</h3>
+                            <p class="text-sm text-gray-700 leading-relaxed">Field teams rely on paper-based processes
+                                or limited digital tools, while organizations depend heavily on extension officers as
+                                the main communication channel with farmers.</p>
+                        </div>
+                        <div class="bg-white/60 rounded-2xl p-5 border-l-4 border-[#1B4F32]">
+                            <h3 class="text-lg font-bold text-[#1B4F32] mb-2">Visibility Gaps</h3>
+                            <p class="text-sm text-gray-700 leading-relaxed">This creates major gaps in reach,
+                                continuity, and real-time visibility into farmer needs, follow-up, and adoption.</p>
+                        </div>
+                        <div class="bg-white/60 rounded-2xl p-5 border-l-4 border-gray-600">
+                            <h3 class="text-lg font-bold text-gray-700 mb-2">Digital Divide</h3>
+                            <p class="text-sm text-gray-700 leading-relaxed">Digital tools are poorly suited to
+                                low-connectivity settings and farmers using basic phones, limiting adoption and
+                                excluding rural farmers.</p>
+                        </div>
+                        <div
+                            class="bg-white/60 rounded-2xl p-5 border-l-4 border-[#7A431D] md:col-span-2 lg:col-span-1">
+                            <h3 class="text-lg font-bold text-[#7A431D] mb-2">Costly Follow-up</h3>
+                            <p class="text-sm text-gray-700 leading-relaxed">In low-connectivity environments, regular
+                                in-person follow-up is costly and limited, this leads to weak feedback loops, slower
+                                decisions, and missed opportunities to improve productivity, resilience, and market
+                                access.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SLIDE 3: Our Solution -->
+        <section id="slide-3">
+            <div class="container mx-auto px-8 z-10 relative">
+                <div class="glass-card max-w-6xl mx-auto anim-element" style="padding:2rem 2.5rem;">
+                    <div class="text-center mb-5 anim-element delay-1">
+                        <p class="text-sm font-bold tracking-widest text-[#E9A117] uppercase mb-2">The Bridge</p>
+                        <h2 class="text-4xl font-extrabold mb-2">Continuous, Two-Way Engagement</h2>
+                        <div class="accent-bar mx-auto mb-4"></div>
+                    </div>
+                    <div class="max-w-4xl mx-auto">
+                        <div class="space-y-4 anim-element delay-2">
+                            <div class="flex items-start gap-3 bg-white/60 p-4 rounded-xl">
+                                <i class="fas fa-layer-group text-[#1B4F32] text-xl mt-1 shrink-0"></i>
+                                <p class="text-base text-gray-700">The solution is a scalable unified management
+                                    platform designed to increase crop yields and streamline agricultural operations.
+                                </p>
+                            </div>
+                            <div class="flex items-start gap-3 bg-white/60 p-4 rounded-xl">
+                                <i class="fas fa-chart-line text-[#E9A117] text-xl mt-1 shrink-0"></i>
+                                <p class="text-base text-gray-700"><strong>Yield Optimization:</strong> The system
+                                    boosts production by providing digital training tools (such as 3D animated videos)
+                                    and collecting real-time agronomic data from the field.</p>
+                            </div>
+                            <div class="flex items-start gap-3 bg-white/60 p-4 rounded-xl">
+                                <i class="fas fa-sitemap text-[#1B4F32] text-xl mt-1 shrink-0"></i>
+                                <p class="text-base text-gray-700"><strong>Scalable Management:</strong> The platform
+                                    reduces the need for micromanagement. Instead of managers maintaining direct contact
+                                    with every farmer, the system centralizes control.</p>
+                            </div>
+                            <div class="flex items-start gap-3 bg-white/60 p-4 rounded-xl">
+                                <i class="fas fa-robot text-[#E9A117] text-xl mt-1 shrink-0"></i>
+                                <p class="text-base text-gray-700"><strong>Technological Integration:</strong> An
+                                    automated communication with the farmers through AI-driven chatbots via SMS ensures
+                                    meaningful interactions.</p>
+                            </div>
+                            <div class="flex items-start gap-3 bg-white/60 p-4 rounded-xl">
+                                <i class="fas fa-comments text-[#1B4F32] text-xl mt-1 shrink-0"></i>
+                                <p class="text-base text-gray-700">This ensures uninterrupted support and proactive
+                                    problem-solving between physical field visits.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SLIDE 4: The Consortium -->
+        <section id="slide-4">
+            <div class="container mx-auto px-8 z-10 relative">
+                <div class="glass-card max-w-6xl mx-auto anim-element" style="padding:2rem 2.5rem;">
+                    <div class="text-center mb-5 anim-element delay-1">
+                        <p class="text-sm font-bold tracking-widest text-[#E9A117] uppercase mb-2">Who We Are</p>
+                        <h2 class="text-4xl font-extrabold mb-2">Three Pillars, One Unified Delivery Model</h2>
+                        <div class="accent-bar mx-auto mb-4"></div>
+                    </div>
+                    <div class="grid md:grid-cols-3 gap-6 anim-element delay-2">
+                        <div class="bg-white/60 rounded-2xl p-5 border-t-4 border-[#1a8a7d] text-center">
+                            <img src="../Images/AgriFriend 1.png" alt="AgriFriend" class="h-10 mx-auto mb-3">
+                            <h3 class="text-lg font-bold text-[#1a8a7d] mb-1">AgriFriend</h3>
+                            <p class="text-xs font-bold text-[#E9A117] uppercase tracking-wider mb-2">The Platform</p>
+                            <p class="text-sm text-gray-700 leading-relaxed">AgriFriend is a digital extension and field
+                                operations platform helping organizations build more resilient and sustainable supply
+                                chains and support smallholder farmers in rural areas at scale.</p>
+                        </div>
+                        <div class="bg-white/60 rounded-2xl p-5 border-t-4 border-[#E9A117] text-center">
+                            <img src="../Images/man_circle_only.png" alt="iNua" class="h-12 mx-auto mb-3 rounded-full">
+                            <h3 class="text-lg font-bold text-[#E9A117] mb-1">iNua Technologies</h3>
+                            <p class="text-xs font-bold text-[#1B4F32] uppercase tracking-wider mb-2">The AI Engine</p>
+                            <p class="text-sm text-gray-700 leading-relaxed">iNua Technologies provides SMS and voice
+                                conversational AI capabilities to extend engagement beyond extension officers and enable
+                                direct, ongoing communication with farmers at scale.</p>
+                        </div>
+                        <div class="bg-white/60 rounded-2xl p-5 border-t-4 border-[#1B4F32] text-center">
+                            <img src="../Images/Keder Group.png" alt="Kedar Group" class="h-12 mx-auto mb-3">
+                            <h3 class="text-lg font-bold text-[#1B4F32] mb-1">Kedar Group</h3>
+                            <p class="text-xs font-bold text-[#7A431D] uppercase tracking-wider mb-2">The Ground
+                                Execution</p>
+                            <p class="text-sm text-gray-700 leading-relaxed">A leading provider of sustainable food
+                                security solutions, dedicated to adopting modern agricultural technologies in harsh
+                                conditions while working in harmony with local communities and the environment.</p>
+                        </div>
+                    </div>
+                    <div class="text-center mt-5 anim-element delay-3">
+                        <div class="inline-block bg-[#1B4F32]/10 px-6 py-3 rounded-full">
+                            <p class="text-sm font-bold text-[#1B4F32]"><i
+                                    class="fas fa-bullseye mr-2 text-[#E9A117]"></i>Scalable Farmer Empowerment</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SLIDE 5: How It Works -->
+        <section id="slide-5">
+            <div class="container mx-auto px-8 z-10 relative">
+                <div class="glass-card max-w-6xl mx-auto anim-element" style="padding:1.8rem 2.2rem;">
+                    <div class="text-center mb-4 anim-element delay-1">
+                        <p class="text-sm font-bold tracking-widest text-[#E9A117] uppercase mb-1">In the Field</p>
+                        <h2 class="text-3xl font-extrabold mb-2">Seamless Integration from HQ to Farm</h2>
+                        <div class="accent-bar mx-auto mb-4"></div>
+                    </div>
+                    <div class="grid md:grid-cols-4 gap-4 anim-element delay-2">
+                        <div class="step-card border-t-3 border-[#1B4F32]">
+                            <div class="step-num bg-[#1B4F32] text-white">1</div>
+                            <h4 class="text-sm font-bold text-[#1B4F32] mb-1">Digitize Workflows</h4>
+                            <p class="text-xs text-gray-600">We equip extension teams with digital workflows for farmer
+                                registration, training, follow-up, supervision, and data collection, improving
+                                accountability, visibility, and the structure and consistency of service delivery.</p>
+                            <div class="mt-3 text-2xl text-[#1B4F32]"><i class="fas fa-clipboard-list"></i></div>
+                        </div>
+                        <div class="step-card border-t-3 border-[#E9A117]">
+                            <div class="step-num bg-[#E9A117] text-white">2</div>
+                            <h4 class="text-sm font-bold text-[#E9A117] mb-1">Facial Recognition</h4>
+                            <p class="text-xs text-gray-600">To overcome weak ID infrastructure, we utilize facial
+                                recognition to eliminate duplicate profiles and ensure accurate, targeted service
+                                delivery.</p>
+                            <div class="mt-3 text-2xl text-[#E9A117]"><i class="fas fa-user-check"></i></div>
+                        </div>
+                        <div class="step-card border-t-3 border-[#1B4F32]">
+                            <div class="step-num bg-[#1B4F32] text-white">3</div>
+                            <h4 class="text-sm font-bold text-[#1B4F32] mb-1">Visual Training</h4>
+                            <p class="text-xs text-gray-600">Additionally, we translate complex agronomic concepts into
+                                actionable guidance using engaging 3D visual training modules, specifically designed for
+                                low-literacy users.</p>
+                            <div class="mt-3 text-2xl text-[#1B4F32]"><i class="fas fa-video"></i></div>
+                        </div>
+                        <div class="step-card border-t-3 border-[#E9A117]">
+                            <div class="step-num bg-[#E9A117] text-white">4</div>
+                            <h4 class="text-sm font-bold text-[#E9A117] mb-1">AI Chatbots</h4>
+                            <p class="text-xs text-gray-600">Fully adaptable to local languages, our human-like AI
+                                chatbots maintain scalable, ongoing contact with farmers, identifying challenges early
+                                and delivering timely, relevant advice to drive growth.</p>
+                            <div class="mt-3 text-2xl text-[#E9A117]"><i class="fas fa-comments"></i></div>
+                        </div>
+                    </div>
+                    <div class="mt-6 flex items-center justify-center gap-3 text-xl text-gray-300 anim-element delay-3">
+                        <span class="text-[#1B4F32]"><i class="fas fa-seedling"></i></span><i
+                            class="fas fa-long-arrow-alt-right"></i>
+                        <span class="text-[#E9A117]"><i class="fas fa-cog"></i></span><i
+                            class="fas fa-long-arrow-alt-right"></i>
+                        <span class="text-[#1B4F32]"><i class="fas fa-comment-dots"></i></span><i
+                            class="fas fa-long-arrow-alt-right"></i>
+                        <span class="text-[#E9A117]"><i class="fas fa-tachometer-alt"></i></span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SLIDE 6: SOVA Integration -->
+        <section id="slide-6">
+            <div class="container mx-auto px-8 z-10 relative">
+                <div class="glass-card max-w-6xl mx-auto anim-element" style="padding:2rem 2.5rem;">
+                    <div class="text-center mb-5 anim-element delay-1">
+                        <p class="text-sm font-bold tracking-widest text-[#E9A117] uppercase mb-2">Project Integration
+                        </p>
+                        <h2 class="text-4xl font-extrabold mb-2">Deploying Within the SOVA Ecosystem</h2>
+                        <div class="accent-bar mx-auto mb-4"></div>
+                    </div>
+                    <div class="grid md:grid-cols-3 gap-6 anim-element delay-2">
+                        <div class="bg-white/60 rounded-2xl p-5 border-l-4 border-[#1B4F32]">
+                            <div class="icon-circle bg-[#1B4F32]/15 text-[#1B4F32] mb-3"><i
+                                    class="fas fa-globe-africa"></i></div>
+                            <h3 class="text-lg font-bold text-[#1B4F32] mb-2">A Complete Solution</h3>
+                            <p class="text-sm text-gray-700 leading-relaxed">AgriFriend and iNua give development
+                                organizations such as Kedar Group a complete solution that empowers their team to
+                                maximize their impact on the ground.</p>
+                        </div>
+                        <div class="bg-white/60 rounded-2xl p-5 border-l-4 border-[#E9A117]">
+                            <div class="icon-circle bg-[#E9A117]/15 text-[#E9A117] mb-3"><i
+                                    class="fas fa-handshake"></i></div>
+                            <h3 class="text-lg font-bold text-[#E9A117] mb-2">Scaling Reach</h3>
+                            <p class="text-sm text-gray-700 leading-relaxed">By combining agent-based field tools with
+                                robust automated offline communication, Kedar can help their farmers increase their
+                                yields and income while scaling their operations to reach more communities.</p>
+                        </div>
+                        <div class="bg-white/60 rounded-2xl p-5 border-l-4 border-[#7A431D]">
+                            <div class="icon-circle bg-[#7A431D]/15 text-[#7A431D] mb-3"><i
+                                    class="fas fa-chart-line"></i></div>
+                            <h3 class="text-lg font-bold text-[#7A431D] mb-2">Long-term Growth</h3>
+                            <p class="text-sm text-gray-700 leading-relaxed">Through this pilot, we are proving a
+                                sustainable and profitable model that we can replicate for long-term agricultural
+                                growth, ensuring our work remains effective and enduring.</p>
+                        </div>
+                    </div>
+                    <div class="text-center mt-5 anim-element delay-3">
+                        <div class="inline-flex items-center gap-3 bg-[#1B4F32]/10 px-5 py-2 rounded-full">
+                            <img src="./Images/SOVA 2.png" alt="SOVA" class="h-8">
+                            <span class="text-sm font-bold text-[#1B4F32]">Physical Meets Digital</span>
+                            <i class="fas fa-plus text-[#E9A117]"></i>
+                            <img src="../Images/man_circle_only.png" alt="iNua" class="h-8 rounded-full">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SLIDE 7: Traction & Readiness -->
+        <section id="slide-7">
+            <div class="container mx-auto px-8 z-10 relative">
+                <div class="glass-card max-w-5xl mx-auto anim-element" style="padding:2rem 2.5rem;">
+                    <div class="text-center mb-5 anim-element delay-1">
+                        <p class="text-sm font-bold tracking-widest text-[#E9A117] uppercase mb-2">Traction & Readiness
+                        </p>
+                        <h2 class="text-4xl font-extrabold mb-2">Proven Tech, Ready for Scale</h2>
+                        <div class="accent-bar mx-auto mb-4"></div>
+                    </div>
+
+                    <div class="bg-[#1B4F32]/10 rounded-2xl p-4 text-center mb-6 anim-element delay-2">
+                        <h3 class="text-xl font-bold text-[#1B4F32]">Today AgriFriend supports 25,000+ smallholder
+                            households across Uganda and Ethiopia in more than 100,000 acres.</h3>
+                    </div>
+
+                    <div class="grid md:grid-cols-3 gap-5 mb-6 anim-element delay-2">
+                        <div class="bg-white/60 rounded-2xl p-5 text-center border-t-4 border-[#1B4F32]">
+                            <h3 class="text-4xl font-black text-[#1B4F32] mb-2">+80%</h3>
+                            <p class="text-sm font-bold text-gray-700 mb-2">Increase in Agent Activity</p>
+                            <p class="text-xs text-gray-600">Structured workflows ensured more visits, completed tasks,
+                                and consistent execution.</p>
+                        </div>
+                        <div class="bg-white/60 rounded-2xl p-5 text-center border-t-4 border-[#E9A117]">
+                            <h3 class="text-4xl font-black text-[#E9A117] mb-2">+55%</h3>
+                            <p class="text-sm font-bold text-gray-700 mb-2">Adoption of Best Practices</p>
+                            <p class="text-xs text-gray-600">Led to higher-quality crops and improved sourcing
+                                reliability.</p>
+                        </div>
+                        <div class="bg-white/60 rounded-2xl p-5 text-center border-t-4 border-[#7A431D]">
+                            <div class="icon-circle bg-[#7A431D]/15 text-[#7A431D] mx-auto mb-2"><i
+                                    class="fas fa-chart-line"></i></div>
+                            <p class="text-sm font-bold text-gray-700 mb-2">Real-Time Data</p>
+                            <p class="text-xs text-gray-600">Exposed blind spots and operational bottlenecks. Helped
+                                lower costs, optimize field resources, and strengthen procurement decisions.</p>
+                        </div>
+                    </div>
+
+                    <div class="bg-white/60 rounded-2xl p-5 border-l-4 border-[#E9A117] anim-element delay-3">
+                        <div class="space-y-3">
+                            <p class="text-sm text-gray-700 flex items-start"><i
+                                    class="fas fa-check-circle text-[#1B4F32] mt-1 mr-3 shrink-0"></i>This gives us
+                                practical experience turning field extension into a more scalable, measurable service.
+                            </p>
+                            <p class="text-sm text-gray-700 flex items-start"><i
+                                    class="fas fa-handshake text-[#E9A117] mt-1 mr-3 shrink-0"></i>For this project,
+                                AgriFriend will lead implementation with iNua as the AI partner and Kedar Group as the
+                                local partner in Kenya.</p>
+                            <p class="text-sm text-gray-700 flex items-start"><i
+                                    class="fas fa-rocket text-[#7A431D] mt-1 mr-3 shrink-0"></i>This combination gives
+                                M4D a live deployed platform, AI capability, local implementation capacity, and an
+                                immediate path to field implementation and scale.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SLIDE 8: Pilot Plan & Ask -->
+        <section id="slide-8">
+            <div class="container mx-auto px-8 z-10 relative">
+                <div class="glass-card max-w-5xl mx-auto anim-element" style="padding:2rem 2.5rem;">
+                    <div class="text-center mb-5 anim-element delay-1">
+                        <p class="text-sm font-bold tracking-widest text-[#E9A117] uppercase mb-2">M4D Pilot Plan — $10K
+                            Phase 1</p>
+                        <h2 class="text-4xl font-extrabold mb-2">Validating the Model with Kedar Group in Kenya</h2>
+                        <div class="accent-bar mx-auto mb-4"></div>
+                    </div>
+                    <div class="max-w-4xl mx-auto anim-element delay-2">
+                        <div class="space-y-4">
+                            <div class="flex items-start gap-3 bg-white/60 p-5 rounded-xl"><i
+                                    class="fas fa-check-circle text-[#1B4F32] text-xl mt-0.5 shrink-0"></i>
+                                <div>
+                                    <p class="text-base font-bold text-[#1B4F32] mb-1">Implementation</p>
+                                    <p class="text-sm text-gray-700">The immediate goal is to implement our existing
+                                        platform with our local partner, Kedar Group. We will embed the system into
+                                        their daily operations and train the field staff.</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-3 bg-white/60 p-5 rounded-xl"><i
+                                    class="fas fa-cogs text-[#E9A117] text-xl mt-0.5 shrink-0"></i>
+                                <div>
+                                    <p class="text-base font-bold text-[#E9A117] mb-1">Customization</p>
+                                    <p class="text-sm text-gray-700">A critical focus will be on making on-the-ground
+                                        adaptations to ensure the technology is customized to the local needs and
+                                        challenges.</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-3 bg-white/60 p-5 rounded-xl"><i
+                                    class="fas fa-chart-line text-[#1B4F32] text-xl mt-0.5 shrink-0"></i>
+                                <div>
+                                    <p class="text-base font-bold text-[#1B4F32] mb-1">Growth</p>
+                                    <p class="text-sm text-gray-700">We aim to provide the Kedar group the technology
+                                        foundation for scale without the challenges of growth pain, and to increase
+                                        profitability in a way that they could afford our services on their own, for
+                                        further growth.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- SaaS Model Footer -->
+                    <div
+                        class="mt-5 bg-[#E9A117]/10 rounded-xl p-3 flex items-center justify-center gap-3 anim-element delay-4">
+                        <i class="fas fa-briefcase text-[#E9A117] text-lg"></i>
+                        <p class="text-sm font-semibold text-[#7A431D]"><strong>Sustainable B2B SaaS Model:</strong>
+                            Annual platform agreements + AI usage fees</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SLIDE 9: Impact & Vision -->
+        <section id="slide-9">
+            <div class="container mx-auto px-8 z-10 relative text-center">
+                <div class="glass-card max-w-5xl mx-auto anim-element">
+                    <div class="mb-5 anim-element delay-1">
+                        <p class="text-sm font-bold tracking-widest text-[#E9A117] uppercase mb-2">The Future</p>
+                        <h2 class="text-4xl font-extrabold mb-2">Scaling Resilience</h2>
+                        <div class="accent-bar mx-auto mb-4"></div>
+                    </div>
+                    <div class="grid md:grid-cols-2 gap-5 mb-6 anim-element delay-2">
+                        <div class="bg-white/60 rounded-2xl p-5 border-t-4 border-[#1B4F32]">
+                            <div class="icon-circle bg-[#1B4F32]/15 text-[#1B4F32] mx-auto mb-3"><i
+                                    class="fas fa-expand-arrows-alt"></i></div>
+                            <h3 class="text-lg font-bold text-[#1B4F32] mb-2">Broader Scaling</h3>
+                            <p class="text-sm text-gray-700">Once the proof of concept is established, the focus shifts
+                                to broader scaling. The strategy involves taking the successful operational model built
+                                with Kedar and replicating it with larger, established agricultural organizations (such
+                                as IDH, IFPRI, or One Acre Fund).</p>
+                        </div>
+                        <div class="bg-white/60 rounded-2xl p-5 border-t-4 border-[#E9A117]">
+                            <div class="icon-circle bg-[#E9A117]/15 text-[#E9A117] mx-auto mb-3"><i
+                                    class="fas fa-handshake"></i></div>
+                            <h3 class="text-lg font-bold text-[#E9A117] mb-2">Rich Follow-up</h3>
+                            <p class="text-sm text-gray-700">By scaling direct communication with farmers, we enable
+                                rich follow-up and better understand their needs and our impact.</p>
+                        </div>
+                    </div>
+                    <!-- Do no harm Callout -->
+                    <div
+                        class="bg-[#1B4F32]/10 rounded-2xl p-5 border-l-4 border-[#1B4F32] text-left mb-6 anim-element delay-2">
+                        <div class="flex items-start gap-3">
+                            <div class="icon-circle bg-[#1B4F32]/15 text-[#1B4F32] shrink-0"><i
+                                    class="fas fa-shield-alt"></i></div>
+                            <div>
+                                <h3 class="text-lg font-bold text-[#1B4F32] mb-1">Do No Harm Approach</h3>
+                                <p class="text-sm text-gray-700">Our do-no-harm approach includes human oversight,
+                                    escalation paths for sensitive cases, and attention to unequal access.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- SDG Icons -->
+                    <div class="flex items-center justify-center gap-4 anim-element delay-3">
+                        <div
+                            class="bg-red-600 text-white w-12 h-12 rounded-lg flex flex-col items-center justify-center text-xs font-bold leading-none">
+                            <span class="text-lg">1</span>
+                        </div>
+                        <div
+                            class="bg-yellow-500 text-white w-12 h-12 rounded-lg flex flex-col items-center justify-center text-xs font-bold leading-none">
+                            <span class="text-lg">2</span>
+                        </div>
+                        <div
+                            class="bg-pink-600 text-white w-12 h-12 rounded-lg flex flex-col items-center justify-center text-xs font-bold leading-none">
+                            <span class="text-lg">10</span>
+                        </div>
+                        <div
+                            class="bg-blue-800 text-white w-12 h-12 rounded-lg flex flex-col items-center justify-center text-xs font-bold leading-none">
+                            <span class="text-lg">17</span>
+                        </div>
+                    </div>
+                    <div class="flex items-center justify-center gap-3 mt-4 anim-element delay-3">
+                        <img src="../Images/man_circle_only.png" alt="iNua" class="h-8 rounded-full">
+                        <img src="../Images/AgriFriend 1.png" alt="AgriFriend" class="h-6">
+                        <img src="../Images/SOVA 2.png" alt="SOVA" class="h-8">
+                        <img src="../Images/Keder Group.png" alt="Kedar" class="h-8">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const sections = document.querySelectorAll("section");
+            const navContainer = document.getElementById("navDotsContainer");
+            sections.forEach((sec, i) => {
+                const dot = document.createElement("a");
+                dot.href = `#${sec.id}`;
+                dot.className = `nav-dot ${i === 0 ? 'active' : ''}`;
+                dot.title = `Slide ${i + 1}`;
+                navContainer.appendChild(dot);
+            });
+            const observer = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    const id = entry.target.id;
+                    const navDot = document.querySelector(`.nav-dot[href="#${id}"]`);
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add("active");
+                        if (navDot) navDot.classList.add("active");
+                    } else {
+                        entry.target.classList.remove("active");
+                        if (navDot) navDot.classList.remove("active");
+                    }
+                });
+            }, { threshold: 0.3 });
+            sections.forEach(sec => observer.observe(sec));
+            // Click to advance slide
+            const scroller = document.getElementById('scroller');
+            scroller.addEventListener('click', (e) => {
+                const interactive = e.target.closest('a, button, input, textarea, select, .nav-dot');
+                if (interactive) return;
+                let currentSlide = null;
+                sections.forEach(sec => {
+                    const rect = sec.getBoundingClientRect();
+                    if (rect.top >= -100 && rect.top < window.innerHeight / 2) currentSlide = sec;
+                });
+                if (currentSlide && currentSlide.nextElementSibling) {
+                    currentSlide.nextElementSibling.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
