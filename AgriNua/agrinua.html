@@ -1,0 +1,1032 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ISF Advisory - AgriFriend Deck</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
+            color: #1e293b;
+            /* slate-800 */
+        }
+
+        .slide-enter {
+            animation: slideIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(15px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Dashboard UI mock styling */
+        .dash-card {
+            background: white;
+            border-radius: 0.5rem;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            padding: 1rem;
+        }
+
+        .circular-mask {
+            border-radius: 50%;
+            object-fit: cover;
+        }
+    </style>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        agri: {
+                            50: '#f0fdf4',
+                            100: '#dcfce7',
+                            200: '#bbf7d0',
+                            300: '#86efac',
+                            400: '#4ade80',
+                            500: '#22c55e', /* Primary Green */
+                            600: '#16a34a',
+                            700: '#15803d',
+                            800: '#166534',
+                            900: '#14532d',
+                        },
+                        brand: {
+                            blue: '#0ea5e9', /* Accent Blue */
+                            dark: '#0f172a'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body class="overflow-hidden">
+
+    <!-- Deck Container -->
+    <main id="deck" class="relative w-full h-screen bg-white">
+
+        <!-- Shared Footer (AgriFriend Logo) added dynamically to slides via JS or inline -->
+
+        <!-- Slide 1: Title -->
+        <div class="slide absolute inset-0 w-full h-full flex-col p-8 md:p-24 pb-24 bg-white hidden">
+            <div class="flex h-full max-w-7xl mx-auto w-full items-center slide-enter">
+                <div class="flex-1 pr-12">
+                    <div class="flex space-x-4 items-center mb-10 text-slate-500 font-semibold tracking-wider text-sm">
+                        <span>ISF</span>
+                        <span class="w-1 h-1 bg-slate-300 rounded-full"></span>
+                        <span class="flex items-center text-agri-600"><i data-lucide="leaf" class="w-4 h-4 mr-1"></i>
+                            AgriFriend</span>
+                    </div>
+                    <h1 class="text-6xl md:text-8xl font-extrabold leading-[1.1] mb-6 text-slate-900 tracking-tight">
+                        Smarter<br><span class="text-brand-blue">Rural Supply</span><br>Chains</h1>
+                </div>
+                <div class="flex-1 flex justify-center items-center h-full">
+                    <div
+                        class="w-full max-w-lg aspect-square bg-slate-100 rounded-full overflow-hidden shadow-2xl relative border-8 border-white">
+                        <img src="https://images.unsplash.com/photo-1595801456958-86c4f039366e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                            alt="Farmer smiling" class="w-full h-full object-cover">
+                    </div>
+                </div>
+            </div>
+            <div class="absolute bottom-8 right-12 text-2xl font-bold text-slate-200 tracking-tight">AgriFriend</div>
+        </div>
+
+        <!-- Slide 2: Quote -->
+        <div
+            class="slide absolute inset-0 w-full h-full flex-col justify-center items-center p-8 md:p-24 pb-24 bg-slate-50 hidden">
+            <div class="max-w-5xl w-full text-center slide-enter relative">
+                <i data-lucide="quote"
+                    class="w-24 h-24 text-agri-500 mx-auto mb-10 opacity-20 absolute -top-12 left-1/2 transform -translate-x-1/2"></i>
+                <h2 class="text-4xl md:text-6xl font-light leading-tight italic mb-10 text-slate-800 relative z-10">
+                    "It's extremely difficult to rely on smallholder farmers for consistent, large-scale sourcing."
+                </h2>
+                <p class="text-2xl text-brand-blue font-semibold uppercase tracking-widest text-sm">— Agriculture
+                    Manager, Uganda</p>
+            </div>
+            <div class="absolute bottom-8 right-12 text-2xl font-bold text-slate-200 tracking-tight">AgriFriend</div>
+        </div>
+
+        <!-- Slide 3: Problem -->
+        <div
+            class="slide absolute inset-0 w-full h-full flex-col justify-center items-center p-8 md:p-24 pb-24 bg-white hidden">
+            <div class="max-w-6xl w-full flex flex-col md:flex-row items-center gap-16 slide-enter">
+                <div class="flex-1">
+                    <h2 class="text-5xl md:text-6xl font-bold mb-4 text-slate-900 leading-tight">Working with
+                        Smallholder Farmers<br><span class="text-red-500">Is Hard.</span></h2>
+                    <div class="w-24 h-2 bg-red-500 mt-8 mb-8"></div>
+                </div>
+                <div class="flex-1 w-full space-y-6">
+                    <div
+                        class="flex items-center text-2xl font-medium text-slate-700 bg-slate-50 p-6 rounded-2xl border border-slate-100 shadow-sm">
+                        <i data-lucide="eye-off" class="w-8 h-8 text-slate-400 mr-6"></i> Limited supply chain
+                        visibility
+                    </div>
+                    <div
+                        class="flex items-center text-2xl font-medium text-slate-700 bg-slate-50 p-6 rounded-2xl border border-slate-100 shadow-sm">
+                        <i data-lucide="trending-down" class="w-8 h-8 text-slate-400 mr-6"></i> Low farmer productivity
+                    </div>
+                    <div
+                        class="flex items-center text-2xl font-medium text-slate-700 bg-slate-50 p-6 rounded-2xl border border-slate-100 shadow-sm">
+                        <i data-lucide="cloud-lightning" class="w-8 h-8 text-slate-400 mr-6"></i> Climate change risks
+                    </div>
+                    <div
+                        class="flex items-center text-2xl font-medium text-slate-700 bg-slate-50 p-6 rounded-2xl border border-slate-100 shadow-sm">
+                        <i data-lucide="coins" class="w-8 h-8 text-slate-400 mr-6"></i> Low farmer income
+                    </div>
+                </div>
+            </div>
+            <div class="absolute bottom-8 right-12 text-2xl font-bold text-slate-200 tracking-tight">AgriFriend</div>
+        </div>
+
+        <!-- Slide 4: Value Prop -->
+        <div
+            class="slide absolute inset-0 w-full h-full flex-col justify-center items-center p-8 md:p-24 pb-24 bg-brand-dark text-white hidden">
+            <div class="max-w-5xl w-full text-center slide-enter">
+                <div
+                    class="inline-flex items-center justify-center w-24 h-24 bg-white/10 rounded-full mb-10 text-agri-400">
+                    <i data-lucide="globe-2" class="w-12 h-12"></i>
+                </div>
+                <h2 class="text-5xl md:text-6xl font-bold leading-tight">
+                    We help NGOs and Food Companies build more <span class="text-agri-400">resilient</span> and <span
+                        class="text-agri-400">sustainable</span> supply chain at scale.
+                </h2>
+            </div>
+            <div class="absolute bottom-8 right-12 text-2xl font-bold text-white/10 tracking-tight">AgriFriend</div>
+        </div>
+
+        <!-- Slide 5: Mission -->
+        <div
+            class="slide absolute inset-0 w-full h-full flex-col justify-center items-center p-8 md:p-24 pb-24 bg-agri-600 text-white hidden">
+            <div class="max-w-5xl w-full text-center slide-enter">
+                <h2 class="text-5xl md:text-7xl font-bold leading-tight">
+                    We Make Agriculture Processing Projects <span
+                        class="text-agri-200 underline decoration-8 underline-offset-8">Better</span> and <span
+                        class="text-agri-200 underline decoration-8 underline-offset-8">Smarter</span> at Scale.
+                </h2>
+            </div>
+            <div class="absolute bottom-8 right-12 text-2xl font-bold text-white/20 tracking-tight">AgriFriend</div>
+        </div>
+
+        <!-- Slide 6: Workflows -->
+        <div
+            class="slide absolute inset-0 w-full h-full flex-col justify-center items-center p-8 md:p-24 pb-24 bg-white hidden">
+            <div class="max-w-6xl w-full text-center slide-enter flex flex-col items-center h-full justify-center">
+                <h2 class="text-sm font-bold tracking-[0.2em] text-slate-400 uppercase mb-16">Workflows For Every Field
+                    Action</h2>
+
+                <div class="relative w-full max-w-4xl aspect-[2/1] flex items-center justify-center">
+                    <!-- Central Image / Hub -->
+                    <div
+                        class="absolute z-10 w-64 h-64 bg-slate-100 rounded-2xl flex items-center justify-center shadow-xl overflow-hidden border-4 border-white">
+                        <img src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                            alt="Field Work" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-agri-600/20 mix-blend-multiply"></div>
+                    </div>
+
+                    <!-- Nodes -->
+                    <div
+                        class="absolute top-0 left-0 bg-white px-6 py-4 rounded-xl shadow-lg border border-slate-100 font-bold text-lg text-slate-700 flex items-center">
+                        <i data-lucide="truck" class="w-5 h-5 mr-3 text-brand-blue"></i> Deliveries</div>
+                    <div
+                        class="absolute top-0 right-0 bg-white px-6 py-4 rounded-xl shadow-lg border border-slate-100 font-bold text-lg text-slate-700 flex items-center">
+                        <i data-lucide="book-open" class="w-5 h-5 mr-3 text-agri-500"></i> Best Practices Training</div>
+                    <div
+                        class="absolute bottom-0 left-12 bg-white px-6 py-4 rounded-xl shadow-lg border border-slate-100 font-bold text-lg text-slate-700 flex items-center">
+                        <i data-lucide="clipboard-list" class="w-5 h-5 mr-3 text-orange-500"></i> Data Collection</div>
+                    <div
+                        class="absolute bottom-0 right-12 bg-white px-6 py-4 rounded-xl shadow-lg border border-slate-100 font-bold text-lg text-slate-700 flex items-center">
+                        <i data-lucide="scale" class="w-5 h-5 mr-3 text-red-500"></i> Quality Control</div>
+                    <div
+                        class="absolute top-1/2 right-[-2rem] transform -translate-y-1/2 bg-white px-6 py-4 rounded-xl shadow-lg border border-slate-100 font-bold text-lg text-slate-700 flex items-center">
+                        <i data-lucide="package" class="w-5 h-5 mr-3 text-purple-500"></i> Inputs Distribution</div>
+                </div>
+            </div>
+            <div class="absolute bottom-8 right-12 text-2xl font-bold text-slate-200 tracking-tight">AgriFriend</div>
+        </div>
+
+        <!-- Slide 7: AI Agent -->
+        <div
+            class="slide absolute inset-0 w-full h-full flex-col justify-center items-center p-8 md:p-24 pb-24 bg-white hidden">
+            <div class="max-w-6xl w-full flex flex-col md:flex-row items-center gap-16 slide-enter">
+                <div class="flex-1">
+                    <h2 class="text-4xl md:text-5xl font-bold mb-8 text-slate-900 leading-tight">Human-like
+                        Conversational<br><span class="text-brand-blue">AI Agent</span></h2>
+                    <ul class="space-y-6 mt-8">
+                        <li class="flex items-start text-xl text-slate-600"><i data-lucide="message-circle"
+                                class="w-6 h-6 mr-4 text-agri-500 mt-1 flex-shrink-0"></i> <span>Scalable Monitored
+                                Dialogue</span></li>
+                        <li class="flex items-start text-xl text-slate-600"><i data-lucide="check-circle"
+                                class="w-6 h-6 mr-4 text-agri-500 mt-1 flex-shrink-0"></i> <span>Impact
+                                Verification</span></li>
+                        <li class="flex items-start text-xl text-slate-600"><i data-lucide="wifi-off"
+                                class="w-6 h-6 mr-4 text-agri-500 mt-1 flex-shrink-0"></i> <span>Offline and Real-Time
+                                Visibility</span></li>
+                        <li class="flex items-start text-xl text-slate-600"><i data-lucide="refresh-cw"
+                                class="w-6 h-6 mr-4 text-agri-500 mt-1 flex-shrink-0"></i> <span>Two-way Feedback
+                                Loop</span></li>
+                    </ul>
+                </div>
+                <div class="flex-1 w-full flex justify-center">
+                    <div
+                        class="w-full max-w-md aspect-square rounded-full overflow-hidden shadow-xl border-8 border-slate-50 relative">
+                        <img src="https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                            alt="Farmer with phone" class="w-full h-full object-cover">
+                    </div>
+                </div>
+            </div>
+            <div class="absolute bottom-8 right-12 text-2xl font-bold text-slate-200 tracking-tight">AgriFriend</div>
+        </div>
+
+        <!-- Slide 8: Digital Training -->
+        <div
+            class="slide absolute inset-0 w-full h-full flex-col justify-center items-center p-8 md:p-24 pb-24 bg-slate-50 hidden">
+            <div class="max-w-6xl w-full flex flex-col md:flex-row-reverse items-center gap-16 slide-enter">
+                <div class="flex-1">
+                    <h2 class="text-4xl md:text-5xl font-bold mb-8 text-slate-900 leading-tight">Digital Training to
+                        Strengthen<br><span class="text-agri-600">Farmer Livelihoods</span></h2>
+                    <ul class="space-y-6 mt-8">
+                        <li class="flex items-start text-xl text-slate-600"><i data-lucide="book-open"
+                                class="w-6 h-6 mr-4 text-brand-blue mt-1 flex-shrink-0"></i> <span>Good Agricultural
+                                Practices</span></li>
+                        <li class="flex items-start text-xl text-slate-600"><i data-lucide="users"
+                                class="w-6 h-6 mr-4 text-brand-blue mt-1 flex-shrink-0"></i> <span>Scalable
+                                Training</span></li>
+                        <li class="flex items-start text-xl text-slate-600"><i data-lucide="trending-up"
+                                class="w-6 h-6 mr-4 text-brand-blue mt-1 flex-shrink-0"></i> <span>Profitable Farming
+                                Businesses</span></li>
+                        <li class="flex items-start text-xl text-slate-600"><i data-lucide="sun"
+                                class="w-6 h-6 mr-4 text-brand-blue mt-1 flex-shrink-0"></i> <span>Climate-Smart &
+                                Resilient Farming</span></li>
+                    </ul>
+                </div>
+                <div class="flex-1 w-full flex justify-center">
+                    <div
+                        class="w-full max-w-md aspect-square rounded-full overflow-hidden shadow-xl border-8 border-white relative">
+                        <img src="https://images.unsplash.com/photo-1625246333195-78d9c38ad449?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                            alt="Training" class="w-full h-full object-cover">
+                    </div>
+                </div>
+            </div>
+            <div class="absolute bottom-8 right-12 text-2xl font-bold text-slate-200 tracking-tight">AgriFriend</div>
+        </div>
+
+        <!-- Slide 9: Supply Chain Visibility -->
+        <div
+            class="slide absolute inset-0 w-full h-full flex-col justify-center items-center p-8 md:p-24 pb-24 bg-white hidden">
+            <div class="max-w-6xl w-full flex flex-col md:flex-row items-center gap-16 slide-enter">
+                <div class="flex-1">
+                    <h2 class="text-4xl md:text-5xl font-bold mb-8 text-slate-900 leading-tight"><span
+                            class="text-brand-blue">Rural</span> Supply Chain Visibility</h2>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-8">
+                        <div class="bg-slate-50 p-6 rounded-2xl border border-slate-100">
+                            <i data-lucide="badge-check" class="w-8 h-8 text-agri-500 mb-4"></i>
+                            <h3 class="font-bold text-lg text-slate-800">Verified Farmer Data</h3>
+                        </div>
+                        <div class="bg-slate-50 p-6 rounded-2xl border border-slate-100">
+                            <i data-lucide="map-pin" class="w-8 h-8 text-agri-500 mb-4"></i>
+                            <h3 class="font-bold text-lg text-slate-800">Field-Level Traceability</h3>
+                        </div>
+                        <div class="bg-slate-50 p-6 rounded-2xl border border-slate-100">
+                            <i data-lucide="git-branch" class="w-8 h-8 text-agri-500 mb-4"></i>
+                            <h3 class="font-bold text-lg text-slate-800">Standardized Workflows Across Teams</h3>
+                        </div>
+                        <div class="bg-slate-50 p-6 rounded-2xl border border-slate-100">
+                            <i data-lucide="bar-chart-3" class="w-8 h-8 text-agri-500 mb-4"></i>
+                            <h3 class="font-bold text-lg text-slate-800">Actionable Business Insights</h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex-1 w-full flex justify-center">
+                    <div
+                        class="w-full max-w-md aspect-square rounded-full overflow-hidden shadow-xl border-8 border-slate-50 relative">
+                        <img src="https://images.unsplash.com/photo-1595801456958-86c4f039366e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                            alt="Farmer Data" class="w-full h-full object-cover">
+                    </div>
+                </div>
+            </div>
+            <div class="absolute bottom-8 right-12 text-2xl font-bold text-slate-200 tracking-tight">AgriFriend</div>
+        </div>
+
+        <!-- Slide 10: Dashboard -->
+        <div
+            class="slide absolute inset-0 w-full h-full flex-col justify-center items-center p-8 md:p-12 pb-24 bg-slate-50 hidden">
+            <div class="w-full max-w-6xl slide-enter">
+                <h2 class="text-4xl font-bold mb-8 text-center text-slate-900">End-to-End Platform</h2>
+                <!-- Mock Dashboard UI -->
+                <div
+                    class="w-full bg-white rounded-2xl shadow-[0_20px_50px_-12px_rgba(0,0,0,0.1)] border border-gray-200 overflow-hidden flex h-[600px]">
+                    <!-- Sidebar -->
+                    <div class="w-64 bg-slate-900 text-white flex flex-col p-4">
+                        <div class="flex items-center space-x-2 font-bold text-xl mb-10 mt-4 px-2 text-brand-blue">
+                            <i data-lucide="globe" class="w-6 h-6"></i><span>DANONE</span>
+                        </div>
+                        <nav class="space-y-2 flex-1">
+                            <a href="#"
+                                class="flex items-center space-x-3 px-3 py-2 rounded hover:bg-slate-800 text-slate-400 hover:text-white transition-colors"><i
+                                    data-lucide="leaf" class="w-5 h-5"></i><span>Sustainability</span></a>
+                            <a href="#"
+                                class="flex items-center space-x-3 px-3 py-2 rounded hover:bg-slate-800 text-slate-400 hover:text-white transition-colors"><i
+                                    data-lucide="activity" class="w-5 h-5"></i><span>Activity</span></a>
+                            <a href="#"
+                                class="flex items-center space-x-3 px-3 py-2 rounded bg-brand-blue text-white font-semibold"><i
+                                    data-lucide="tractor" class="w-5 h-5"></i><span>Agriculture</span></a>
+                            <a href="#"
+                                class="flex items-center space-x-3 px-3 py-2 rounded hover:bg-slate-800 text-slate-400 hover:text-white transition-colors"><i
+                                    data-lucide="users" class="w-5 h-5"></i><span>Diversity</span></a>
+                            <a href="#"
+                                class="flex items-center space-x-3 px-3 py-2 rounded hover:bg-slate-800 text-slate-400 hover:text-white transition-colors"><i
+                                    data-lucide="database" class="w-5 h-5"></i><span>Data</span></a>
+                            <a href="#"
+                                class="flex items-center space-x-3 px-3 py-2 rounded hover:bg-slate-800 text-slate-400 hover:text-white transition-colors"><i
+                                    data-lucide="map" class="w-5 h-5"></i><span>Map</span></a>
+                        </nav>
+                        <div
+                            class="mt-auto text-slate-500 flex items-center space-x-2 px-2 hover:text-white cursor-pointer">
+                            <i data-lucide="repeat" class="w-4 h-4"></i><span class="text-sm">Switch Project</span>
+                        </div>
+                    </div>
+                    <!-- Main Dash Area -->
+                    <div class="flex-1 bg-[#f8fafc] p-8 overflow-y-auto">
+                        <!-- Top Stats -->
+                        <div class="grid grid-cols-4 gap-4 mb-8">
+                            <div class="dash-card">
+                                <div class="text-xs text-slate-500 font-semibold mb-1 uppercase tracking-wider">Total
+                                    Farmers</div>
+                                <div class="text-3xl font-bold text-slate-800">75,371</div>
+                            </div>
+                            <div class="dash-card">
+                                <div class="text-xs text-slate-500 font-semibold mb-1 uppercase tracking-wider">Income
+                                    Growth</div>
+                                <div class="text-3xl font-bold text-agri-500">+461%</div>
+                            </div>
+                            <div class="dash-card">
+                                <div class="text-xs text-slate-500 font-semibold mb-1 uppercase tracking-wider">Post
+                                    Harvest Loss</div>
+                                <div class="text-3xl font-bold text-red-500">3.2%</div>
+                            </div>
+                            <div class="dash-card">
+                                <div class="text-xs text-slate-500 font-semibold mb-1 uppercase tracking-wider">Average
+                                    Yield</div>
+                                <div class="text-3xl font-bold text-slate-800">34,371</div>
+                            </div>
+                        </div>
+                        <!-- Charts Grid -->
+                        <div class="grid grid-cols-3 gap-6">
+                            <div class="col-span-2 space-y-6">
+                                <div class="dash-card h-56 flex flex-col">
+                                    <div class="font-bold text-slate-700 mb-4">Harvest Yield</div>
+                                    <div class="flex-1 bg-slate-50 rounded w-full flex items-end">
+                                        <div class="w-full h-[80%] bg-brand-blue/80 rounded-t"
+                                            style="clip-path: polygon(0 80%, 20% 60%, 40% 70%, 60% 40%, 80% 50%, 100% 20%, 100% 100%, 0 100%);">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="dash-card h-48 flex flex-col">
+                                    <div class="font-bold text-slate-700 mb-4">Fertilizer Breakdown</div>
+                                    <div class="flex-1 flex items-end justify-around pb-2">
+                                        <div class="w-10 h-10 bg-slate-300 rounded-t"></div>
+                                        <div class="w-10 h-16 bg-agri-400 rounded-t"></div>
+                                        <div class="w-10 h-24 bg-brand-blue rounded-t"></div>
+                                        <div class="w-10 h-20 bg-orange-400 rounded-t"></div>
+                                        <div class="w-10 h-32 bg-agri-600 rounded-t"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="space-y-6">
+                                <div class="dash-card h-56 flex flex-col items-center justify-center">
+                                    <div class="font-bold text-slate-700 w-full mb-6">Export Funnel</div>
+                                    <div class="w-full max-w-[160px]">
+                                        <div class="bg-brand-blue h-10 w-full mb-1 rounded-sm"></div>
+                                        <div class="bg-brand-blue/80 h-10 w-[80%] mx-auto mb-1 rounded-sm"></div>
+                                        <div class="bg-brand-blue/60 h-10 w-[60%] mx-auto rounded-sm"></div>
+                                    </div>
+                                </div>
+                                <div class="dash-card h-48 relative overflow-hidden flex flex-col">
+                                    <div class="font-bold text-slate-700 mb-2 z-10 relative">By Country</div>
+                                    <div class="absolute inset-0 top-12 bg-slate-100 flex items-center justify-center">
+                                        <i data-lucide="map" class="w-24 h-24 opacity-10 text-slate-900"></i>
+                                        <div class="absolute w-3 h-3 bg-red-500 rounded-full top-1/3 left-1/3"></div>
+                                        <div class="absolute w-3 h-3 bg-red-500 rounded-full top-1/2 right-1/3"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 11: Map -->
+        <div
+            class="slide absolute inset-0 w-full h-full flex-col justify-center items-center p-8 md:p-24 pb-24 bg-white hidden">
+            <div class="max-w-4xl w-full text-center slide-enter">
+                <h2 class="text-5xl font-bold mb-20 text-slate-900">Where We Operate Today</h2>
+                <div class="flex justify-center items-center space-x-16 md:space-x-32">
+                    <div class="flex flex-col items-center">
+                        <div
+                            class="w-32 h-32 bg-slate-50 rounded-full flex items-center justify-center mb-6 text-brand-blue shadow-lg border border-slate-100">
+                            <i data-lucide="map-pin" class="w-12 h-12"></i>
+                        </div>
+                        <span class="text-3xl font-bold text-slate-800">Ethiopia</span>
+                    </div>
+                    <div class="flex flex-col items-center">
+                        <div
+                            class="w-32 h-32 bg-slate-50 rounded-full flex items-center justify-center mb-6 text-brand-blue shadow-lg border border-slate-100">
+                            <i data-lucide="map-pin" class="w-12 h-12"></i>
+                        </div>
+                        <span class="text-3xl font-bold text-slate-800">Uganda</span>
+                    </div>
+                    <div class="flex flex-col items-center">
+                        <div
+                            class="w-32 h-32 bg-slate-50 rounded-full flex items-center justify-center mb-6 text-brand-blue shadow-lg border border-slate-100">
+                            <i data-lucide="map-pin" class="w-12 h-12"></i>
+                        </div>
+                        <span class="text-3xl font-bold text-slate-800">Zambia</span>
+                    </div>
+                </div>
+            </div>
+            <div class="absolute bottom-8 right-12 text-2xl font-bold text-slate-200 tracking-tight">AgriFriend</div>
+        </div>
+
+        <!-- Slide 12: Stats -->
+        <div
+            class="slide absolute inset-0 w-full h-full flex-col justify-center items-center p-8 md:p-24 pb-24 bg-slate-50 hidden">
+            <div class="max-w-6xl w-full slide-enter">
+                <h2 class="text-5xl md:text-6xl font-bold mb-16 text-center text-slate-900">Real Scale, Big Results</h2>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16 border-b border-slate-200 pb-16">
+                    <div class="text-center">
+                        <div class="text-6xl md:text-7xl font-black text-brand-blue mb-4">25,000+</div>
+                        <div class="text-2xl font-bold text-slate-600">Farms</div>
+                    </div>
+                    <div class="text-center md:border-l md:border-r border-slate-200">
+                        <div class="text-6xl md:text-7xl font-black text-brand-blue mb-4">100,000+</div>
+                        <div class="text-2xl font-bold text-slate-600">Beneficiaries</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-6xl md:text-7xl font-black text-brand-blue mb-4">100,000+</div>
+                        <div class="text-2xl font-bold text-slate-600">Acres</div>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-16 px-8">
+                    <div>
+                        <div class="flex items-center mb-4">
+                            <i data-lucide="arrow-up-right" class="w-12 h-12 text-agri-500 mr-4"></i>
+                            <h3 class="text-4xl font-bold text-slate-800">+80% increase</h3>
+                        </div>
+                        <p class="text-xl text-slate-600 font-semibold mb-3 uppercase tracking-wide">in verified field
+                            agent activity</p>
+                        <p class="text-slate-500 text-lg leading-relaxed">Structured workflows ensured more visits,
+                            completed tasks, and consistent execution.</p>
+                    </div>
+                    <div>
+                        <div class="flex items-center mb-4">
+                            <i data-lucide="arrow-up-right" class="w-12 h-12 text-agri-500 mr-4"></i>
+                            <h3 class="text-4xl font-bold text-slate-800">55% increase</h3>
+                        </div>
+                        <p class="text-xl text-slate-600 font-semibold mb-3 uppercase tracking-wide">in adoption of
+                            agronomic best practices</p>
+                        <p class="text-slate-500 text-lg leading-relaxed">Led to higher-quality crops and improved
+                            sourcing reliability.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="absolute bottom-8 right-12 text-2xl font-bold text-slate-200 tracking-tight">AgriFriend</div>
+        </div>
+
+        <!-- Slide 13: Partners -->
+        <div
+            class="slide absolute inset-0 w-full h-full flex-col justify-center items-center p-8 md:p-24 pb-24 bg-white hidden">
+            <div class="max-w-6xl w-full text-center slide-enter">
+                <h2 class="text-5xl font-bold mb-16 text-slate-900">Our Partners</h2>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-8 items-center">
+                    <div
+                        class="bg-slate-50 p-6 rounded-2xl flex items-center justify-center h-40 font-black text-3xl text-slate-400">
+                        BAYER</div>
+                    <div
+                        class="bg-slate-50 p-6 rounded-2xl flex items-center justify-center h-40 font-black text-2xl text-slate-400 text-center">
+                        BNOP<br>GREEN 2000</div>
+                    <div
+                        class="bg-slate-50 p-6 rounded-2xl flex items-center justify-center h-40 font-black text-3xl text-slate-400">
+                        ABInBev</div>
+                    <div
+                        class="bg-slate-50 p-6 rounded-2xl flex items-center justify-center h-40 font-black text-3xl text-slate-400">
+                        OLAM</div>
+                    <div
+                        class="bg-slate-50 p-6 rounded-2xl flex items-center justify-center h-40 font-black text-xl text-slate-400 text-center">
+                        Industrial<br>Development Corp</div>
+                    <div
+                        class="bg-slate-50 p-6 rounded-2xl flex items-center justify-center h-40 font-black text-2xl text-slate-400 text-center">
+                        NILE<br>BREWERIES</div>
+                    <div
+                        class="bg-slate-50 p-6 rounded-2xl flex items-center justify-center h-40 font-black text-xl text-slate-400 text-center">
+                        MASSCHALLENGE</div>
+                    <div
+                        class="bg-slate-50 p-6 rounded-2xl flex items-center justify-center h-40 font-black text-xl text-slate-400 text-center">
+                        Israel Innovation<br>Authority</div>
+                </div>
+            </div>
+            <div class="absolute bottom-8 right-12 text-2xl font-bold text-slate-200 tracking-tight">AgriFriend</div>
+        </div>
+
+        <!-- Use Case Slides 14-20: Shared Template Design -->
+
+        <!-- Slide 14: Use Case - Farmer ID -->
+        <div
+            class="slide absolute inset-0 w-full h-full flex-col justify-center items-center p-8 md:p-24 pb-24 bg-white hidden">
+            <div class="max-w-6xl w-full flex flex-col md:flex-row items-center gap-16 slide-enter">
+                <div class="flex-1 order-2 md:order-1">
+                    <div
+                        class="inline-block bg-brand-blue text-white text-sm font-bold px-4 py-1.5 rounded-full uppercase tracking-widest mb-6">
+                        Use Case 01</div>
+                    <h2 class="text-4xl md:text-5xl font-bold mb-10 text-slate-900 leading-tight">Farmer Identification
+                    </h2>
+
+                    <div class="space-y-8">
+                        <div>
+                            <h3 class="text-2xl font-bold text-slate-800 mb-2">Facial Recognition</h3>
+                            <p class="text-slate-500 text-lg leading-relaxed">Verify farmers quickly and accurately in
+                                the field.</p>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-bold text-slate-800 mb-2">No ID Needed</h3>
+                            <p class="text-slate-500 text-lg leading-relaxed">Register farmers without requiring formal
+                                identification.</p>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-bold text-slate-800 mb-2">Works Offline</h3>
+                            <p class="text-slate-500 text-lg leading-relaxed">Capture and store data in the field
+                                without internet connectivity.</p>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-bold text-slate-800 mb-2">No More Duplicates</h3>
+                            <p class="text-slate-500 text-lg leading-relaxed">Eliminate double entries with unique
+                                farmer records.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex-1 order-1 md:order-2 w-full flex justify-center">
+                    <div
+                        class="w-full max-w-lg aspect-square rounded-full overflow-hidden shadow-2xl relative border-[12px] border-slate-50">
+                        <img src="https://images.unsplash.com/photo-1595801456958-86c4f039366e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                            alt="Facial Recognition" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <i data-lucide="scan-face" class="w-32 h-32 text-white/80 drop-shadow-lg"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="absolute bottom-8 right-12 text-2xl font-bold text-slate-200 tracking-tight">AgriFriend</div>
+        </div>
+
+        <!-- Slide 15: Use Case - Scalable Training -->
+        <div
+            class="slide absolute inset-0 w-full h-full flex-col justify-center items-center p-8 md:p-24 pb-24 bg-white hidden">
+            <div class="max-w-6xl w-full flex flex-col md:flex-row-reverse items-center gap-16 slide-enter">
+                <div class="flex-1">
+                    <div
+                        class="inline-block bg-agri-500 text-white text-sm font-bold px-4 py-1.5 rounded-full uppercase tracking-widest mb-6">
+                        Use Case 02</div>
+                    <h2 class="text-4xl md:text-5xl font-bold mb-10 text-slate-900 leading-tight">Scalable Training</h2>
+
+                    <div class="space-y-8">
+                        <div>
+                            <h3 class="text-2xl font-bold text-slate-800 mb-2">Video Training</h3>
+                            <p class="text-slate-500 text-lg leading-relaxed">Engaging, visual content that's easy to
+                                understand.</p>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-bold text-slate-800 mb-2">Local Languages</h3>
+                            <p class="text-slate-500 text-lg leading-relaxed">Training materials adapted to farmers'
+                                native languages and dialects.</p>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-bold text-slate-800 mb-2">Good Agricultural Practices</h3>
+                            <p class="text-slate-500 text-lg leading-relaxed">Practical, step-by-step guidance to
+                                improve yields and quality.</p>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-bold text-slate-800 mb-2">Spoken to Them</h3>
+                            <p class="text-slate-500 text-lg leading-relaxed">Culturally relevant, conversational
+                                delivery that builds trust.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex-1 w-full flex justify-center">
+                    <div
+                        class="w-full max-w-lg aspect-square rounded-full overflow-hidden shadow-2xl relative border-[12px] border-slate-50">
+                        <img src="https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                            alt="Training" class="w-full h-full object-cover">
+                    </div>
+                </div>
+            </div>
+            <div class="absolute bottom-8 right-12 text-2xl font-bold text-slate-200 tracking-tight">AgriFriend</div>
+        </div>
+
+        <!-- Slide 16: Use Case - Optimizing Field Operations -->
+        <div
+            class="slide absolute inset-0 w-full h-full flex-col justify-center items-center p-8 md:p-24 pb-24 bg-white hidden">
+            <div class="max-w-6xl w-full flex flex-col md:flex-row items-center gap-16 slide-enter">
+                <div class="flex-1">
+                    <div
+                        class="inline-block bg-orange-500 text-white text-sm font-bold px-4 py-1.5 rounded-full uppercase tracking-widest mb-6">
+                        Use Case 03</div>
+                    <h2 class="text-4xl md:text-5xl font-bold mb-10 text-slate-900 leading-tight">Optimizing Field
+                        Operations</h2>
+
+                    <div class="space-y-8">
+                        <div>
+                            <h3 class="text-2xl font-bold text-slate-800 mb-2">Customized Digital Workflows</h3>
+                            <p class="text-slate-500 text-lg leading-relaxed">Tailored processes for each engagement to
+                                ensure consistency and quality.</p>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-bold text-slate-800 mb-2">Work & Progress Tracking</h3>
+                            <p class="text-slate-500 text-lg leading-relaxed">Monitor activities and completion rates in
+                                real time.</p>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-bold text-slate-800 mb-2">Performance Monitoring</h3>
+                            <p class="text-slate-500 text-lg leading-relaxed">Identify what's working and what's not
+                                with live, field-level data.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex-1 w-full flex justify-center">
+                    <div
+                        class="w-full max-w-lg aspect-square rounded-[3rem] overflow-hidden shadow-2xl relative border-[12px] border-slate-50 bg-slate-100 flex items-center justify-center flex-col p-8">
+                        <i data-lucide="layout-dashboard" class="w-32 h-32 text-orange-200 mb-6"></i>
+                        <div class="w-3/4 h-4 bg-orange-200 rounded-full mb-3"></div>
+                        <div class="w-1/2 h-4 bg-orange-200 rounded-full mb-8"></div>
+                        <div class="flex space-x-4 w-full">
+                            <div class="h-20 flex-1 bg-white rounded-xl shadow-sm"></div>
+                            <div class="h-20 flex-1 bg-white rounded-xl shadow-sm"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="absolute bottom-8 right-12 text-2xl font-bold text-slate-200 tracking-tight">AgriFriend</div>
+        </div>
+
+        <!-- Slide 17: Use Case - Deliveries -->
+        <div
+            class="slide absolute inset-0 w-full h-full flex-col justify-center items-center p-8 md:p-24 pb-24 bg-white hidden">
+            <div class="max-w-6xl w-full flex flex-col md:flex-row-reverse items-center gap-16 slide-enter">
+                <div class="flex-1">
+                    <div
+                        class="inline-block bg-brand-blue text-white text-sm font-bold px-4 py-1.5 rounded-full uppercase tracking-widest mb-6">
+                        Use Case 04</div>
+                    <h2 class="text-4xl md:text-5xl font-bold mb-10 text-slate-900 leading-tight">Deliveries</h2>
+
+                    <div class="space-y-8">
+                        <div>
+                            <h3 class="text-2xl font-bold text-slate-800 mb-2">Supply Prediction</h3>
+                            <p class="text-slate-500 text-lg leading-relaxed">Real-time data on volumes per farmer
+                                allows accurate proactive forecasting and planning.</p>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-bold text-slate-800 mb-2">Verified Deliveries</h3>
+                            <p class="text-slate-500 text-lg leading-relaxed">Every delivery is logged against a unique
+                                farmer and plot, closing the loop from planting to harvest.</p>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-bold text-slate-800 mb-2">Operational Efficiency</h3>
+                            <p class="text-slate-500 text-lg leading-relaxed">Collection centers reconcile inflow and
+                                outflow instantly, cutting delays and errors.</p>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-bold text-slate-800 mb-2 text-red-500">Eliminate False Deliveries
+                            </h3>
+                            <p class="text-slate-500 text-lg leading-relaxed">Linked IDs and tickets stop duplicate or
+                                fake entries, reducing hidden losses.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex-1 w-full flex justify-center">
+                    <div
+                        class="w-full max-w-lg aspect-square rounded-full overflow-hidden shadow-2xl relative border-[12px] border-slate-50">
+                        <img src="https://images.unsplash.com/photo-1625246333195-78d9c38ad449?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                            alt="Deliveries" class="w-full h-full object-cover">
+                    </div>
+                </div>
+            </div>
+            <div class="absolute bottom-8 right-12 text-2xl font-bold text-slate-200 tracking-tight">AgriFriend</div>
+        </div>
+
+        <!-- Slide 18: Use Case - Quality Control -->
+        <div
+            class="slide absolute inset-0 w-full h-full flex-col justify-center items-center p-8 md:p-24 pb-24 bg-white hidden">
+            <div class="max-w-6xl w-full flex flex-col md:flex-row items-center gap-16 slide-enter">
+                <div class="flex-1">
+                    <div
+                        class="inline-block bg-purple-500 text-white text-sm font-bold px-4 py-1.5 rounded-full uppercase tracking-widest mb-6">
+                        Use Case 05</div>
+                    <h2 class="text-4xl md:text-5xl font-bold mb-10 text-slate-900 leading-tight">Quality Control</h2>
+
+                    <div class="space-y-8">
+                        <div>
+                            <h3 class="text-2xl font-bold text-slate-800 mb-2">Standardized Grading</h3>
+                            <p class="text-slate-500 text-lg leading-relaxed">Uniform tests for moisture, impurities,
+                                and aflatoxin applied across all collection points.</p>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-bold text-slate-800 mb-2">Accurate Data Capture</h3>
+                            <p class="text-slate-500 text-lg leading-relaxed">Results are logged digitally at the
+                                source, linked to each farmer and delivery.</p>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-bold text-slate-800 mb-2">Prevent False Grading</h3>
+                            <p class="text-slate-500 text-lg leading-relaxed">Prevents farmers or agents from
+                                overstating quality to secure higher prices.</p>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-bold text-slate-800 mb-2 text-red-500">Clear Rejection Protocols
+                            </h3>
+                            <p class="text-slate-500 text-lg leading-relaxed">Substandard grain is flagged early,
+                                preventing costly rejections further down the chain.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex-1 w-full flex justify-center">
+                    <div
+                        class="w-full max-w-lg aspect-[4/5] rounded-[3rem] overflow-hidden shadow-2xl relative border-[12px] border-slate-50">
+                        <img src="https://images.unsplash.com/photo-1598425102559-00914a8069d3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                            alt="Grains Quality Control" class="w-full h-full object-cover">
+                    </div>
+                </div>
+            </div>
+            <div class="absolute bottom-8 right-12 text-2xl font-bold text-slate-200 tracking-tight">AgriFriend</div>
+        </div>
+
+        <!-- Slide 19: Use Case - Feed & Inputs -->
+        <div
+            class="slide absolute inset-0 w-full h-full flex-col justify-center items-center p-8 md:p-24 pb-24 bg-white hidden">
+            <div class="max-w-6xl w-full flex flex-col md:flex-row-reverse items-center gap-16 slide-enter">
+                <div class="flex-1">
+                    <div
+                        class="inline-block bg-agri-600 text-white text-sm font-bold px-4 py-1.5 rounded-full uppercase tracking-widest mb-6">
+                        Use Case 06</div>
+                    <h2 class="text-4xl md:text-5xl font-bold mb-10 text-slate-900 leading-tight">Animal Feed & Inputs
+                        Distribution</h2>
+
+                    <div class="space-y-8">
+                        <div>
+                            <h3 class="text-2xl font-bold text-slate-800 mb-2">Smart Distribution Management</h3>
+                            <p class="text-slate-500 text-lg leading-relaxed">Track in real time who received inputs,
+                                where stock is located, and how to optimize allocation.</p>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-bold text-slate-800 mb-2">Farmer-Level Traceability</h3>
+                            <p class="text-slate-500 text-lg leading-relaxed">Every input is logged against a unique
+                                farmer and plot, eliminating guesswork and duplication.</p>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-bold text-slate-800 mb-2">ROI Tracking</h3>
+                            <p class="text-slate-500 text-lg leading-relaxed">Inputs are linked to harvest outcomes,
+                                showing which farmers generate real returns from the support provided.</p>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-bold text-slate-800 mb-2 text-red-500">Side-Selling Prevention</h3>
+                            <p class="text-slate-500 text-lg leading-relaxed">Clear records expose mismatches between
+                                inputs received and grain delivered, flagging risks early.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex-1 w-full flex justify-center">
+                    <div
+                        class="w-full max-w-lg aspect-square rounded-full overflow-hidden shadow-2xl relative border-[12px] border-slate-50 bg-slate-100 flex flex-wrap items-center justify-center p-8 gap-4">
+                        <div
+                            class="w-2/5 aspect-square bg-white rounded-2xl shadow-sm flex flex-col items-center justify-center text-center">
+                            <i data-lucide="package" class="w-10 h-10 text-agri-500 mb-2"></i><span
+                                class="font-bold text-slate-700">Fertilizers</span></div>
+                        <div
+                            class="w-2/5 aspect-square bg-white rounded-2xl shadow-sm flex flex-col items-center justify-center text-center">
+                            <i data-lucide="wheat" class="w-10 h-10 text-agri-500 mb-2"></i><span
+                                class="font-bold text-slate-700">Seeds</span></div>
+                        <div
+                            class="w-2/5 aspect-square bg-white rounded-2xl shadow-sm flex flex-col items-center justify-center text-center">
+                            <i data-lucide="beef" class="w-10 h-10 text-agri-500 mb-2"></i><span
+                                class="font-bold text-slate-700">Animal Feed</span></div>
+                        <div
+                            class="w-2/5 aspect-square bg-white rounded-2xl shadow-sm flex flex-col items-center justify-center text-center">
+                            <i data-lucide="hammer" class="w-10 h-10 text-agri-500 mb-2"></i><span
+                                class="font-bold text-slate-700">Equipment</span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="absolute bottom-8 right-12 text-2xl font-bold text-slate-200 tracking-tight">AgriFriend</div>
+        </div>
+
+        <!-- Slide 20: Use Case - Offline & Mapping -->
+        <div
+            class="slide absolute inset-0 w-full h-full flex-col justify-center items-center p-8 md:p-24 pb-24 bg-white hidden">
+            <div class="max-w-6xl w-full flex flex-col md:flex-row items-center gap-16 slide-enter">
+                <div class="flex-1">
+                    <div
+                        class="inline-block bg-slate-800 text-white text-sm font-bold px-4 py-1.5 rounded-full uppercase tracking-widest mb-6">
+                        Use Case 07</div>
+                    <h2 class="text-4xl md:text-5xl font-bold mb-10 text-slate-900 leading-tight">Field-Ready Tech</h2>
+
+                    <div class="space-y-8">
+                        <div>
+                            <h3 class="text-2xl font-bold text-slate-800 mb-2">Offline First</h3>
+                            <p class="text-slate-500 text-lg leading-relaxed">Collect and access all data in remote
+                                communities without internet connectivity.</p>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-bold text-slate-800 mb-2">Farm Maps</h3>
+                            <p class="text-slate-500 text-lg leading-relaxed">Use GPS mapping to verify farm boundaries,
+                                and link each plot to its farmer.</p>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-bold text-slate-800 mb-2">Performance Incentives</h3>
+                            <p class="text-slate-500 text-lg leading-relaxed">Reward farmers and field agents for
+                                meeting quality, productivity, and sustainability targets.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex-1 h-full flex flex-col gap-6 justify-center max-w-md mx-auto">
+                    <div class="w-full aspect-[2/1] bg-cover bg-center rounded-3xl shadow-xl border-8 border-slate-50 relative overflow-hidden"
+                        style="background-image: url('https://images.unsplash.com/photo-1524661135-423995f22d0b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');">
+                        <div class="absolute inset-0 bg-agri-600/30 mix-blend-multiply"></div>
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <i data-lucide="map-pin" class="text-white w-12 h-12 drop-shadow-lg"></i>
+                        </div>
+                    </div>
+                    <div class="w-full aspect-[2/1] bg-slate-100 rounded-3xl shadow-xl border-8 border-slate-50 flex items-center justify-center bg-cover bg-center relative overflow-hidden"
+                        style="background-image: url('https://images.unsplash.com/photo-1581578731548-c64695cc6952?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');">
+                        <div class="bg-white/95 p-5 rounded-2xl shadow-lg flex items-center transform scale-90">
+                            <i data-lucide="qr-code" class="w-12 h-12 mr-4 text-slate-800"></i>
+                            <div class="text-sm font-mono font-bold text-slate-800">OFFLINE SYNC<br><span
+                                    class="text-agri-500">READY</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="absolute bottom-8 right-12 text-2xl font-bold text-slate-200 tracking-tight">AgriFriend</div>
+        </div>
+
+        <!-- Slide 21: Contact -->
+        <div
+            class="slide absolute inset-0 w-full h-full flex-col justify-center items-center p-8 md:p-24 pb-24 bg-white hidden">
+            <div class="max-w-4xl w-full flex flex-col md:flex-row items-center gap-16 slide-enter">
+                <div class="flex-1 order-2 md:order-1 text-center md:text-left">
+                    <h2 class="text-6xl md:text-7xl font-extrabold mb-8 text-slate-900 tracking-tight">Thank You.</h2>
+                    <h3 class="text-4xl font-bold text-slate-800 mb-2">Gilad Ovadia</h3>
+                    <p class="text-agri-500 font-semibold mb-10 text-xl tracking-wide uppercase">AgriFriend</p>
+
+                    <div class="space-y-6 text-xl">
+                        <a href="mailto:gilad@agrifriend.io"
+                            class="flex items-center justify-center md:justify-start text-slate-600 hover:text-brand-blue transition-colors">
+                            <i data-lucide="mail" class="w-6 h-6 mr-4 text-slate-400"></i> gilad@agrifriend.io
+                        </a>
+                        <a href="https://agrifriend.io" target="_blank"
+                            class="flex items-center justify-center md:justify-start text-slate-600 hover:text-brand-blue transition-colors">
+                            <i data-lucide="globe" class="w-6 h-6 mr-4 text-slate-400"></i> agrifriend.io
+                        </a>
+                        <a href="tel:+972509939497"
+                            class="flex items-center justify-center md:justify-start text-slate-600 hover:text-brand-blue transition-colors">
+                            <i data-lucide="phone" class="w-6 h-6 mr-4 text-slate-400"></i> +972 50 993 9497
+                        </a>
+                    </div>
+                </div>
+                <div class="flex-1 order-1 md:order-2 w-full flex justify-center">
+                    <div
+                        class="w-64 md:w-80 aspect-square bg-slate-100 rounded-full flex items-center justify-center overflow-hidden border-8 border-slate-50 shadow-2xl relative">
+                        <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                            alt="Gilad Ovadia" class="w-full h-full object-cover">
+                    </div>
+                </div>
+            </div>
+            <div class="absolute bottom-8 right-12 text-2xl font-bold text-slate-200 tracking-tight">AgriFriend</div>
+        </div>
+
+    </main>
+
+    <!-- Navigation Bar -->
+    <nav
+        class="fixed bottom-0 left-0 w-full bg-white border-t border-slate-100 px-8 py-5 flex justify-between items-center z-50 shadow-[0_-4px_20px_-5px_rgba(0,0,0,0.05)]">
+        <div class="flex items-center space-x-3">
+            <div class="bg-agri-50 p-2 rounded-lg text-agri-600"><i data-lucide="leaf" class="w-5 h-5"></i></div>
+            <span class="text-base font-bold text-slate-800 hidden sm:inline">AgriFriend <span
+                    class="text-slate-400 font-normal ml-2">| ISF Advisory</span></span>
+        </div>
+
+        <div class="flex items-center space-x-6">
+            <button id="prevBtn" onclick="prevSlide()"
+                class="flex items-center px-4 py-2 rounded-full font-semibold text-slate-600 hover:bg-slate-100 disabled:opacity-30 disabled:cursor-not-allowed transition-colors">
+                <i data-lucide="chevron-left" class="w-5 h-5 mr-1"></i> Prev
+            </button>
+
+            <div class="text-sm font-bold text-slate-400 min-w-[60px] text-center tracking-widest" id="slideCounter">
+                1 / 21
+            </div>
+
+            <button id="nextBtn" onclick="nextSlide()"
+                class="flex items-center px-6 py-2.5 rounded-full font-semibold text-white bg-slate-900 hover:bg-brand-blue disabled:opacity-30 disabled:cursor-not-allowed transition-colors shadow-lg">
+                Next <i data-lucide="chevron-right" class="w-5 h-5 ml-1"></i>
+            </button>
+        </div>
+    </nav>
+
+    <script>
+        // Initialize Icons
+        lucide.createIcons();
+
+        // Slide Logic
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        const totalSlides = slides.length;
+        const counter = document.getElementById('slideCounter');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+
+        function updateDeck() {
+            slides.forEach((slide, index) => {
+                if (index === currentSlide) {
+                    slide.classList.remove('hidden');
+                    slide.classList.add('flex');
+
+                    // Retrigger animation
+                    slide.classList.remove('slide-enter');
+                    void slide.offsetWidth; // trigger reflow
+                    slide.classList.add('slide-enter');
+                } else {
+                    slide.classList.add('hidden');
+                    slide.classList.remove('flex', 'slide-enter');
+                }
+            });
+
+            // Make slide numbers two digits (e.g., 01 / 21)
+            const formattedCurrent = String(currentSlide + 1).padStart(2, '0');
+            counter.innerText = `${formattedCurrent} / ${totalSlides}`;
+
+            prevBtn.disabled = currentSlide === 0;
+            nextBtn.disabled = currentSlide === totalSlides - 1;
+        }
+
+        function nextSlide() {
+            if (currentSlide < totalSlides - 1) {
+                currentSlide++;
+                updateDeck();
+            }
+        }
+
+        function prevSlide() {
+            if (currentSlide > 0) {
+                currentSlide--;
+                updateDeck();
+            }
+        }
+
+        // Keyboard Navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight' || e.key === ' ') {
+                e.preventDefault();
+                nextSlide();
+            } else if (e.key === 'ArrowLeft') {
+                e.preventDefault();
+                prevSlide();
+            }
+        });
+
+        // Swipe Navigation for touch devices
+        let touchstartX = 0;
+        let touchendX = 0;
+
+        document.getElementById('deck').addEventListener('touchstart', e => {
+            touchstartX = e.changedTouches[0].screenX;
+        }, { passive: true });
+
+        document.getElementById('deck').addEventListener('touchend', e => {
+            touchendX = e.changedTouches[0].screenX;
+            handleSwipe();
+        }, { passive: true });
+
+        function handleSwipe() {
+            // Require a minimum swipe distance to prevent accidental clicks
+            if (touchendX < touchstartX - 50) nextSlide();
+            if (touchendX > touchstartX + 50) prevSlide();
+        }
+
+        // Initialize first slide
+        updateDeck();
+    </script>
+</body>
+
+</html>

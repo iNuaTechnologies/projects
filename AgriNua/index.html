@@ -45,7 +45,7 @@
             inset: 0;
             z-index: 0;
             background-color: var(--cream);
-            background-image: url('../Images/FullBackground.png');
+            background-image: url('../Images/newbestBK.png');
             background-size: 100% 100%;
             background-position: center;
             background-repeat: no-repeat;
@@ -67,6 +67,8 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            padding-bottom: 15vh; /* Push content up above bottom waves */
+            box-sizing: border-box;
             overflow: hidden;
         }
 
@@ -227,6 +229,39 @@
             margin: 0 auto 0.6rem;
         }
 
+        @media (max-width: 768px) {
+            section {
+                height: auto;
+                min-height: 100vh;
+                padding: 4rem 1rem 3rem 1rem;
+                overflow: visible;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                scroll-snap-align: start;
+            }
+            .glass-card {
+                padding: 1.5rem !important;
+                margin: 2rem 0;
+                max-width: 100% !important;
+            }
+            .nav-dots {
+                display: none !important;
+            }
+        }
+        @media (max-height: 800px) and (min-width: 769px) {
+            section {
+                height: auto;
+                min-height: 100vh;
+                padding: 4rem 1rem;
+                overflow: visible;
+                scroll-snap-align: start;
+            }
+            .glass-card {
+                margin: 2rem 0;
+            }
+        }
+
         @media print {
             .slides-container {
                 height: auto;
@@ -262,20 +297,37 @@
         <!-- SLIDE 1: Title -->
         <section id="slide-1" class="active">
             <div class="container mx-auto px-8 z-10 relative">
-                <div class="max-w-3xl mx-auto">
-                    <div class="glass-card anim-element flex flex-col items-center text-center">
-                        <h1 class="text-4xl md:text-5xl font-black mb-4 leading-tight anim-element delay-1"><span
-                                class="gradient-text">We Make Agricultural Livelihood Projects Better and Smarter at
-                                Scale</span></h1>
-                        <div class="accent-bar mb-4 mx-auto anim-element delay-2"></div>
-                        <p class="text-lg text-gray-600 leading-relaxed anim-element delay-2">AI-Powered, comprehensive,
-                            and holistic Digital Extension for building more resilient and sustainable supply chains</p>
-                        <div class="flex items-center justify-center gap-4 mt-6 anim-element delay-3">
-                            <img src="../Images/man_circle_only.png" alt="iNua" class="h-10 rounded-full">
-                            <img src="../Images/AgriFriend 1.png" alt="AgriFriend" class="h-8">
+                <div class="flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-12 max-w-6xl mx-auto w-full">
+                    <!-- Left: Logos & Headline -->
+                    <div class="flex-1 anim-element flex flex-col items-center lg:items-start text-center lg:text-left delay-1 w-full max-w-2xl">
+                        <div class="flex items-center justify-center lg:justify-start gap-4 lg:gap-6 mb-6 lg:mb-8 bg-white/40 backdrop-blur-md px-5 lg:px-8 py-3 lg:py-4 rounded-[2rem] border border-white/50 shadow-sm w-fit max-w-full">
+                            <img src="../Images/man_circle_only-removebg-preview.png" alt="iNua" class="h-10 md:h-14 lg:h-16 rounded-full shadow-md shrink-0 object-contain">
+                            <div class="w-1 lg:w-1.5 h-8 lg:h-10 bg-gray-300 rounded-full shadow-inner shrink-0"></div>
+                            <img src="../Images/AgriFriend_1-removebg-preview (1).png" alt="AgriFriend" class="h-12 md:h-16 lg:h-20 drop-shadow-md shrink-0 object-contain">
+                        </div>
+                        <h1 class="text-4xl md:text-5xl lg:text-6xl font-black leading-[1.2] lg:leading-[1.15] drop-shadow-lg"><span
+                                class="gradient-text">We Make Smarter Rural Supply Chains at Scale</span></h1>
+                    </div>
+                    
+                    <!-- Right: Framed Hero Image -->
+                    <div class="flex-1 anim-element delay-3 flex justify-center w-full mt-6 lg:mt-0">
+                        <div class="relative w-full max-w-[18rem] md:max-w-[22rem] lg:max-w-[28rem]">
+                            <!-- Glowing shadow effect behind the image -->
+                            <div class="absolute inset-0 bg-[#E9A117] rounded-3xl mix-blend-multiply filter blur-3xl opacity-25 transform translate-x-3 translate-y-3 lg:translate-x-4 lg:translate-y-4"></div>
+                            <div class="absolute inset-0 bg-[#1B4F32] rounded-3xl mix-blend-multiply filter blur-3xl opacity-25 transform -translate-x-3 -translate-y-3 lg:-translate-x-4 lg:-translate-y-4"></div>
+                            
+                            <!-- Clean framed image without forced crops -->
+                            <img src="../Images/agrinua - woman.png" alt="Woman Farmer" class="relative w-full h-auto object-contain rounded-3xl shadow-2xl border-6 lg:border-8 border-white/80">
                         </div>
                     </div>
                 </div>
+            </div>
+        </section>
+
+        <!-- SLIDE 2 -->
+        <section id="slide-1b">
+            <div class="container mx-auto px-8 z-10 relative flex justify-center items-center w-full h-full">
+                <img src="../Images/agrinua - Slide 2.png" alt="Slide 2" class="max-w-full max-h-[85vh] rounded-2xl shadow-2xl anim-element object-contain border-4 border-white/50">
             </div>
         </section>
 
@@ -410,7 +462,7 @@
                     </div>
                     <div class="grid md:grid-cols-2 gap-6 anim-element delay-2">
                         <div class="bg-white/60 rounded-2xl p-5 border-t-4 border-[#1a8a7d] text-center">
-                            <img src="../Images/AgriFriend 1.png" alt="AgriFriend" class="h-10 mx-auto mb-3">
+                            <img src="../Images/AgriFriend_1-removebg-preview (1).png" alt="AgriFriend" class="h-10 mx-auto mb-3">
                             <h3 class="text-lg font-bold text-[#1a8a7d] mb-1">AgriFriend</h3>
                             <p class="text-xs font-bold text-[#E9A117] uppercase tracking-wider mb-2">Optimized Field
                                 Operations</p>
@@ -419,7 +471,7 @@
                                 chains and support smallholder farmers in rural areas at scale.</p>
                         </div>
                         <div class="bg-white/60 rounded-2xl p-5 border-t-4 border-[#E9A117] text-center">
-                            <img src="../Images/man_circle_only.png" alt="iNua" class="h-12 mx-auto mb-3 rounded-full">
+                            <img src="../Images/man_circle_only-removebg-preview.png" alt="iNua" class="h-12 mx-auto mb-3 rounded-full">
                             <h3 class="text-lg font-bold text-[#E9A117] mb-1">iNua Technologies</h3>
                             <p class="text-xs font-bold text-[#1B4F32] uppercase tracking-wider mb-2">Direct Farmer
                                 Engagement</p>
