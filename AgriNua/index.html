@@ -67,7 +67,8 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            padding-bottom: 15vh; /* Push content up above bottom waves */
+            padding-bottom: 15vh;
+            /* Push content up above bottom waves */
             box-sizing: border-box;
             overflow: hidden;
         }
@@ -240,15 +241,18 @@
                 justify-content: center;
                 scroll-snap-align: start;
             }
+
             .glass-card {
                 padding: 1.5rem !important;
                 margin: 2rem 0;
                 max-width: 100% !important;
             }
+
             .nav-dots {
                 display: none !important;
             }
         }
+
         @media (max-height: 800px) and (min-width: 769px) {
             section {
                 height: auto;
@@ -257,6 +261,7 @@
                 overflow: visible;
                 scroll-snap-align: start;
             }
+
             .glass-card {
                 margin: 2rem 0;
             }
@@ -297,27 +302,40 @@
         <!-- SLIDE 1: Title -->
         <section id="slide-1" class="active">
             <div class="container mx-auto px-8 z-10 relative">
-                <div class="flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-12 max-w-6xl mx-auto w-full">
+                <div
+                    class="flex flex-col xl:flex-row items-center justify-between gap-8 xl:gap-16 max-w-7xl mx-auto w-full">
                     <!-- Left: Logos & Headline -->
-                    <div class="flex-1 anim-element flex flex-col items-center lg:items-start text-center lg:text-left delay-1 w-full max-w-2xl">
-                        <div class="flex items-center justify-center lg:justify-start gap-4 lg:gap-6 mb-6 lg:mb-8 bg-white/40 backdrop-blur-md px-5 lg:px-8 py-3 lg:py-4 rounded-[2rem] border border-white/50 shadow-sm w-fit max-w-full">
-                            <img src="../Images/man_circle_only-removebg-preview.png" alt="iNua" class="h-10 md:h-14 lg:h-16 rounded-full shadow-md shrink-0 object-contain">
-                            <div class="w-1 lg:w-1.5 h-8 lg:h-10 bg-gray-300 rounded-full shadow-inner shrink-0"></div>
-                            <img src="../Images/AgriFriend_1-removebg-preview (1).png" alt="AgriFriend" class="h-12 md:h-16 lg:h-20 drop-shadow-md shrink-0 object-contain">
+                    <div
+                        class="flex-1 anim-element flex flex-col items-center xl:items-start text-center xl:text-left delay-1 w-full max-w-2xl">
+
+                        <div
+                            class="flex items-center justify-center xl:justify-start gap-4 mb-6 xl:mb-8 bg-white/40 backdrop-blur-md px-5 xl:px-6 py-3 rounded-full border border-white/50 shadow-sm w-fit max-w-full overflow-hidden">
+                            <img src="../Images/man_circle_only-removebg-preview.png" alt="iNua"
+                                class="h-10 md:h-12 xl:h-14 rounded-full shadow-md shrink-0 object-contain">
+                            <div class="w-1 h-8 xl:h-10 bg-gray-300 rounded-full shadow-inner shrink-0"></div>
+                            <img src="../Images/AgriFriend_1-removebg-preview (1).png" alt="AgriFriend"
+                                class="h-12 md:h-14 xl:h-16 drop-shadow-md object-contain min-w-0"
+                                style="max-width: 180px;">
                         </div>
-                        <h1 class="text-4xl md:text-5xl lg:text-6xl font-black leading-[1.2] lg:leading-[1.15] drop-shadow-lg"><span
+
+                        <h1 class="text-4xl md:text-5xl xl:text-6xl font-black leading-[1.25] drop-shadow-lg"><span
                                 class="gradient-text">We Make Smarter Rural Supply Chains at Scale</span></h1>
                     </div>
-                    
+
                     <!-- Right: Framed Hero Image -->
-                    <div class="flex-1 anim-element delay-3 flex justify-center w-full mt-6 lg:mt-0">
-                        <div class="relative w-full max-w-[18rem] md:max-w-[22rem] lg:max-w-[28rem]">
+                    <div class="flex-1 anim-element delay-3 flex justify-center w-full mt-8 xl:mt-0">
+                        <div class="relative w-full max-w-[20rem] md:max-w-[24rem] xl:max-w-[30rem]">
                             <!-- Glowing shadow effect behind the image -->
-                            <div class="absolute inset-0 bg-[#E9A117] rounded-3xl mix-blend-multiply filter blur-3xl opacity-25 transform translate-x-3 translate-y-3 lg:translate-x-4 lg:translate-y-4"></div>
-                            <div class="absolute inset-0 bg-[#1B4F32] rounded-3xl mix-blend-multiply filter blur-3xl opacity-25 transform -translate-x-3 -translate-y-3 lg:-translate-x-4 lg:-translate-y-4"></div>
-                            
+                            <div
+                                class="absolute inset-0 bg-[#E9A117] rounded-3xl mix-blend-multiply filter blur-3xl opacity-25 transform translate-x-4 translate-y-4 xl:translate-x-6 xl:translate-y-6">
+                            </div>
+                            <div
+                                class="absolute inset-0 bg-[#1B4F32] rounded-3xl mix-blend-multiply filter blur-3xl opacity-25 transform -translate-x-4 -translate-y-4 xl:-translate-x-6 xl:-translate-y-6">
+                            </div>
+
                             <!-- Clean framed image without forced crops -->
-                            <img src="../Images/agrinua - woman.png" alt="Woman Farmer" class="relative w-full h-auto object-contain rounded-3xl shadow-2xl border-6 lg:border-8 border-white/80">
+                            <img src="../Images/agrinua - woman.png" alt="Woman Farmer"
+                                class="relative w-full h-auto object-contain rounded-3xl xl:rounded-[2.5rem] shadow-2xl border-6 xl:border-8 border-white/80">
                         </div>
                     </div>
                 </div>
@@ -327,50 +345,93 @@
         <!-- SLIDE 2 -->
         <section id="slide-1b">
             <div class="container mx-auto px-8 z-10 relative flex justify-center items-center w-full h-full">
-                <img src="../Images/agrinua - Slide 2.png" alt="Slide 2" class="max-w-full max-h-[85vh] rounded-2xl shadow-2xl anim-element object-contain border-4 border-white/50">
+                <img src="../Images/agrinua - Slide 2.png" alt="Slide 2"
+                    class="max-w-full max-h-[85vh] rounded-2xl shadow-2xl anim-element object-contain border-4 border-white/50">
             </div>
         </section>
 
         <!-- SLIDE 2: The Problem -->
         <section id="slide-2">
-            <div class="mx-auto px-4 z-10 relative w-full">
-                <div class="glass-card mx-auto anim-element" style="padding:2rem 2.5rem;max-width:85vw;">
-                    <div class="text-center mb-4 anim-element delay-1">
+            <div class="mx-auto px-6 z-10 relative w-full h-full flex flex-col justify-center">
+                <div class="glass-card mx-auto anim-element w-full" style="padding:3rem 3rem; max-width:1000px;">
+                    <div class="text-center mb-8 anim-element delay-1 max-w-4xl mx-auto">
                         <p class="text-sm font-bold tracking-widest text-[#E9A117] uppercase mb-2">The Challenge</p>
-                        <h2 class="text-4xl font-extrabold mb-2">The Disconnect in Rural Agriculture</h2>
-                        <div class="accent-bar mx-auto mb-4"></div>
+                        <h2 class="text-4xl md:text-5xl font-extrabold mb-6 text-gray-800">
+                            Working with Smallholder Farmers, in rural areas, is Hard
+                        </h2>
+                        <div class="accent-bar mx-auto mb-8"></div>
                     </div>
-                    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5 anim-element delay-2">
-                        <div class="bg-white/60 rounded-2xl p-5 border-l-4 border-red-500">
-                            <h3 class="text-lg font-bold text-red-600 mb-2">Fragmented Systems</h3>
-                            <p class="text-sm text-gray-700 leading-relaxed">In rural areas, smallholder farmers are
-                                often served through fragmented, manual, and infrequent extension systems that struggle
-                                to deliver timely, accountable, and consistent support at scale.</p>
+
+                    <div class="anim-element delay-2 flex flex-col gap-5 max-w-3xl mx-auto">
+                        <div class="flex items-start gap-4">
+                            <div class="w-3 h-3 rounded-full bg-[#1B4F32] mt-2 shrink-0"></div>
+                            <p class="text-base text-gray-800 leading-relaxed"><span class="font-bold">Fragmented
+                                    Systems</span> – Manual and infrequent extension systems struggles to
+                                deliver timely, accountable, and consistent support at scale.</p>
                         </div>
-                        <div class="bg-white/60 rounded-2xl p-5 border-l-4 border-[#E9A117]">
-                            <h3 class="text-lg font-bold text-[#E9A117] mb-2">Paper & Manual Reliance</h3>
-                            <p class="text-sm text-gray-700 leading-relaxed">Field teams rely on paper-based processes
-                                or limited digital tools, while organizations depend heavily on extension officers as
-                                the main communication channel with farmers.</p>
+
+                        <div class="flex items-start gap-4">
+                            <div class="w-3 h-3 rounded-full bg-[#1B4F32] mt-2 shrink-0"></div>
+                            <p class="text-base text-gray-800 leading-relaxed"><span class="font-bold">Paper-based
+                                    processes</span></p>
                         </div>
-                        <div class="bg-white/60 rounded-2xl p-5 border-l-4 border-[#1B4F32]">
-                            <h3 class="text-lg font-bold text-[#1B4F32] mb-2">Visibility Gaps</h3>
-                            <p class="text-sm text-gray-700 leading-relaxed">This creates major gaps in reach,
-                                continuity, and real-time visibility into farmer needs, follow-up, and adoption.</p>
+
+                        <div class="flex items-start gap-4">
+                            <div class="w-3 h-3 rounded-full bg-[#1B4F32] mt-2 shrink-0"></div>
+                            <p class="text-base text-gray-800 leading-relaxed"><span class="font-bold">Limited Supply
+                                    chain visibility</span></p>
                         </div>
-                        <div class="bg-white/60 rounded-2xl p-5 border-l-4 border-gray-600">
-                            <h3 class="text-lg font-bold text-gray-700 mb-2">Digital Divide</h3>
-                            <p class="text-sm text-gray-700 leading-relaxed">Digital tools are poorly suited to
-                                low-connectivity settings and farmers using basic phones, limiting adoption and
-                                excluding rural farmers.</p>
+
+                        <div class="flex items-start gap-4">
+                            <div class="w-3 h-3 rounded-full bg-[#1B4F32] mt-2 shrink-0"></div>
+                            <p class="text-base text-gray-800 leading-relaxed"><span class="font-bold">Digital
+                                    Gap</span> – Low-connectivity settings and farmers using feature phones.</p>
                         </div>
-                        <div
-                            class="bg-white/60 rounded-2xl p-5 border-l-4 border-[#7A431D] md:col-span-2 lg:col-span-1">
-                            <h3 class="text-lg font-bold text-[#7A431D] mb-2">Costly Follow-up</h3>
-                            <p class="text-sm text-gray-700 leading-relaxed">In low-connectivity environments, regular
-                                in-person follow-up is costly and limited, which leads to weak feedback loops, slower
-                                decisions, and missed opportunities to improve productivity, resilience, and market
-                                access.</p>
+
+                        <div class="flex items-start gap-4">
+                            <div class="w-3 h-3 rounded-full bg-[#1B4F32] mt-2 shrink-0"></div>
+                            <p class="text-base text-gray-800 leading-relaxed"><span class="font-bold">Costly in-person
+                                    Follow-up</span> – Weak feedback loops, slower decisions, and missed
+                                opportunities.</p>
+                        </div>
+
+                        <div class="flex items-start gap-4">
+                            <div class="w-3 h-3 rounded-full bg-[#1B4F32] mt-2 shrink-0"></div>
+                            <p class="text-base text-gray-800 leading-relaxed"><span class="font-bold">Low farmer
+                                    productivity</span></p>
+                        </div>
+
+                        <div class="flex items-start gap-4">
+                            <div class="w-3 h-3 rounded-full bg-[#1B4F32] mt-2 shrink-0"></div>
+                            <p class="text-base text-gray-800 leading-relaxed"><span class="font-bold">Climate change
+                                    risks</span></p>
+                        </div>
+
+                        <div class="flex items-start gap-4">
+                            <div class="w-3 h-3 rounded-full bg-[#1B4F32] mt-2 shrink-0"></div>
+                            <p class="text-base text-gray-800 leading-relaxed"><span class="font-bold">Low farmer
+                                    income</span></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SLIDE: Solution Statement -->
+        <section id="slide-solution-statement">
+            <div class="container mx-auto px-8 z-10 relative flex justify-center items-center w-full h-full">
+                <div class="glass-card max-w-5xl mx-auto anim-element py-12 px-10">
+                    <div class="flex flex-col md:flex-row items-center gap-10">
+                        <!-- Left: Text -->
+                        <div class="flex-1 text-center md:text-left anim-element delay-1">
+                            <h2 class="text-2xl md:text-3xl font-normal text-gray-800 leading-relaxed">
+                                We help organizations through 360° AI-Powered comprehensive digital extension for building more <span class="font-bold text-[#1B4F32]">resilient</span> and <span class="font-bold text-[#1B4F32]">sustainable</span> supply chains at <span class="font-bold text-[#1B4F32]">scale</span>
+                            </h2>
+                            <div class="accent-bar mt-8 mx-auto md:mx-0 anim-element delay-2"></div>
+                        </div>
+                        <!-- Right: Image -->
+                        <div class="flex-shrink-0 anim-element delay-3">
+                            <img src="../Images/agrinua - woman 2.png" alt="Woman Farmer" class="w-48 md:w-64 h-auto object-contain rounded-3xl shadow-xl border-6 border-white/80">
                         </div>
                     </div>
                 </div>
@@ -462,7 +523,8 @@
                     </div>
                     <div class="grid md:grid-cols-2 gap-6 anim-element delay-2">
                         <div class="bg-white/60 rounded-2xl p-5 border-t-4 border-[#1a8a7d] text-center">
-                            <img src="../Images/AgriFriend_1-removebg-preview (1).png" alt="AgriFriend" class="h-10 mx-auto mb-3">
+                            <img src="../Images/AgriFriend_1-removebg-preview (1).png" alt="AgriFriend"
+                                class="h-10 mx-auto mb-3">
                             <h3 class="text-lg font-bold text-[#1a8a7d] mb-1">AgriFriend</h3>
                             <p class="text-xs font-bold text-[#E9A117] uppercase tracking-wider mb-2">Optimized Field
                                 Operations</p>
@@ -471,7 +533,8 @@
                                 chains and support smallholder farmers in rural areas at scale.</p>
                         </div>
                         <div class="bg-white/60 rounded-2xl p-5 border-t-4 border-[#E9A117] text-center">
-                            <img src="../Images/man_circle_only-removebg-preview.png" alt="iNua" class="h-12 mx-auto mb-3 rounded-full">
+                            <img src="../Images/man_circle_only-removebg-preview.png" alt="iNua"
+                                class="h-12 mx-auto mb-3 rounded-full">
                             <h3 class="text-lg font-bold text-[#E9A117] mb-1">iNua Technologies</h3>
                             <p class="text-xs font-bold text-[#1B4F32] uppercase tracking-wider mb-2">Direct Farmer
                                 Engagement</p>
