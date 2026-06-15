@@ -7,13 +7,18 @@
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;700&family=Lora:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/@phosphor-icons/web"></script>
 
   <style>
     :root {
-      --heading-color: #997316; /* Softer elegant gold */
-      --text-color: #4a5568;    /* Softer slate gray */
-      --brand-green: #2e7d32;   /* Vibrant green */
+      --heading-color: #8c4115; /* Rich Brown */
+      --text-color: #544a42; /* Slate/Brown */
+      --accent-orange: #f28b18; /* Vibrant Orange */
+      --line-color: #eab683; /* Light orange for dashed lines */
+      --brand-green: #3b8842;   /* Vibrant green */
+      --bg-top: #FFFEFA;
+      --bg-bottom: #FFF1E0; /* Very light warm tone */
     }
 
     html, body {
@@ -22,13 +27,12 @@
       scroll-behavior: smooth;
     }
 
-    /* Scroll snapping for presentation slides */
     html {
       scroll-snap-type: y mandatory;
     }
 
     body {
-      background: linear-gradient(135deg, #f5fcf5 0%, #FAFAFA 50%, #fff8eb 100%);
+      background: linear-gradient(135deg, #FFFEFA 0%, #FFFDF5 50%, #FFF1E0 100%);
       font-family: 'Nunito', sans-serif;
       color: var(--text-color);
       overflow-x: hidden;
@@ -59,22 +63,23 @@
     }
 
     h1, h2, h3, h4, h5, h6 {
-      font-family: 'Lora', serif;
+      font-family: 'Poppins', sans-serif;
       color: var(--heading-color);
-      font-weight: 500;
-      letter-spacing: 0.5px;
+      font-weight: 700;
+      letter-spacing: -0.5px;
       margin-top: 0;
       margin-bottom: 25px;
     }
 
     h1 {
-      font-size: 3.8rem;
-      line-height: 1.2;
+      font-size: 4.2rem;
+      line-height: 1.1;
       text-align: center;
+      letter-spacing: -1.5px;
     }
 
     h2 {
-      font-size: 2.6rem;
+      font-size: 2.8rem;
       text-align: center;
       margin-bottom: 30px;
     }
@@ -82,7 +87,7 @@
     h3 {
       font-size: 1.6rem;
       color: var(--text-color);
-      font-weight: 400;
+      font-weight: 600;
       font-family: 'Nunito', sans-serif;
       text-align: center;
     }
@@ -91,7 +96,7 @@
       font-size: 1.25rem;
       line-height: 1.7;
       margin-bottom: 20px;
-      font-weight: 300;
+      font-weight: 400;
     }
 
     ul {
@@ -104,7 +109,7 @@
 
     .visual-placeholder {
       border: 2px dashed var(--heading-color);
-      background: rgba(153, 115, 22, 0.05); 
+      background: rgba(140, 65, 21, 0.05); 
       border-radius: 12px;
       padding: 50px 20px;
       text-align: center;
@@ -124,6 +129,37 @@
       overflow: hidden;
       scroll-snap-align: start;
       scroll-snap-stop: always;
+      background: linear-gradient(180deg, var(--bg-top) 0%, var(--bg-bottom) 100%);
+    }
+
+    /* CSS Landscape Vibe */
+    .landscape-bg {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 50vh;
+      background-image: url('../Images/farm_landscape_bg.png');
+      background-size: cover;
+      background-position: bottom center;
+      background-repeat: no-repeat;
+      z-index: 0;
+      pointer-events: none;
+      opacity: 0.4;
+      mask-image: linear-gradient(to bottom, transparent 0%, black 40%);
+      -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 40%);
+    }
+
+    .floor-curve {
+      position: absolute;
+      bottom: -15vh;
+      left: 15%;
+      width: 70%;
+      height: 30vh;
+      background: #FFFFFF;
+      border-radius: 50%;
+      box-shadow: 0 -10px 40px rgba(140, 65, 21, 0.08);
+      z-index: 1;
     }
 
     .cluster-container {
@@ -136,11 +172,51 @@
 
     .cluster-title {
       position: absolute;
-      top: 8%;
+      top: 6%;
       left: 6%;
       z-index: 10;
-      max-width: 400px;
+      max-width: 500px;
     }
+
+    .info-title {
+      font-size: 4.8rem;
+      color: var(--heading-color);
+      margin-bottom: -5px;
+      line-height: 1;
+      text-align: left;
+      font-weight: 800;
+      letter-spacing: -1px;
+    }
+
+    .info-subtitle {
+      font-size: 1.6rem;
+      color: #6B7280;
+      margin-bottom: 20px;
+      font-weight: 600;
+      text-align: left;
+      font-family: 'Nunito', sans-serif;
+    }
+
+    /* Logos */
+    .logo-lockup {
+      position: absolute;
+      bottom: 30px;
+      right: 40px;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      z-index: 20;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      color: var(--heading-color);
+      font-size: 1.4rem;
+    }
+    .logo-lockup .divider {
+      width: 2px;
+      height: 25px;
+      background: var(--line-color);
+    }
+    .logo-lockup .oaf { color: #2e7d32; font-size: 1.1rem; }
 
     .cluster-svg {
       position: absolute;
@@ -148,16 +224,30 @@
       left: 0;
       width: 100%;
       height: 100%;
-      z-index: 1;
+      z-index: 2;
       pointer-events: none;
     }
 
     .cluster-svg path {
       fill: none;
-      stroke: rgba(46, 125, 50, 0.4);
+      stroke: var(--line-color);
       stroke-width: 2.5px;
       stroke-dasharray: 8 8;
+      stroke-linejoin: round;
+      stroke-linecap: round;
       vector-effect: non-scaling-stroke;
+    }
+
+    .character-backdrop {
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 50vw;
+      height: 85vh;
+      background: radial-gradient(ellipse at 50% 60%, #FFFDF5 20%, rgba(255, 253, 245, 0.5) 50%, transparent 70%);
+      z-index: 4;
+      pointer-events: none;
     }
 
     .cluster-character {
@@ -165,55 +255,56 @@
       bottom: 0;
       left: 50%;
       transform: translateX(-50%);
-      height: 90vh; /* Scaled up heavily so they fill the screen */
+      height: 85vh;
       max-width: 60vw;
       object-fit: contain;
       mix-blend-mode: multiply;
-      filter: brightness(1.06) contrast(1.1); /* Erases any faint background squares */
+      filter: brightness(1.06) contrast(1.1);
       z-index: 5;
       pointer-events: none;
     }
 
     .cluster-card {
       position: absolute;
-      background: rgba(255, 255, 255, 0.96);
-      border: 1px solid rgba(255, 255, 255, 0.9);
-      border-radius: 25px;
-      padding: 20px 25px;
-      box-shadow: 0 15px 40px rgba(46, 125, 50, 0.1);
+      background: rgba(255, 255, 255, 0.95);
+      border: 1px solid rgba(255, 255, 255, 1);
+      border-radius: 20px;
+      padding: 22px 28px;
+      box-shadow: 0 20px 40px rgba(140, 65, 21, 0.08), 0 5px 15px rgba(0, 0, 0, 0.02);
+      backdrop-filter: blur(10px);
       text-align: left;
       z-index: 10;
-      width: 300px;
+      width: 320px;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
       display: flex;
       flex-direction: column;
       gap: 5px;
     }
 
-    /* Dynamic adorable tilts */
-    .cluster-card:nth-child(4n) { transform: rotate(-2.5deg); }
-    .cluster-card:nth-child(4n+1) { transform: rotate(1.8deg); }
-    .cluster-card:nth-child(4n+2) { transform: rotate(-1.5deg); }
-    .cluster-card:nth-child(4n+3) { transform: rotate(2.2deg); }
+    .cluster-card:nth-child(4n) { transform: rotate(-1.5deg); }
+    .cluster-card:nth-child(4n+1) { transform: rotate(1.2deg); }
+    .cluster-card:nth-child(4n+2) { transform: rotate(-1.0deg); }
+    .cluster-card:nth-child(4n+3) { transform: rotate(1.5deg); }
 
     .cluster-card:hover {
       transform: translateY(-8px) scale(1.03) !important;
-      box-shadow: 0 25px 50px rgba(46, 125, 50, 0.15);
+      box-shadow: 0 30px 60px rgba(140, 65, 21, 0.12);
       z-index: 20;
     }
 
     .card-header {
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 15px;
       margin-bottom: 5px;
     }
 
     .card-icon {
-      font-size: 1.5rem;
-      background: rgba(46, 125, 50, 0.08);
-      width: 40px;
-      height: 40px;
+      font-size: 1.8rem;
+      color: var(--accent-orange);
+      background: rgba(242, 139, 24, 0.12);
+      width: 48px;
+      height: 48px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -221,10 +312,9 @@
     }
 
     .cluster-card h4 {
-      color: var(--brand-green);
-      font-size: 1.3rem;
+      color: var(--heading-color);
+      font-size: 1.35rem;
       margin-bottom: 0;
-      font-family: 'Nunito', sans-serif;
       font-weight: 700;
     }
 
@@ -232,48 +322,21 @@
       font-size: 1.05rem;
       margin-bottom: 0;
       color: var(--text-color);
-      line-height: 1.4;
-    }
-
-    .floor-curve {
-      position: absolute;
-      bottom: -15vh;
-      left: 10%;
-      width: 80%;
-      height: 35vh;
-      background: radial-gradient(ellipse at top, #ffffff 0%, rgba(255,255,255,0.7) 40%, transparent 60%);
-      z-index: 0;
-      border-radius: 50%;
+      line-height: 1.5;
     }
 
     .floating-leaf {
       position: absolute;
-      background: var(--brand-green);
+      background: var(--heading-color);
       opacity: 0.15;
       border-radius: 50% 0 50% 0;
       animation: float 6s ease-in-out infinite;
-      z-index: 2;
+      z-index: 3;
     }
 
     @keyframes float {
       0%, 100% { transform: translateY(0) rotate(0deg); }
       50% { transform: translateY(-25px) rotate(15deg); }
-    }
-
-    .info-title {
-      font-size: 4rem;
-      color: var(--heading-color);
-      margin-bottom: 5px;
-      line-height: 1;
-      text-align: left;
-    }
-
-    .info-subtitle {
-      font-size: 1.5rem;
-      color: #718096;
-      margin-bottom: 20px;
-      font-weight: 400;
-      text-align: left;
     }
     
     @media (max-width: 1024px) {
@@ -282,6 +345,7 @@
       .cluster-svg { display: none; }
       .cluster-title { position: relative; top: auto; left: auto; text-align: center; margin: 0 auto; }
       .cluster-container { display: flex; flex-direction: column; overflow-y: auto; padding-top: 5vh; }
+      .logo-lockup { display: none; }
     }
   </style>
 </head>
@@ -352,92 +416,116 @@
 
   <!-- Slide 7: Nia (Cluster Layout) -->
   <section class="cluster-slide">
+    <div class="landscape-bg"></div>
+    <div class="floor-curve"></div>
+    
     <div class="cluster-container">
-      
       <div class="cluster-title">
         <h1 class="info-title">Nia</h1>
         <h3 class="info-subtitle">General Support Guide</h3>
+        <div class="info-description" style="font-size: 1.1rem; color: var(--text-color); margin-top: 1rem; opacity: 0.9; line-height: 1.5; text-align: left;">
+          here to help farmers get general information about OAF, solve issues and stay on track<br><br>
+          <strong>we will help you with:</strong><br>
+          • General questions<br>
+          • program information<br>
+          • connect to you the right team
+        </div>
       </div>
       
-      <!-- True SVG Connecting Lines -->
+      <!-- Orthogonal SVG Connecting Lines -->
       <svg class="cluster-svg" viewBox="0 0 1000 1000" preserveAspectRatio="none">
-        <!-- Lines from left cards to edge of character -->
-        <path d="M 250 400 Q 320 480 380 550" />
-        <path d="M 250 750 Q 320 700 380 620" />
-        <!-- Lines from right cards -->
-        <path d="M 750 350 Q 680 480 620 550" />
-        <path d="M 750 750 Q 680 700 620 620" />
+        <defs>
+          <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+            <path d="M 0 1 L 8 5 L 0 9 z" fill="#eab683" />
+          </marker>
+        </defs>
+        <!-- Left - Call Support -->
+        <path d="M 400 480 L 300 480 L 300 480 L 220 480" marker-end="url(#arrow)" />
+        <!-- Top Right - Chat with Nia -->
+        <path d="M 600 400 L 700 400 L 700 350 L 780 350" marker-end="url(#arrow)" />
+        <!-- Bottom Right - Reminders -->
+        <path d="M 600 600 L 720 600 L 720 650 L 780 650" marker-end="url(#arrow)" />
       </svg>
 
-      <div class="floor-curve"></div>
       <div class="floating-leaf" style="width: 30px; height: 30px; top: 30%; left: 35%; animation-delay: 0s;"></div>
       <div class="floating-leaf" style="width: 20px; height: 20px; top: 60%; right: 30%; animation-delay: 1.5s;"></div>
-      <div class="floating-leaf" style="width: 40px; height: 40px; top: 15%; right: 20%; animation-delay: 3s; border-radius: 0 50% 0 50%; background: var(--heading-color);"></div>
+      <div class="floating-leaf" style="width: 40px; height: 40px; top: 15%; right: 20%; animation-delay: 3s; border-radius: 0 50% 0 50%; opacity: 0.1;"></div>
 
       <!-- Character -->
+      <div class="character-backdrop"></div>
       <img src="../Images/nia.png" alt="Nia" class="cluster-character" />
 
-      <!-- Absolute Floating Cards HUGGING the character -->
-      <div class="cluster-card" style="top: 32%; left: 8%;">
+      <!-- Absolute Floating Cards -->
+      <div class="cluster-card" style="top: 43%; left: 8%;">
         <div class="card-header">
-          <div class="card-icon">💡</div>
-          <h4>Explanation</h4>
+          <div class="card-icon"><i class="ph-fill ph-phone"></i></div>
+          <h4>Call support</h4>
         </div>
-        <p>expalanation and usecase and exmaples</p>
-      </div>
-      
-      <div class="cluster-card" style="top: 68%; left: 14%;">
-        <div class="card-header">
-          <div class="card-icon">🤝</div>
-          <h4>General Support</h4>
-        </div>
-        <p>Get answers, solve issues, and stay on track.</p>
+        <p>24/7</p>
       </div>
 
-      <div class="cluster-card" style="top: 25%; right: 10%;">
+      <div class="cluster-card" style="top: 30%; right: 10%;">
         <div class="card-header">
-          <div class="card-icon">💬</div>
+          <div class="card-icon" style="position: relative;">
+            <i class="ph-fill ph-chat-teardrop-text"></i>
+            <span style="position: absolute; bottom: 0px; right: -2px; width: 12px; height: 12px; background: #3b8842; border: 2px solid white; border-radius: 50%;"></span>
+          </div>
           <h4>Chat with Nia</h4>
         </div>
-        <p>Get help in real time from our team.</p>
+        <p>Get help in real time.</p>
       </div>
 
-      <div class="cluster-card" style="top: 65%; right: 12%;">
+      <div class="cluster-card" style="top: 60%; right: 12%;">
         <div class="card-header">
-          <div class="card-icon">📅</div>
+          <div class="card-icon"><i class="ph-fill ph-calendar"></i></div>
           <h4>Reminders</h4>
         </div>
-        <p>Never miss important dates or updates.</p>
+        <p>Never miss important updates.</p>
+      </div>
+
+      <!-- Logo Lockup -->
+      <div class="logo-lockup">
+        <span class="oaf">ONE ACRE FUND</span>
+        <div class="divider"></div>
+        <span>iNua</span>
       </div>
     </div>
   </section>
 
-  <!-- Slide 8: Nuru (Cluster Layout) -->
+  <!-- Slide 8: Nuru -->
   <section class="cluster-slide">
+    <div class="landscape-bg"></div>
+    <div class="floor-curve"></div>
+    
     <div class="cluster-container">
-      
       <div class="cluster-title">
         <h1 class="info-title">Nuru</h1>
         <h3 class="info-subtitle">Dani Rup \ Weather Guide</h3>
       </div>
       
-      <!-- True SVG Connecting Lines -->
       <svg class="cluster-svg" viewBox="0 0 1000 1000" preserveAspectRatio="none">
-        <path d="M 250 500 Q 320 530 380 560" />
-        <path d="M 750 500 Q 680 530 620 560" />
+        <defs>
+          <marker id="arrow2" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+            <path d="M 0 1 L 8 5 L 0 9 z" fill="#eab683" />
+          </marker>
+        </defs>
+        <!-- Left -->
+        <path d="M 400 550 L 300 550 L 300 460 L 220 460" marker-end="url(#arrow2)" />
+        <!-- Right -->
+        <path d="M 600 550 L 700 550 L 700 460 L 780 460" marker-end="url(#arrow2)" />
       </svg>
 
-      <div class="floor-curve"></div>
       <div class="floating-leaf" style="width: 35px; height: 35px; top: 25%; left: 5%; animation-delay: 0.5s;"></div>
-      <div class="floating-leaf" style="width: 25px; height: 25px; top: 70%; right: 10%; animation-delay: 2s; background: var(--heading-color);"></div>
+      <div class="floating-leaf" style="width: 25px; height: 25px; top: 70%; right: 10%; animation-delay: 2s; opacity: 0.1;"></div>
 
       <!-- Character -->
+      <div class="character-backdrop"></div>
       <img src="../Images/nuru.png" alt="Nuru" class="cluster-character" />
 
-      <!-- Tight Absolute Floating Cards -->
+      <!-- Absolute Floating Cards -->
       <div class="cluster-card" style="top: 42%; left: 10%;">
         <div class="card-header">
-          <div class="card-icon">🌤️</div>
+          <div class="card-icon"><i class="ph-fill ph-cloud-sun"></i></div>
           <h4>Weather Advisor</h4>
         </div>
         <p>wather advisot, explanationm, use case and exmaples</p>
@@ -445,106 +533,146 @@
 
       <div class="cluster-card" style="top: 42%; right: 12%;">
         <div class="card-header">
-          <div class="card-icon">🌧️</div>
+          <div class="card-icon"><i class="ph-fill ph-cloud-rain"></i></div>
           <h4>Weather Updates</h4>
         </div>
         <p>Real-time forecasts and alerts to help you plan ahead.</p>
       </div>
+      
+      <!-- Logo Lockup -->
+      <div class="logo-lockup">
+        <span class="oaf">ONE ACRE FUND</span>
+        <div class="divider"></div>
+        <span>iNua</span>
+      </div>
     </div>
   </section>
 
-  <!-- Slide 9: Chris (Cluster Layout) -->
+  <!-- Slide 9: Chris -->
   <section class="cluster-slide">
+    <div class="landscape-bg"></div>
+    <div class="floor-curve"></div>
+    
     <div class="cluster-container">
-      
       <div class="cluster-title">
         <h1 class="info-title">Chris</h1>
         <h3 class="info-subtitle">Rose Garden \ Crop Coach</h3>
       </div>
       
-      <!-- True SVG Connecting Lines -->
       <svg class="cluster-svg" viewBox="0 0 1000 1000" preserveAspectRatio="none">
-        <path d="M 250 500 Q 320 530 380 560" />
+        <defs>
+          <marker id="arrow3" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+            <path d="M 0 1 L 8 5 L 0 9 z" fill="#eab683" />
+          </marker>
+        </defs>
+        <!-- Left -->
+        <path d="M 400 550 L 300 550 L 300 460 L 240 460" marker-end="url(#arrow3)" />
       </svg>
 
-      <div class="floor-curve"></div>
       <div class="floating-leaf" style="width: 40px; height: 40px; top: 15%; left: 15%; animation-delay: 1s;"></div>
       <div class="floating-leaf" style="width: 25px; height: 25px; top: 40%; right: 15%; animation-delay: 2.5s;"></div>
 
-      <!-- Character -->
+      <div class="character-backdrop"></div>
       <img src="../Images/chris.png" alt="Chris" class="cluster-character" />
 
-      <!-- Tight Absolute Floating Cards -->
       <div class="cluster-card" style="top: 42%; left: 12%;">
         <div class="card-header">
-          <div class="card-icon">🌱</div>
+          <div class="card-icon"><i class="ph-fill ph-plant"></i></div>
           <h4>Crop Advice</h4>
         </div>
         <p>Practical guidance for healthier crops and better yields.</p>
       </div>
+      
+      <div class="logo-lockup">
+        <span class="oaf">ONE ACRE FUND</span>
+        <div class="divider"></div>
+        <span>iNua</span>
+      </div>
     </div>
   </section>
 
-  <!-- Slide 10: Josef (Cluster Layout) -->
+  <!-- Slide 10: Josef -->
   <section class="cluster-slide">
+    <div class="landscape-bg"></div>
+    <div class="floor-curve"></div>
+    
     <div class="cluster-container">
-      
       <div class="cluster-title">
         <h1 class="info-title">Josef</h1>
         <h3 class="info-subtitle">Loan & Repayment Advisor</h3>
       </div>
       
-      <!-- True SVG Connecting Lines -->
       <svg class="cluster-svg" viewBox="0 0 1000 1000" preserveAspectRatio="none">
-        <path d="M 750 500 Q 680 530 620 560" />
+        <defs>
+          <marker id="arrow4" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+            <path d="M 0 1 L 8 5 L 0 9 z" fill="#eab683" />
+          </marker>
+        </defs>
+        <!-- Right -->
+        <path d="M 600 550 L 700 550 L 700 460 L 760 460" marker-end="url(#arrow4)" />
       </svg>
 
-      <div class="floor-curve"></div>
-      <div class="floating-leaf" style="width: 25px; height: 25px; top: 35%; left: 25%; animation-delay: 0.2s; background: var(--heading-color);"></div>
+      <div class="floating-leaf" style="width: 25px; height: 25px; top: 35%; left: 25%; animation-delay: 0.2s; opacity: 0.1;"></div>
       <div class="floating-leaf" style="width: 35px; height: 35px; top: 50%; right: 10%; animation-delay: 1.8s;"></div>
 
-      <!-- Character -->
+      <div class="character-backdrop"></div>
       <img src="../Images/josef.png" alt="Josef" class="cluster-character" />
 
-      <!-- Tight Absolute Floating Cards -->
       <div class="cluster-card" style="top: 42%; right: 12%;">
         <div class="card-header">
-          <div class="card-icon">💰</div>
+          <div class="card-icon"><i class="ph-fill ph-coins"></i></div>
           <h4>Loan & Repayment</h4>
         </div>
         <p>Repayment reminders, loan guidance, and financial advice.</p>
       </div>
+      
+      <div class="logo-lockup">
+        <span class="oaf">ONE ACRE FUND</span>
+        <div class="divider"></div>
+        <span>iNua</span>
+      </div>
     </div>
   </section>
 
-  <!-- Slide 11: Marry (Cluster Layout) -->
+  <!-- Slide 11: Marry -->
   <section class="cluster-slide">
+    <div class="landscape-bg"></div>
+    <div class="floor-curve"></div>
+    
     <div class="cluster-container">
-      
       <div class="cluster-title">
         <h1 class="info-title">Marry</h1>
         <h3 class="info-subtitle">Emergency Alert Advisor</h3>
       </div>
       
-      <!-- True SVG Connecting Lines -->
       <svg class="cluster-svg" viewBox="0 0 1000 1000" preserveAspectRatio="none">
-        <path d="M 250 500 Q 320 530 380 560" />
+        <defs>
+          <marker id="arrow5" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+            <path d="M 0 1 L 8 5 L 0 9 z" fill="#eab683" />
+          </marker>
+        </defs>
+        <!-- Left -->
+        <path d="M 400 550 L 300 550 L 300 460 L 240 460" marker-end="url(#arrow5)" />
       </svg>
 
-      <div class="floor-curve"></div>
       <div class="floating-leaf" style="width: 30px; height: 30px; top: 20%; right: 20%; animation-delay: 0.8s;"></div>
-      <div class="floating-leaf" style="width: 30px; height: 30px; top: 60%; left: 5%; animation-delay: 2.2s; background: var(--heading-color);"></div>
+      <div class="floating-leaf" style="width: 30px; height: 30px; top: 60%; left: 5%; animation-delay: 2.2s; opacity: 0.1;"></div>
 
-      <!-- Character -->
+      <div class="character-backdrop"></div>
       <img src="../Images/marry.png" alt="Marry" class="cluster-character" />
 
-      <!-- Tight Absolute Floating Cards -->
       <div class="cluster-card" style="top: 42%; left: 12%;">
         <div class="card-header">
-          <div class="card-icon">🚨</div>
+          <div class="card-icon"><i class="ph-fill ph-warning"></i></div>
           <h4>Emergency Alerts</h4>
         </div>
         <p>Fast warnings and urgent guidance when farmers need it most.</p>
+      </div>
+      
+      <div class="logo-lockup">
+        <span class="oaf">ONE ACRE FUND</span>
+        <div class="divider"></div>
+        <span>iNua</span>
       </div>
     </div>
   </section>
