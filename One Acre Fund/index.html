@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>One Acre Fund Pilot Proposal</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;700&family=Lora:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --heading-color: #997316; /* Softer elegant gold */
+      --text-color: #4a5568;    /* Softer slate gray */
+      --brand-green: #2e7d32;   /* Vibrant green */
+    }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      scroll-behavior: smooth;
+    }
+
+    /* Scroll snapping for presentation slides */
+    html {
+      scroll-snap-type: y mandatory;
+    }
+
+    body {
+      background: linear-gradient(135deg, #f5fcf5 0%, #FAFAFA 50%, #fff8eb 100%);
+      font-family: 'Nunito', sans-serif;
+      color: var(--text-color);
+      overflow-x: hidden;
+    }
+
+    .bg-slide {
+      background-image: url('../Images/Elegant%20wave%20patterns%20in%20soft%20hues.png');
+      background-size: cover;
+      background-position: center 85%;
+    }
+
+    section {
+      scroll-snap-align: start;
+      scroll-snap-stop: always;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 0 5%;
+      box-sizing: border-box;
+      position: relative;
+    }
+
+    .content-container {
+      max-width: 1000px;
+      width: 100%;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      font-family: 'Lora', serif;
+      color: var(--heading-color);
+      font-weight: 500;
+      letter-spacing: 0.5px;
+      margin-top: 0;
+      margin-bottom: 25px;
+    }
+
+    h1 {
+      font-size: 3.8rem;
+      line-height: 1.2;
+      text-align: center;
+    }
+
+    h2 {
+      font-size: 2.6rem;
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    h3 {
+      font-size: 1.6rem;
+      color: var(--text-color);
+      font-weight: 400;
+      font-family: 'Nunito', sans-serif;
+      text-align: center;
+    }
+
+    p, li {
+      font-size: 1.25rem;
+      line-height: 1.7;
+      margin-bottom: 20px;
+      font-weight: 300;
+    }
+
+    ul {
+      margin-left: 40px;
+    }
+
+    li {
+      margin-bottom: 12px;
+    }
+
+    .visual-placeholder {
+      border: 2px dashed var(--heading-color);
+      background: rgba(153, 115, 22, 0.05); 
+      border-radius: 12px;
+      padding: 50px 20px;
+      text-align: center;
+      margin-top: 25px;
+      color: var(--heading-color);
+      font-style: italic;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    /* Organic Cluster Layout CSS */
+    .cluster-slide {
+      padding: 0;
+      position: relative;
+      width: 100vw;
+      height: 100vh;
+      overflow: hidden;
+      scroll-snap-align: start;
+      scroll-snap-stop: always;
+    }
+
+    .cluster-container {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .cluster-title {
+      position: absolute;
+      top: 8%;
+      left: 6%;
+      z-index: 10;
+      max-width: 400px;
+    }
+
+    .cluster-svg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .cluster-svg path {
+      fill: none;
+      stroke: rgba(46, 125, 50, 0.4);
+      stroke-width: 2.5px;
+      stroke-dasharray: 8 8;
+      vector-effect: non-scaling-stroke;
+    }
+
+    .cluster-character {
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      height: 90vh; /* Scaled up heavily so they fill the screen */
+      max-width: 60vw;
+      object-fit: contain;
+      mix-blend-mode: multiply;
+      filter: brightness(1.06) contrast(1.1); /* Erases any faint background squares */
+      z-index: 5;
+      pointer-events: none;
+    }
+
+    .cluster-card {
+      position: absolute;
+      background: rgba(255, 255, 255, 0.96);
+      border: 1px solid rgba(255, 255, 255, 0.9);
+      border-radius: 25px;
+      padding: 20px 25px;
+      box-shadow: 0 15px 40px rgba(46, 125, 50, 0.1);
+      text-align: left;
+      z-index: 10;
+      width: 300px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+
+    /* Dynamic adorable tilts */
+    .cluster-card:nth-child(4n) { transform: rotate(-2.5deg); }
+    .cluster-card:nth-child(4n+1) { transform: rotate(1.8deg); }
+    .cluster-card:nth-child(4n+2) { transform: rotate(-1.5deg); }
+    .cluster-card:nth-child(4n+3) { transform: rotate(2.2deg); }
+
+    .cluster-card:hover {
+      transform: translateY(-8px) scale(1.03) !important;
+      box-shadow: 0 25px 50px rgba(46, 125, 50, 0.15);
+      z-index: 20;
+    }
+
+    .card-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 5px;
+    }
+
+    .card-icon {
+      font-size: 1.5rem;
+      background: rgba(46, 125, 50, 0.08);
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 12px;
+    }
+
+    .cluster-card h4 {
+      color: var(--brand-green);
+      font-size: 1.3rem;
+      margin-bottom: 0;
+      font-family: 'Nunito', sans-serif;
+      font-weight: 700;
+    }
+
+    .cluster-card p {
+      font-size: 1.05rem;
+      margin-bottom: 0;
+      color: var(--text-color);
+      line-height: 1.4;
+    }
+
+    .floor-curve {
+      position: absolute;
+      bottom: -15vh;
+      left: 10%;
+      width: 80%;
+      height: 35vh;
+      background: radial-gradient(ellipse at top, #ffffff 0%, rgba(255,255,255,0.7) 40%, transparent 60%);
+      z-index: 0;
+      border-radius: 50%;
+    }
+
+    .floating-leaf {
+      position: absolute;
+      background: var(--brand-green);
+      opacity: 0.15;
+      border-radius: 50% 0 50% 0;
+      animation: float 6s ease-in-out infinite;
+      z-index: 2;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0) rotate(0deg); }
+      50% { transform: translateY(-25px) rotate(15deg); }
+    }
+
+    .info-title {
+      font-size: 4rem;
+      color: var(--heading-color);
+      margin-bottom: 5px;
+      line-height: 1;
+      text-align: left;
+    }
+
+    .info-subtitle {
+      font-size: 1.5rem;
+      color: #718096;
+      margin-bottom: 20px;
+      font-weight: 400;
+      text-align: left;
+    }
+    
+    @media (max-width: 1024px) {
+      .cluster-card { position: relative; top: auto !important; left: auto !important; right: auto !important; margin: 20px auto; width: 80%; }
+      .cluster-character { position: relative; height: 50vh; transform: none; left: auto; }
+      .cluster-svg { display: none; }
+      .cluster-title { position: relative; top: auto; left: auto; text-align: center; margin: 0 auto; }
+      .cluster-container { display: flex; flex-direction: column; overflow-y: auto; padding-top: 5vh; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Slide 1 -->
+  <section class="bg-slide">
+    <div class="content-container">
+      <h1>One Acre Fund Pilot Proposal</h1>
+      <h3>Agrifriend & iNua Technologies</h3>
+    </div>
+  </section>
+
+  <!-- Slide 2 -->
+  <section>
+    <div class="content-container">
+      <h2>OAF Vision</h2>
+      <p>By 2030, OAF aim to serve 10 million farm families and deliver $1 billion in annual impact</p>
+      <p>We envision a future in which every farm family has the knowledge and means to achieve big harvests, support healthy families, and cultivate rich soil.</p>
+      <p>double the size of their harvests—from the same plot of land</p>
+      <p>Continual Growth. We improve every season. We work with determination to meet our goals and then stretch ourselves by raising the bar even higher.</p>
+    </div>
+  </section>
+
+  <!-- Slide 3 -->
+  <section>
+    <div class="content-container">
+      <h2>Farmer's problem</h2>
+      <p>By 2030, OAF aim to serve 10 million farm families and deliver $1 billion in annual impact</p>
+      <p>We envision a future in which every farm family has the knowledge and means to achieve big harvests, support healthy families, and cultivate rich soil.</p>
+      <p>double the size of their harvests—from the same plot of land</p>
+      <p>Continual Growth. We improve every season. We work with determination to meet our goals and then stretch ourselves by raising the bar even higher.</p>
+    </div>
+  </section>
+
+  <!-- Slide 4 -->
+  <section>
+    <div class="content-container">
+      <h2>OAF problem</h2>
+      <p>One Acre Fund needs a reliable, effective and scalable way to deliver practical farmer advisory to rural farmers</p>
+      <ul>
+        <li>Field officers are critical, but they cannot personally support every farmer decision at scale.</li>
+        <li>Existing channels such as SMS, USSD, WhatsApp, and in-person training each have limitations.</li>
+        <li>OAF’s impact depends not only on providing inputs, but on farmers understanding and applying the right practices at the right time.</li>
+        <li>OAF needs to increase farmer income without adding unsustainable operational burden.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Slide 5 -->
+  <section>
+    <div class="content-container">
+      <h2>The Dream</h2>
+      <p>With iNua, One Acre Fund can make its trusted farmer advisory available to every farmer, at the exact moment they need it, through a simple phone call in their local language at scale.</p>
+      <p>With inua, once ace found can increase thier reach and impact, helping farmers's food security, healthy familes in thier oen terms and indivisual needs, through simple phone call in thier local lanauges and crops,</p>
+    </div>
+  </section>
+
+  <!-- Slide 6 -->
+  <section>
+    <div class="content-container">
+      <h2>our suggested Solution</h2>
+      <div class="visual-placeholder">
+        [ we need to insert a visual here for all the agents and how each of them is helping farmers in their teritory ]
+      </div>
+    </div>
+  </section>
+
+  <!-- Slide 7: Nia (Cluster Layout) -->
+  <section class="cluster-slide">
+    <div class="cluster-container">
+      
+      <div class="cluster-title">
+        <h1 class="info-title">Nia</h1>
+        <h3 class="info-subtitle">General Support Guide</h3>
+      </div>
+      
+      <!-- True SVG Connecting Lines -->
+      <svg class="cluster-svg" viewBox="0 0 1000 1000" preserveAspectRatio="none">
+        <!-- Lines from left cards to edge of character -->
+        <path d="M 250 400 Q 320 480 380 550" />
+        <path d="M 250 750 Q 320 700 380 620" />
+        <!-- Lines from right cards -->
+        <path d="M 750 350 Q 680 480 620 550" />
+        <path d="M 750 750 Q 680 700 620 620" />
+      </svg>
+
+      <div class="floor-curve"></div>
+      <div class="floating-leaf" style="width: 30px; height: 30px; top: 30%; left: 35%; animation-delay: 0s;"></div>
+      <div class="floating-leaf" style="width: 20px; height: 20px; top: 60%; right: 30%; animation-delay: 1.5s;"></div>
+      <div class="floating-leaf" style="width: 40px; height: 40px; top: 15%; right: 20%; animation-delay: 3s; border-radius: 0 50% 0 50%; background: var(--heading-color);"></div>
+
+      <!-- Character -->
+      <img src="../Images/nia.png" alt="Nia" class="cluster-character" />
+
+      <!-- Absolute Floating Cards HUGGING the character -->
+      <div class="cluster-card" style="top: 32%; left: 8%;">
+        <div class="card-header">
+          <div class="card-icon">💡</div>
+          <h4>Explanation</h4>
+        </div>
+        <p>expalanation and usecase and exmaples</p>
+      </div>
+      
+      <div class="cluster-card" style="top: 68%; left: 14%;">
+        <div class="card-header">
+          <div class="card-icon">🤝</div>
+          <h4>General Support</h4>
+        </div>
+        <p>Get answers, solve issues, and stay on track.</p>
+      </div>
+
+      <div class="cluster-card" style="top: 25%; right: 10%;">
+        <div class="card-header">
+          <div class="card-icon">💬</div>
+          <h4>Chat with Nia</h4>
+        </div>
+        <p>Get help in real time from our team.</p>
+      </div>
+
+      <div class="cluster-card" style="top: 65%; right: 12%;">
+        <div class="card-header">
+          <div class="card-icon">📅</div>
+          <h4>Reminders</h4>
+        </div>
+        <p>Never miss important dates or updates.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Slide 8: Nuru (Cluster Layout) -->
+  <section class="cluster-slide">
+    <div class="cluster-container">
+      
+      <div class="cluster-title">
+        <h1 class="info-title">Nuru</h1>
+        <h3 class="info-subtitle">Dani Rup \ Weather Guide</h3>
+      </div>
+      
+      <!-- True SVG Connecting Lines -->
+      <svg class="cluster-svg" viewBox="0 0 1000 1000" preserveAspectRatio="none">
+        <path d="M 250 500 Q 320 530 380 560" />
+        <path d="M 750 500 Q 680 530 620 560" />
+      </svg>
+
+      <div class="floor-curve"></div>
+      <div class="floating-leaf" style="width: 35px; height: 35px; top: 25%; left: 5%; animation-delay: 0.5s;"></div>
+      <div class="floating-leaf" style="width: 25px; height: 25px; top: 70%; right: 10%; animation-delay: 2s; background: var(--heading-color);"></div>
+
+      <!-- Character -->
+      <img src="../Images/nuru.png" alt="Nuru" class="cluster-character" />
+
+      <!-- Tight Absolute Floating Cards -->
+      <div class="cluster-card" style="top: 42%; left: 10%;">
+        <div class="card-header">
+          <div class="card-icon">🌤️</div>
+          <h4>Weather Advisor</h4>
+        </div>
+        <p>wather advisot, explanationm, use case and exmaples</p>
+      </div>
+
+      <div class="cluster-card" style="top: 42%; right: 12%;">
+        <div class="card-header">
+          <div class="card-icon">🌧️</div>
+          <h4>Weather Updates</h4>
+        </div>
+        <p>Real-time forecasts and alerts to help you plan ahead.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Slide 9: Chris (Cluster Layout) -->
+  <section class="cluster-slide">
+    <div class="cluster-container">
+      
+      <div class="cluster-title">
+        <h1 class="info-title">Chris</h1>
+        <h3 class="info-subtitle">Rose Garden \ Crop Coach</h3>
+      </div>
+      
+      <!-- True SVG Connecting Lines -->
+      <svg class="cluster-svg" viewBox="0 0 1000 1000" preserveAspectRatio="none">
+        <path d="M 250 500 Q 320 530 380 560" />
+      </svg>
+
+      <div class="floor-curve"></div>
+      <div class="floating-leaf" style="width: 40px; height: 40px; top: 15%; left: 15%; animation-delay: 1s;"></div>
+      <div class="floating-leaf" style="width: 25px; height: 25px; top: 40%; right: 15%; animation-delay: 2.5s;"></div>
+
+      <!-- Character -->
+      <img src="../Images/chris.png" alt="Chris" class="cluster-character" />
+
+      <!-- Tight Absolute Floating Cards -->
+      <div class="cluster-card" style="top: 42%; left: 12%;">
+        <div class="card-header">
+          <div class="card-icon">🌱</div>
+          <h4>Crop Advice</h4>
+        </div>
+        <p>Practical guidance for healthier crops and better yields.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Slide 10: Josef (Cluster Layout) -->
+  <section class="cluster-slide">
+    <div class="cluster-container">
+      
+      <div class="cluster-title">
+        <h1 class="info-title">Josef</h1>
+        <h3 class="info-subtitle">Loan & Repayment Advisor</h3>
+      </div>
+      
+      <!-- True SVG Connecting Lines -->
+      <svg class="cluster-svg" viewBox="0 0 1000 1000" preserveAspectRatio="none">
+        <path d="M 750 500 Q 680 530 620 560" />
+      </svg>
+
+      <div class="floor-curve"></div>
+      <div class="floating-leaf" style="width: 25px; height: 25px; top: 35%; left: 25%; animation-delay: 0.2s; background: var(--heading-color);"></div>
+      <div class="floating-leaf" style="width: 35px; height: 35px; top: 50%; right: 10%; animation-delay: 1.8s;"></div>
+
+      <!-- Character -->
+      <img src="../Images/josef.png" alt="Josef" class="cluster-character" />
+
+      <!-- Tight Absolute Floating Cards -->
+      <div class="cluster-card" style="top: 42%; right: 12%;">
+        <div class="card-header">
+          <div class="card-icon">💰</div>
+          <h4>Loan & Repayment</h4>
+        </div>
+        <p>Repayment reminders, loan guidance, and financial advice.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Slide 11: Marry (Cluster Layout) -->
+  <section class="cluster-slide">
+    <div class="cluster-container">
+      
+      <div class="cluster-title">
+        <h1 class="info-title">Marry</h1>
+        <h3 class="info-subtitle">Emergency Alert Advisor</h3>
+      </div>
+      
+      <!-- True SVG Connecting Lines -->
+      <svg class="cluster-svg" viewBox="0 0 1000 1000" preserveAspectRatio="none">
+        <path d="M 250 500 Q 320 530 380 560" />
+      </svg>
+
+      <div class="floor-curve"></div>
+      <div class="floating-leaf" style="width: 30px; height: 30px; top: 20%; right: 20%; animation-delay: 0.8s;"></div>
+      <div class="floating-leaf" style="width: 30px; height: 30px; top: 60%; left: 5%; animation-delay: 2.2s; background: var(--heading-color);"></div>
+
+      <!-- Character -->
+      <img src="../Images/marry.png" alt="Marry" class="cluster-character" />
+
+      <!-- Tight Absolute Floating Cards -->
+      <div class="cluster-card" style="top: 42%; left: 12%;">
+        <div class="card-header">
+          <div class="card-icon">🚨</div>
+          <h4>Emergency Alerts</h4>
+        </div>
+        <p>Fast warnings and urgent guidance when farmers need it most.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Slide 12 -->
+  <section>
+    <div class="content-container">
+      <h2>scale and how it looks like</h2>
+      <p>the evolution of the characters and their capabilities (josef and marry) + a dream that answer their issues above and byond, give a brad context and more holistic solution</p>
+    </div>
+  </section>
+
+  <!-- Slide 13 -->
+  <section>
+    <div class="content-container">
+      <h2>timeline and costs</h2>
+    </div>
+  </section>
+
+  <!-- Slide 14 -->
+  <section>
+    <div class="content-container">
+      <h2>scale cost</h2>
+    </div>
+  </section>
+
+  <!-- Slide 15 -->
+  <section class="bg-slide">
+    <div class="content-container">
+      <h2>beyond the scale</h2>
+    </div>
+  </section>
+
+  <script>
+    // Advance to the next slide on mouse click
+    document.addEventListener('click', function(e) {
+      if (window.getSelection().toString().length > 0) return;
+
+      const sections = Array.from(document.querySelectorAll('section'));
+      let currentIndex = 0;
+      let minDistance = Infinity;
+      
+      sections.forEach((section, index) => {
+        const distance = Math.abs(section.getBoundingClientRect().top);
+        if (distance < minDistance) {
+          minDistance = distance;
+          currentIndex = index;
+        }
+      });
+      
+      if (currentIndex < sections.length - 1) {
+        sections[currentIndex + 1].scrollIntoView({ behavior: 'smooth' });
+      }
+    });
+  </script>
+</body>
+</html>
