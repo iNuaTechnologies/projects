@@ -289,17 +289,17 @@
       position: absolute;
       background: rgba(255, 255, 255, 0.95);
       border: 1px solid rgba(255, 255, 255, 1);
-      border-radius: 20px;
-      padding: 22px 28px;
-      box-shadow: 0 20px 40px rgba(140, 65, 21, 0.08), 0 5px 15px rgba(0, 0, 0, 0.02);
+      border-radius: 16px;
+      padding: 12px 18px;
+      box-shadow: 0 15px 30px rgba(140, 65, 21, 0.08), 0 5px 15px rgba(0, 0, 0, 0.02);
       backdrop-filter: blur(10px);
       text-align: left;
       z-index: 10;
-      width: 320px;
+      width: 240px;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
       display: flex;
       flex-direction: column;
-      gap: 5px;
+      gap: 2px;
     }
 
     .cluster-card:nth-child(4n) {
@@ -327,8 +327,8 @@
     .card-header {
       display: flex;
       align-items: center;
-      gap: 15px;
-      margin-bottom: 5px;
+      gap: 10px;
+      margin-bottom: 2px;
     }
 
     .card-icon {
@@ -367,14 +367,20 @@
     }
 
     @keyframes float {
-
-      0%,
-      100% {
-        transform: translateY(0) rotate(0deg);
+      0% {
+        transform: translate(0, 0) rotate(0deg) scale(1);
       }
-
+      25% {
+        transform: translate(15px, -15px) rotate(15deg) scale(1.05);
+      }
       50% {
-        transform: translateY(-25px) rotate(15deg);
+        transform: translate(-10px, -35px) rotate(-10deg) scale(0.95);
+      }
+      75% {
+        transform: translate(-20px, -15px) rotate(-25deg) scale(1.02);
+      }
+      100% {
+        transform: translate(0, 0) rotate(0deg) scale(1);
       }
     }
 
@@ -503,44 +509,48 @@
       <div class="cluster-title">
         <h1 class="info-title">Nia</h1>
         <h3 class="info-subtitle">General Support Guide</h3>
-        <div class="info-description"
-          style="font-size: 1.1rem; color: var(--text-color); margin-top: 1rem; opacity: 0.9; line-height: 1.5; text-align: left;">
-          here to help farmers get general information about OAF, solve issues and stay on track<br><br>
-          <strong>we will help you with:</strong><br>
-          • General questions<br>
-          • program information<br>
-          • connect to you the right team
+        <div class="info-description" style="font-size: 1.1rem; color: var(--text-color); margin-top: 1rem; opacity: 0.9; line-height: 1.5; text-align: left;">
+          here to help farmers get general information about OAF, solve issues and stay on track
         </div>
       </div>
 
-      <!-- Orthogonal SVG Connecting Lines -->
       <svg class="cluster-svg" viewBox="0 0 1000 1000" preserveAspectRatio="none">
         <defs>
-          <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6"
-            orient="auto-start-reverse">
+          <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
             <path d="M 0 1 L 8 5 L 0 9 z" fill="#eab683" />
           </marker>
         </defs>
-        <!-- Left - Call Support -->
-        <path d="M 400 480 L 300 480 L 300 480 L 220 480" marker-end="url(#arrow)" />
+        <!-- Top Left - We will help you with -->
+        <path d="M 450 380 L 360 380" marker-end="url(#arrow)" />
+        <!-- Bottom Left - Call Support -->
+        <path d="M 450 680 L 360 680" marker-end="url(#arrow)" />
         <!-- Top Right - Chat with Nia -->
-        <path d="M 600 400 L 700 400 L 700 350 L 780 350" marker-end="url(#arrow)" />
+        <path d="M 550 350 L 640 350" marker-end="url(#arrow)" />
         <!-- Bottom Right - Reminders -->
-        <path d="M 600 600 L 720 600 L 720 650 L 780 650" marker-end="url(#arrow)" />
+        <path d="M 550 680 L 640 680" marker-end="url(#arrow)" />
       </svg>
 
       <div class="floating-leaf" style="width: 30px; height: 30px; top: 30%; left: 35%; animation-delay: 0s;"></div>
       <div class="floating-leaf" style="width: 20px; height: 20px; top: 60%; right: 30%; animation-delay: 1.5s;"></div>
-      <div class="floating-leaf"
-        style="width: 40px; height: 40px; top: 15%; right: 20%; animation-delay: 3s; border-radius: 0 50% 0 50%; opacity: 0.1;">
-      </div>
+      <div class="floating-leaf" style="width: 40px; height: 40px; top: 15%; right: 20%; animation-delay: 3s; border-radius: 0 50% 0 50%; opacity: 0.1;"></div>
 
       <!-- Character -->
       <div class="character-backdrop"></div>
       <img src="../Images/nia.png" alt="Nia" class="cluster-character" />
 
       <!-- Absolute Floating Cards -->
-      <div class="cluster-card" style="top: 43%; left: 8%;">
+      <div class="cluster-card" style="top: 33%; left: 16%; min-width: 250px;">
+        <div class="card-header" style="margin-bottom: 8px;">
+          <h4>We will help you with</h4>
+        </div>
+        <ul style="list-style: none; padding: 0; margin: 0; line-height: 1.6; font-size: 0.9rem; color: var(--text-color);">
+          <li style="display: flex; align-items: center; gap: 8px;"><i class="ph-fill ph-question" style="color: var(--brand-green); font-size: 1.1rem;"></i> General questions</li>
+          <li style="display: flex; align-items: center; gap: 8px;"><i class="ph-fill ph-info" style="color: var(--brand-green); font-size: 1.1rem;"></i> Program information</li>
+          <li style="display: flex; align-items: center; gap: 8px;"><i class="ph-fill ph-users" style="color: var(--brand-green); font-size: 1.1rem;"></i> Connect you to the right team</li>
+        </ul>
+      </div>
+
+      <div class="cluster-card" style="top: 68%; left: 18%;">
         <div class="card-header">
           <div class="card-icon"><i class="ph-fill ph-phone"></i></div>
           <h4>Call support</h4>
@@ -548,19 +558,18 @@
         <p>24/7 support in kinyarwanda</p>
       </div>
 
-      <div class="cluster-card" style="top: 30%; right: 10%;">
+      <div class="cluster-card" style="top: 28%; right: 16%;">
         <div class="card-header">
           <div class="card-icon" style="position: relative;">
             <i class="ph-fill ph-chat-teardrop-text"></i>
-            <span
-              style="position: absolute; bottom: 0px; right: -2px; width: 12px; height: 12px; background: #3b8842; border: 2px solid white; border-radius: 50%;"></span>
+            <span style="position: absolute; bottom: 0px; right: -2px; width: 12px; height: 12px; background: #3b8842; border: 2px solid white; border-radius: 50%;"></span>
           </div>
           <h4>Chat with Nia</h4>
         </div>
         <p>Get help in real time.</p>
       </div>
 
-      <div class="cluster-card" style="top: 60%; right: 12%;">
+      <div class="cluster-card" style="top: 65%; right: 18%;">
         <div class="card-header">
           <div class="card-icon"><i class="ph-fill ph-calendar"></i></div>
           <h4>Reminders</h4>
@@ -585,45 +594,74 @@
     <div class="cluster-container">
       <div class="cluster-title">
         <h1 class="info-title">Nuru</h1>
-        <h3 class="info-subtitle">Dani Rup \ Weather Guide</h3>
+        <h3 class="info-subtitle">Weather Guide</h3>
+        <div class="info-description" style="font-size: 1.1rem; color: var(--text-color); margin-top: 1rem; opacity: 0.9; line-height: 1.5; text-align: left;">
+          Helping farmers understand the upcoming weather in their location, weather risks, timings and what action they should take.
+        </div>
       </div>
 
       <svg class="cluster-svg" viewBox="0 0 1000 1000" preserveAspectRatio="none">
         <defs>
-          <marker id="arrow2" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6"
-            orient="auto-start-reverse">
+          <marker id="arrow2" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
             <path d="M 0 1 L 8 5 L 0 9 z" fill="#eab683" />
           </marker>
         </defs>
-        <!-- Left -->
-        <path d="M 400 550 L 300 550 L 300 460 L 220 460" marker-end="url(#arrow2)" />
-        <!-- Right -->
-        <path d="M 600 550 L 700 550 L 700 460 L 780 460" marker-end="url(#arrow2)" />
+        <!-- Top Left -->
+        <path d="M 450 380 L 360 380" marker-end="url(#arrow2)" />
+        <!-- Bottom Left -->
+        <path d="M 450 680 L 360 680" marker-end="url(#arrow2)" />
+        <!-- Top Right -->
+        <path d="M 550 350 L 640 350" marker-end="url(#arrow2)" />
+        <!-- Bottom Right -->
+        <path d="M 550 680 L 640 680" marker-end="url(#arrow2)" />
       </svg>
 
-      <div class="floating-leaf" style="width: 35px; height: 35px; top: 25%; left: 5%; animation-delay: 0.5s;"></div>
-      <div class="floating-leaf"
-        style="width: 25px; height: 25px; top: 70%; right: 10%; animation-delay: 2s; opacity: 0.1;"></div>
+      <!-- Weather Background Icons -->
+      <div class="floating-leaf" style="width: 35px; height: 35px; top: 25%; left: 5%; animation-delay: 0.5s; color: var(--accent-orange); opacity: 0.2;"><i class="ph-fill ph-sun" style="font-size: 35px;"></i></div>
+      <div class="floating-leaf" style="width: 25px; height: 25px; top: 70%; right: 10%; animation-delay: 2s; color: var(--text-color); opacity: 0.1;"><i class="ph-fill ph-cloud" style="font-size: 25px;"></i></div>
+      <div class="floating-leaf" style="width: 40px; height: 40px; top: 15%; right: 25%; animation-delay: 3s; color: var(--text-color); opacity: 0.15;"><i class="ph-fill ph-cloud-rain" style="font-size: 40px;"></i></div>
 
       <!-- Character -->
       <div class="character-backdrop"></div>
       <img src="../Images/nuru.png" alt="Nuru" class="cluster-character" />
 
       <!-- Absolute Floating Cards -->
-      <div class="cluster-card" style="top: 42%; left: 10%;">
-        <div class="card-header">
-          <div class="card-icon"><i class="ph-fill ph-cloud-sun"></i></div>
-          <h4>Weather Advisor</h4>
+      <div class="cluster-card" style="top: 33%; left: 16%; min-width: 250px;">
+        <div class="card-header" style="margin-bottom: 8px;">
+          <h4>We will help you with</h4>
         </div>
-        <p>wather advisot, explanationm, use case and exmaples</p>
+        <ul style="list-style: none; padding: 0; margin: 0; line-height: 1.6; font-size: 0.9rem; color: var(--text-color);">
+          <li style="display: flex; align-items: center; gap: 8px;"><i class="ph-fill ph-cloud-rain" style="color: var(--brand-green); font-size: 1.1rem;"></i> Rain alerts</li>
+          <li style="display: flex; align-items: center; gap: 8px;"><i class="ph-fill ph-plant" style="color: var(--brand-green); font-size: 1.1rem;"></i> Planting timings</li>
+          <li style="display: flex; align-items: center; gap: 8px;"><i class="ph-fill ph-basket" style="color: var(--brand-green); font-size: 1.1rem;"></i> Spraying and harvest decisions</li>
+        </ul>
       </div>
 
-      <div class="cluster-card" style="top: 42%; right: 12%;">
+      <div class="cluster-card" style="top: 68%; left: 18%;">
         <div class="card-header">
-          <div class="card-icon"><i class="ph-fill ph-cloud-rain"></i></div>
-          <h4>Weather Updates</h4>
+          <div class="card-icon"><i class="ph-fill ph-plant"></i></div>
+          <h4>Planting Window</h4>
         </div>
-        <p>Real-time forecasts and alerts to help you plan ahead.</p>
+        <p>We will have good conditions this week to plant maize.</p>
+      </div>
+
+      <div class="cluster-card" style="top: 28%; right: 16%;">
+        <div class="card-header">
+          <div class="card-icon" style="position: relative;">
+            <i class="ph-fill ph-cloud-rain"></i>
+            <i class="ph-fill ph-warning-circle" style="position: absolute; bottom: -5px; right: -5px; color: #d32f2f; font-size: 18px; background: white; border-radius: 50%;"></i>
+          </div>
+          <h4>Weather Alerts</h4>
+        </div>
+        <p>Heavy rains tonight, protect new plants and avoid fertilizer application before the storm.</p>
+      </div>
+
+      <div class="cluster-card" style="top: 65%; right: 18%;">
+        <div class="card-header">
+          <div class="card-icon"><i class="ph-fill ph-cloud-sun"></i></div>
+          <h4>Today's Forecast</h4>
+        </div>
+        <p>Cloudy with bit of sunshine until 2pm, after that sunny. Temp: 28C</p>
       </div>
 
       <!-- Logo Lockup -->
@@ -643,34 +681,74 @@
     <div class="cluster-container">
       <div class="cluster-title">
         <h1 class="info-title">Chris</h1>
-        <h3 class="info-subtitle">Rose Garden \ Crop Coach</h3>
+        <h3 class="info-subtitle">Crop Coach</h3>
+        <div class="info-description" style="font-size: 1.1rem; color: var(--text-color); margin-top: 1rem; opacity: 0.9; line-height: 1.5; text-align: left;">
+          Helping farmers with crop guidelines and real-time field related decision making.
+        </div>
       </div>
 
       <svg class="cluster-svg" viewBox="0 0 1000 1000" preserveAspectRatio="none">
         <defs>
-          <marker id="arrow3" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6"
-            orient="auto-start-reverse">
+          <marker id="arrow3" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
             <path d="M 0 1 L 8 5 L 0 9 z" fill="#eab683" />
           </marker>
         </defs>
-        <!-- Left -->
-        <path d="M 400 550 L 300 550 L 300 460 L 240 460" marker-end="url(#arrow3)" />
+        <!-- Top Left -->
+        <path d="M 450 380 L 360 380" marker-end="url(#arrow3)" />
+        <!-- Bottom Left -->
+        <path d="M 450 680 L 360 680" marker-end="url(#arrow3)" />
+        <!-- Top Right -->
+        <path d="M 550 350 L 640 350" marker-end="url(#arrow3)" />
+        <!-- Bottom Right -->
+        <path d="M 550 680 L 640 680" marker-end="url(#arrow3)" />
       </svg>
 
-      <div class="floating-leaf" style="width: 40px; height: 40px; top: 15%; left: 15%; animation-delay: 1s;"></div>
-      <div class="floating-leaf" style="width: 25px; height: 25px; top: 40%; right: 15%; animation-delay: 2.5s;"></div>
+      <!-- Background Field Icons -->
+      <div class="floating-leaf" style="width: 35px; height: 35px; top: 25%; left: 5%; animation-delay: 0.5s; color: var(--brand-green); opacity: 0.2;"><i class="ph-fill ph-leaf" style="font-size: 35px;"></i></div>
+      <div class="floating-leaf" style="width: 25px; height: 25px; top: 70%; right: 10%; animation-delay: 2s; color: var(--heading-color); opacity: 0.1;"><i class="ph-fill ph-plant" style="font-size: 25px;"></i></div>
+      <div class="floating-leaf" style="width: 40px; height: 40px; top: 15%; right: 25%; animation-delay: 3s; color: var(--accent-orange); opacity: 0.15;"><i class="ph-fill ph-bug" style="font-size: 40px;"></i></div>
 
+      <!-- Character -->
       <div class="character-backdrop"></div>
       <img src="../Images/chris.png" alt="Chris" class="cluster-character" />
 
-      <div class="cluster-card" style="top: 42%; left: 12%;">
-        <div class="card-header">
-          <div class="card-icon"><i class="ph-fill ph-plant"></i></div>
-          <h4>Crop Advice</h4>
+      <!-- Absolute Floating Cards -->
+      <div class="cluster-card" style="top: 33%; left: 16%; min-width: 250px;">
+        <div class="card-header" style="margin-bottom: 8px;">
+          <h4>We will help you with</h4>
         </div>
-        <p>Practical guidance for healthier crops and better yields.</p>
+        <ul style="list-style: none; padding: 0; margin: 0; line-height: 1.6; font-size: 0.9rem; color: var(--text-color);">
+          <li style="display: flex; align-items: center; gap: 8px;"><i class="ph-fill ph-leaf" style="color: var(--brand-green); font-size: 1.1rem;"></i> Crop information</li>
+          <li style="display: flex; align-items: center; gap: 8px;"><i class="ph-fill ph-flask" style="color: var(--brand-green); font-size: 1.1rem;"></i> Fertilizer guidance</li>
+          <li style="display: flex; align-items: center; gap: 8px;"><i class="ph-fill ph-steps" style="color: var(--brand-green); font-size: 1.1rem;"></i> Stage by stage advice</li>
+        </ul>
       </div>
 
+      <div class="cluster-card" style="top: 68%; left: 18%;">
+        <div class="card-header">
+          <div class="card-icon"><i class="ph-fill ph-flask"></i></div>
+          <h4>Fertilizer Guidance</h4>
+        </div>
+        <p>What to apply, at what stage of the grow cycle, for better results.</p>
+      </div>
+
+      <div class="cluster-card" style="top: 28%; right: 16%;">
+        <div class="card-header">
+          <div class="card-icon"><i class="ph-fill ph-ruler"></i></div>
+          <h4>Field Tips & Best Practices</h4>
+        </div>
+        <p>Keep spacing consistent for stronger crop growth.</p>
+      </div>
+
+      <div class="cluster-card" style="top: 65%; right: 18%;">
+        <div class="card-header">
+          <div class="card-icon"><i class="ph-fill ph-stethoscope"></i></div>
+          <h4>Crop Health Check</h4>
+        </div>
+        <p>Yellow leaves in maize? Let's identify the cause.</p>
+      </div>
+
+      <!-- Logo Lockup -->
       <div class="logo-lockup">
         <span class="oaf">ONE ACRE FUND</span>
         <div class="divider"></div>
