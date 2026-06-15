@@ -1,27 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>One Acre Fund Pilot Proposal</title>
-  
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700&family=Poppins:wght@500;600;700;800&display=swap"
+    rel="stylesheet">
   <script src="https://unpkg.com/@phosphor-icons/web"></script>
 
   <style>
     :root {
-      --heading-color: #8c4115; /* Rich Brown */
-      --text-color: #544a42; /* Slate/Brown */
-      --accent-orange: #f28b18; /* Vibrant Orange */
-      --line-color: #eab683; /* Light orange for dashed lines */
-      --brand-green: #3b8842;   /* Vibrant green */
+      --heading-color: #8c4115;
+      /* Rich Brown */
+      --text-color: #544a42;
+      /* Slate/Brown */
+      --accent-orange: #f28b18;
+      /* Vibrant Orange */
+      --line-color: #eab683;
+      /* Light orange for dashed lines */
+      --brand-green: #3b8842;
+      /* Vibrant green */
       --bg-top: #FFFEFA;
-      --bg-bottom: #FFF1E0; /* Very light warm tone */
+      --bg-bottom: #FFF1E0;
+      /* Very light warm tone */
     }
 
-    html, body {
+    html,
+    body {
       margin: 0;
       padding: 0;
       scroll-behavior: smooth;
@@ -62,7 +72,12 @@
       width: 100%;
     }
 
-    h1, h2, h3, h4, h5, h6 {
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
       font-family: 'Poppins', sans-serif;
       color: var(--heading-color);
       font-weight: 700;
@@ -92,7 +107,8 @@
       text-align: center;
     }
 
-    p, li {
+    p,
+    li {
       font-size: 1.25rem;
       line-height: 1.7;
       margin-bottom: 20px;
@@ -109,7 +125,7 @@
 
     .visual-placeholder {
       border: 2px dashed var(--heading-color);
-      background: rgba(140, 65, 21, 0.05); 
+      background: rgba(140, 65, 21, 0.05);
       border-radius: 12px;
       padding: 50px 20px;
       text-align: center;
@@ -211,12 +227,17 @@
       color: var(--heading-color);
       font-size: 1.4rem;
     }
+
     .logo-lockup .divider {
       width: 2px;
       height: 25px;
       background: var(--line-color);
     }
-    .logo-lockup .oaf { color: #2e7d32; font-size: 1.1rem; }
+
+    .logo-lockup .oaf {
+      color: #2e7d32;
+      font-size: 1.1rem;
+    }
 
     .cluster-svg {
       position: absolute;
@@ -268,23 +289,34 @@
       position: absolute;
       background: rgba(255, 255, 255, 0.95);
       border: 1px solid rgba(255, 255, 255, 1);
-      border-radius: 16px;
-      padding: 12px 18px;
-      box-shadow: 0 15px 30px rgba(140, 65, 21, 0.08), 0 5px 15px rgba(0, 0, 0, 0.02);
+      border-radius: 20px;
+      padding: 22px 28px;
+      box-shadow: 0 20px 40px rgba(140, 65, 21, 0.08), 0 5px 15px rgba(0, 0, 0, 0.02);
       backdrop-filter: blur(10px);
       text-align: left;
       z-index: 10;
-      width: 240px;
+      width: 320px;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
       display: flex;
       flex-direction: column;
-      gap: 2px;
+      gap: 5px;
     }
 
-    .cluster-card:nth-child(4n) { transform: rotate(-1.5deg); }
-    .cluster-card:nth-child(4n+1) { transform: rotate(1.2deg); }
-    .cluster-card:nth-child(4n+2) { transform: rotate(-1.0deg); }
-    .cluster-card:nth-child(4n+3) { transform: rotate(1.5deg); }
+    .cluster-card:nth-child(4n) {
+      transform: rotate(-1.5deg);
+    }
+
+    .cluster-card:nth-child(4n+1) {
+      transform: rotate(1.2deg);
+    }
+
+    .cluster-card:nth-child(4n+2) {
+      transform: rotate(-1.0deg);
+    }
+
+    .cluster-card:nth-child(4n+3) {
+      transform: rotate(1.5deg);
+    }
 
     .cluster-card:hover {
       transform: translateY(-8px) scale(1.03) !important;
@@ -295,8 +327,8 @@
     .card-header {
       display: flex;
       align-items: center;
-      gap: 10px;
-      margin-bottom: 2px;
+      gap: 15px;
+      margin-bottom: 5px;
     }
 
     .card-icon {
@@ -335,20 +367,60 @@
     }
 
     @keyframes float {
-      0%, 100% { transform: translateY(0) rotate(0deg); }
-      50% { transform: translateY(-25px) rotate(15deg); }
+
+      0%,
+      100% {
+        transform: translateY(0) rotate(0deg);
+      }
+
+      50% {
+        transform: translateY(-25px) rotate(15deg);
+      }
     }
-    
+
     @media (max-width: 1024px) {
-      .cluster-card { position: relative; top: auto !important; left: auto !important; right: auto !important; margin: 20px auto; width: 80%; }
-      .cluster-character { position: relative; height: 50vh; transform: none; left: auto; }
-      .cluster-svg { display: none; }
-      .cluster-title { position: relative; top: auto; left: auto; text-align: center; margin: 0 auto; }
-      .cluster-container { display: flex; flex-direction: column; overflow-y: auto; padding-top: 5vh; }
-      .logo-lockup { display: none; }
+      .cluster-card {
+        position: relative;
+        top: auto !important;
+        left: auto !important;
+        right: auto !important;
+        margin: 20px auto;
+        width: 80%;
+      }
+
+      .cluster-character {
+        position: relative;
+        height: 50vh;
+        transform: none;
+        left: auto;
+      }
+
+      .cluster-svg {
+        display: none;
+      }
+
+      .cluster-title {
+        position: relative;
+        top: auto;
+        left: auto;
+        text-align: center;
+        margin: 0 auto;
+      }
+
+      .cluster-container {
+        display: flex;
+        flex-direction: column;
+        overflow-y: auto;
+        padding-top: 5vh;
+      }
+
+      .logo-lockup {
+        display: none;
+      }
     }
   </style>
 </head>
+
 <body>
 
   <!-- Slide 1 -->
@@ -364,9 +436,11 @@
     <div class="content-container">
       <h2>OAF Vision</h2>
       <p>By 2030, OAF aim to serve 10 million farm families and deliver $1 billion in annual impact</p>
-      <p>We envision a future in which every farm family has the knowledge and means to achieve big harvests, support healthy families, and cultivate rich soil.</p>
+      <p>We envision a future in which every farm family has the knowledge and means to achieve big harvests, support
+        healthy families, and cultivate rich soil.</p>
       <p>double the size of their harvests—from the same plot of land</p>
-      <p>Continual Growth. We improve every season. We work with determination to meet our goals and then stretch ourselves by raising the bar even higher.</p>
+      <p>Continual Growth. We improve every season. We work with determination to meet our goals and then stretch
+        ourselves by raising the bar even higher.</p>
     </div>
   </section>
 
@@ -375,9 +449,11 @@
     <div class="content-container">
       <h2>Farmer's problem</h2>
       <p>By 2030, OAF aim to serve 10 million farm families and deliver $1 billion in annual impact</p>
-      <p>We envision a future in which every farm family has the knowledge and means to achieve big harvests, support healthy families, and cultivate rich soil.</p>
+      <p>We envision a future in which every farm family has the knowledge and means to achieve big harvests, support
+        healthy families, and cultivate rich soil.</p>
       <p>double the size of their harvests—from the same plot of land</p>
-      <p>Continual Growth. We improve every season. We work with determination to meet our goals and then stretch ourselves by raising the bar even higher.</p>
+      <p>Continual Growth. We improve every season. We work with determination to meet our goals and then stretch
+        ourselves by raising the bar even higher.</p>
     </div>
   </section>
 
@@ -385,11 +461,13 @@
   <section>
     <div class="content-container">
       <h2>OAF problem</h2>
-      <p>One Acre Fund needs a reliable, effective and scalable way to deliver practical farmer advisory to rural farmers</p>
+      <p>One Acre Fund needs a reliable, effective and scalable way to deliver practical farmer advisory to rural
+        farmers</p>
       <ul>
         <li>Field officers are critical, but they cannot personally support every farmer decision at scale.</li>
         <li>Existing channels such as SMS, USSD, WhatsApp, and in-person training each have limitations.</li>
-        <li>OAF’s impact depends not only on providing inputs, but on farmers understanding and applying the right practices at the right time.</li>
+        <li>OAF’s impact depends not only on providing inputs, but on farmers understanding and applying the right
+          practices at the right time.</li>
         <li>OAF needs to increase farmer income without adding unsustainable operational burden.</li>
       </ul>
     </div>
@@ -399,8 +477,10 @@
   <section>
     <div class="content-container">
       <h2>The Dream</h2>
-      <p>With iNua, One Acre Fund can make its trusted farmer advisory available to every farmer, at the exact moment they need it, through a simple phone call in their local language at scale.</p>
-      <p>With inua, once ace found can increase thier reach and impact, helping farmers's food security, healthy familes in thier oen terms and indivisual needs, through simple phone call in thier local lanauges and crops,</p>
+      <p>With iNua, One Acre Fund can make its trusted farmer advisory available to every farmer, at the exact moment
+        they need it, through a simple phone call in their local language at scale.</p>
+      <p>With inua, once ace found can increase thier reach and impact, helping farmers's food security, healthy familes
+        in thier oen terms and indivisual needs, through simple phone call in thier local lanauges and crops,</p>
     </div>
   </section>
 
@@ -418,54 +498,49 @@
   <section class="cluster-slide">
     <div class="landscape-bg"></div>
     <div class="floor-curve"></div>
-    
+
     <div class="cluster-container">
       <div class="cluster-title">
         <h1 class="info-title">Nia</h1>
         <h3 class="info-subtitle">General Support Guide</h3>
-        <div class="info-description" style="font-size: 1.1rem; color: var(--text-color); margin-top: 1rem; opacity: 0.9; line-height: 1.5; text-align: left;">
-          here to help farmers get general information about OAF, solve issues and stay on track
+        <div class="info-description"
+          style="font-size: 1.1rem; color: var(--text-color); margin-top: 1rem; opacity: 0.9; line-height: 1.5; text-align: left;">
+          here to help farmers get general information about OAF, solve issues and stay on track<br><br>
+          <strong>we will help you with:</strong><br>
+          • General questions<br>
+          • program information<br>
+          • connect to you the right team
         </div>
       </div>
-      
+
       <!-- Orthogonal SVG Connecting Lines -->
       <svg class="cluster-svg" viewBox="0 0 1000 1000" preserveAspectRatio="none">
         <defs>
-          <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6"
+            orient="auto-start-reverse">
             <path d="M 0 1 L 8 5 L 0 9 z" fill="#eab683" />
           </marker>
         </defs>
-        <!-- Top Left - We will help you with -->
-        <path d="M 450 380 L 360 380" marker-end="url(#arrow)" />
-        <!-- Bottom Left - Call Support -->
-        <path d="M 450 750 L 360 750" marker-end="url(#arrow)" />
+        <!-- Left - Call Support -->
+        <path d="M 400 480 L 300 480 L 300 480 L 220 480" marker-end="url(#arrow)" />
         <!-- Top Right - Chat with Nia -->
-        <path d="M 550 350 L 640 350" marker-end="url(#arrow)" />
+        <path d="M 600 400 L 700 400 L 700 350 L 780 350" marker-end="url(#arrow)" />
         <!-- Bottom Right - Reminders -->
-        <path d="M 550 680 L 640 680" marker-end="url(#arrow)" />
+        <path d="M 600 600 L 720 600 L 720 650 L 780 650" marker-end="url(#arrow)" />
       </svg>
 
       <div class="floating-leaf" style="width: 30px; height: 30px; top: 30%; left: 35%; animation-delay: 0s;"></div>
       <div class="floating-leaf" style="width: 20px; height: 20px; top: 60%; right: 30%; animation-delay: 1.5s;"></div>
-      <div class="floating-leaf" style="width: 40px; height: 40px; top: 15%; right: 20%; animation-delay: 3s; border-radius: 0 50% 0 50%; opacity: 0.1;"></div>
+      <div class="floating-leaf"
+        style="width: 40px; height: 40px; top: 15%; right: 20%; animation-delay: 3s; border-radius: 0 50% 0 50%; opacity: 0.1;">
+      </div>
 
       <!-- Character -->
       <div class="character-backdrop"></div>
       <img src="../Images/nia.png" alt="Nia" class="cluster-character" />
 
       <!-- Absolute Floating Cards -->
-      <div class="cluster-card" style="top: 33%; left: 16%; min-width: 250px;">
-        <div class="card-header" style="margin-bottom: 8px;">
-          <h4>We will help you with</h4>
-        </div>
-        <ul style="list-style: none; padding: 0; margin: 0; line-height: 1.6; font-size: 0.9rem; color: var(--text-color);">
-          <li style="display: flex; align-items: center; gap: 8px;"><i class="ph-fill ph-question" style="color: var(--brand-green); font-size: 1.1rem;"></i> General questions</li>
-          <li style="display: flex; align-items: center; gap: 8px;"><i class="ph-fill ph-info" style="color: var(--brand-green); font-size: 1.1rem;"></i> Program information</li>
-          <li style="display: flex; align-items: center; gap: 8px;"><i class="ph-fill ph-users" style="color: var(--brand-green); font-size: 1.1rem;"></i> Connect you to the right team</li>
-        </ul>
-      </div>
-
-      <div class="cluster-card" style="top: 75%; left: 18%;">
+      <div class="cluster-card" style="top: 43%; left: 8%;">
         <div class="card-header">
           <div class="card-icon"><i class="ph-fill ph-phone"></i></div>
           <h4>Call support</h4>
@@ -473,18 +548,19 @@
         <p>24/7 support in kinyarwanda</p>
       </div>
 
-      <div class="cluster-card" style="top: 28%; right: 16%;">
+      <div class="cluster-card" style="top: 30%; right: 10%;">
         <div class="card-header">
           <div class="card-icon" style="position: relative;">
             <i class="ph-fill ph-chat-teardrop-text"></i>
-            <span style="position: absolute; bottom: 0px; right: -2px; width: 12px; height: 12px; background: #3b8842; border: 2px solid white; border-radius: 50%;"></span>
+            <span
+              style="position: absolute; bottom: 0px; right: -2px; width: 12px; height: 12px; background: #3b8842; border: 2px solid white; border-radius: 50%;"></span>
           </div>
           <h4>Chat with Nia</h4>
         </div>
         <p>Get help in real time.</p>
       </div>
 
-      <div class="cluster-card" style="top: 65%; right: 18%;">
+      <div class="cluster-card" style="top: 60%; right: 12%;">
         <div class="card-header">
           <div class="card-icon"><i class="ph-fill ph-calendar"></i></div>
           <h4>Reminders</h4>
@@ -505,16 +581,17 @@
   <section class="cluster-slide">
     <div class="landscape-bg"></div>
     <div class="floor-curve"></div>
-    
+
     <div class="cluster-container">
       <div class="cluster-title">
         <h1 class="info-title">Nuru</h1>
         <h3 class="info-subtitle">Dani Rup \ Weather Guide</h3>
       </div>
-      
+
       <svg class="cluster-svg" viewBox="0 0 1000 1000" preserveAspectRatio="none">
         <defs>
-          <marker id="arrow2" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <marker id="arrow2" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6"
+            orient="auto-start-reverse">
             <path d="M 0 1 L 8 5 L 0 9 z" fill="#eab683" />
           </marker>
         </defs>
@@ -525,7 +602,8 @@
       </svg>
 
       <div class="floating-leaf" style="width: 35px; height: 35px; top: 25%; left: 5%; animation-delay: 0.5s;"></div>
-      <div class="floating-leaf" style="width: 25px; height: 25px; top: 70%; right: 10%; animation-delay: 2s; opacity: 0.1;"></div>
+      <div class="floating-leaf"
+        style="width: 25px; height: 25px; top: 70%; right: 10%; animation-delay: 2s; opacity: 0.1;"></div>
 
       <!-- Character -->
       <div class="character-backdrop"></div>
@@ -547,7 +625,7 @@
         </div>
         <p>Real-time forecasts and alerts to help you plan ahead.</p>
       </div>
-      
+
       <!-- Logo Lockup -->
       <div class="logo-lockup">
         <span class="oaf">ONE ACRE FUND</span>
@@ -561,16 +639,17 @@
   <section class="cluster-slide">
     <div class="landscape-bg"></div>
     <div class="floor-curve"></div>
-    
+
     <div class="cluster-container">
       <div class="cluster-title">
         <h1 class="info-title">Chris</h1>
         <h3 class="info-subtitle">Rose Garden \ Crop Coach</h3>
       </div>
-      
+
       <svg class="cluster-svg" viewBox="0 0 1000 1000" preserveAspectRatio="none">
         <defs>
-          <marker id="arrow3" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <marker id="arrow3" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6"
+            orient="auto-start-reverse">
             <path d="M 0 1 L 8 5 L 0 9 z" fill="#eab683" />
           </marker>
         </defs>
@@ -591,7 +670,7 @@
         </div>
         <p>Practical guidance for healthier crops and better yields.</p>
       </div>
-      
+
       <div class="logo-lockup">
         <span class="oaf">ONE ACRE FUND</span>
         <div class="divider"></div>
@@ -604,16 +683,17 @@
   <section class="cluster-slide">
     <div class="landscape-bg"></div>
     <div class="floor-curve"></div>
-    
+
     <div class="cluster-container">
       <div class="cluster-title">
         <h1 class="info-title">Josef</h1>
         <h3 class="info-subtitle">Loan & Repayment Advisor</h3>
       </div>
-      
+
       <svg class="cluster-svg" viewBox="0 0 1000 1000" preserveAspectRatio="none">
         <defs>
-          <marker id="arrow4" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <marker id="arrow4" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6"
+            orient="auto-start-reverse">
             <path d="M 0 1 L 8 5 L 0 9 z" fill="#eab683" />
           </marker>
         </defs>
@@ -621,7 +701,8 @@
         <path d="M 600 550 L 700 550 L 700 460 L 760 460" marker-end="url(#arrow4)" />
       </svg>
 
-      <div class="floating-leaf" style="width: 25px; height: 25px; top: 35%; left: 25%; animation-delay: 0.2s; opacity: 0.1;"></div>
+      <div class="floating-leaf"
+        style="width: 25px; height: 25px; top: 35%; left: 25%; animation-delay: 0.2s; opacity: 0.1;"></div>
       <div class="floating-leaf" style="width: 35px; height: 35px; top: 50%; right: 10%; animation-delay: 1.8s;"></div>
 
       <div class="character-backdrop"></div>
@@ -634,7 +715,7 @@
         </div>
         <p>Repayment reminders, loan guidance, and financial advice.</p>
       </div>
-      
+
       <div class="logo-lockup">
         <span class="oaf">ONE ACRE FUND</span>
         <div class="divider"></div>
@@ -647,16 +728,17 @@
   <section class="cluster-slide">
     <div class="landscape-bg"></div>
     <div class="floor-curve"></div>
-    
+
     <div class="cluster-container">
       <div class="cluster-title">
         <h1 class="info-title">Marry</h1>
         <h3 class="info-subtitle">Emergency Alert Advisor</h3>
       </div>
-      
+
       <svg class="cluster-svg" viewBox="0 0 1000 1000" preserveAspectRatio="none">
         <defs>
-          <marker id="arrow5" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <marker id="arrow5" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6"
+            orient="auto-start-reverse">
             <path d="M 0 1 L 8 5 L 0 9 z" fill="#eab683" />
           </marker>
         </defs>
@@ -665,7 +747,8 @@
       </svg>
 
       <div class="floating-leaf" style="width: 30px; height: 30px; top: 20%; right: 20%; animation-delay: 0.8s;"></div>
-      <div class="floating-leaf" style="width: 30px; height: 30px; top: 60%; left: 5%; animation-delay: 2.2s; opacity: 0.1;"></div>
+      <div class="floating-leaf"
+        style="width: 30px; height: 30px; top: 60%; left: 5%; animation-delay: 2.2s; opacity: 0.1;"></div>
 
       <div class="character-backdrop"></div>
       <img src="../Images/marry.png" alt="Marry" class="cluster-character" />
@@ -677,7 +760,7 @@
         </div>
         <p>Fast warnings and urgent guidance when farmers need it most.</p>
       </div>
-      
+
       <div class="logo-lockup">
         <span class="oaf">ONE ACRE FUND</span>
         <div class="divider"></div>
@@ -690,7 +773,8 @@
   <section>
     <div class="content-container">
       <h2>scale and how it looks like</h2>
-      <p>the evolution of the characters and their capabilities (josef and marry) + a dream that answer their issues above and byond, give a brad context and more holistic solution</p>
+      <p>the evolution of the characters and their capabilities (josef and marry) + a dream that answer their issues
+        above and byond, give a brad context and more holistic solution</p>
     </div>
   </section>
 
@@ -717,13 +801,13 @@
 
   <script>
     // Advance to the next slide on mouse click
-    document.addEventListener('click', function(e) {
+    document.addEventListener('click', function (e) {
       if (window.getSelection().toString().length > 0) return;
 
       const sections = Array.from(document.querySelectorAll('section'));
       let currentIndex = 0;
       let minDistance = Infinity;
-      
+
       sections.forEach((section, index) => {
         const distance = Math.abs(section.getBoundingClientRect().top);
         if (distance < minDistance) {
@@ -731,11 +815,12 @@
           currentIndex = index;
         }
       });
-      
+
       if (currentIndex < sections.length - 1) {
         sections[currentIndex + 1].scrollIntoView({ behavior: 'smooth' });
       }
     });
   </script>
 </body>
+
 </html>
