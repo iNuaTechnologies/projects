@@ -182,7 +182,7 @@
       position: relative;
       width: 100%;
       height: 100%;
-      max-width: 1400px;
+      max-width: 100%;
       margin: 0 auto;
     }
 
@@ -289,13 +289,14 @@
       position: absolute;
       background: rgba(255, 255, 255, 0.95);
       border: 1px solid rgba(255, 255, 255, 1);
-      border-radius: 16px;
-      padding: 12px 18px;
+      border-radius: 12px;
+      padding: 6px 10px;
       box-shadow: 0 15px 30px rgba(140, 65, 21, 0.08), 0 5px 15px rgba(0, 0, 0, 0.02);
       backdrop-filter: blur(10px);
       text-align: left;
       z-index: 10;
-      width: 240px;
+      width: 250px;
+      zoom: 1.3;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
       display: flex;
       flex-direction: column;
@@ -319,7 +320,7 @@
     }
 
     .cluster-card:hover {
-      transform: translateY(-8px) scale(1.03) !important;
+      transform: translateY(-8px) scale(1.05) !important;
       box-shadow: 0 30px 60px rgba(140, 65, 21, 0.12);
       z-index: 20;
     }
@@ -327,34 +328,39 @@
     .card-header {
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 6px;
       margin-bottom: 2px;
     }
 
     .card-icon {
-      font-size: 1.8rem;
+      font-size: 1.2rem;
       color: var(--accent-orange);
       background: rgba(242, 139, 24, 0.12);
-      width: 48px;
-      height: 48px;
+      width: 28px;
+      height: 28px;
       display: flex;
       align-items: center;
       justify-content: center;
-      border-radius: 12px;
+      border-radius: 8px;
+    }
+
+    .card-icon i {
+      font-size: inherit !important;
     }
 
     .cluster-card h4 {
       color: var(--heading-color);
-      font-size: 1.35rem;
+      font-size: 0.8rem !important;
       margin-bottom: 0;
       font-weight: 700;
+      line-height: 1.1;
     }
 
-    .cluster-card p {
-      font-size: 1.05rem;
+    .cluster-card p, .cluster-card ul, .cluster-card li {
+      font-size: 0.65rem !important;
       margin-bottom: 0;
       color: var(--text-color);
-      line-height: 1.5;
+      line-height: 1.2 !important;
     }
 
     .floating-leaf {
@@ -370,15 +376,19 @@
       0% {
         transform: translate(0, 0) rotate(0deg) scale(1);
       }
+
       25% {
         transform: translate(15px, -15px) rotate(15deg) scale(1.05);
       }
+
       50% {
         transform: translate(-10px, -35px) rotate(-10deg) scale(0.95);
       }
+
       75% {
         transform: translate(-20px, -15px) rotate(-25deg) scale(1.02);
       }
+
       100% {
         transform: translate(0, 0) rotate(0deg) scale(1);
       }
@@ -509,14 +519,16 @@
       <div class="cluster-title">
         <h1 class="info-title">Nia</h1>
         <h3 class="info-subtitle">General Support Guide</h3>
-        <div class="info-description" style="font-size: 1.1rem; color: var(--text-color); margin-top: 1rem; opacity: 0.9; line-height: 1.5; text-align: left;">
+        <div class="info-description"
+          style="font-size: 1.1rem; color: var(--text-color); margin-top: 1rem; opacity: 0.9; line-height: 1.5; text-align: left;">
           here to help farmers get general information about OAF, solve issues and stay on track
         </div>
       </div>
 
       <svg class="cluster-svg" viewBox="0 0 1000 1000" preserveAspectRatio="none">
         <defs>
-          <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6"
+            orient="auto-start-reverse">
             <path d="M 0 1 L 8 5 L 0 9 z" fill="#eab683" />
           </marker>
         </defs>
@@ -529,24 +541,30 @@
         <!-- Bottom Right - Reminders -->
         <path d="M 550 680 L 640 680" marker-end="url(#arrow)" />
       </svg>
-
       <div class="floating-leaf" style="width: 30px; height: 30px; top: 30%; left: 35%; animation-delay: 0s;"></div>
       <div class="floating-leaf" style="width: 20px; height: 20px; top: 60%; right: 30%; animation-delay: 1.5s;"></div>
-      <div class="floating-leaf" style="width: 40px; height: 40px; top: 15%; right: 20%; animation-delay: 3s; border-radius: 0 50% 0 50%; opacity: 0.1;"></div>
+      <div class="floating-leaf"
+        style="width: 40px; height: 40px; top: 15%; right: 20%; animation-delay: 3s; border-radius: 0 50% 0 50%; opacity: 0.1;">
+      </div>
 
       <!-- Character -->
       <div class="character-backdrop"></div>
       <img src="../Images/nia.png" alt="Nia" class="cluster-character" />
 
       <!-- Absolute Floating Cards -->
-      <div class="cluster-card" style="top: 33%; left: 16%; min-width: 250px;">
+      <div class="cluster-card" style="top: 33%; left: 16%;">
         <div class="card-header" style="margin-bottom: 8px;">
           <h4>We will help you with</h4>
         </div>
-        <ul style="list-style: none; padding: 0; margin: 0; line-height: 1.6; font-size: 0.9rem; color: var(--text-color);">
-          <li style="display: flex; align-items: center; gap: 8px;"><i class="ph-fill ph-question" style="color: var(--brand-green); font-size: 1.1rem;"></i> General questions</li>
-          <li style="display: flex; align-items: center; gap: 8px;"><i class="ph-fill ph-info" style="color: var(--brand-green); font-size: 1.1rem;"></i> Program information</li>
-          <li style="display: flex; align-items: center; gap: 8px;"><i class="ph-fill ph-users" style="color: var(--brand-green); font-size: 1.1rem;"></i> Connect you to the right team</li>
+        <ul
+          style="list-style: none; padding: 0; margin: 0; line-height: 1.6; font-size: 0.9rem; color: var(--text-color);">
+          <li style="display: flex; align-items: center; gap: 8px;"><i class="ph-fill ph-question"
+              style="color: var(--brand-green); font-size: 1.1rem;"></i> General questions</li>
+          <li style="display: flex; align-items: center; gap: 8px;"><i class="ph-fill ph-info"
+              style="color: var(--brand-green); font-size: 1.1rem;"></i> Program information</li>
+          <li style="display: flex; align-items: center; gap: 8px;"><i class="ph-fill ph-users"
+              style="color: var(--brand-green); font-size: 1.1rem;"></i> Routing farmers to the right support channel
+          </li>
         </ul>
       </div>
 
@@ -562,7 +580,8 @@
         <div class="card-header">
           <div class="card-icon" style="position: relative;">
             <i class="ph-fill ph-chat-teardrop-text"></i>
-            <span style="position: absolute; bottom: 0px; right: -2px; width: 12px; height: 12px; background: #3b8842; border: 2px solid white; border-radius: 50%;"></span>
+            <span
+              style="position: absolute; bottom: 0px; right: -2px; width: 12px; height: 12px; background: #3b8842; border: 2px solid white; border-radius: 50%;"></span>
           </div>
           <h4>Chat with Nia</h4>
         </div>
@@ -595,14 +614,17 @@
       <div class="cluster-title">
         <h1 class="info-title">Nuru</h1>
         <h3 class="info-subtitle">Weather Guide</h3>
-        <div class="info-description" style="font-size: 1.1rem; color: var(--text-color); margin-top: 1rem; opacity: 0.9; line-height: 1.5; text-align: left;">
-          Helping farmers understand the upcoming weather in their location, weather risks, timings and what action they should take.
+        <div class="info-description"
+          style="font-size: 1.1rem; color: var(--text-color); margin-top: 1rem; opacity: 0.9; line-height: 1.5; text-align: left;">
+          Helping farmers understand the upcoming weather in their location, weather risks, timings and what action they
+          should take.
         </div>
       </div>
 
       <svg class="cluster-svg" viewBox="0 0 1000 1000" preserveAspectRatio="none">
         <defs>
-          <marker id="arrow2" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <marker id="arrow2" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6"
+            orient="auto-start-reverse">
             <path d="M 0 1 L 8 5 L 0 9 z" fill="#eab683" />
           </marker>
         </defs>
@@ -617,23 +639,36 @@
       </svg>
 
       <!-- Weather Background Icons -->
-      <div class="floating-leaf" style="width: 35px; height: 35px; top: 25%; left: 5%; animation-delay: 0.5s; color: var(--accent-orange); opacity: 0.2;"><i class="ph-fill ph-sun" style="font-size: 35px;"></i></div>
-      <div class="floating-leaf" style="width: 25px; height: 25px; top: 70%; right: 10%; animation-delay: 2s; color: var(--text-color); opacity: 0.1;"><i class="ph-fill ph-cloud" style="font-size: 25px;"></i></div>
-      <div class="floating-leaf" style="width: 40px; height: 40px; top: 15%; right: 25%; animation-delay: 3s; color: var(--text-color); opacity: 0.15;"><i class="ph-fill ph-cloud-rain" style="font-size: 40px;"></i></div>
+      <div class="floating-leaf"
+        style="width: 35px; height: 35px; top: 25%; left: 5%; animation-delay: 0.5s; color: var(--accent-orange); opacity: 0.2;">
+        <i class="ph-fill ph-sun" style="font-size: 35px;"></i>
+      </div>
+      <div class="floating-leaf"
+        style="width: 25px; height: 25px; top: 70%; right: 10%; animation-delay: 2s; color: var(--text-color); opacity: 0.1;">
+        <i class="ph-fill ph-cloud" style="font-size: 25px;"></i>
+      </div>
+      <div class="floating-leaf"
+        style="width: 40px; height: 40px; top: 15%; right: 25%; animation-delay: 3s; color: var(--text-color); opacity: 0.15;">
+        <i class="ph-fill ph-cloud-rain" style="font-size: 40px;"></i>
+      </div>
 
       <!-- Character -->
       <div class="character-backdrop"></div>
       <img src="../Images/nuru.png" alt="Nuru" class="cluster-character" />
 
       <!-- Absolute Floating Cards -->
-      <div class="cluster-card" style="top: 33%; left: 16%; min-width: 250px;">
+      <div class="cluster-card" style="top: 33%; left: 16%; ">
         <div class="card-header" style="margin-bottom: 8px;">
           <h4>We will help you with</h4>
         </div>
-        <ul style="list-style: none; padding: 0; margin: 0; line-height: 1.6; font-size: 0.9rem; color: var(--text-color);">
-          <li style="display: flex; align-items: center; gap: 8px;"><i class="ph-fill ph-cloud-rain" style="color: var(--brand-green); font-size: 1.1rem;"></i> Rain alerts</li>
-          <li style="display: flex; align-items: center; gap: 8px;"><i class="ph-fill ph-plant" style="color: var(--brand-green); font-size: 1.1rem;"></i> Planting timings</li>
-          <li style="display: flex; align-items: center; gap: 8px;"><i class="ph-fill ph-basket" style="color: var(--brand-green); font-size: 1.1rem;"></i> Spraying and harvest decisions</li>
+        <ul
+          style="list-style: none; padding: 0; margin: 0; line-height: 1.6; font-size: 0.9rem; color: var(--text-color);">
+          <li style="display: flex; align-items: center; gap: 8px;"><i class="ph-fill ph-cloud-rain"
+              style="color: var(--brand-green); font-size: 1.1rem;"></i> Rain alerts</li>
+          <li style="display: flex; align-items: center; gap: 8px;"><i class="ph-fill ph-plant"
+              style="color: var(--brand-green); font-size: 1.1rem;"></i> Planting timings</li>
+          <li style="display: flex; align-items: center; gap: 8px;"><i class="ph-fill ph-basket"
+              style="color: var(--brand-green); font-size: 1.1rem;"></i> Spraying and harvest decisions</li>
         </ul>
       </div>
 
@@ -649,7 +684,8 @@
         <div class="card-header">
           <div class="card-icon" style="position: relative;">
             <i class="ph-fill ph-cloud-rain"></i>
-            <i class="ph-fill ph-warning-circle" style="position: absolute; bottom: -5px; right: -5px; color: #d32f2f; font-size: 18px; background: white; border-radius: 50%;"></i>
+            <i class="ph-fill ph-warning-circle"
+              style="position: absolute; bottom: -5px; right: -5px; color: #d32f2f; font-size: 18px; background: white; border-radius: 50%;"></i>
           </div>
           <h4>Weather Alerts</h4>
         </div>
@@ -682,14 +718,16 @@
       <div class="cluster-title">
         <h1 class="info-title">Chris</h1>
         <h3 class="info-subtitle">Crop Coach</h3>
-        <div class="info-description" style="font-size: 1.1rem; color: var(--text-color); margin-top: 1rem; opacity: 0.9; line-height: 1.5; text-align: left;">
+        <div class="info-description"
+          style="font-size: 1.1rem; color: var(--text-color); margin-top: 1rem; opacity: 0.9; line-height: 1.5; text-align: left;">
           Helping farmers with crop guidelines and real-time field related decision making.
         </div>
       </div>
 
       <svg class="cluster-svg" viewBox="0 0 1000 1000" preserveAspectRatio="none">
         <defs>
-          <marker id="arrow3" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <marker id="arrow3" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6"
+            orient="auto-start-reverse">
             <path d="M 0 1 L 8 5 L 0 9 z" fill="#eab683" />
           </marker>
         </defs>
@@ -704,23 +742,36 @@
       </svg>
 
       <!-- Background Field Icons -->
-      <div class="floating-leaf" style="width: 35px; height: 35px; top: 25%; left: 5%; animation-delay: 0.5s; color: var(--brand-green); opacity: 0.2;"><i class="ph-fill ph-leaf" style="font-size: 35px;"></i></div>
-      <div class="floating-leaf" style="width: 25px; height: 25px; top: 70%; right: 10%; animation-delay: 2s; color: var(--heading-color); opacity: 0.1;"><i class="ph-fill ph-plant" style="font-size: 25px;"></i></div>
-      <div class="floating-leaf" style="width: 40px; height: 40px; top: 15%; right: 25%; animation-delay: 3s; color: var(--accent-orange); opacity: 0.15;"><i class="ph-fill ph-bug" style="font-size: 40px;"></i></div>
+      <div class="floating-leaf"
+        style="width: 35px; height: 35px; top: 25%; left: 5%; animation-delay: 0.5s; color: var(--brand-green); opacity: 0.2;">
+        <i class="ph-fill ph-leaf" style="font-size: 35px;"></i>
+      </div>
+      <div class="floating-leaf"
+        style="width: 25px; height: 25px; top: 70%; right: 10%; animation-delay: 2s; color: var(--heading-color); opacity: 0.1;">
+        <i class="ph-fill ph-plant" style="font-size: 25px;"></i>
+      </div>
+      <div class="floating-leaf"
+        style="width: 40px; height: 40px; top: 15%; right: 25%; animation-delay: 3s; color: var(--accent-orange); opacity: 0.15;">
+        <i class="ph-fill ph-bug" style="font-size: 40px;"></i>
+      </div>
 
       <!-- Character -->
       <div class="character-backdrop"></div>
       <img src="../Images/chris.png" alt="Chris" class="cluster-character" />
 
       <!-- Absolute Floating Cards -->
-      <div class="cluster-card" style="top: 33%; left: 16%; min-width: 250px;">
+      <div class="cluster-card" style="top: 33%; left: 16%; ">
         <div class="card-header" style="margin-bottom: 8px;">
           <h4>We will help you with</h4>
         </div>
-        <ul style="list-style: none; padding: 0; margin: 0; line-height: 1.6; font-size: 0.9rem; color: var(--text-color);">
-          <li style="display: flex; align-items: center; gap: 8px;"><i class="ph-fill ph-leaf" style="color: var(--brand-green); font-size: 1.1rem;"></i> Crop information</li>
-          <li style="display: flex; align-items: center; gap: 8px;"><i class="ph-fill ph-flask" style="color: var(--brand-green); font-size: 1.1rem;"></i> Fertilizer guidance</li>
-          <li style="display: flex; align-items: center; gap: 8px;"><i class="ph-fill ph-steps" style="color: var(--brand-green); font-size: 1.1rem;"></i> Stage by stage advice</li>
+        <ul
+          style="list-style: none; padding: 0; margin: 0; line-height: 1.6; font-size: 0.9rem; color: var(--text-color);">
+          <li style="display: flex; align-items: center; gap: 8px;"><i class="ph-fill ph-leaf"
+              style="color: var(--brand-green); font-size: 1.1rem;"></i> Crop information</li>
+          <li style="display: flex; align-items: center; gap: 8px;"><i class="ph-fill ph-flask"
+              style="color: var(--brand-green); font-size: 1.1rem;"></i> Fertilizer guidance</li>
+          <li style="display: flex; align-items: center; gap: 8px;"><i class="ph-fill ph-steps"
+              style="color: var(--brand-green); font-size: 1.1rem;"></i> Stage by stage advice</li>
         </ul>
       </div>
 
@@ -853,6 +904,578 @@
       <h2>scale and how it looks like</h2>
       <p>the evolution of the characters and their capabilities (josef and marry) + a dream that answer their issues
         above and byond, give a brad context and more holistic solution</p>
+    </div>
+  </section>
+
+  <!-- Slide 13: Nia 2.0 (Evolution) -->
+  <section class="cluster-slide">
+    <div class="landscape-bg"></div>
+    <div class="floor-curve"></div>
+
+    <div class="cluster-container">
+      <div class="cluster-title">
+        <h1 class="info-title">Nia 2.0</h1>
+        <h3 class="info-subtitle">General Support Guide</h3>
+        <div class="info-description"
+          style="font-size: 1.1rem; color: var(--text-color); margin-top: 1rem; opacity: 0.9; line-height: 1.5; text-align: left;">
+          here to help farmers get general information about OAF, solve issues and stay on track
+        </div>
+      </div>
+
+      <svg class="cluster-svg" viewBox="0 0 1000 1000" preserveAspectRatio="none">
+        <defs>
+          <marker id="arrow_nia2" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6"
+            orient="auto-start-reverse">
+            <path d="M 0 1 L 8 5 L 0 9 z" fill="#eab683" />
+          </marker>
+        </defs>
+        <path d="M 450 380 L 360 380" marker-end="url(#arrow_nia2)" />
+        <path d="M 450 680 L 360 680" marker-end="url(#arrow_nia2)" />
+        <path d="M 550 300 L 640 300" marker-end="url(#arrow_nia2)" />
+        <path d="M 550 500 L 640 500" marker-end="url(#arrow_nia2)" />
+        <path d="M 550 750 L 640 750" marker-end="url(#arrow_nia2)" />
+        <!-- Top Center -->
+        <path d="M 500 300 L 500 180" marker-end="url(#arrow_nia2)" />
+        <!-- Bottom Center -->
+        <path d="M 500 700 L 500 820" marker-end="url(#arrow_nia2)" />
+      </svg>
+
+      <div class="floating-leaf" style="width: 30px; height: 30px; top: 30%; left: 35%; animation-delay: 0s;"></div>
+      <div class="floating-leaf" style="width: 20px; height: 20px; top: 60%; right: 30%; animation-delay: 1.5s;"></div>
+      <div class="floating-leaf"
+        style="width: 40px; height: 40px; top: 15%; right: 20%; animation-delay: 3s; border-radius: 0 50% 0 50%; opacity: 0.1;">
+      </div>
+
+      <!-- Character -->
+      <div class="character-backdrop"></div>
+      <img src="../Images/nia.png" alt="Nia" class="cluster-character" />
+
+      <!-- Absolute Floating Cards -->
+      <!-- Top Center Left -->
+      <div class="cluster-card" style="top: 12%; left: 28%;  z-index: 25;">
+        <div class="card-header">
+          <div class="card-icon"><i class="ph-fill ph-clipboard-text"></i></div>
+          <h4>Adoption Checks</h4>
+        </div>
+        <p>Proactively checking training understanding.</p>
+      </div>
+
+      <!-- Bottom Center Left -->
+      <div class="cluster-card" style="top: 75%; left: 15%;  z-index: 25;">
+        <div class="card-header">
+          <div class="card-icon"><i class="ph-fill ph-chart-bar"></i></div>
+          <h4>Farmer Surveys</h4>
+        </div>
+        <p>Collecting fast feedback directly from the field.</p>
+      </div>
+
+      <div class="cluster-card" style="top: 22%; left: 2%;  z-index: 25;">
+        <div class="card-header" style="margin-bottom: 8px;">
+          <h4>We will help you with</h4>
+        </div>
+        <ul
+          style="list-style: none; padding: 0; margin: 0; line-height: 1.6; font-size: 0.9rem; color: var(--text-color);">
+          <li style="display: flex; align-items: center; gap: 8px;"><i class="ph-fill ph-question"
+              style="color: var(--brand-green); font-size: 1.1rem;"></i> General questions</li>
+          <li style="display: flex; align-items: center; gap: 8px;"><i class="ph-fill ph-info"
+              style="color: var(--brand-green); font-size: 1.1rem;"></i> Program information</li>
+          <li style="display: flex; align-items: center; gap: 8px;"><i class="ph-fill ph-users"
+              style="color: var(--brand-green); font-size: 1.1rem;"></i> Routing farmers to the right support channel
+          </li>
+          <li style="display: flex; align-items: center; gap: 8px;"><i class="ph-fill ph-warning"
+              style="color: var(--brand-green); font-size: 1.1rem;"></i> Escalating issues to a human representative
+          </li>
+        </ul>
+      </div>
+
+      <div class="cluster-card" style="top: 50%; left: 4%;">
+        <div class="card-header">
+          <div class="card-icon"><i class="ph-fill ph-phone"></i></div>
+          <h4>Call support</h4>
+        </div>
+        <p>24/7 support in kinyarwanda</p>
+      </div>
+
+      <div class="cluster-card" style="top: 22%; right: 6%;">
+        <div class="card-header">
+          <div class="card-icon" style="position: relative;">
+            <i class="ph-fill ph-chat-teardrop-text"></i>
+            <span
+              style="position: absolute; bottom: 0px; right: -2px; width: 12px; height: 12px; background: #3b8842; border: 2px solid white; border-radius: 50%;"></span>
+          </div>
+          <h4>Chat with Nia</h4>
+        </div>
+        <p>Get help in real time.</p>
+      </div>
+
+      <div class="cluster-card" style="top: 48%; right: 2%; ">
+        <div class="card-header">
+          <div class="card-icon"><i class="ph-fill ph-calendar"></i></div>
+          <h4>Reminders</h4>
+        </div>
+        <ul
+          style="list-style: disc; margin-left: 20px; padding: 0; font-size: 0.9rem; color: var(--text-color); margin-top: 5px;">
+          <li>Proactive training reminders</li>
+          <li>Follow-up reminders</li>
+          <li>Important updates</li>
+        </ul>
+      </div>
+
+      <div class="cluster-card" style="top: 76%; right: 10%; ">
+        <div class="card-header">
+          <div class="card-icon"><i class="ph-fill ph-user-focus"></i></div>
+          <h4>Escalating to a human</h4>
+        </div>
+        <ul
+          style="list-style: disc; margin-left: 20px; padding: 0; font-size: 0.9rem; color: var(--text-color); margin-top: 5px;">
+          <li>The farmer is angry or confused</li>
+          <li>The farmer reports a serious crop problem</li>
+          <li>The farmer asks something not in the approved content</li>
+          <li>The farmer needs human confirmation</li>
+        </ul>
+      </div>
+
+      <!-- Logo Lockup -->
+      <div class="logo-lockup">
+        <span class="oaf">ONE ACRE FUND</span>
+        <div class="divider"></div>
+        <span>iNua</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Slide 14: Chris 2.0 (Evolution) -->
+  <section class="cluster-slide">
+    <div class="landscape-bg"></div>
+    <div class="floor-curve"></div>
+
+    <div class="cluster-container">
+      <div class="cluster-title" style="max-width: 600px;">
+        <h1 class="info-title">Chris 2.0</h1>
+        <h3 class="info-subtitle">Future Crop Coach</h3>
+        <div class="info-description"
+          style="font-size: 1.1rem; color: var(--text-color); margin-top: 1rem; opacity: 0.9; line-height: 1.5; text-align: left;">
+          Chris will become the first point of support for farmers when a field officer is not nearby. Farmers can ask
+          questions in their local language and receive practical, approved guidance based on the crop, season, and
+          program content.
+        </div>
+      </div>
+
+      <svg class="cluster-svg" viewBox="0 0 1000 1000" preserveAspectRatio="none">
+        <defs>
+          <marker id="arrow4" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6"
+            orient="auto-start-reverse">
+            <path d="M 0 1 L 8 5 L 0 9 z" fill="#eab683" />
+          </marker>
+        </defs>
+        <!-- Top Left -->
+        <path d="M 450 380 L 340 380" marker-end="url(#arrow4)" />
+        <!-- Bottom Left -->
+        <path d="M 450 680 L 340 680" marker-end="url(#arrow4)" />
+        <!-- Top Right -->
+        <path d="M 550 250 L 640 250" marker-end="url(#arrow4)" />
+        <!-- Middle Right -->
+        <path d="M 550 500 L 640 500" marker-end="url(#arrow4)" />
+        <!-- Bottom Right -->
+        <path d="M 550 750 L 640 750" marker-end="url(#arrow4)" />
+      </svg>
+
+      <!-- Background Field Icons -->
+      <div class="floating-leaf"
+        style="width: 35px; height: 35px; top: 25%; left: 5%; animation-delay: 0.5s; color: var(--brand-green); opacity: 0.2;">
+        <i class="ph-fill ph-leaf" style="font-size: 35px;"></i>
+      </div>
+      <div class="floating-leaf"
+        style="width: 25px; height: 25px; top: 70%; right: 10%; animation-delay: 2s; color: var(--heading-color); opacity: 0.1;">
+        <i class="ph-fill ph-plant" style="font-size: 25px;"></i>
+      </div>
+      <div class="floating-leaf"
+        style="width: 40px; height: 40px; top: 15%; right: 25%; animation-delay: 3s; color: var(--accent-orange); opacity: 0.15;">
+        <i class="ph-fill ph-bug" style="font-size: 40px;"></i>
+      </div>
+
+      <!-- Character -->
+      <div class="character-backdrop"></div>
+      <img src="../Images/chris.png" alt="Chris" class="cluster-character" />
+
+      <!-- Absolute Floating Cards -->
+      <!-- Box 1: We will help you with (Top Left) -->
+      <div class="cluster-card" style="top: 35%; left: 1%;  z-index: 25;">
+        <div class="card-header" style="margin-bottom: 8px;">
+          <h4>What it helps with</h4>
+        </div>
+        <ul
+          style="display: grid; grid-template-columns: 1fr 1fr; gap: 6px; list-style: none; padding: 0; margin: 0; line-height: 1.4; font-size: 0.85rem; color: var(--text-color);">
+          <li style="display: flex; align-items: center; gap: 6px;"><i class="ph-fill ph-check-circle"
+              style="color: var(--brand-green);"></i> Crop questions</li>
+          <li style="display: flex; align-items: center; gap: 6px;"><i class="ph-fill ph-check-circle"
+              style="color: var(--brand-green);"></i> Weather reminders</li>
+          <li style="display: flex; align-items: center; gap: 6px;"><i class="ph-fill ph-check-circle"
+              style="color: var(--brand-green);"></i> Planting & harvest</li>
+          <li style="display: flex; align-items: center; gap: 6px;"><i class="ph-fill ph-check-circle"
+              style="color: var(--brand-green);"></i> Input usage</li>
+          <li style="display: flex; align-items: center; gap: 6px;"><i class="ph-fill ph-check-circle"
+              style="color: var(--brand-green);"></i> Training reinforcement</li>
+          <li style="display: flex; align-items: center; gap: 6px;"><i class="ph-fill ph-check-circle"
+              style="color: var(--brand-green);"></i> Troubleshooting</li>
+          <li style="display: flex; align-items: center; gap: 6px;"><i class="ph-fill ph-check-circle"
+              style="color: var(--brand-green);"></i> Follow-up visits</li>
+          <li style="display: flex; align-items: center; gap: 6px;"><i class="ph-fill ph-check-circle"
+              style="color: var(--brand-green);"></i> Fertilizer guidance</li>
+          <li style="display: flex; align-items: center; gap: 6px;"><i class="ph-fill ph-check-circle"
+              style="color: var(--brand-green);"></i> Stage by stage advice</li>
+          <li style="display: flex; align-items: center; gap: 6px;"><i class="ph-fill ph-check-circle"
+              style="color: var(--brand-green);"></i> Soil & spacing recs</li>
+          <li style="display: flex; align-items: center; gap: 6px;"><i class="ph-fill ph-check-circle"
+              style="color: var(--brand-green);"></i> Post-harvest practices</li>
+          <li style="display: flex; align-items: center; gap: 6px;"><i class="ph-fill ph-check-circle"
+              style="color: var(--brand-green);"></i> Weed control</li>
+        </ul>
+      </div>
+
+      <!-- Box 2: Fertilizer Guidance (Bottom Left) -->
+      <div class="cluster-card" style="top: 78%; left: 22%;">
+        <div class="card-header">
+          <div class="card-icon"><i class="ph-fill ph-flask"></i></div>
+          <h4>Fertilizer Guidance</h4>
+        </div>
+        <p>What to apply, at what stage of the grow cycle, for better results.</p>
+      </div>
+
+      <!-- Box 3: Field Tips (Top Right) -->
+      <div class="cluster-card" style="top: 15%; right: 8%;">
+        <div class="card-header">
+          <div class="card-icon"><i class="ph-fill ph-ruler"></i></div>
+          <h4>Field Tips</h4>
+        </div>
+        <p>Keep spacing consistent for stronger crop growth.</p>
+      </div>
+
+      <!-- Box 4: Crop Health (Middle Right) -->
+      <div class="cluster-card" style="top: 45%; right: 2%;">
+        <div class="card-header">
+          <div class="card-icon"><i class="ph-fill ph-stethoscope"></i></div>
+          <h4>Crop Health Check</h4>
+        </div>
+        <p>Yellow leaves in maize? Let's identify the cause.</p>
+      </div>
+
+      <!-- Box 5: Pest Control (Bottom Right) -->
+      <div class="cluster-card" style="top: 75%; right: 8%;">
+        <div class="card-header">
+          <div class="card-icon"><i class="ph-fill ph-bug"></i></div>
+          <h4>Pest Control</h4>
+        </div>
+        <p>Identify and manage pests safely and effectively.</p>
+      </div>
+
+      <!-- Logo Lockup -->
+      <div class="logo-lockup">
+        <span class="oaf">ONE ACRE FUND</span>
+        <div class="divider"></div>
+        <span>iNua</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Slide 15: iNua (Field Analytics Manager) -->
+  <section class="cluster-slide">
+    <div class="landscape-bg"></div>
+    <div class="floor-curve"></div>
+
+    <div class="cluster-container">
+      <div class="cluster-title" style="max-width: 600px;">
+        <h1 class="info-title" style="color: var(--accent-orange);">iNua</h1>
+        <h3 class="info-subtitle">Field Analytics & Insights Manager</h3>
+        <div class="info-description"
+          style="font-size: 1.1rem; color: var(--text-color); margin-top: 1rem; opacity: 0.9; line-height: 1.5; text-align: left;">
+          Empowering OAF leadership by turning thousands of farmer conversations into actionable insights, driving
+          regional strategy and guiding field interventions.
+        </div>
+      </div>
+
+      <svg class="cluster-svg" viewBox="0 0 1000 1000" preserveAspectRatio="none">
+        <defs>
+          <marker id="arrow_inua" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6"
+            orient="auto-start-reverse">
+            <path d="M 0 1 L 8 5 L 0 9 z" fill="#eab683" />
+          </marker>
+        </defs>
+        <!-- 6 connecting lines -->
+        <path d="M 450 240 L 360 240" marker-end="url(#arrow_inua)" />
+        <path d="M 450 540 L 360 540" marker-end="url(#arrow_inua)" />
+        <path d="M 450 840 L 360 840" marker-end="url(#arrow_inua)" />
+        <path d="M 550 240 L 640 240" marker-end="url(#arrow_inua)" />
+        <path d="M 550 540 L 640 540" marker-end="url(#arrow_inua)" />
+        <path d="M 550 840 L 640 840" marker-end="url(#arrow_inua)" />
+      </svg>
+
+      <!-- Background Icons -->
+      <div class="floating-leaf"
+        style="width: 35px; height: 35px; top: 25%; left: 5%; animation-delay: 0.5s; color: var(--accent-orange); opacity: 0.2;">
+        <i class="ph-fill ph-chart-line-up" style="font-size: 35px;"></i>
+      </div>
+      <div class="floating-leaf"
+        style="width: 25px; height: 25px; top: 70%; right: 10%; animation-delay: 2s; color: var(--brand-green); opacity: 0.2;">
+        <i class="ph-fill ph-map-pin" style="font-size: 25px;"></i>
+      </div>
+      <div class="floating-leaf"
+        style="width: 40px; height: 40px; top: 15%; right: 25%; animation-delay: 3s; color: var(--heading-color); opacity: 0.15;">
+        <i class="ph-fill ph-trend-up" style="font-size: 40px;"></i>
+      </div>
+
+      <!-- Character -->
+      <div class="character-backdrop"></div>
+      <img src="../Images/inua_character.png" alt="iNua" class="cluster-character" />
+
+      <!-- Left 1: Issue Triage -->
+      <div class="cluster-card" style="top: 36%; left: 2%; ">
+        <div class="card-header">
+          <div class="card-icon"><i class="ph-fill ph-warning-circle"></i></div>
+          <h4>Issue Triage & Alerts</h4>
+        </div>
+        <ul
+          style="list-style: disc; margin-left: 20px; padding: 0; font-size: 0.9rem; color: var(--text-color); margin-top: 5px;">
+          <li>Farmer issue summaries</li>
+          <li>Urgent issue alerts</li>
+          <li>Farmer segmentation</li>
+        </ul>
+      </div>
+
+      <!-- Left 2: Adoption Tracking -->
+      <div class="cluster-card" style="top: 60%; left: 8%; ">
+        <div class="card-header">
+          <div class="card-icon"><i class="ph-fill ph-check-square"></i></div>
+          <h4>Adoption Tracking</h4>
+        </div>
+        <ul
+          style="list-style: disc; margin-left: 20px; padding: 0; font-size: 0.9rem; color: var(--text-color); margin-top: 5px;">
+          <li>Catching missed signals</li>
+          <li>Identifying training gaps</li>
+          <li>Revealing adoption barriers</li>
+        </ul>
+      </div>
+
+      <!-- Left 3: Farmer Sentiment -->
+      <div class="cluster-card" style="top: 78%; left: 18%; min-width: 260px;">
+        <div class="card-header">
+          <div class="card-icon"><i class="ph-fill ph-smiley"></i></div>
+          <h4>Farmer Sentiment</h4>
+        </div>
+        <p>Real-time pulse on farmer satisfaction and feedback.</p>
+      </div>
+
+      <!-- Right 1: Regional Analytics -->
+      <div class="cluster-card" style="top: 20%; right: 6%; ">
+        <div class="card-header">
+          <div class="card-icon"><i class="ph-fill ph-map-trifold"></i></div>
+          <h4>Regional Analytics</h4>
+        </div>
+        <ul
+          style="list-style: disc; margin-left: 20px; padding: 0; font-size: 0.9rem; color: var(--text-color); margin-top: 5px;">
+          <li>Regional issue patterns</li>
+          <li>Geographic risk signals</li>
+        </ul>
+      </div>
+
+      <!-- Right 2: Field Prioritization -->
+      <div class="cluster-card" style="top: 50%; right: 2%; ">
+        <div class="card-header">
+          <div class="card-icon"><i class="ph-fill ph-users-three"></i></div>
+          <h4>Field Prioritization</h4>
+        </div>
+        <p>AI-driven guidance directing field officers to where they are needed most.</p>
+      </div>
+
+      <!-- Right 3: Seasonal Risks -->
+      <div class="cluster-card" style="top: 75%; right: 10%; ">
+        <div class="card-header">
+          <div class="card-icon"><i class="ph-fill ph-warning"></i></div>
+          <h4>Seasonal Risks</h4>
+        </div>
+        <p>Early warnings for weather or pest risks based on aggregate farmer data.</p>
+      </div>
+
+      <!-- Logo Lockup -->
+      <div class="logo-lockup">
+        <span class="oaf">ONE ACRE FUND</span>
+        <div class="divider"></div>
+        <span>iNua</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Slide 16: Nuru 2.0 (Predictive & Seasonal Advisor) -->
+  <section class="cluster-slide">
+    <div class="landscape-bg"></div>
+    <div class="floor-curve"></div>
+
+    <div class="cluster-container">
+      <div class="cluster-title" style="max-width: 600px;">
+        <h1 class="info-title">Nuru 2.0</h1>
+        <h3 class="info-subtitle">Predictive Risk & Seasonal Advisor</h3>
+        <div class="info-description"
+          style="font-size: 1.1rem; color: var(--text-color); margin-top: 1rem; opacity: 0.9; line-height: 1.5; text-align: left;">
+          Evolving from static weather reports to proactive risk prediction and dynamic seasonal planning.
+        </div>
+      </div>
+
+      <svg class="cluster-svg" viewBox="0 0 1000 1000" preserveAspectRatio="none">
+        <defs>
+          <marker id="arrow_nuru2" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6"
+            orient="auto-start-reverse">
+            <path d="M 0 1 L 8 5 L 0 9 z" fill="#eab683" />
+          </marker>
+        </defs>
+        <path d="M 450 300 L 360 300" marker-end="url(#arrow_nuru2)" />
+        <path d="M 450 700 L 360 700" marker-end="url(#arrow_nuru2)" />
+        <path d="M 550 300 L 640 300" marker-end="url(#arrow_nuru2)" />
+        <path d="M 550 700 L 640 700" marker-end="url(#arrow_nuru2)" />
+      </svg>
+
+      <!-- Background Icons -->
+      <div class="floating-leaf"
+        style="width: 35px; height: 35px; top: 25%; left: 5%; animation-delay: 0.5s; color: var(--accent-orange); opacity: 0.2;">
+        <i class="ph-fill ph-cloud-lightning" style="font-size: 35px;"></i>
+      </div>
+      <div class="floating-leaf"
+        style="width: 25px; height: 25px; top: 70%; right: 10%; animation-delay: 2s; color: var(--brand-green); opacity: 0.2;">
+        <i class="ph-fill ph-calendar" style="font-size: 25px;"></i>
+      </div>
+
+      <!-- Character -->
+      <div class="character-backdrop"></div>
+      <img src="../Images/nuru.png" alt="Nuru 2.0" class="cluster-character" />
+
+      <!-- Top Left: Risk Modeling -->
+      <div class="cluster-card" style="top: 40%; left: 4%; ">
+        <div class="card-header">
+          <div class="card-icon"><i class="ph-fill ph-shield-warning"></i></div>
+          <h4>Predictive Risk Modeling</h4>
+        </div>
+        <ul
+          style="list-style: disc; margin-left: 20px; padding: 0; font-size: 0.9rem; color: var(--text-color); margin-top: 5px;">
+          <li>Weather & Crop stage data</li>
+          <li>Historical data integration</li>
+          <li>Pest models</li>
+        </ul>
+      </div>
+
+      <!-- Bottom Left: Risk Quote -->
+      <div class="cluster-card" style="top: 70%; left: 12%;  border-left: 4px solid var(--accent-orange);">
+        <div class="card-header">
+          <div class="card-icon"><i class="ph-fill ph-quotes"></i></div>
+          <h4>Proactive Alert</h4>
+        </div>
+        <p style="font-style: italic;">"Based on recent rainfall and temperature, there is increased risk of fall
+          armyworm activity in your area. Inspect maize fields this week."</p>
+      </div>
+
+      <!-- Top Right: Seasonal Planning -->
+      <div class="cluster-card" style="top: 30%; right: 6%; ">
+        <div class="card-header">
+          <div class="card-icon"><i class="ph-fill ph-plant"></i></div>
+          <h4>Seasonal Decision Making</h4>
+        </div>
+        <ul
+          style="list-style: disc; margin-left: 20px; padding: 0; font-size: 0.9rem; color: var(--text-color); margin-top: 5px;">
+          <li>Seasonal outlooks & Planting calendars</li>
+          <li>Water & Labor planning</li>
+          <li>Input planning</li>
+        </ul>
+      </div>
+
+      <!-- Bottom Right: Planning Quote -->
+      <div class="cluster-card" style="top: 65%; right: 10%;  border-left: 4px solid var(--brand-green);">
+        <div class="card-header">
+          <div class="card-icon"><i class="ph-fill ph-quotes"></i></div>
+          <h4>Smart Planning Alert</h4>
+        </div>
+        <p style="font-style: italic;">"Based on expected rainfall patterns in your district, the optimal planting
+          window is between 12 and 18 March."</p>
+      </div>
+
+      <div class="logo-lockup">
+        <span class="oaf">ONE ACRE FUND</span>
+        <div class="divider"></div>
+        <span>iNua</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Slide 17: Nuru 3.0 (Climate Resilience Coach) -->
+  <section class="cluster-slide">
+    <div class="landscape-bg" style="filter: hue-rotate(30deg);"></div>
+    <div class="floor-curve"></div>
+
+    <div class="cluster-container">
+      <div class="cluster-title" style="max-width: 600px;">
+        <h1 class="info-title" style="color: var(--brand-green);">Nuru 3.0</h1>
+        <h3 class="info-subtitle">Climate Resilience Coach</h3>
+        <div class="info-description"
+          style="font-size: 1.1rem; color: var(--text-color); margin-top: 1rem; opacity: 0.9; line-height: 1.5; text-align: left;">
+          The ultimate vision: guiding farmers through long-term climate adaptation and global changes over decades.
+        </div>
+      </div>
+
+      <svg class="cluster-svg" viewBox="0 0 1000 1000" preserveAspectRatio="none">
+        <defs>
+          <marker id="arrow_nuru3" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6"
+            orient="auto-start-reverse">
+            <path d="M 0 1 L 8 5 L 0 9 z" fill="#eab683" />
+          </marker>
+        </defs>
+        <path d="M 450 350 L 360 350" marker-end="url(#arrow_nuru3)" />
+        <path d="M 550 350 L 640 350" marker-end="url(#arrow_nuru3)" />
+        <path d="M 500 680 L 500 760" marker-end="url(#arrow_nuru3)" />
+      </svg>
+
+      <!-- Character -->
+      <div class="character-backdrop"></div>
+      <img src="../Images/nuru.png" alt="Nuru 3.0" class="cluster-character" style="transform: translateX(-50%) scale(1.05);" />
+
+      <!-- Top Left: Climate Adaptation -->
+      <div class="cluster-card" style="top: 35%; left: 4%; ">
+        <div class="card-header">
+          <div class="card-icon"><i class="ph-fill ph-drop"></i></div>
+          <h4>Climate Adaptation</h4>
+        </div>
+        <ul
+          style="list-style: disc; margin-left: 20px; padding: 0; font-size: 0.9rem; color: var(--text-color); margin-top: 5px;">
+          <li>Drought resilience recommendations</li>
+          <li>Crop diversification suggestions</li>
+          <li>Water management guidance</li>
+        </ul>
+      </div>
+
+      <!-- Top Right: Education & Trends -->
+      <div class="cluster-card" style="top: 25%; right: 10%; ">
+        <div class="card-header">
+          <div class="card-icon"><i class="ph-fill ph-trend-up"></i></div>
+          <h4>Education & Trends</h4>
+        </div>
+        <ul
+          style="list-style: disc; margin-left: 20px; padding: 0; font-size: 0.9rem; color: var(--text-color); margin-top: 5px;">
+          <li>Climate adaptation education</li>
+          <li>Long-term risk trends tracking</li>
+        </ul>
+      </div>
+
+      <!-- Bottom Center: Visionary Quote -->
+      <div class="cluster-card" style="top: 70%; right: 8%; max-width: 500px; text-align: center; border-top: 4px solid var(--brand-green);">
+        <div class="card-header" style="justify-content: center;">
+          <div class="card-icon"><i class="ph-fill ph-quotes"></i></div>
+          <h4>Visionary Alert</h4>
+        </div>
+        <p style="font-style: italic; font-size: 1.05rem;">"Rainfall patterns in your area have changed over the last
+          three seasons. Consider earlier planting and drought-tolerant seed varieties."</p>
+      </div>
+
+      <div class="logo-lockup">
+        <span class="oaf">ONE ACRE FUND</span>
+        <div class="divider"></div>
+        <span>iNua</span>
+      </div>
     </div>
   </section>
 
