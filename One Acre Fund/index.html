@@ -396,6 +396,113 @@
       }
     }
 
+    /* TEAM SLIDE STYLES */
+    .team-slide .cluster-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+    }
+    .team-title {
+      text-align: center;
+      margin-top: 4vh;
+      z-index: 10;
+    }
+    .team-title h1 {
+      font-size: 3.5rem;
+      color: var(--brand-green);
+      margin-bottom: 0.5rem;
+    }
+    .team-title p {
+      font-size: 1.1rem;
+      color: var(--text-color);
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .team-lineup {
+      position: absolute;
+      bottom: 12%;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+    }
+    .team-member {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 180px;
+      margin: 0 -30px;
+    }
+    .team-member img {
+      width: 100%;
+      height: 48vh;
+      object-fit: cover;
+      object-position: top center;
+      mix-blend-mode: multiply;
+      filter: brightness(1.06) contrast(1.1);
+      transition: transform 0.3s ease;
+    }
+    .team-member:hover img {
+      transform: scale(1.05) translateY(-8px);
+    }
+    .team-name-tag {
+      background: rgba(255,255,255,0.95);
+      border: 1px solid rgba(0,0,0,0.05);
+      border-radius: 12px;
+      padding: 10px 15px;
+      text-align: center;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+      margin-top: -15px;
+      z-index: 10;
+      min-width: 140px;
+    }
+    .team-name-tag h4 {
+      color: var(--brand-green);
+      font-size: 1.1rem !important;
+      margin: 0 0 5px 0 !important;
+      font-weight: 700;
+    }
+    .team-name-tag p {
+      font-size: 0.75rem !important;
+      color: var(--text-color);
+      margin: 0;
+      line-height: 1.2;
+    }
+    .team-glass-box {
+      position: absolute;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.5);
+      border-radius: 16px;
+      padding: 12px 15px;
+      width: 200px;
+      box-shadow: 0 15px 35px rgba(140, 65, 21, 0.08);
+      z-index: 15;
+    }
+    .team-glass-box h4 {
+      color: var(--heading-color);
+      font-size: 0.9rem !important;
+      margin-bottom: 5px !important;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .team-glass-box h4 i {
+      color: var(--accent-orange);
+      font-size: 1.1rem;
+    }
+    .team-glass-box p {
+      font-size: 0.7rem !important;
+      color: var(--text-color);
+      margin: 0 !important;
+      line-height: 1.3 !important;
+    }
+
+
     @media (max-width: 1024px) {
       .cluster-card {
         position: relative;
@@ -478,12 +585,113 @@
     </div>
   </section>
 
-  <!-- Slide 6 -->
-  <section>
-    <div class="content-container">
-      <h2>our suggested Solution</h2>
-      <div class="visual-placeholder">
-        [ we need to insert a visual here for all the agents and how each of them is helping farmers in their teritory ]
+  <!-- Slide 6: Team Layout -->
+  <section class="team-slide" style="position: relative; height: 100vh; overflow: hidden;">
+    <div class="landscape-bg"></div>
+    <div class="floor-curve"></div>
+
+    <div class="cluster-container" style="height: 100vh; width: 100vw; position: absolute; top: 0; left: 0;">
+      <div class="team-title">
+        <h1>Meet the iNua Farmer Support Team</h1>
+        <p>General support, weather guidance, crop advice, financial support, and emergency alerts for every farmer.</p>
+      </div>
+
+      <!-- Floating Boxes -->
+      <div class="team-glass-box" style="top: 25%; left: 8%;">
+        <h4><i class="ph-fill ph-chat-circle-dots"></i> General Support</h4>
+        <p>Get answers, solve issues, and stay on track.</p>
+      </div>
+
+      <div class="team-glass-box" style="top: 20%; left: 30%;">
+        <h4><i class="ph-fill ph-cloud-rain"></i> Weather Updates</h4>
+        <p>Real-time forecasts and alerts to help you plan ahead.</p>
+      </div>
+
+      <div class="team-glass-box" style="top: 25%; right: 28%;">
+        <h4><i class="ph-fill ph-plant"></i> Crop Advice</h4>
+        <p>Practical guidance for healthier crops and better yields.</p>
+      </div>
+
+      <div class="team-glass-box" style="top: 55%; left: 4%;">
+        <h4><i class="ph-fill ph-wallet"></i> Loan & Repayment</h4>
+        <p>Repayment reminders, loan guidance, and financial advice.</p>
+      </div>
+
+      <div class="team-glass-box" style="top: 55%; right: 25%;">
+        <h4><i class="ph-fill ph-bell-ringing"></i> Emergency Alerts</h4>
+        <p>Fast warnings and urgent guidance when farmers need it most.</p>
+      </div>
+
+      <div class="team-glass-box" style="top: 35%; right: 4%; width: 220px;">
+        <h4><i class="ph-fill ph-users-three"></i> Regional Manager</h4>
+        <p>Aggregating insights and escalating critical field issues.</p>
+      </div>
+
+      <!-- SVG Connectors (Approximate for now) -->
+      <svg class="cluster-svg" viewBox="0 0 1000 1000" preserveAspectRatio="none" style="z-index: 1; pointer-events: none;">
+        <defs>
+          <marker id="arrow_team" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+            <path d="M 0 1 L 8 5 L 0 9 z" fill="#eab683" />
+          </marker>
+        </defs>
+      </svg>
+
+      <!-- The Lineup -->
+      <div class="team-lineup">
+        <!-- Nia -->
+        <div class="team-member">
+          <img src="../Images/nia_v2.png" alt="Nia" />
+          <div class="team-name-tag">
+            <h4>Nia</h4>
+            <p>General Support Guide</p>
+          </div>
+        </div>
+        <!-- Josef -->
+        <div class="team-member">
+          <img src="../Images/josef_v2.png" alt="Josef" />
+          <div class="team-name-tag">
+            <h4>Josef</h4>
+            <p>Loan & Repayment Advisor</p>
+          </div>
+        </div>
+        <!-- Chris -->
+        <div class="team-member">
+          <img src="../Images/chris_v2.png" alt="Chris" />
+          <div class="team-name-tag">
+            <h4>Chris</h4>
+            <p>Crop-Coach</p>
+          </div>
+        </div>
+        <!-- Nuru -->
+        <div class="team-member">
+          <img src="../Images/nuru_v2.png" alt="Nuru" />
+          <div class="team-name-tag">
+            <h4>Nuru</h4>
+            <p>Weather Guide</p>
+          </div>
+        </div>
+        <!-- Marry -->
+        <div class="team-member">
+          <img src="../Images/marry_v2.png" alt="Marry" />
+          <div class="team-name-tag">
+            <h4>Marry</h4>
+            <p>Emergency Alert Advisor</p>
+          </div>
+        </div>
+        <!-- iNua Manager -->
+        <div class="team-member">
+          <img src="../Images/inua_v2.png" alt="iNua" />
+          <div class="team-name-tag">
+            <h4>iNua</h4>
+            <p>Regional Manager</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="logo-lockup">
+        <span class="oaf">ONE ACRE FUND</span>
+        <div class="divider"></div>
+        <span>iNua</span>
       </div>
     </div>
   </section>
@@ -527,7 +735,7 @@
 
       <!-- Character -->
       <div class="character-backdrop"></div>
-      <img src="../Images/nia.png" alt="Nia" class="cluster-character" />
+      <img src="../Images/nia_v2.png" alt="Nia" class="cluster-character" />
 
       <!-- Absolute Floating Cards -->
       <div class="cluster-card" style="top: 33%; left: 16%;">
@@ -632,7 +840,7 @@
 
       <!-- Character -->
       <div class="character-backdrop"></div>
-      <img src="../Images/nuru.png" alt="Nuru" class="cluster-character" />
+      <img src="../Images/nuru_v2.png" alt="Nuru" class="cluster-character" />
 
       <!-- Absolute Floating Cards -->
       <div class="cluster-card" style="top: 33%; left: 16%; ">
@@ -735,7 +943,7 @@
 
       <!-- Character -->
       <div class="character-backdrop"></div>
-      <img src="../Images/chris.png" alt="Chris" class="cluster-character" />
+      <img src="../Images/chris_v2.png" alt="Chris" class="cluster-character" />
 
       <!-- Absolute Floating Cards -->
       <div class="cluster-card" style="top: 33%; left: 16%; ">
@@ -813,7 +1021,7 @@
       <div class="floating-leaf" style="width: 35px; height: 35px; top: 50%; right: 10%; animation-delay: 1.8s;"></div>
 
       <div class="character-backdrop"></div>
-      <img src="../Images/josef.png" alt="Josef" class="cluster-character" />
+      <img src="../Images/josef_v2.png" alt="Josef" class="cluster-character" />
 
       <div class="cluster-card" style="top: 42%; right: 12%;">
         <div class="card-header">
@@ -858,7 +1066,7 @@
         style="width: 30px; height: 30px; top: 60%; left: 5%; animation-delay: 2.2s; opacity: 0.1;"></div>
 
       <div class="character-backdrop"></div>
-      <img src="../Images/marry.png" alt="Marry" class="cluster-character" />
+      <img src="../Images/marry_v2.png" alt="Marry" class="cluster-character" />
 
       <div class="cluster-card" style="top: 42%; left: 12%;">
         <div class="card-header">
@@ -919,7 +1127,7 @@
 
       <!-- Character -->
       <div class="character-backdrop"></div>
-      <img src="../Images/nia.png" alt="Nia 2.0" class="cluster-character" />
+      <img src="../Images/nia_v2.png" alt="Nia 2.0" class="cluster-character" />
 
       <!-- Top Left: Farmer Profile -->
       <div class="cluster-card" style="top: 30%; left: 8%; ">
@@ -1009,7 +1217,7 @@
 
       <!-- Character -->
       <div class="character-backdrop"></div>
-      <img src="../Images/nia.png" alt="Nia 3.0" class="cluster-character"
+      <img src="../Images/nia_v2.png" alt="Nia 3.0" class="cluster-character"
         style="transform: translateX(-50%) scale(1.05);" />
 
       <!-- Top Left: Continuous Engagement -->
@@ -1100,7 +1308,7 @@
 
       <!-- Character -->
       <div class="character-backdrop"></div>
-      <img src="../Images/chris.png" alt="Chris 2.0" class="cluster-character" />
+      <img src="../Images/chris_v2.png" alt="Chris 2.0" class="cluster-character" />
 
       <!-- Top Left: Farm Context -->
       <div class="cluster-card" style="top: 36%; left: 8%;">
@@ -1215,7 +1423,7 @@
       </svg>
 
       <div class="character-backdrop"></div>
-      <img src="../Images/chris.png" alt="Chris 3.0" class="cluster-character"
+      <img src="../Images/chris_v2.png" alt="Chris 3.0" class="cluster-character"
         style="transform: translateX(-50%) scale(1.05);" />
 
       <!-- Top Left: Historical Context -->
@@ -1316,7 +1524,7 @@
 
       <!-- Character -->
       <div class="character-backdrop"></div>
-      <img src="../Images/inua_character.png" alt="iNua" class="cluster-character" />
+      <img src="../Images/inua_v2.png" alt="iNua" class="cluster-character" />
 
       <!-- Left 1: Issue Triage -->
       <div class="cluster-card" style="top: 36%; left: 2%; ">
@@ -1436,7 +1644,7 @@
 
       <!-- Character -->
       <div class="character-backdrop"></div>
-      <img src="../Images/nuru.png" alt="Nuru 2.0" class="cluster-character" />
+      <img src="../Images/nuru_v2.png" alt="Nuru 2.0" class="cluster-character" />
 
       <!-- Top Left: Risk Modeling -->
       <div class="cluster-card" style="top: 40%; left: 4%; ">
@@ -1523,7 +1731,7 @@
 
       <!-- Character -->
       <div class="character-backdrop"></div>
-      <img src="../Images/nuru.png" alt="Nuru 3.0" class="cluster-character"
+      <img src="../Images/nuru_v2.png" alt="Nuru 3.0" class="cluster-character"
         style="transform: translateX(-50%) scale(1.05);" />
 
       <!-- Top Left: Climate Adaptation -->
