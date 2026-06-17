@@ -1162,96 +1162,115 @@
     </div>
   </section>
 
-  <!-- Josef (moved after Scale slide) -->
+  <!-- Split Slide: Josef & Marry -->
   <section class="cluster-slide">
     <div class="landscape-bg"></div>
     <div class="floor-curve"></div>
 
-    <div class="cluster-container">
-      <div class="cluster-title">
-        <h1 class="info-title">Josef</h1>
-        <h3 class="info-subtitle">Loan & Repayment Advisor</h3>
-      </div>
-
-      <svg class="cluster-svg" viewBox="0 0 1000 1000" preserveAspectRatio="none">
-        <defs>
-          <marker id="arrow4" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6"
-            orient="auto-start-reverse">
-            <path d="M 0 1 L 8 5 L 0 9 z" fill="#eab683" />
-          </marker>
-        </defs>
-        <!-- Right -->
-        <path d="M 600 550 L 700 550 L 700 460 L 760 460" marker-end="url(#arrow4)" />
-      </svg>
-
-      <div class="floating-leaf"
-        style="width: 25px; height: 25px; top: 35%; left: 25%; animation-delay: 0.2s; opacity: 0.1;"></div>
-      <div class="floating-leaf" style="width: 35px; height: 35px; top: 50%; right: 10%; animation-delay: 1.8s;"></div>
-
-      <div class="character-backdrop"></div>
-      <img src="../Images/josef_v2.png" alt="Josef" class="cluster-character" />
-
-      <div class="cluster-card" style="top: 42%; right: 12%;">
-        <div class="card-header">
-          <div class="card-icon"><i class="ph-fill ph-coins"></i></div>
-          <h4>Loan & Repayment</h4>
+    <div style="display: flex; width: 100vw; height: 100vh; position: absolute; top: 0; left: 0;">
+      <!-- LEFT HALF: JOSEF -->
+      <div style="flex: 1; position: relative;">
+        <div class="cluster-title" style="max-width: 350px;">
+          <h1 class="info-title">Josef</h1>
+          <h3 class="info-subtitle">Loan & Repayment Advisor</h3>
+          <div class="info-description" style="font-size: 1.1rem; color: var(--text-color); margin-top: 1rem; opacity: 0.9; line-height: 1.5; text-align: center;">
+            Helps farmers understand loans, repayment schedules, reminders, balances, and basic financial planning.
+          </div>
         </div>
-        <p>Repayment reminders, loan guidance, and financial advice.</p>
+
+        <svg class="cluster-svg" viewBox="0 0 1000 1000" preserveAspectRatio="none">
+          <defs>
+            <marker id="arrow_split_l" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+              <path d="M 0 1 L 8 5 L 0 9 z" fill="#eab683" />
+            </marker>
+          </defs>
+          <path d="M 450 330 L 380 330" marker-end="url(#arrow_split_l)" stroke="#d4a574" stroke-width="2.5" fill="none" stroke-dasharray="8 5" opacity="0.65" />
+          <path d="M 450 530 L 410 530" marker-end="url(#arrow_split_l)" stroke="#d4a574" stroke-width="2.5" fill="none" stroke-dasharray="8 5" opacity="0.65" />
+          <path d="M 450 750 L 380 750" marker-end="url(#arrow_split_l)" stroke="#d4a574" stroke-width="2.5" fill="none" stroke-dasharray="8 5" opacity="0.65" />
+        </svg>
+
+        <img src="../Images/josef_v2.png" alt="Josef" class="cluster-character" />
+
+        <div class="cluster-card" style="top: 28%; left: 5%;">
+          <div class="card-header">
+            <div class="card-icon"><i class="ph-fill ph-coins"></i></div>
+            <h4>Loan & Repayment</h4>
+          </div>
+          <p>Repayment reminders and loan guidance.</p>
+        </div>
+
+        <div class="cluster-card" style="top: 49%; left: 10%;">
+          <div class="card-header">
+            <div class="card-icon"><i class="ph-fill ph-chart-bar"></i></div>
+            <h4>Finance Advisor</h4>
+          </div>
+          <p>Basic financial planning.</p>
+        </div>
+
+        <div class="cluster-card" style="top: 70%; left: 5%;">
+          <div class="card-header">
+            <div class="card-icon"><i class="ph-fill ph-piggy-bank"></i></div>
+            <h4>Budgeting Tips</h4>
+          </div>
+          <p>It may help to set aside a small amount after each market sale. This can make repayment easier when the due date comes. I can also remind you before your next repayment date.</p>
+        </div>
+
+        <div class="logo-lockup" style="left: 10%; right: auto; transform: none;">
+          <span class="oaf">ONE ACRE FUND</span>
+          <div class="divider"></div>
+          <span>iNua</span>
+        </div>
       </div>
 
-      <div class="logo-lockup">
-        <span class="oaf">ONE ACRE FUND</span>
-        <div class="divider"></div>
-        <span>iNua</span>
+      <!-- RIGHT HALF: MARRY -->
+      <div style="flex: 1; position: relative;">
+        <div class="cluster-title" style="max-width: 350px;">
+          <h1 class="info-title">Marry</h1>
+          <h3 class="info-subtitle">Emergency Alert Advisor</h3>
+          <div class="info-description" style="font-size: 1.1rem; color: var(--text-color); margin-top: 1rem; opacity: 0.9; line-height: 1.5; text-align: center;">
+            Helps farmers receive timely alerts and know what to do during emergencies.
+          </div>
+        </div>
+
+        <svg class="cluster-svg" viewBox="0 0 1000 1000" preserveAspectRatio="none">
+          <defs>
+            <marker id="arrow_split_r" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+              <path d="M 0 1 L 8 5 L 0 9 z" fill="#eab683" />
+            </marker>
+          </defs>
+          <path d="M 550 330 L 620 330" marker-end="url(#arrow_split_r)" stroke="#d4a574" stroke-width="2.5" fill="none" stroke-dasharray="8 5" opacity="0.65" />
+          <path d="M 550 530 L 590 530" marker-end="url(#arrow_split_r)" stroke="#d4a574" stroke-width="2.5" fill="none" stroke-dasharray="8 5" opacity="0.65" />
+          <path d="M 550 750 L 620 750" marker-end="url(#arrow_split_r)" stroke="#d4a574" stroke-width="2.5" fill="none" stroke-dasharray="8 5" opacity="0.65" />
+        </svg>
+
+        <img src="../Images/marry_v2.png" alt="Marry" class="cluster-character" />
+
+        <div class="cluster-card" style="top: 28%; right: 5%;">
+          <div class="card-header">
+            <div class="card-icon"><i class="ph-fill ph-cloud-warning"></i></div>
+            <h4>Weather & Disease Alerts</h4>
+          </div>
+          <p>Flood, drought, or disease outbreak information sent directly to farmers.</p>
+        </div>
+
+        <div class="cluster-card" style="top: 49%; right: 10%;">
+          <div class="card-header">
+            <div class="card-icon"><i class="ph-fill ph-shield-warning"></i></div>
+            <h4>Immediate Safety Actions</h4>
+          </div>
+          <p>Clear safety instructions and advising farmers on their immediate next steps during crises.</p>
+        </div>
+
+        <div class="cluster-card" style="top: 70%; right: 5%;">
+          <div class="card-header">
+            <div class="card-icon"><i class="ph-fill ph-siren"></i></div>
+            <h4>Urgent Triage & Reporting</h4>
+          </div>
+          <p>Helping managers instantly identify and escalate urgent farmer reports.</p>
+        </div>
       </div>
     </div>
   </section>
-
-  <!-- Marry (moved after Scale slide) -->
-  <section class="cluster-slide">
-    <div class="landscape-bg"></div>
-    <div class="floor-curve"></div>
-
-    <div class="cluster-container">
-      <div class="cluster-title">
-        <h1 class="info-title">Marry</h1>
-        <h3 class="info-subtitle">Emergency Alert Advisor</h3>
-      </div>
-
-      <svg class="cluster-svg" viewBox="0 0 1000 1000" preserveAspectRatio="none">
-        <defs>
-          <marker id="arrow5" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6"
-            orient="auto-start-reverse">
-            <path d="M 0 1 L 8 5 L 0 9 z" fill="#eab683" />
-          </marker>
-        </defs>
-        <!-- Left -->
-        <path d="M 400 550 L 300 550 L 300 460 L 240 460" marker-end="url(#arrow5)" />
-      </svg>
-
-      <div class="floating-leaf" style="width: 30px; height: 30px; top: 20%; right: 20%; animation-delay: 0.8s;"></div>
-      <div class="floating-leaf"
-        style="width: 30px; height: 30px; top: 60%; left: 5%; animation-delay: 2.2s; opacity: 0.1;"></div>
-
-      <div class="character-backdrop"></div>
-      <img src="../Images/marry_v2.png" alt="Marry" class="cluster-character" />
-
-      <div class="cluster-card" style="top: 42%; left: 12%;">
-        <div class="card-header">
-          <div class="card-icon"><i class="ph-fill ph-warning"></i></div>
-          <h4>Emergency Alerts</h4>
-        </div>
-        <p>Fast warnings and urgent guidance when farmers need it most.</p>
-      </div>
-
-      <div class="logo-lockup">
-        <span class="oaf">ONE ACRE FUND</span>
-        <div class="divider"></div>
-        <span>iNua</span>
-      </div>
-    </div>
-  </section>
-
   <!-- Slide 13: Nia 2.0 (Personalized Engagement) -->
   <section class="cluster-slide">
     <div class="landscape-bg"></div>
