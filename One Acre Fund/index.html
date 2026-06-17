@@ -427,7 +427,6 @@
       display: flex;
       justify-content: center;
       align-items: flex-end;
-      z-index: 5;
     }
     .team-member {
       display: flex;
@@ -639,37 +638,37 @@
           </marker>
         </defs>
 
-        <!-- LEFT SIDE: Box → route right → to character body -->
+        <!-- LEFT SIDE: Box right edge → route right → down → right to name tag -->
         
-        <!-- General Support → Nia (body ~530px horizontal, ~420px vertical) -->
-        <polyline points="290,310 410,310 410,420 530,420" 
+        <!-- General Support → Nia -->
+        <polyline points="290,310 400,310 400,780 530,780" 
               stroke="#d4a574" stroke-width="2.5" fill="none" stroke-dasharray="8 5" 
               marker-end="url(#arrowR)" opacity="0.65" />
         
-        <!-- Loan & Repayment → Josef (body ~650px horizontal, ~440px vertical) -->
-        <polyline points="290,480 380,480 380,440 640,440" 
+        <!-- Loan & Repayment → Josef -->
+        <polyline points="290,480 365,480 365,790 640,790" 
               stroke="#d4a574" stroke-width="2.5" fill="none" stroke-dasharray="8 5" 
               marker-end="url(#arrowR)" opacity="0.65" />
         
-        <!-- Crop Advice → Chris (body ~760px horizontal, ~400px vertical) -->
-        <polyline points="290,650 340,650 340,400 750,400" 
+        <!-- Crop Advice → Chris -->
+        <polyline points="290,650 330,650 330,800 750,800" 
               stroke="#d4a574" stroke-width="2.5" fill="none" stroke-dasharray="8 5" 
               marker-end="url(#arrowR)" opacity="0.65" />
 
-        <!-- RIGHT SIDE: Box → route left → to character body -->
+        <!-- RIGHT SIDE: Box left edge → route left → down → left to name tag -->
         
-        <!-- Weather Updates → Nuru (body ~1000px horizontal, ~420px vertical) -->
-        <polyline points="1630,310 1510,310 1510,420 1000,420" 
+        <!-- Weather Updates → Nuru -->
+        <polyline points="1630,310 1520,310 1520,780 1050,780" 
               stroke="#d4a574" stroke-width="2.5" fill="none" stroke-dasharray="8 5" 
               marker-end="url(#arrowL)" opacity="0.65" />
         
-        <!-- Emergency Alerts → Marry (body ~1150px horizontal, ~440px vertical) -->
-        <polyline points="1630,480 1540,480 1540,440 1160,440" 
+        <!-- Emergency Alerts → Marry -->
+        <polyline points="1630,480 1555,480 1555,790 1170,790" 
               stroke="#d4a574" stroke-width="2.5" fill="none" stroke-dasharray="8 5" 
               marker-end="url(#arrowL)" opacity="0.65" />
         
-        <!-- Regional Manager → iNua (body ~1290px horizontal, ~400px vertical) -->
-        <polyline points="1630,650 1580,650 1580,400 1290,400" 
+        <!-- Regional Manager → iNua -->
+        <polyline points="1630,650 1590,650 1590,800 1280,800" 
               stroke="#d4a574" stroke-width="2.5" fill="none" stroke-dasharray="8 5" 
               marker-end="url(#arrowL)" opacity="0.65" />
       </svg>
