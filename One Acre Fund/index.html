@@ -396,6 +396,156 @@
       }
     }
 
+    /* 3-WAY SPLIT SLIDE STYLES */
+    .split-3way-container {
+      display: flex;
+      width: 100vw;
+      height: 100vh;
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 5;
+    }
+    .split-3way-col {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      height: 100%;
+      padding: 5vh 2vw 15vh 2vw;
+      box-sizing: border-box;
+      position: relative;
+      z-index: 10;
+    }
+    .split-3way .cluster-title {
+      position: relative !important;
+      top: auto !important;
+      left: auto !important;
+      max-width: 100% !important;
+      width: 100% !important;
+      text-align: center !important;
+      transform: none !important;
+      margin-bottom: 12px !important;
+    }
+    .split-3way .info-title {
+      font-size: 2.2rem !important;
+      text-align: center !important;
+      margin-bottom: 2px !important;
+      font-weight: 800 !important;
+    }
+    .split-3way .info-subtitle {
+      font-size: 1.05rem !important;
+      text-align: center !important;
+      margin-bottom: 6px !important;
+      color: #6B7280 !important;
+      font-weight: 600 !important;
+    }
+    .split-3way .info-description {
+      font-size: 0.85rem !important;
+      text-align: center !important;
+      margin: 6px auto 0 auto !important;
+      max-width: 90% !important;
+      line-height: 1.4 !important;
+    }
+
+
+    .split-3way-cards-grid {
+      display: grid !important;
+      grid-template-columns: repeat(2, 1fr) !important;
+      gap: 10px !important;
+      width: 100% !important;
+      max-width: 320px !important;
+      margin-top: auto !important; /* Pushes to bottom */
+      margin-bottom: -5vh !important;
+      z-index: 10 !important;
+    }
+    .split-3way-cards-grid.chris-grid {
+      grid-template-columns: repeat(3, 1fr) !important;
+      max-width: 480px !important;
+    }
+    .split-3way .cluster-card {
+      position: relative !important;
+      top: auto !important;
+      left: auto !important;
+      right: auto !important;
+      bottom: auto !important;
+      width: 100% !important;
+      min-width: 0 !important;
+      margin: 0 !important;
+      transform: none !important;
+      box-shadow: 0 8px 16px rgba(140, 65, 21, 0.05) !important;
+      border: 1px solid rgba(255, 255, 255, 0.7) !important;
+      background: rgba(255, 255, 255, 0.9) !important;
+      padding: 8px 10px !important;
+      border-radius: 12px !important;
+      box-sizing: border-box !important;
+      display: flex !important;
+      flex-direction: column !important;
+      gap: 4px !important;
+    }
+    .split-3way .cluster-card:hover {
+      transform: translateY(-4px) scale(1.03) !important;
+      box-shadow: 0 12px 24px rgba(140, 65, 21, 0.1) !important;
+    }
+    .split-3way .cluster-card .card-header {
+      gap: 4px !important;
+      margin-bottom: 2px !important;
+    }
+    .split-3way .cluster-card .card-icon {
+      width: 24px !important;
+      height: 24px !important;
+      font-size: 0.95rem !important;
+      border-radius: 6px !important;
+    }
+    .split-3way .cluster-card h4 {
+      font-size: 0.82rem !important;
+      margin: 0 !important;
+    }
+    .split-3way .cluster-card p,
+    .split-3way .cluster-card ul,
+    .split-3way .cluster-card li {
+      font-size: 0.7rem !important;
+      line-height: 1.25 !important;
+    }
+    .split-3way .cluster-card ul {
+      padding-left: 12px !important;
+      margin: 4px 0 0 0 !important;
+    }
+    .split-3way .cluster-card li {
+      margin-bottom: 4px !important;
+    }
+    .split-3way .character-backdrop {
+      display: none !important;
+    }
+    .split-3way .floor-curve {
+      display: none !important;
+    }
+    .split-3way .cluster-svg {
+      display: none !important;
+    }
+    .split-3way .logo-lockup, .split-3way .floating-leaf {
+      display: none !important;
+    }
+
+    @media (max-width: 1024px) {
+      .split-3way-container {
+        position: relative !important;
+        flex-direction: column !important;
+        height: auto !important;
+        width: 100% !important;
+      }
+      .split-3way-col {
+        height: auto !important;
+        min-height: 100vh !important;
+        width: 100% !important;
+        padding: 40px 20px !important;
+      }
+      .split-3way-cards-grid {
+        max-width: 500px !important;
+      }
+    }
+
     /* TEAM SLIDE STYLES */
     .team-slide .cluster-container {
       display: flex;
@@ -1274,99 +1424,222 @@
       </div>
     </div>
   </section>
-  <!-- Slide 13: Nia 2.0 (Personalized Engagement) -->
-  <section class="cluster-slide">
+  <!-- Split Slide: Nia 2.0, Chris 2.0, Nuru 2.0 -->
+  <section class="cluster-slide split-3way">
     <div class="landscape-bg"></div>
-    <div class="floor-curve"></div>
 
-    <div class="cluster-container">
-      <div class="cluster-title">
-        <h1 class="info-title">Nia 2.0</h1>
-        <h3 class="info-subtitle">Personalized Engagement Guide</h3>
-        <div class="info-description"
-          style="font-size: 1.1rem; color: var(--text-color); margin-top: 1rem; opacity: 0.9; line-height: 1.5; text-align: left;">
-          Shifting from reactive answers to deeply understanding the farmer and following up proactively.
+
+    <div class="split-3way-container">
+      <!-- COLUMN 1: NIA 2.0 -->
+      <div class="split-3way-col">
+        <div class="cluster-title">
+          <h1 class="info-title">Nia 2.0</h1>
+          <h3 class="info-subtitle">Personalized Engagement Guide</h3>
+          <div class="info-description" style="color: var(--text-color); opacity: 0.9;">
+            Shifting from reactive answers to deeply understanding the farmer and following up proactively.
+          </div>
+        </div>
+
+        <img src="../Images/nia_v2.png" alt="Nia 2.0" class="cluster-character" />
+
+        <div class="split-3way-cards-grid">
+          <!-- Farmer Profile Context -->
+          <div class="cluster-card">
+            <div class="card-header">
+              <div class="card-icon"><i class="ph-fill ph-user-list"></i></div>
+              <h4>Farmer Profile</h4>
+            </div>
+            <ul>
+              <li>Farmer name & Village</li>
+              <li>Specific crop grown</li>
+              <li>Previous history</li>
+            </ul>
+          </div>
+
+          <!-- Behavioral Nudges -->
+          <div class="cluster-card">
+            <div class="card-header">
+              <div class="card-icon"><i class="ph-fill ph-bell-ringing"></i></div>
+              <h4>Behavioral Nudges</h4>
+            </div>
+            <p>Gentle reminders to keep farmers on track based on their participation.</p>
+          </div>
+
+          <!-- Training & Adoption -->
+          <div class="cluster-card">
+            <div class="card-header">
+              <div class="card-icon"><i class="ph-fill ph-chalkboard-teacher"></i></div>
+              <h4>Training & Adoption</h4>
+            </div>
+            <ul>
+              <li>Training reinforcement</li>
+              <li>Adoption follow-up</li>
+            </ul>
+          </div>
+
+          <!-- Program History -->
+          <div class="cluster-card">
+            <div class="card-header">
+              <div class="card-icon"><i class="ph-fill ph-clock-counter-clockwise"></i></div>
+              <h4>Program History</h4>
+            </div>
+            <ul>
+              <li>Training completion</li>
+              <li>Historical program data</li>
+            </ul>
+          </div>
         </div>
       </div>
 
-      <svg class="cluster-svg" viewBox="0 0 1000 1000" preserveAspectRatio="none">
-        <defs>
-          <marker id="arrow_nia2" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6"
-            orient="auto-start-reverse">
-            <path d="M 0 1 L 8 5 L 0 9 z" fill="#eab683" />
-          </marker>
-        </defs>
-        <path d="M 450 350 L 360 350" marker-end="url(#arrow_nia2)" />
-        <path d="M 450 650 L 360 650" marker-end="url(#arrow_nia2)" />
-        <path d="M 550 350 L 640 350" marker-end="url(#arrow_nia2)" />
-        <path d="M 550 650 L 640 650" marker-end="url(#arrow_nia2)" />
-      </svg>
+      <!-- DIVIDER 1 -->
+      <div style="width: 2px; height: 75%; position: absolute; left: 33.33%; top: 12.5%; background: linear-gradient(to bottom, transparent, rgba(140, 65, 21, 0.4), transparent); z-index: 20;"></div>
 
-      <!-- Floating leaves -->
-      <div class="floating-leaf" style="width: 30px; height: 30px; top: 30%; left: 35%; animation-delay: 0s;"></div>
-      <div class="floating-leaf" style="width: 20px; height: 20px; top: 60%; right: 30%; animation-delay: 1.5s;"></div>
-
-      <!-- Character -->
-      <div class="character-backdrop"></div>
-      <img src="../Images/nia_v2.png" alt="Nia 2.0" class="cluster-character" />
-
-      <!-- Top Left: Farmer Profile -->
-      <div class="cluster-card" style="top: 30%; left: 8%; ">
-        <div class="card-header">
-          <div class="card-icon"><i class="ph-fill ph-user-list"></i></div>
-          <h4>Farmer Profile Context</h4>
+      <!-- COLUMN 2: CHRIS 2.0 -->
+      <div class="split-3way-col chris-col">
+        <div class="cluster-title">
+          <h1 class="info-title">Chris 2.0</h1>
+          <h3 class="info-subtitle">Precision Agronomy Coach</h3>
+          <div class="info-description" style="color: var(--text-color); opacity: 0.9;">
+            Shifting from generic tips to highly personalized, context-aware farming advice.
+          </div>
         </div>
-        <ul
-          style="list-style: disc; margin-left: 20px; padding: 0; font-size: 0.9rem; color: var(--text-color); margin-top: 5px;">
-          <li>Farmer name & Village</li>
-          <li>Specific crop grown</li>
-          <li>Previous interactions</li>
-        </ul>
+
+        <img src="../Images/chris_v2.png" alt="Chris 2.0" class="cluster-character" />
+
+        <div class="split-3way-cards-grid chris-grid">
+          <!-- Farm Context -->
+          <div class="cluster-card">
+            <div class="card-header">
+              <div class="card-icon"><i class="ph-fill ph-map-pin"></i></div>
+              <h4>Holistic Context</h4>
+            </div>
+            <ul>
+              <li>Crop type & Stage</li>
+              <li>Weather & Location</li>
+              <li>Soil info</li>
+            </ul>
+          </div>
+
+          <!-- Crop Health -->
+          <div class="cluster-card">
+            <div class="card-header">
+              <div class="card-icon"><i class="ph-fill ph-stethoscope"></i></div>
+              <h4>Crop Health</h4>
+            </div>
+            <ul>
+              <li>Deficiency detection</li>
+              <li>Yield risk detection</li>
+            </ul>
+          </div>
+
+          <!-- Ongoing Support -->
+          <div class="cluster-card">
+            <div class="card-header">
+              <div class="card-icon"><i class="ph-fill ph-lifebuoy"></i></div>
+              <h4>Ongoing Support</h4>
+            </div>
+            <ul>
+              <li>Troubleshooting issues</li>
+              <li>Proactive follow-ups</li>
+            </ul>
+          </div>
+
+          <!-- Ground Alerts -->
+          <div class="cluster-card">
+            <div class="card-header">
+              <div class="card-icon"><i class="ph-fill ph-bug"></i></div>
+              <h4>Pests Alerts</h4>
+            </div>
+            <p style="font-style: italic;">"Armyworm reports nearby. Inspect fields this week."</p>
+          </div>
+
+          <!-- Personalized Agronomy -->
+          <div class="cluster-card">
+            <div class="card-header">
+              <div class="card-icon"><i class="ph-fill ph-target"></i></div>
+              <h4>Personalized Advice</h4>
+            </div>
+            <p style="font-style: italic;">"Maize is at vegetative stage and rain expected. Apply fertilizer."</p>
+          </div>
+
+          <!-- Core Practices -->
+          <div class="cluster-card">
+            <div class="card-header">
+              <div class="card-icon"><i class="ph-fill ph-plant"></i></div>
+              <h4>Core Practices</h4>
+            </div>
+            <ul>
+              <li>Planting & spacing</li>
+              <li>Weed control & harvest</li>
+            </ul>
+          </div>
+        </div>
       </div>
 
-      <!-- Bottom Left: Training & Adoption -->
-      <div class="cluster-card" style="top: 65%; left: 12%; ">
-        <div class="card-header">
-          <div class="card-icon"><i class="ph-fill ph-chalkboard-teacher"></i></div>
-          <h4>Training & Adoption</h4>
-        </div>
-        <ul
-          style="list-style: disc; margin-left: 20px; padding: 0; font-size: 0.9rem; color: var(--text-color); margin-top: 5px;">
-          <li>Training reinforcement</li>
-          <li>Adoption follow-up</li>
-        </ul>
-      </div>
+      <!-- DIVIDER 2 -->
+      <div style="width: 2px; height: 75%; position: absolute; left: 66.66%; top: 12.5%; background: linear-gradient(to bottom, transparent, rgba(140, 65, 21, 0.4), transparent); z-index: 20;"></div>
 
-      <!-- Top Right: Behavioral Nudges -->
-      <div class="cluster-card" style="top: 30%; right: 8%; ">
-        <div class="card-header">
-          <div class="card-icon"><i class="ph-fill ph-bell-ringing"></i></div>
-          <h4>Behavioral Nudges</h4>
+      <!-- COLUMN 3: NURU 2.0 -->
+      <div class="split-3way-col">
+        <div class="cluster-title">
+          <h1 class="info-title">Nuru 2.0</h1>
+          <h3 class="info-subtitle">Predictive Risk & Seasonal Advisor</h3>
+          <div class="info-description" style="color: var(--text-color); opacity: 0.9;">
+            Evolving from weather reports to proactive risk prediction and dynamic seasonal planning.
+          </div>
         </div>
-        <p>Gentle reminders to keep farmers on track based on their individual participation.</p>
-      </div>
 
-      <!-- Bottom Right: Program History -->
-      <div class="cluster-card" style="top: 65%; right: 12%; ">
-        <div class="card-header">
-          <div class="card-icon"><i class="ph-fill ph-clock-counter-clockwise"></i></div>
-          <h4>Program History</h4>
+        <img src="../Images/nuru_v2.png" alt="Nuru 2.0" class="cluster-character" />
+
+        <div class="split-3way-cards-grid">
+          <!-- Risk Modeling -->
+          <div class="cluster-card">
+            <div class="card-header">
+              <div class="card-icon"><i class="ph-fill ph-shield-warning"></i></div>
+              <h4>Risk Modeling</h4>
+            </div>
+            <ul>
+              <li>Weather & Stage data</li>
+              <li>Historical integration</li>
+              <li>Pest models</li>
+            </ul>
+          </div>
+
+          <!-- Seasonal Planning -->
+          <div class="cluster-card">
+            <div class="card-header">
+              <div class="card-icon"><i class="ph-fill ph-plant"></i></div>
+              <h4>Seasonal Planning</h4>
+            </div>
+            <ul>
+              <li>Outlooks & planting</li>
+              <li>Water & Labor planning</li>
+              <li>Input planning</li>
+            </ul>
+          </div>
+
+          <!-- Risk Quote -->
+          <div class="cluster-card">
+            <div class="card-header">
+              <div class="card-icon"><i class="ph-fill ph-quotes"></i></div>
+              <h4>Proactive Alert</h4>
+            </div>
+            <p style="font-style: italic;">"Increased risk of armyworm in your area. Inspect fields."</p>
+          </div>
+
+          <!-- Planning Quote -->
+          <div class="cluster-card">
+            <div class="card-header">
+              <div class="card-icon"><i class="ph-fill ph-quotes"></i></div>
+              <h4>Smart Planning</h4>
+            </div>
+            <p style="font-style: italic;">"Optimal planting window is between 12 and 18 March."</p>
+          </div>
         </div>
-        <ul
-          style="list-style: disc; margin-left: 20px; padding: 0; font-size: 0.9rem; color: var(--text-color); margin-top: 5px;">
-          <li>Individual training completion</li>
-          <li>Historical program data</li>
-        </ul>
-      </div>
-
-      <!-- Logo Lockup -->
-      <div class="logo-lockup">
-        <span class="oaf">ONE ACRE FUND</span>
-        <div class="divider"></div>
-        <span>iNua</span>
       </div>
     </div>
   </section>
+
 
   <!-- Slide 14: Nia 3.0 (Relationship Manager) -->
   <section class="cluster-slide">
@@ -1445,135 +1718,7 @@
     </div>
   </section>
 
-  <!-- Slide 15: Chris 2.0 (Precision Agronomy Coach) -->
-  <section class="cluster-slide">
-    <div class="landscape-bg"></div>
-    <div class="floor-curve"></div>
 
-    <div class="cluster-container">
-      <div class="cluster-title" style="max-width: 600px;">
-        <h1 class="info-title">Chris 2.0</h1>
-        <h3 class="info-subtitle">Precision Agronomy Coach</h3>
-        <div class="info-description"
-          style="font-size: 1.1rem; color: var(--text-color); margin-top: 1rem; opacity: 0.9; line-height: 1.5; text-align: left;">
-          Shifting from generic tips to highly personalized, context-aware farming advice.
-        </div>
-      </div>
-
-      <svg class="cluster-svg" viewBox="0 0 1000 1000" preserveAspectRatio="none">
-        <defs>
-          <marker id="arrow_chris2" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6"
-            orient="auto-start-reverse">
-            <path d="M 0 1 L 8 5 L 0 9 z" fill="#eab683" />
-          </marker>
-        </defs>
-        <!-- Left Side -->
-        <path d="M 450 400 L 360 400" marker-end="url(#arrow_chris2)" />
-        <path d="M 450 630 L 360 630" marker-end="url(#arrow_chris2)" />
-        <path d="M 450 860 L 360 860" marker-end="url(#arrow_chris2)" />
-        <!-- Right Side -->
-        <path d="M 550 400 L 640 400" marker-end="url(#arrow_chris2)" />
-        <path d="M 550 630 L 640 630" marker-end="url(#arrow_chris2)" />
-        <path d="M 550 860 L 640 860" marker-end="url(#arrow_chris2)" />
-      </svg>
-
-      <!-- Background Field Icons -->
-      <div class="floating-leaf"
-        style="width: 35px; height: 35px; top: 25%; left: 5%; animation-delay: 0.5s; color: var(--brand-green); opacity: 0.2;">
-        <i class="ph-fill ph-leaf" style="font-size: 35px;"></i>
-      </div>
-      <div class="floating-leaf"
-        style="width: 40px; height: 40px; top: 15%; right: 25%; animation-delay: 3s; color: var(--accent-orange); opacity: 0.15;">
-        <i class="ph-fill ph-bug" style="font-size: 40px;"></i>
-      </div>
-
-      <!-- Character -->
-      <div class="character-backdrop"></div>
-      <img src="../Images/chris_v2.png" alt="Chris 2.0" class="cluster-character" />
-
-      <!-- Top Left: Farm Context -->
-      <div class="cluster-card" style="top: 36%; left: 8%;">
-        <div class="card-header">
-          <div class="card-icon"><i class="ph-fill ph-map-pin"></i></div>
-          <h4>Holistic Farm Context</h4>
-        </div>
-        <ul
-          style="list-style: disc; margin-left: 20px; padding: 0; font-size: 0.9rem; color: var(--text-color); margin-top: 5px;">
-          <li>Crop type & Stage</li>
-          <li>Weather & Location</li>
-          <li>Soil information</li>
-        </ul>
-      </div>
-
-      <!-- Middle Left: Ongoing Support (NEW) -->
-      <div class="cluster-card" style="top: 58%; left: 2%;">
-        <div class="card-header">
-          <div class="card-icon"><i class="ph-fill ph-lifebuoy"></i></div>
-          <h4>Ongoing Support</h4>
-        </div>
-        <ul
-          style="list-style: disc; margin-left: 20px; padding: 0; font-size: 0.9rem; color: var(--text-color); margin-top: 5px;">
-          <li>Training reinforcement</li>
-          <li>Troubleshooting issues</li>
-          <li>Proactive follow-ups</li>
-        </ul>
-      </div>
-
-      <!-- Bottom Left: Personalized Agronomy -->
-      <div class="cluster-card" style="top: 81%; left: 8%;">
-        <div class="card-header">
-          <div class="card-icon"><i class="ph-fill ph-target"></i></div>
-          <h4>Personalized Advice</h4>
-        </div>
-        <p style="font-style: italic;">"Your maize is at vegetative stage and rain is expected. Fertilizer application
-          should be effective this week."</p>
-      </div>
-
-      <!-- Top Right: Crop Health -->
-      <div class="cluster-card" style="top: 36%; right: 8%;">
-        <div class="card-header">
-          <div class="card-icon"><i class="ph-fill ph-stethoscope"></i></div>
-          <h4>Crop Health Monitoring</h4>
-        </div>
-        <ul
-          style="list-style: disc; margin-left: 20px; padding: 0; font-size: 0.9rem; color: var(--text-color); margin-top: 5px;">
-          <li>Nutrient deficiency detection</li>
-          <li>Yield risk detection</li>
-        </ul>
-      </div>
-
-      <!-- Middle Right: Ground Alerts -->
-      <div class="cluster-card" style="top: 58%; right: 2%;">
-        <div class="card-header">
-          <div class="card-icon"><i class="ph-fill ph-bug"></i></div>
-          <h4>Ground-Level Pests</h4>
-        </div>
-        <p style="font-style: italic;">"Reports from nearby farms suggest increasing armyworm pressure. Inspect your
-          field this week."</p>
-      </div>
-
-      <!-- Bottom Right: Core Practices -->
-      <div class="cluster-card" style="top: 81%; right: 8%;">
-        <div class="card-header">
-          <div class="card-icon"><i class="ph-fill ph-plant"></i></div>
-          <h4>Core Practices</h4>
-        </div>
-        <ul
-          style="list-style: disc; margin-left: 20px; padding: 0; font-size: 0.9rem; color: var(--text-color); margin-top: 5px;">
-          <li>Planting timing</li>
-          <li>Soil & spacing</li>
-          <li>Weed control</li>
-          <li>Post-harvest handling</li>
-        </ul>
-      </div>
-
-      <div class="logo-lockup">
-        <span class="oaf">ONE ACRE FUND</span>
-        <div class="divider"></div>
-        <span>iNua</span>
-      </div>
-    </div>
-  </section>
 
   <!-- Slide 16: Chris 3.0 (Digital Agronomist) -->
   <section class="cluster-slide">
@@ -1657,103 +1802,7 @@
     </div>
   </section>
 
-  <!-- Slide 16: Nuru 2.0 (Predictive & Seasonal Advisor) -->
-  <section class="cluster-slide">
-    <div class="landscape-bg"></div>
-    <div class="floor-curve"></div>
 
-    <div class="cluster-container">
-      <div class="cluster-title" style="max-width: 600px;">
-        <h1 class="info-title">Nuru 2.0</h1>
-        <h3 class="info-subtitle">Predictive Risk & Seasonal Advisor</h3>
-        <div class="info-description"
-          style="font-size: 1.1rem; color: var(--text-color); margin-top: 1rem; opacity: 0.9; line-height: 1.5; text-align: left;">
-          Evolving from static weather reports to proactive risk prediction and dynamic seasonal planning.
-        </div>
-      </div>
-
-      <svg class="cluster-svg" viewBox="0 0 1000 1000" preserveAspectRatio="none">
-        <defs>
-          <marker id="arrow_nuru2" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6"
-            orient="auto-start-reverse">
-            <path d="M 0 1 L 8 5 L 0 9 z" fill="#eab683" />
-          </marker>
-        </defs>
-        <path d="M 450 300 L 360 300" marker-end="url(#arrow_nuru2)" />
-        <path d="M 450 700 L 360 700" marker-end="url(#arrow_nuru2)" />
-        <path d="M 550 300 L 640 300" marker-end="url(#arrow_nuru2)" />
-        <path d="M 550 700 L 640 700" marker-end="url(#arrow_nuru2)" />
-      </svg>
-
-      <!-- Background Icons -->
-      <div class="floating-leaf"
-        style="width: 35px; height: 35px; top: 25%; left: 5%; animation-delay: 0.5s; color: var(--accent-orange); opacity: 0.2;">
-        <i class="ph-fill ph-cloud-lightning" style="font-size: 35px;"></i>
-      </div>
-      <div class="floating-leaf"
-        style="width: 25px; height: 25px; top: 70%; right: 10%; animation-delay: 2s; color: var(--brand-green); opacity: 0.2;">
-        <i class="ph-fill ph-calendar" style="font-size: 25px;"></i>
-      </div>
-
-      <!-- Character -->
-      <div class="character-backdrop"></div>
-      <img src="../Images/nuru_v2.png" alt="Nuru 2.0" class="cluster-character" />
-
-      <!-- Top Left: Risk Modeling -->
-      <div class="cluster-card" style="top: 40%; left: 4%; ">
-        <div class="card-header">
-          <div class="card-icon"><i class="ph-fill ph-shield-warning"></i></div>
-          <h4>Predictive Risk Modeling</h4>
-        </div>
-        <ul
-          style="list-style: disc; margin-left: 20px; padding: 0; font-size: 0.9rem; color: var(--text-color); margin-top: 5px;">
-          <li>Weather & Crop stage data</li>
-          <li>Historical data integration</li>
-          <li>Pest models</li>
-        </ul>
-      </div>
-
-      <!-- Bottom Left: Risk Quote -->
-      <div class="cluster-card" style="top: 70%; left: 12%;  border-left: 4px solid var(--accent-orange);">
-        <div class="card-header">
-          <div class="card-icon"><i class="ph-fill ph-quotes"></i></div>
-          <h4>Proactive Alert</h4>
-        </div>
-        <p style="font-style: italic;">"Based on recent rainfall and temperature, there is increased risk of fall
-          armyworm activity in your area. Inspect maize fields this week."</p>
-      </div>
-
-      <!-- Top Right: Seasonal Planning -->
-      <div class="cluster-card" style="top: 30%; right: 6%; ">
-        <div class="card-header">
-          <div class="card-icon"><i class="ph-fill ph-plant"></i></div>
-          <h4>Seasonal Decision Making</h4>
-        </div>
-        <ul
-          style="list-style: disc; margin-left: 20px; padding: 0; font-size: 0.9rem; color: var(--text-color); margin-top: 5px;">
-          <li>Seasonal outlooks & Planting calendars</li>
-          <li>Water & Labor planning</li>
-          <li>Input planning</li>
-        </ul>
-      </div>
-
-      <!-- Bottom Right: Planning Quote -->
-      <div class="cluster-card" style="top: 65%; right: 10%;  border-left: 4px solid var(--brand-green);">
-        <div class="card-header">
-          <div class="card-icon"><i class="ph-fill ph-quotes"></i></div>
-          <h4>Smart Planning Alert</h4>
-        </div>
-        <p style="font-style: italic;">"Based on expected rainfall patterns in your district, the optimal planting
-          window is between 12 and 18 March."</p>
-      </div>
-
-      <div class="logo-lockup">
-        <span class="oaf">ONE ACRE FUND</span>
-        <div class="divider"></div>
-        <span>iNua</span>
-      </div>
-    </div>
-  </section>
 
   <!-- Slide 17: Nuru 3.0 (Climate Resilience Coach) -->
   <section class="cluster-slide">
