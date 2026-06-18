@@ -401,6 +401,24 @@
     }
 
     /* 3-WAY SPLIT SLIDE STYLES */
+    .torso-glass-box {
+      position: absolute;
+      background: rgba(255, 255, 255, 0.9);
+      border: 1px solid rgba(255, 255, 255, 0.7);
+      border-radius: 12px;
+      padding: 8px 12px;
+      box-shadow: 0 8px 20px rgba(140, 65, 21, 0.06);
+      backdrop-filter: blur(8px);
+      z-index: 10;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--heading-color);
+      max-width: 150px;
+      pointer-events: none;
+    }
     .split-3way-container {
       display: flex;
       width: 100vw;
@@ -1854,6 +1872,12 @@
 
         <img src="../Images/nia_v3.png" alt="Nia 3.0" class="cluster-character" />
 
+        <!-- Torso glass box -->
+        <div class="torso-glass-box" style="top: 42%; right: 8%;">
+          <i class="ph-fill ph-translate" style="color: var(--brand-green); font-size: 1.1rem;"></i>
+          <span>Additional languages</span>
+        </div>
+
         <div class="split-3way-cards-grid">
           <!-- Continuous Engagement -->
           <div class="cluster-card">
@@ -1907,6 +1931,12 @@
         </div>
 
         <img src="../Images/chris_v3.png" alt="Chris 3.0" class="cluster-character" />
+
+        <!-- Torso glass box -->
+        <div class="torso-glass-box" style="top: 42%; right: 8%;">
+          <i class="ph-fill ph-plant" style="color: var(--accent-orange); font-size: 1.1rem;"></i>
+          <span>Additional crops</span>
+        </div>
 
         <div class="split-3way-cards-grid">
           <!-- Historical Integration -->
@@ -1965,6 +1995,12 @@
         </div>
 
         <img src="../Images/nuru_v3.png" alt="Nuru 3.0" class="cluster-character" />
+
+        <!-- Torso glass box -->
+        <div class="torso-glass-box" style="top: 42%; right: 8%;">
+          <i class="ph-fill ph-globe" style="color: var(--brand-green); font-size: 1.1rem;"></i>
+          <span>Additional regions and countries</span>
+        </div>
 
         <div class="split-3way-cards-grid">
           <!-- Climate Adaptation -->
