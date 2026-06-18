@@ -806,6 +806,74 @@
       color: var(--accent-orange);
     }
 
+    /* PILOT STRUCTURE STYLES */
+    .structure-cards {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      margin: 6vh auto 0 auto;
+      width: 90vw;
+      max-width: 1200px;
+      z-index: 10;
+      position: relative;
+    }
+    .structure-card {
+      flex: 1;
+      max-width: 350px;
+      background: rgba(255, 255, 255, 0.95);
+      border: 1px solid rgba(255, 255, 255, 0.8);
+      border-radius: 20px;
+      padding: 30px;
+      text-align: center;
+      box-shadow: 0 15px 35px rgba(140, 65, 21, 0.06);
+      backdrop-filter: blur(12px);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 15px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      box-sizing: border-box;
+    }
+    .structure-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 25px 50px rgba(140, 65, 21, 0.1);
+    }
+    .structure-card .card-icon-large {
+      width: 80px;
+      height: 80px;
+      background: rgba(59, 136, 66, 0.1);
+      color: var(--brand-green);
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 2.2rem;
+      margin-bottom: 5px;
+    }
+    .structure-card:nth-child(even) .card-icon-large {
+      background: rgba(212, 165, 116, 0.1);
+      color: var(--accent-orange);
+    }
+    .structure-card h3 {
+      margin: 0;
+      font-size: 1.6rem;
+      color: var(--heading-color);
+      font-weight: 800;
+    }
+    .structure-card span.card-subtitle {
+      font-size: 0.85rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--text-color);
+      opacity: 0.7;
+    }
+    .structure-card p {
+      margin: 5px 0 0 0 !important;
+      font-size: 0.9rem !important;
+      line-height: 1.4 !important;
+      color: var(--text-color) !important;
+    }
 
     @media (max-width: 1024px) {
       .cluster-card {
@@ -1879,7 +1947,42 @@
     </div>
   </section>
 
-  <!-- Slide 14: Costs -->
+  <!-- Slide 14: Pilot Recommended Structure -->
+  <section class="bg-slide" style="position: relative; height: 100vh; overflow: hidden; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+    <div class="landscape-bg" style="opacity: 0.15;"></div>
+    
+    <div class="content-container" style="width: 100%; max-width: 1200px; padding: 0 40px; box-sizing: border-box; text-align: center; display: flex; flex-direction: column; justify-content: center; height: 100%; z-index: 10;">
+      <h2 style="font-size: 3rem; color: var(--heading-color); margin-bottom: 2vh; font-weight: 800; text-align: center;">Pilot Recommended Structure</h2>
+      
+      <div class="structure-cards">
+        <!-- Farmers Card -->
+        <div class="structure-card">
+          <div class="card-icon-large"><i class="ph-fill ph-users"></i></div>
+          <span class="card-subtitle">Scale</span>
+          <h3>100-500 Farmers</h3>
+          <p>A focused representative cohort to gather user patterns, test audio quality, and track initial adoption.</p>
+        </div>
+
+        <!-- Crops Card -->
+        <div class="structure-card">
+          <div class="card-icon-large"><i class="ph-fill ph-plant"></i></div>
+          <span class="card-subtitle">Scope</span>
+          <h3>1 Crop</h3>
+          <p>Initial focus on a single primary crop (e.g. Maize) to isolate agronomic models and refine advice flow.</p>
+        </div>
+
+        <!-- Duration Card -->
+        <div class="structure-card">
+          <div class="card-icon-large"><i class="ph-fill ph-calendar"></i></div>
+          <span class="card-subtitle">Duration</span>
+          <h3>Up to 4 Months</h3>
+          <p>Testing throughout a complete single agricultural season from initial planting window to active harvest.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Slide 15: Costs -->
   <section class="bg-slide" style="display: flex; justify-content: center; align-items: center; height: 100vh;">
     <div class="landscape-bg" style="opacity: 0.15;"></div>
     <div class="content-container" style="text-align: center;">
@@ -1887,14 +1990,14 @@
     </div>
   </section>
 
-  <!-- Slide 15 -->
+  <!-- Slide 16 -->
   <section class="bg-slide">
     <div class="content-container">
       <h2>beyond the scale</h2>
     </div>
   </section>
 
-  <!-- Slide 16: The Visionary Team of the Future -->
+  <!-- Slide 17: The Visionary Team of the Future -->
   <section class="team-slide future-team-slide" style="position: relative; height: 100vh; overflow: hidden;">
     <div class="landscape-bg"></div>
     <!-- No floor-curve here so name tags are not clipped -->
