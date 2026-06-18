@@ -2109,7 +2109,7 @@
     }
     
     window.addEventListener('load', () => {
-      document.querySelectorAll('.team-slide:not(.future-team-slide) .team-member img').forEach(img => {
+      document.querySelectorAll('.team-member img').forEach(img => {
         if (img.complete) { removeWhiteBg(img); } 
         else { img.onload = () => removeWhiteBg(img); }
       });
