@@ -162,6 +162,14 @@
       flex-grow: 0 !important;
     }
 
+    .content-container.scale-wrapper {
+      display: flex !important;
+      flex-direction: column !important;
+      justify-content: center !important;
+      align-items: center !important;
+      padding: 0 40px !important;
+    }
+
     /* CSS Landscape Vibe */
     .landscape-bg {
       position: absolute;
@@ -569,7 +577,7 @@
       display: none !important;
     }
 
-    @media (max-width: 1024px) {
+    @media (max-width: 768px) {
       .split-3way-container {
         position: relative !important;
         flex-direction: column !important;
@@ -884,7 +892,7 @@
       color: var(--text-color) !important;
     }
 
-    @media (max-width: 1024px) {
+    @media (max-width: 768px) {
       .cluster-card {
         position: relative;
         top: auto !important;
@@ -2401,7 +2409,7 @@
       const targetHeight = 945;
       const scaleWrappers = document.querySelectorAll('.scale-wrapper');
       
-      if (window.innerWidth <= 1024) {
+      if (window.innerWidth <= 768) {
         // Disable scaling on mobile layouts
         scaleWrappers.forEach(wrapper => {
           wrapper.style.transform = 'none';
