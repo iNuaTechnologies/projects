@@ -148,6 +148,20 @@
       background: linear-gradient(180deg, var(--bg-top) 0%, var(--bg-bottom) 100%);
     }
 
+    .scale-wrapper {
+      position: absolute !important;
+      top: 50% !important;
+      left: 50% !important;
+      width: 1920px !important;
+      height: 945px !important;
+      transform-origin: center center !important;
+      transform: translate(-50%, -50%) scale(1);
+      box-sizing: border-box !important;
+      margin: 0 !important;
+      flex-shrink: 0 !important;
+      flex-grow: 0 !important;
+    }
+
     /* CSS Landscape Vibe */
     .landscape-bg {
       position: absolute;
@@ -264,9 +278,9 @@
       bottom: 0;
       left: 50%;
       transform: translateX(-50%);
-      width: 50vw;
-      height: 85vh;
-      background: radial-gradient(ellipse at 50% 60%, #FFFDF5 20%, rgba(255, 253, 245, 0.5) 50%, transparent 70%);
+      width: 960px;
+      height: 803px;
+      background: radial-gradient(ellipse at 50% 60%, #FFFDF5 20%, rgba(255, 255, 255, 0.5) 50%, transparent 70%);
       z-index: 4;
       pointer-events: none;
     }
@@ -276,8 +290,8 @@
       bottom: 0;
       left: 50%;
       transform: translateX(-50%);
-      height: 85vh;
-      max-width: 60vw;
+      height: 803px;
+      max-width: 1152px;
       object-fit: contain;
       mix-blend-mode: multiply;
       filter: brightness(1.06) contrast(1.1);
@@ -299,7 +313,7 @@
       backdrop-filter: blur(12px);
       text-align: left;
       z-index: 10;
-      width: 12.6vw;
+      width: 242px;
       min-width: 190px;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
       display: flex;
@@ -421,11 +435,6 @@
     }
     .split-3way-container {
       display: flex;
-      width: 100vw;
-      height: 100vh;
-      position: absolute;
-      top: 0;
-      left: 0;
     }
     .split-3way-col {
       flex: 1;
@@ -434,7 +443,7 @@
       align-items: center;
       justify-content: flex-start;
       height: 100%;
-      padding: 5vh 2vw 15vh 2vw;
+      padding: 47px 38px 142px 38px;
       box-sizing: border-box;
       position: relative;
     }
@@ -473,8 +482,8 @@
       bottom: auto !important;
       left: auto !important;
       transform: none !important;
-      height: 44.4vh !important;
-      max-height: 44.4vh !important;
+      height: 420px !important;
+      max-height: 420px !important;
       width: auto !important;
       max-width: 80% !important;
       margin: 10px 0 !important;
@@ -489,7 +498,7 @@
       width: 100% !important;
       max-width: 374px !important;
       margin-top: auto !important; /* Pushes to bottom */
-      margin-bottom: -5vh !important;
+      margin-bottom: -47px !important;
       z-index: 10 !important;
     }
     .split-3way-cards-grid.chris-grid {
@@ -587,7 +596,7 @@
     }
     .team-title {
       text-align: center;
-      margin-top: 4vh;
+      margin-top: 38px;
       z-index: 10;
     }
     .team-title h1 {
@@ -614,12 +623,12 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      width: 12.5vw;
-      margin: 0 -2.604vw;
+      width: 240px;
+      margin: 0 -50px;
     }
     .team-member img {
       width: 100%;
-      height: 55vh;
+      height: 520px;
       object-fit: cover;
       object-position: top center;
       mix-blend-mode: multiply;
@@ -659,7 +668,7 @@
       border: 1px solid rgba(255, 255, 255, 0.5);
       border-radius: 18px;
       padding: 14px 18px;
-      width: 17vw;
+      width: 326px;
       min-width: 250px;
       box-shadow: 0 15px 35px rgba(140, 65, 21, 0.08);
       z-index: 15;
@@ -685,7 +694,7 @@
     }
 
     .future-team-slide .team-glass-box {
-      width: 14vw;
+      width: 268px;
       min-width: 200px;
       padding: 10px 14px;
     }
@@ -701,9 +710,9 @@
     /* TIMELINE STYLE CLASSES */
     .timeline-container {
       position: relative;
-      width: 90vw;
+      width: 1400px;
       max-width: 1400px;
-      margin: 6vh auto 0 auto;
+      margin: 56px auto 0 auto;
       display: flex;
       justify-content: space-between;
       align-items: flex-start;
@@ -811,8 +820,8 @@
       display: flex;
       justify-content: center;
       gap: 30px;
-      margin: 6vh auto 0 auto;
-      width: 90vw;
+      margin: 56px auto 0 auto;
+      width: 1200px;
       max-width: 1200px;
       z-index: 10;
       position: relative;
@@ -922,7 +931,7 @@
 
   <!-- Slide 1 -->
   <section class="bg-slide">
-    <div class="content-container">
+    <div class="content-container scale-wrapper">
       <h1>One Acre Fund Pilot Proposal</h1>
       <h3>AgriFriend & iNua Technologies</h3>
     </div>
@@ -930,14 +939,14 @@
 
   <!-- Slide 2 -->
   <section>
-    <div class="content-container">
+    <div class="content-container scale-wrapper">
       <h2 style="font-size: 3.5rem; line-height: 1.3;">By 2030, OAF aim to serve 10 million farm families and deliver $1 billion in annual impact</h2>
     </div>
   </section>
 
   <!-- Slide 3 -->
   <section>
-    <div class="content-container">
+    <div class="content-container scale-wrapper">
       <h2>Smallholder farmers are making critical farming decisions under changing weather, pest, and crop conditions,</h2>
       <p style="font-size: 1.5rem; opacity: 0.9;">but they often lack timely, trusted, local-language guidance through a channel they can actually access and use.</p>
     </div>
@@ -945,14 +954,14 @@
 
   <!-- Slide 4 -->
   <section>
-    <div class="content-container">
+    <div class="content-container scale-wrapper">
       <h2 style="font-size: 2.5rem; line-height: 1.4;">One Acre Fund needs a reliable, effective and scalable way to deliver practical farmer advisory to rural farmers</h2>
     </div>
   </section>
 
   <!-- Slide 5 -->
   <section>
-    <div class="content-container">
+    <div class="content-container scale-wrapper">
       <h2 style="font-size: 3.5rem; color: var(--brand-green); line-height: 1.3;">The right guidance, at the right time, through a simple phone call.</h2>
     </div>
   </section>
@@ -962,7 +971,7 @@
     <div class="landscape-bg"></div>
     <!-- No floor-curve here so name tags are not clipped -->
 
-    <div class="cluster-container" style="height: 100vh; width: 100vw; position: absolute; top: 0; left: 0;">
+    <div class="cluster-container scale-wrapper">
       <div class="team-title">
         <h1>Meet the iNua Farmer Support Team</h1>
         <p>General support, weather guidance, crop advice, financial support, and emergency alerts for every farmer.</p>
@@ -1103,7 +1112,7 @@
   <section style="position: relative; height: 100vh; overflow: hidden; display: flex; flex-direction: column; justify-content: center; align-items: center;">
     <div class="landscape-bg"></div>
     
-    <div class="content-container" style="width: 100%; max-width: 1200px; padding: 0 40px; box-sizing: border-box; text-align: center; display: flex; flex-direction: column; justify-content: center; height: 100%; z-index: 10;">
+    <div class="content-container scale-wrapper" style="max-width: 1200px; z-index: 10;">
       <h2 style="font-size: 3rem; color: var(--heading-color); margin-bottom: 2vh; font-weight: 800; text-align: center;">Pilot Recommended Structure</h2>
       
       <div class="structure-cards">
@@ -1139,7 +1148,7 @@
     <div class="landscape-bg"></div>
     <div class="floor-curve"></div>
 
-    <div class="cluster-container">
+    <div class="cluster-container scale-wrapper">
       <div class="cluster-title">
         <h1 class="info-title">Nia</h1>
         <h3 class="info-subtitle">General Support Guide</h3>
@@ -1234,7 +1243,7 @@
     <div class="landscape-bg"></div>
     <div class="floor-curve"></div>
 
-    <div class="cluster-container">
+    <div class="cluster-container scale-wrapper">
       <div class="cluster-title">
         <h1 class="info-title">Nuru</h1>
         <h3 class="info-subtitle">Weather Guide</h3>
@@ -1338,7 +1347,7 @@
     <div class="landscape-bg"></div>
     <div class="floor-curve"></div>
 
-    <div class="cluster-container">
+    <div class="cluster-container scale-wrapper">
       <div class="cluster-title">
         <h1 class="info-title">Chris</h1>
         <h3 class="info-subtitle">Crop Coach</h3>
@@ -1437,7 +1446,7 @@
     <div class="landscape-bg"></div>
     <div class="floor-curve"></div>
 
-    <div class="cluster-container">
+    <div class="cluster-container scale-wrapper">
       <div class="cluster-title" style="max-width: 600px;">
         <h1 class="info-title" style="color: var(--accent-orange);">iNua</h1>
         <h3 class="info-subtitle">Field Analytics & Insights Manager</h3>
@@ -1562,7 +1571,7 @@
 
   <!-- Slide 12 -->
   <section>
-    <div class="content-container">
+    <div class="content-container scale-wrapper">
       <h2>scale and how it looks like</h2>
       <p>the evolution of the characters and their capabilities (josef and marry) + a dream that answer their issues
         above and byond, give a brad context and more holistic solution</p>
@@ -1574,7 +1583,7 @@
     <div class="landscape-bg"></div>
     <div class="floor-curve"></div>
 
-    <div style="display: flex; width: 100vw; height: 100vh; position: absolute; top: 0; left: 0;">
+    <div class="scale-wrapper" style="display: flex;">
       <!-- LEFT HALF: JOSEF -->
       <div style="flex: 1; position: relative;">
         <div class="cluster-title" style="max-width: 350px;">
@@ -1901,7 +1910,7 @@
   <!-- Slide 13: Timeline -->
   <section class="bg-slide" style="position: relative; height: 100vh; overflow: hidden; display: flex; flex-direction: column; justify-content: center; align-items: center;">
     
-    <div class="content-container" style="width: 100%; max-width: 1500px; padding: 0 40px; box-sizing: border-box; text-align: center; display: flex; flex-direction: column; justify-content: center; height: 100%;">
+    <div class="content-container scale-wrapper" style="max-width: 1500px;">
       <h2 style="font-size: 3rem; color: var(--heading-color); margin-bottom: 2vh; font-weight: 800; text-align: center; text-transform: capitalize;">timeline</h2>
       
       <div class="timeline-container">
@@ -1983,14 +1992,14 @@
 
   <!-- Slide 15: Costs -->
   <section style="display: flex; justify-content: center; align-items: center; height: 100vh;">
-    <div class="content-container" style="text-align: center;">
+    <div class="content-container scale-wrapper" style="text-align: center;">
       <h2 style="font-size: 4rem; color: var(--heading-color); font-weight: 800; text-transform: capitalize;">costs</h2>
     </div>
   </section>
 
   <!-- Slide 16 -->
   <section class="bg-slide">
-    <div class="content-container">
+    <div class="content-container scale-wrapper">
       <h2>beyond the scale</h2>
     </div>
   </section>
@@ -2000,7 +2009,7 @@
     <div class="landscape-bg"></div>
     <!-- No floor-curve here so name tags are not clipped -->
 
-    <div class="cluster-container" style="height: 100vh; width: 100vw; position: absolute; top: 0; left: 0;">
+    <div class="cluster-container scale-wrapper">
       <div class="team-title">
         <h1>The Visionary Team of the Future</h1>
         <p>Evolved roles and capabilities to deliver maximum impact and support to smallholder farmers.</p>
@@ -2146,7 +2155,7 @@
   <section class="cluster-slide split-3way">
     <div class="landscape-bg"></div>
 
-    <div class="split-3way-container">
+    <div class="split-3way-container scale-wrapper">
       <!-- COLUMN 1: NIA 3.0 -->
       <div class="split-3way-col">
         <div class="cluster-title">
@@ -2383,6 +2392,36 @@
         else { img.onload = () => removeWhiteBg(img); }
       });
     });
+  </script>
+
+  <script>
+    // Scale presentation slides to fit the viewport perfectly while preserving aspect ratio
+    function adjustScales() {
+      const targetWidth = 1920;
+      const targetHeight = 945;
+      const scaleWrappers = document.querySelectorAll('.scale-wrapper');
+      
+      if (window.innerWidth <= 1024) {
+        // Disable scaling on mobile layouts
+        scaleWrappers.forEach(wrapper => {
+          wrapper.style.transform = 'none';
+        });
+        return;
+      }
+      
+      const scaleX = window.innerWidth / targetWidth;
+      const scaleY = window.innerHeight / targetHeight;
+      const scale = Math.min(scaleX, scaleY);
+      
+      scaleWrappers.forEach(wrapper => {
+        wrapper.style.transform = `translate(-50%, -50%) scale(${scale})`;
+      });
+    }
+    
+    window.addEventListener('resize', adjustScales);
+    window.addEventListener('load', adjustScales);
+    // Trigger immediately
+    adjustScales();
   </script>
 </body>
 
