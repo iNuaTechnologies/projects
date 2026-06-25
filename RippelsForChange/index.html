@@ -1,0 +1,1125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ripples for Change Proposal</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700&family=Poppins:wght@500;600;700;800&display=swap"
+    rel="stylesheet">
+  <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+  <style>
+    :root {
+      --heading-color: #8c4115;
+      /* Rich Brown */
+      --text-color: #544a42;
+      /* Slate/Brown */
+      --accent-orange: #f28b18;
+      /* Vibrant Orange */
+      --line-color: #eab683;
+      /* Light orange for dashed lines */
+      --brand-green: #3b8842;
+      /* Vibrant green */
+      --bg-top: #FFFEFA;
+      --bg-bottom: #FFF1E0;
+      /* Very light warm tone */
+    }
+
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+      scroll-behavior: smooth;
+    }
+
+    html {
+      scroll-snap-type: y mandatory;
+    }
+
+    body {
+      background: linear-gradient(135deg, #FFFEFA 0%, #FFFDF5 50%, #FFF1E0 100%);
+      font-family: 'Nunito', sans-serif;
+      color: var(--text-color);
+      overflow-x: hidden;
+    }
+
+    .bg-slide {
+      background-image: url('../Images/Elegant%20wave%20patterns%20in%20soft%20hues.png');
+      background-size: cover;
+      background-position: center 85%;
+    }
+
+    section {
+      scroll-snap-align: start;
+      scroll-snap-stop: always;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 0 5%;
+      box-sizing: border-box;
+      position: relative;
+    }
+
+    .content-container {
+      max-width: 1000px;
+      width: 100%;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      font-family: 'Poppins', sans-serif;
+      color: var(--heading-color);
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      margin-top: 0;
+      margin-bottom: 25px;
+    }
+
+    h1 {
+      font-size: 4.2rem;
+      line-height: 1.1;
+      text-align: center;
+      letter-spacing: -1.5px;
+    }
+
+    h2 {
+      font-size: 2.8rem;
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    h3 {
+      font-size: 1.6rem;
+      color: var(--text-color);
+      font-weight: 600;
+      font-family: 'Nunito', sans-serif;
+      text-align: center;
+    }
+
+    p,
+    li {
+      font-size: 1.25rem;
+      line-height: 1.7;
+      margin-bottom: 20px;
+      font-weight: 400;
+    }
+
+    ul {
+      margin-left: 40px;
+    }
+
+    li {
+      margin-bottom: 12px;
+    }
+
+    .visual-placeholder {
+      border: 2px dashed var(--heading-color);
+      background: rgba(140, 65, 21, 0.05);
+      border-radius: 12px;
+      padding: 50px 20px;
+      text-align: center;
+      margin-top: 25px;
+      color: var(--heading-color);
+      font-style: italic;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    /* Organic Cluster Layout CSS */
+    .cluster-slide {
+      padding: 0;
+      position: relative;
+      width: 100vw;
+      height: 100vh;
+      overflow: hidden;
+      scroll-snap-align: start;
+      scroll-snap-stop: always;
+      background: linear-gradient(180deg, var(--bg-top) 0%, var(--bg-bottom) 100%);
+    }
+
+    .scale-wrapper {
+      position: absolute !important;
+      top: 50% !important;
+      left: 50% !important;
+      width: 1920px !important;
+      height: 945px !important;
+      max-width: none !important;
+      max-height: none !important;
+      transform-origin: center center !important;
+      transform: translate(-50%, -50%) scale(1);
+      box-sizing: border-box !important;
+      margin: 0 !important;
+      flex-shrink: 0 !important;
+      flex-grow: 0 !important;
+    }
+
+    .content-container.scale-wrapper {
+      display: flex !important;
+      flex-direction: column !important;
+      justify-content: center !important;
+      align-items: center !important;
+      padding: 0 40px !important;
+    }
+
+    /* CSS Landscape Vibe */
+    .landscape-bg {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 50vh;
+      background-image: url('../Images/farm_landscape_bg.png');
+      background-size: cover;
+      background-position: bottom center;
+      background-repeat: no-repeat;
+      z-index: 0;
+      pointer-events: none;
+      opacity: 0.4;
+      mask-image: linear-gradient(to bottom, transparent 0%, black 40%);
+      -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 40%);
+    }
+
+    .floor-curve {
+      position: absolute;
+      bottom: -15vh;
+      left: 15%;
+      width: 70%;
+      height: 30vh;
+      background: #FFFFFF;
+      border-radius: 50%;
+      box-shadow: 0 -10px 40px rgba(140, 65, 21, 0.08);
+      z-index: 1;
+    }
+
+    .cluster-container {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      max-width: 100%;
+      margin: 0 auto;
+    }
+
+    .cluster-title {
+      position: absolute;
+      top: 6%;
+      left: 6%;
+      z-index: 10;
+      max-width: 500px;
+    }
+
+    .info-title {
+      font-size: 4.8rem;
+      color: var(--heading-color);
+      margin-bottom: -5px;
+      line-height: 1;
+      text-align: left;
+      font-weight: 800;
+      letter-spacing: -1px;
+    }
+
+    .info-subtitle {
+      font-size: 1.6rem;
+      color: #6B7280;
+      margin-bottom: 20px;
+      font-weight: 600;
+      text-align: left;
+      font-family: 'Nunito', sans-serif;
+    }
+
+    /* Logos */
+    .logo-lockup {
+      position: absolute;
+      bottom: 30px;
+      right: 40px;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      z-index: 20;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      color: var(--heading-color);
+      font-size: 1.4rem;
+    }
+
+    .logo-lockup .divider {
+      width: 2px;
+      height: 25px;
+      background: var(--line-color);
+    }
+
+    .logo-lockup .oaf {
+      color: #2e7d32;
+      font-size: 1.1rem;
+    }
+
+    .cluster-svg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 2;
+      pointer-events: none;
+    }
+
+    .cluster-svg path {
+      fill: none;
+      stroke: var(--line-color);
+      stroke-width: 2.5px;
+      stroke-dasharray: 8 8;
+      stroke-linejoin: round;
+      stroke-linecap: round;
+      vector-effect: non-scaling-stroke;
+    }
+
+    .character-backdrop {
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 960px;
+      height: 803px;
+      background: radial-gradient(ellipse at 50% 60%, #FFFDF5 20%, rgba(255, 255, 255, 0.5) 50%, transparent 70%);
+      z-index: 4;
+      pointer-events: none;
+    }
+
+    .cluster-character {
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      height: 803px;
+      max-width: 1152px;
+      object-fit: contain;
+      mix-blend-mode: normal;
+      filter: brightness(1.06) contrast(1.1);
+      z-index: 5;
+      pointer-events: none;
+      -webkit-mask-image: linear-gradient(to bottom, black 90%, transparent 100%);
+      mask-image: linear-gradient(to bottom, black 90%, transparent 100%);
+    }
+
+    .cluster-card {
+      position: absolute;
+      background: rgba(255, 255, 255, 0.95);
+      border: 1px solid rgba(255, 255, 255, 1);
+      border-radius: 16px;
+      padding: 12px 16px;
+      box-shadow: 0 15px 30px rgba(140, 65, 21, 0.08), 0 5px 15px rgba(0, 0, 0, 0.02);
+      backdrop-filter: blur(12px);
+      text-align: left;
+      z-index: 10;
+      width: 242px;
+      min-width: 190px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .cluster-card:nth-child(4n) {
+      transform: rotate(-1.5deg);
+    }
+
+    .cluster-card:nth-child(4n+1) {
+      transform: rotate(1.2deg);
+    }
+
+    .cluster-card:nth-child(4n+2) {
+      transform: rotate(-1.0deg);
+    }
+
+    .cluster-card:nth-child(4n+3) {
+      transform: rotate(1.5deg);
+    }
+
+    .cluster-card:hover {
+      transform: translateY(-8px) scale(1.05) !important;
+      box-shadow: 0 30px 60px rgba(140, 65, 21, 0.12);
+      z-index: 20;
+    }
+
+    .card-header {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 4px;
+    }
+
+    .card-icon {
+      font-size: 1.35rem;
+      color: var(--accent-orange);
+      background: rgba(242, 139, 24, 0.12);
+      width: 32px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 10px;
+    }
+
+    .card-icon i {
+      font-size: inherit !important;
+    }
+
+    .cluster-card h4 {
+      color: var(--heading-color);
+      font-size: 1.1rem !important;
+      margin-bottom: 0;
+      font-weight: 700;
+      line-height: 1.1;
+    }
+
+    .cluster-card p,
+    .cluster-card ul,
+    .cluster-card li {
+      font-size: 0.85rem !important;
+      margin-bottom: 0;
+      color: var(--text-color);
+      line-height: 1.3 !important;
+    }
+
+    .floating-leaf {
+      position: absolute;
+      background: var(--heading-color);
+      opacity: 0.15;
+      border-radius: 50% 0 50% 0;
+      animation: float 6s ease-in-out infinite;
+      z-index: 3;
+    }
+
+    @keyframes float {
+      0% {
+        transform: translate(0, 0) rotate(0deg) scale(1);
+      }
+
+      25% {
+        transform: translate(15px, -15px) rotate(15deg) scale(1.05);
+      }
+
+      50% {
+        transform: translate(-10px, -35px) rotate(-10deg) scale(0.95);
+      }
+
+      75% {
+        transform: translate(-20px, -15px) rotate(-25deg) scale(1.02);
+      }
+
+      100% {
+        transform: translate(0, 0) rotate(0deg) scale(1);
+      }
+    }
+
+    /* TEAM SLIDE STYLES */
+    .team-slide .cluster-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+    }
+
+    .team-title {
+      text-align: center;
+      margin-top: 38px;
+      z-index: 10;
+    }
+
+    .team-title h1 {
+      font-size: 3.5rem;
+      color: var(--brand-green);
+      margin-bottom: 0.5rem;
+    }
+
+    .team-title p {
+      font-size: 1.1rem;
+      color: var(--text-color);
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .team-lineup {
+      position: absolute;
+      bottom: 10%;
+      left: 0;
+      right: 0;
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+    }
+
+    .team-member {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 240px;
+      margin: 0 -50px;
+    }
+
+    .team-member img {
+      width: 100%;
+      height: 520px;
+      object-fit: cover;
+      object-position: top center;
+      mix-blend-mode: normal;
+      filter: brightness(1.0) contrast(1.3) saturate(1.1);
+      -webkit-mask-image: linear-gradient(to bottom, black 88%, transparent 100%);
+      mask-image: linear-gradient(to bottom, black 88%, transparent 100%);
+    }
+
+    .team-member:hover img {
+      filter: brightness(1.0) contrast(1.3) saturate(1.1) drop-shadow(0 -5px 15px rgba(0, 0, 0, 0.1));
+    }
+
+    .team-name-tag {
+      position: relative;
+      background: rgba(255, 255, 255, 0.95);
+      border: 1px solid rgba(0, 0, 0, 0.05);
+      border-radius: 12px;
+      padding: 8px 12px;
+      text-align: center;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+      margin-top: -10px;
+      z-index: 10;
+      min-width: 120px;
+    }
+
+    .team-name-tag h4 {
+      color: var(--brand-green);
+      font-size: 1.1rem !important;
+      margin: 0 0 5px 0 !important;
+      font-weight: 700;
+    }
+
+    .team-name-tag p {
+      font-size: 0.75rem !important;
+      color: var(--text-color);
+      margin: 0;
+      line-height: 1.2;
+    }
+
+    .team-glass-box {
+      position: absolute;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.5);
+      border-radius: 20px;
+      padding: 18px 22px;
+      width: 380px;
+      min-width: 300px;
+      box-shadow: 0 15px 35px rgba(140, 65, 21, 0.08);
+      z-index: 15;
+    }
+
+    .team-glass-box h4 {
+      color: var(--heading-color);
+      font-size: 1.45rem !important;
+      margin-bottom: 8px !important;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .team-glass-box h4 i {
+      color: var(--accent-orange);
+      font-size: 1.85rem;
+    }
+
+    .team-glass-box p {
+      font-size: 1.15rem !important;
+      color: var(--text-color);
+      margin: 0 !important;
+      line-height: 1.45 !important;
+    }
+
+    /* PILOT STRUCTURE STYLES */
+    .structure-cards {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      margin: 56px auto 0 auto;
+      width: 1200px;
+      max-width: 1200px;
+      z-index: 10;
+      position: relative;
+    }
+
+    .structure-card {
+      flex: 1;
+      max-width: 350px;
+      background: rgba(255, 255, 255, 0.95);
+      border: 1px solid rgba(255, 255, 255, 0.8);
+      border-radius: 20px;
+      padding: 30px;
+      text-align: center;
+      box-shadow: 0 15px 35px rgba(140, 65, 21, 0.06);
+      backdrop-filter: blur(12px);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 15px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      box-sizing: border-box;
+    }
+
+    .structure-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 25px 50px rgba(140, 65, 21, 0.1);
+    }
+
+    .structure-card .card-icon-large {
+      width: 80px;
+      height: 80px;
+      background: rgba(59, 136, 66, 0.1);
+      color: var(--brand-green);
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 2.2rem;
+      margin-bottom: 5px;
+    }
+
+    .structure-card:nth-child(even) .card-icon-large {
+      background: rgba(212, 165, 116, 0.1);
+      color: var(--accent-orange);
+    }
+
+    .structure-card h3 {
+      margin: 0;
+      font-size: 1.6rem;
+      color: var(--heading-color);
+      font-weight: 800;
+    }
+
+    .structure-card span.card-subtitle {
+      font-size: 0.85rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--text-color);
+      opacity: 0.7;
+    }
+
+    .structure-card p {
+      margin: 5px 0 0 0 !important;
+      font-size: 0.9rem !important;
+      line-height: 1.4 !important;
+      color: var(--text-color) !important;
+    }
+
+    /* COST BREAKDOWN SLIDE STYLES */
+    .cost-cards {
+      display: flex;
+      justify-content: center;
+      gap: 35px;
+      margin: 40px auto 0 auto;
+      width: 1200px;
+      max-width: 1200px;
+      z-index: 10;
+      position: relative;
+    }
+
+    .cost-card {
+      flex: 1;
+      max-width: 550px;
+      background: rgba(255, 255, 255, 0.95);
+      border: 1px solid rgba(255, 255, 255, 0.8);
+      border-radius: 20px;
+      padding: 30px;
+      text-align: left;
+      box-shadow: 0 15px 35px rgba(140, 65, 21, 0.06);
+      backdrop-filter: blur(12px);
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      box-sizing: border-box;
+    }
+
+    .cost-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 25px 50px rgba(140, 65, 21, 0.1);
+    }
+
+    .cost-card h3 {
+      font-size: 2rem;
+      margin: 0;
+      color: var(--heading-color);
+      font-weight: 800;
+      text-align: left;
+    }
+
+    .cost-card .price {
+      font-size: 2.8rem;
+      font-weight: 800;
+      color: var(--brand-green);
+      margin: 5px 0;
+    }
+
+    .cost-card .price-sub {
+      font-size: 1.15rem;
+      color: #6B7280;
+      margin-top: -10px;
+      margin-bottom: 5px;
+      font-weight: 600;
+    }
+
+    .agent-item {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      padding: 12px 0;
+      border-top: 1px solid rgba(0, 0, 0, 0.06);
+    }
+
+    .agent-avatar {
+      width: 55px;
+      height: 55px;
+      border-radius: 50%;
+      object-fit: cover;
+      object-position: top center;
+      background: #FFFDF5;
+      border: 2px solid var(--line-color);
+      flex-shrink: 0;
+    }
+
+    .agent-info {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .agent-info h4 {
+      margin: 0;
+      font-size: 1.3rem;
+      color: var(--heading-color);
+      font-weight: 700;
+    }
+
+    .agent-info p {
+      margin: 0 !important;
+      font-size: 1.1rem !important;
+      color: var(--text-color) !important;
+      line-height: 1.45 !important;
+    }
+
+    @media (max-width: 768px) {
+      .cluster-card {
+        position: relative;
+        top: auto !important;
+        left: auto !important;
+        right: auto !important;
+        margin: 20px auto;
+        width: 80%;
+      }
+
+      .cluster-character {
+        position: relative;
+        height: 50vh;
+        transform: none;
+        left: auto;
+      }
+
+      .cluster-svg {
+        display: none;
+      }
+
+      .cluster-title {
+        position: relative;
+        top: auto;
+        left: auto;
+        text-align: center;
+        margin: 0 auto;
+      }
+
+      .cluster-container {
+        display: flex;
+        flex-direction: column;
+        overflow-y: auto;
+        padding-top: 5vh;
+      }
+
+      .logo-lockup {
+        display: none;
+      }
+
+      .cost-cards {
+        flex-direction: column !important;
+        align-items: center !important;
+        width: 100% !important;
+        gap: 20px !important;
+      }
+
+      .cost-card {
+        width: 90% !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Slide 1 -->
+  <section class="bg-slide">
+    <div class="content-container scale-wrapper">
+      <h1>Ripples for Change Proposal</h1>
+      <h3>AgriFriend & iNua Technologies</h3>
+    </div>
+  </section>
+
+  <!-- Slide 2 -->
+  <section>
+    <div class="content-container scale-wrapper">
+      <h2 style="font-size: 3.2rem; line-height: 1.5; text-align: center; font-weight: 600; max-width: 1400px;">
+        Empowering <span style="color: var(--brand-green); font-weight: 800; padding-bottom: 2px; white-space: nowrap;">155+ rural beekeepers</span> across <span style="color: var(--brand-green); font-weight: 800; padding-bottom: 2px; white-space: nowrap;">6 provinces</span>, helping mentors build <span style="color: var(--accent-orange); font-weight: 800;">sustainable, independent businesses</span>.
+      </h2>
+    </div>
+  </section>
+
+  <!-- Slide 3 -->
+  <section>
+    <div class="content-container scale-wrapper">
+      <div
+        style="display: flex; flex-direction: row; align-items: center; justify-content: space-between; gap: 90px; width: 100%; max-width: 1600px; margin: 0 auto; box-sizing: border-box; padding: 0 40px;">
+        <!-- Left Column: Text -->
+        <div style="flex: 1.3; display: flex; flex-direction: column; justify-content: center; text-align: left;">
+          <h2
+            style="font-size: 2.8rem; line-height: 1.4; text-align: left; margin-bottom: 40px; font-weight: 700; color: var(--heading-color);">
+            Beekeepers face critical biological risks like <span
+              style="font-weight: 800; color: var(--accent-orange); padding-bottom: 2px;">diseases, pests, and absconding</span>.
+          </h2>
+          <p
+            style="font-size: 1.8rem; line-height: 1.6; color: var(--text-color); font-weight: 400; margin: 0; opacity: 0.95;">
+            Meanwhile, the NGO faces a major challenge in **impact measurement**—how to systematically collect data and track progress to **demonstrate the real results** of their efforts.
+          </p>
+        </div>
+        <!-- Right Column: Image -->
+        <div style="flex: 0.7; display: flex; justify-content: center; align-items: center;">
+          <img src="../Images/beekeeper_challenges.png" alt="Beekeeper inspecting a hive under biological stress"
+            style="width: 100%; max-width: 500px; height: 520px; object-fit: cover; border-radius: 24px; box-shadow: 0 25px 50px rgba(140, 65, 21, 0.15), 0 10px 20px rgba(0,0,0,0.05); border: 1px solid rgba(255,255,255,0.8);" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Slide 4 -->
+  <section>
+    <div class="content-container scale-wrapper">
+      <div
+        style="display: flex; flex-direction: row; align-items: center; justify-content: space-between; gap: 90px; width: 100%; max-width: 1600px; margin: 0 auto; box-sizing: border-box; padding: 0 40px;">
+        <!-- Left Column: Text Content -->
+        <div style="flex: 1.25; display: flex; flex-direction: column; justify-content: center; text-align: left;">
+          <h2
+            style="font-size: 3.2rem; line-height: 1.45; text-align: left; margin: 0; font-weight: 700; color: var(--heading-color);">
+            Ripples for Change needs a <span
+              style="font-weight: 800; color: var(--brand-green); padding-bottom: 2px;">reliable, effective, and
+              scalable</span> way to deliver training and collect data from <span
+              style="font-weight: 800; color: var(--accent-orange); padding-bottom: 2px;">rural beekeepers</span>.
+          </h2>
+        </div>
+        <!-- Right Column: Image Content -->
+        <div style="flex: 0.75; display: flex; justify-content: center; align-items: center;">
+          <img src="../Images/beekeeper_solution.png"
+            alt="Smiling beekeeper checking educational smartphone messages in apiary"
+            style="width: 100%; max-width: 500px; height: 520px; object-fit: cover; border-radius: 24px; box-shadow: 0 25px 50px rgba(140, 65, 21, 0.15), 0 10px 20px rgba(0,0,0,0.05); border: 1px solid rgba(255,255,255,0.8);" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Slide 5 -->
+  <section>
+    <div class="content-container scale-wrapper">
+      <h2 style="font-size: 3.5rem; color: var(--brand-green); line-height: 1.3; text-align: center;">
+        The right guidance, at the right time, through a simple WhatsApp or SMS message.
+      </h2>
+    </div>
+  </section>
+
+  <!-- Slide 6: Team Layout -->
+  <section class="team-slide" style="position: relative; height: 100vh; overflow: hidden;">
+    <div class="landscape-bg"></div>
+    <!-- No floor-curve here so name tags are not clipped -->
+
+    <div class="cluster-container scale-wrapper">
+      <div class="team-title">
+        <h1>Meet the iNua Beekeeping Support Team</h1>
+        <p>General support, beekeeping coaching, pest diagnosis, and market connection for every beekeeper.</p>
+      </div>
+
+      <!-- Left Glass Boxes -->
+      <div class="team-glass-box" style="top: 28%; left: -5%;">
+        <h4><i class="ph-fill ph-chat-circle-dots"></i> General Support</h4>
+        <p>Get answers, solve issues, and run M&E surveys.</p>
+      </div>
+
+      <div class="team-glass-box" style="top: 46%; left: -5%;">
+        <h4><i class="ph-fill ph-storefront"></i> Market & CS Support</h4>
+        <p>Connect buyers to mentors' honey brands and handle CS.</p>
+      </div>
+
+      <div class="team-glass-box" style="top: 64%; left: -5%;">
+        <h4><i class="ph-fill ph-shield"></i> Beekeeping Advice</h4>
+        <p>Practical tips for managing hives, brood boxes, and honey supers.</p>
+      </div>
+
+      <!-- Right Glass Boxes -->
+      <div class="team-glass-box" style="top: 37%; right: -5%;">
+        <h4><i class="ph-fill ph-bug"></i> Pest & Disease Alerts</h4>
+        <p>Diagnose pests like wax moths and prevent absconding.</p>
+      </div>
+
+      <div class="team-glass-box" style="top: 55%; right: -5%;">
+        <h4><i class="ph-fill ph-chart-line-up"></i> Field Analytics</h4>
+        <p>Aggregate insights from beekeepers to track NGO impact.</p>
+      </div>
+
+      <!-- Flowchart-style SVG Connector Lines -->
+      <svg viewBox="0 0 1920 945" preserveAspectRatio="none"
+        style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 25; pointer-events: none;">
+        <defs>
+          <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+            <path d="M 0 1 L 8 5 L 0 9 z" fill="#d4a574" />
+          </marker>
+        </defs>
+
+        <!-- General Support -> Grace (pos 1, leftmost) -->
+        <polyline points="400,310 420,310 420,500 580,500" stroke="#d4a574" stroke-width="2.5" fill="none"
+          stroke-dasharray="8 5" stroke-linejoin="round" marker-end="url(#arrow)" opacity="0.65" />
+
+        <!-- Market & CS Support -> Trust (pos 4) -->
+        <polyline points="400,480 440,480 440,230 1150,230 1150,290" stroke="#d4a574" stroke-width="2.5" fill="none"
+          stroke-dasharray="8 5" stroke-linejoin="round" marker-end="url(#arrow)" opacity="0.65" />
+
+        <!-- Beekeeping Advice -> Gift (pos 5, rightmost) -->
+        <polyline points="400,650 460,650 460,180 1340,180 1340,250" stroke="#d4a574" stroke-width="2.5" fill="none"
+          stroke-dasharray="8 5" stroke-linejoin="round" marker-end="url(#arrow)" opacity="0.65" />
+
+        <!-- Pest & Disease Alerts -> Faith (pos 2) -->
+        <polyline points="1520,390 1500,390 1500,200 770,200 770,270" stroke="#d4a574" stroke-width="2.5" fill="none"
+          stroke-dasharray="8 5" stroke-linejoin="round" marker-end="url(#arrow)" opacity="0.65" />
+
+        <!-- Field Analytics -> iNua (pos 3, center) -->
+        <polyline points="1520,560 1460,560 1460,500 960,500" stroke="#d4a574" stroke-width="2.5" fill="none"
+          stroke-dasharray="8 5" stroke-linejoin="round" marker-end="url(#arrow)" opacity="0.65" />
+      </svg>
+
+
+      <!-- The Lineup -->
+      <div class="team-lineup">
+        <!-- Grace -->
+        <div class="team-member">
+          <img src="../Images/grace_nobg.png" alt="Grace - M&E & General Support">
+          <div class="team-name-tag">
+            <h4>Grace</h4>
+            <p>M&E & General Support</p>
+          </div>
+        </div>
+        <!-- Faith (moved to pos 2) -->
+        <div class="team-member">
+          <img src="../Images/faith_nobg.png" alt="Faith - Pest & Disease Diagnosis">
+          <div class="team-name-tag">
+            <h4>Faith</h4>
+            <p>Pest Diagnosis</p>
+          </div>
+        </div>
+        <!-- iNua Manager -->
+        <div class="team-member">
+          <img src="../Images/inua_female_nobg.png" alt="iNua - Field Analytics Manager">
+          <div class="team-name-tag">
+            <h4>iNua</h4>
+            <p>Field Analytics</p>
+          </div>
+        </div>
+        <!-- Trust -->
+        <div class="team-member">
+          <img src="../Images/trust_nobg.png" alt="Trust - Market Support">
+          <div class="team-name-tag">
+            <h4>Trust</h4>
+            <p>Market Support</p>
+          </div>
+        </div>
+        <!-- Gift (moved to pos 5, rightmost) -->
+        <div class="team-member">
+          <img src="../Images/gift_nobg.png" alt="Gift - Beekeeping Coach">
+          <div class="team-name-tag">
+            <h4>Gift</h4>
+            <p>Beekeeping Coach</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="logo-lockup">
+        <span class="oaf">RIPPLE FOR CHANGE</span>
+        <div class="divider"></div>
+        <span>iNua</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Slide 7: Pilot Recommended Structure -->
+  <section
+    style="position: relative; height: 100vh; overflow: hidden; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+    <div class="landscape-bg"></div>
+
+    <div class="content-container scale-wrapper" style="z-index: 10;">
+      <h2
+        style="font-size: 3rem; color: var(--heading-color); margin-bottom: 2vh; font-weight: 800; text-align: center;">
+        Structure</h2>
+
+      <div class="structure-cards">
+        <!-- Farmers Card -->
+        <div class="structure-card">
+          <div class="card-icon-large"><i class="ph-fill ph-users"></i></div>
+          <span class="card-subtitle">Scale</span>
+          <h3>162 Total Users</h3>
+          <p>155 rural beekeepers and 7 regional mentors across 6 provinces to track adoption.</p>
+        </div>
+
+        <!-- Scope Card -->
+        <div class="structure-card">
+          <div class="card-icon-large"><i class="ph-fill ph-shield"></i></div>
+          <span class="card-subtitle">Scope</span>
+          <h3>Beekeeping Initiative</h3>
+          <p>Initial focus on beekeeping operations, training, and tracking.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Slide 8: Cost Breakdown -->
+  <section class="bg-slide" style="position: relative; height: 100vh; overflow: hidden; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+    <div class="landscape-bg"></div>
+    <div class="content-container scale-wrapper" style="z-index: 10;">
+      <h2 style="font-size: 3rem; color: var(--heading-color); margin-bottom: 2vh; font-weight: 800; text-align: center;">
+        Pricing & Cost Breakdown
+      </h2>
+      <div class="cost-cards">
+        <!-- Basic Plan Card -->
+        <div class="cost-card">
+          <h3>Basic Plan</h3>
+          <div class="price">$681.76</div>
+          <div class="price-sub">Per month with annual subscription discount. $693.14 if billed monthly.</div>
+          
+          <div class="agent-item">
+            <img src="../Images/grace_nobg.png" alt="Grace" class="agent-avatar">
+            <div class="agent-info">
+              <h4>Grace (M&E Agent)</h4>
+              <p>Track beekeeper demographics & progress.</p>
+            </div>
+          </div>
+          
+          <div class="agent-item">
+            <img src="../Images/gift_nobg.png" alt="Gift" class="agent-avatar">
+            <div class="agent-info">
+              <h4>Gift (Beekeeping Expert)</h4>
+              <p>Interactive beekeeping coaching and training support.</p>
+            </div>
+          </div>
+          
+          <div class="agent-item">
+            <img src="../Images/inua_female_nobg.png" alt="iNua" class="agent-avatar">
+            <div class="agent-info">
+              <h4>iNua (Field Analytics)</h4>
+              <p>Aggregates baseline data, tracks beekeeper segments, and generates NGO impact dashboard.</p>
+            </div>
+          </div>
+          
+          <p style="font-size: 1.0rem !important; color: #6B7280 !important; margin-top: 10px !important; line-height: 1.3 !important;">* Includes setup fee and platform subscription.</p>
+        </div>
+
+        <!-- Optional Extras Card -->
+        <div class="cost-card" style="border-top: 5px solid var(--accent-orange);">
+          <h3>Optional Extras</h3>
+          <p style="font-size: 1.15rem !important; color: var(--text-color); margin-bottom: 10px;">Enhance the pilot with specialized capabilities:</p>
+          
+          <div class="agent-item">
+            <img src="../Images/faith_nobg.png" alt="Faith" class="agent-avatar">
+            <div class="agent-info">
+              <h4>Faith (Pest & Disease Diagnosis) <span style="color: var(--brand-green); font-weight: 700; font-size: 1.1rem; float: right;">+$285.20/mo</span></h4>
+              <p>Diagnosing diseases and absconding risks.</p>
+            </div>
+          </div>
+          
+          <div class="agent-item">
+            <img src="../Images/trust_nobg.png" alt="Trust" class="agent-avatar">
+            <div class="agent-info">
+              <h4>Trust (Customer Service Agent) <span style="color: var(--brand-green); font-weight: 700; font-size: 1.1rem; float: right;">+$106.98/mo</span></h4>
+              <p>Connects external honey buyers and clients directly to the mentors' local honey brands.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    // Advance to the next slide on mouse click
+    document.addEventListener('click', function (e) {
+      if (window.getSelection().toString().length > 0) return;
+
+      const sections = Array.from(document.querySelectorAll('section'));
+      let currentIndex = 0;
+      let minDistance = Infinity;
+
+      sections.forEach((section, index) => {
+        const distance = Math.abs(section.getBoundingClientRect().top);
+        if (distance < minDistance) {
+          minDistance = distance;
+          currentIndex = index;
+        }
+      });
+
+      if (currentIndex < sections.length - 1) {
+        sections[currentIndex + 1].scrollIntoView({ behavior: 'smooth' });
+      }
+    });
+  </script>
+
+  <!-- Background removal is now done at build time via pre-processed _nobg.png images -->
+
+  <script>
+    // Scale presentation slides to fit the viewport perfectly while preserving aspect ratio
+    function adjustScales() {
+      const targetWidth = 1920;
+      const targetHeight = 945;
+      const scaleWrappers = document.querySelectorAll('.scale-wrapper');
+
+      if (window.innerWidth <= 768) {
+        // Disable scaling on mobile layouts
+        scaleWrappers.forEach(wrapper => {
+          wrapper.style.transform = 'none';
+        });
+        return;
+      }
+
+      const scaleX = window.innerWidth / targetWidth;
+      const scaleY = window.innerHeight / targetHeight;
+      const scale = Math.min(scaleX, scaleY);
+
+      scaleWrappers.forEach(wrapper => {
+        wrapper.style.transform = `translate(-50%, -50%) scale(${scale})`;
+      });
+    }
+
+    window.addEventListener('resize', adjustScales);
+    window.addEventListener('load', adjustScales);
+    // Trigger immediately
+    adjustScales();
+  </script>
+</body>
+
+</html>
