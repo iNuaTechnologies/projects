@@ -767,6 +767,212 @@
         width: 90% !important;
       }
     }
+
+    /* WHATSAPP SLIDE STYLES */
+    .whatsapp-row {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      gap: 30px;
+      width: 1760px;
+      margin: 20px auto 0 auto;
+      z-index: 10;
+      position: relative;
+    }
+
+    .whatsapp-column {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 410px;
+      flex-shrink: 0;
+    }
+
+    .whatsapp-avatar-header {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 12px;
+      text-align: center;
+    }
+
+    .whatsapp-avatar-header .avatar-circle {
+      width: 55px;
+      height: 55px;
+      border-radius: 50%;
+      background: #FFFDF5;
+      border: 2px solid var(--line-color);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 6px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    }
+
+    .whatsapp-avatar-header .avatar-circle img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top center;
+    }
+
+    .whatsapp-avatar-header h4 {
+      font-size: 1.40rem !important;
+      color: var(--heading-color);
+      margin: 0 !important;
+      font-weight: 700;
+    }
+
+    .whatsapp-avatar-header p {
+      font-size: 1.0rem !important;
+      color: var(--text-color);
+      margin: 0 !important;
+      opacity: 0.8;
+    }
+
+    .phone-mockup {
+      width: 100%;
+      height: 620px;
+      background: #efeae2; /* WhatsApp chat background beige */
+      border-radius: 20px;
+      box-shadow: 0 15px 35px rgba(140, 65, 21, 0.08), 0 5px 15px rgba(0, 0, 0, 0.02);
+      border: 1px solid rgba(255, 255, 255, 0.8);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      position: relative;
+    }
+
+    /* WhatsApp header */
+    .whatsapp-header {
+      background: #075E54;
+      color: #ffffff;
+      padding: 10px 14px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      height: 54px;
+      box-sizing: border-box;
+      flex-shrink: 0;
+    }
+
+    .whatsapp-header img {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: #ffffff;
+      object-fit: cover;
+      object-position: top center;
+      border: 1px solid rgba(255,255,255,0.2);
+    }
+
+    .whatsapp-header .header-info {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .whatsapp-header .header-info .name {
+      font-weight: 700;
+      font-size: 1.15rem;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    .whatsapp-header .header-info .status {
+      font-size: 0.88rem;
+      opacity: 0.85;
+    }
+
+    /* WhatsApp chat body */
+    .chat-body {
+      flex: 1;
+      padding: 12px;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      background-image: radial-gradient(rgba(0, 0, 0, 0.04) 1px, transparent 1px);
+      background-size: 15px 15px;
+      box-sizing: border-box;
+    }
+
+    /* WhatsApp speech bubbles */
+    .message-bubble {
+      max-width: 85%;
+      padding: 8px 10px;
+      font-size: 1.02rem !important;
+      line-height: 1.35 !important;
+      position: relative;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.08);
+      word-wrap: break-word;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .message-bubble.incoming {
+      background: #ffffff;
+      color: #303030;
+      align-self: flex-start;
+      border-radius: 0 8px 8px 8px;
+    }
+
+    .message-bubble.outgoing {
+      background: #e1ffc7;
+      color: #303030;
+      align-self: flex-end;
+      border-radius: 8px 0 8px 8px;
+    }
+
+    .bubble-meta {
+      font-size: 0.80rem;
+      color: #707070;
+      align-self: flex-end;
+      margin-top: 3px;
+      display: flex;
+      align-items: center;
+      gap: 3px;
+    }
+
+    .bubble-meta i {
+      color: #34b7f1;
+      font-size: 0.75rem !important;
+    }
+
+    /* WhatsApp footer */
+    .whatsapp-footer {
+      background: #f0f0f0;
+      padding: 8px 10px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      height: 48px;
+      box-sizing: border-box;
+      flex-shrink: 0;
+    }
+
+    .whatsapp-footer .input-pill {
+      background: #ffffff;
+      border-radius: 20px;
+      flex: 1;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      padding: 0 12px;
+      font-size: 0.97rem;
+      color: #a0a0a0;
+      border: 1px solid rgba(0,0,0,0.05);
+    }
+
+    .whatsapp-footer .circle-btn {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: #128c7e;
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+    }
   </style>
 </head>
 
@@ -970,7 +1176,184 @@
     </div>
   </section>
 
-  <!-- Slide 7: Pilot Recommended Structure -->
+  <!-- Slide 7: Conversations Mockup -->
+  <section class="whatsapp-slide" style="position: relative; height: 100vh; overflow: hidden; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+    <div class="landscape-bg"></div>
+    
+    <div class="content-container scale-wrapper" style="z-index: 10; max-width: 1800px; padding: 0 20px;">
+      <div class="whatsapp-row">
+        <!-- Column 1: Grace -->
+        <div class="whatsapp-column">
+          <div class="whatsapp-avatar-header">
+            <div class="avatar-circle">
+              <img src="../Images/grace_nobg.png" alt="Grace">
+            </div>
+            <h4>Grace</h4>
+            <p>M&E & General Support</p>
+          </div>
+          <div class="phone-mockup">
+            <div class="whatsapp-header">
+              <img src="../Images/grace_nobg.png" alt="Grace">
+              <div class="header-info">
+                <span class="name">Grace (M&E)</span>
+                <span class="status">online</span>
+              </div>
+            </div>
+            <div class="chat-body">
+              <div class="message-bubble outgoing">
+                Hi Nomsa! Let's do our monthly check-in. Can you share how much honey you harvested this month, and what was your household income from it?
+                <div class="bubble-meta">14:02 <i class="ph-fill ph-checks"></i></div>
+              </div>
+              <div class="message-bubble incoming">
+                I harvested 20kg of honey this month and sold it for 1,200 Rand.
+                <div class="bubble-meta">14:03</div>
+              </div>
+              <div class="message-bubble outgoing">
+                This is great! Did you spend most of this income on food, health, or on education for your children?
+                <div class="bubble-meta">14:04 <i class="ph-fill ph-checks"></i></div>
+              </div>
+              <div class="message-bubble incoming">
+                Everyone is healthy, thank you! I spent it on school uniforms, books, and healthy food.
+                <div class="bubble-meta">14:05</div>
+              </div>
+              <div class="message-bubble outgoing">
+                Wonderful, thank you Nomsa for sharing! We are here to support you and hope to help you increase your honey yield next month.
+                <div class="bubble-meta">14:06 <i class="ph-fill ph-checks"></i></div>
+              </div>
+            </div>
+            <div class="whatsapp-footer">
+              <div class="input-pill">Type a message...</div>
+              <div class="circle-btn"><i class="ph-fill ph-paper-plane-tilt"></i></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Column 2: Gift -->
+        <div class="whatsapp-column">
+          <div class="whatsapp-avatar-header">
+            <div class="avatar-circle">
+              <img src="../Images/gift_nobg.png" alt="Gift">
+            </div>
+            <h4>Gift</h4>
+            <p>Beekeeping Coach</p>
+          </div>
+          <div class="phone-mockup">
+            <div class="whatsapp-header">
+              <img src="../Images/gift_nobg.png" alt="Gift">
+              <div class="header-info">
+                <span class="name">Gift (Coach)</span>
+                <span class="status">online</span>
+              </div>
+            </div>
+            <div class="chat-body">
+              <div class="message-bubble outgoing">
+                Weekly Beekeeping Tip: Remember, it is winter now. We do not touch the hives or harvest honey. All the honey in the main brood box is left to sustain the bees themselves. Is there any activity around your hive entrance?
+                <div class="bubble-meta">09:15 <i class="ph-fill ph-checks"></i></div>
+              </div>
+              <div class="message-bubble incoming">
+                Yes, I see a few bees flying in the warm afternoon. But I will make sure not to open the brood box.
+                <div class="bubble-meta">09:18</div>
+              </div>
+              <div class="message-bubble outgoing">
+                Perfect! Keep them warm and insulated. We'll wait until spring for the next checkup.
+                <div class="bubble-meta">09:20 <i class="ph-fill ph-checks"></i></div>
+              </div>
+            </div>
+            <div class="whatsapp-footer">
+              <div class="input-pill">Type a message...</div>
+              <div class="circle-btn"><i class="ph-fill ph-paper-plane-tilt"></i></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Column 3: Faith -->
+        <div class="whatsapp-column">
+          <div class="whatsapp-avatar-header">
+            <div class="avatar-circle">
+              <img src="../Images/faith_nobg.png" alt="Faith">
+            </div>
+            <h4>Faith</h4>
+            <p>Pest Diagnosis</p>
+          </div>
+          <div class="phone-mockup">
+            <div class="whatsapp-header">
+              <img src="../Images/faith_nobg.png" alt="Faith">
+              <div class="header-info">
+                <span class="name">Faith (Diagnostics)</span>
+                <span class="status">online</span>
+              </div>
+            </div>
+            <div class="chat-body">
+              <div class="message-bubble incoming">
+                Hi Faith, something seems wrong with my hive. The bees look weak, and there are small grey moths inside.
+                <div class="bubble-meta">11:30</div>
+              </div>
+              <div class="message-bubble outgoing">
+                Hello Zola! Let's diagnose this. Are there white silk-like webs or tunnels inside the combs, and are the bees absconding (leaving)?
+                <div class="bubble-meta">11:32 <i class="ph-fill ph-checks"></i></div>
+              </div>
+              <div class="message-bubble incoming">
+                Yes, there are webs on two frames, and some bees are leaving.
+                <div class="bubble-meta">11:35</div>
+              </div>
+              <div class="message-bubble outgoing">
+                Confirmed: Wax Moth infestation. Remove infested frames immediately. Clean the hive floor and freeze frames for 24 hours to kill larvae. This will save the hive and prevent absconding.
+                <div class="bubble-meta">11:38 <i class="ph-fill ph-checks"></i></div>
+              </div>
+            </div>
+            <div class="whatsapp-footer">
+              <div class="input-pill">Type a message...</div>
+              <div class="circle-btn"><i class="ph-fill ph-paper-plane-tilt"></i></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Column 4: Trust -->
+        <div class="whatsapp-column">
+          <div class="whatsapp-avatar-header">
+            <div class="avatar-circle">
+              <img src="../Images/trust_nobg.png" alt="Trust">
+            </div>
+            <h4>Trust</h4>
+            <p>Market Support</p>
+          </div>
+          <div class="phone-mockup">
+            <div class="whatsapp-header">
+              <img src="../Images/trust_nobg.png" alt="Trust">
+              <div class="header-info">
+                <span class="name">Trust (CS)</span>
+                <span class="status">online</span>
+              </div>
+            </div>
+            <div class="chat-body">
+              <div class="message-bubble incoming">
+                Hello, I am looking to buy 10 jars of pure organic honey. Do you have any stock available?
+                <div class="bubble-meta">15:10</div>
+              </div>
+              <div class="message-bubble outgoing">
+                Hi! Yes, our local beekeeping mentors have fresh, high-quality honey. Which province or town are you located in?
+                <div class="bubble-meta">15:12 <i class="ph-fill ph-checks"></i></div>
+              </div>
+              <div class="message-bubble incoming">
+                I am located in Kugo City (East London).
+                <div class="bubble-meta">15:15</div>
+              </div>
+              <div class="message-bubble outgoing">
+                Great! Our mentor in Kugo City is Albert. You can reach him directly at +27 82 123 4567 to arrange pickup or delivery.
+                <div class="bubble-meta">15:18 <i class="ph-fill ph-checks"></i></div>
+              </div>
+            </div>
+            <div class="whatsapp-footer">
+              <div class="input-pill">Type a message...</div>
+              <div class="circle-btn"><i class="ph-fill ph-paper-plane-tilt"></i></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Slide 8: Pilot Recommended Structure -->
   <section
     style="position: relative; height: 100vh; overflow: hidden; display: flex; flex-direction: column; justify-content: center; align-items: center;">
     <div class="landscape-bg"></div>
@@ -1011,8 +1394,8 @@
         <!-- Basic Plan Card -->
         <div class="cost-card">
           <h3>Basic Plan</h3>
-          <div class="price">$681.76</div>
-          <div class="price-sub">Per month with annual subscription discount. $693.14 if billed monthly.</div>
+          <div class="price">$6,568</div>
+          <div class="price-sub">yearly plan ($547.33 per month annual subscription discount. $657 is billed monthly)</div>
           
           <div class="agent-item">
             <img src="../Images/grace_nobg.png" alt="Grace" class="agent-avatar">
@@ -1049,7 +1432,7 @@
           <div class="agent-item">
             <img src="../Images/faith_nobg.png" alt="Faith" class="agent-avatar">
             <div class="agent-info">
-              <h4>Faith (Pest & Disease Diagnosis) <span style="color: var(--brand-green); font-weight: 700; font-size: 1.1rem; float: right;">+$285.20/mo</span></h4>
+              <h4>Faith (Pest & Disease Diagnosis) <span style="color: var(--brand-green); font-weight: 700; font-size: 1.1rem; float: right;">+$251/mo</span></h4>
               <p>Diagnosing diseases and absconding risks.</p>
             </div>
           </div>
@@ -1057,7 +1440,7 @@
           <div class="agent-item">
             <img src="../Images/trust_nobg.png" alt="Trust" class="agent-avatar">
             <div class="agent-info">
-              <h4>Trust (Customer Service Agent) <span style="color: var(--brand-green); font-weight: 700; font-size: 1.1rem; float: right;">+$106.98/mo</span></h4>
+              <h4>Trust (Customer Service Agent) <span style="color: var(--brand-green); font-weight: 700; font-size: 1.1rem; float: right;">+$58/mo</span></h4>
               <p>Connects external honey buyers and clients directly to the mentors' local honey brands.</p>
             </div>
           </div>
