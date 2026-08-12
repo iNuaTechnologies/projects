@@ -1,0 +1,1895 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>iNua Technologies for SunCulture – AI Agricultural Advisor</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700&family=Poppins:wght@500;600;700;800&display=swap"
+        rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <style>
+        :root {
+            --heading-color: #8c4115;
+            --text-color: #544a42;
+            --accent-orange: #f2a51a;
+            --line-color: #eab683;
+            --brand-green: #126b4f;
+            --sunculture-yellow: #F5A623;
+            --sunculture-blue: #1B4F72;
+            --bg-top: #FFFEFA;
+            --bg-bottom: #FFF1E0;
+            --card: #FFFDF8;
+            --line-light: rgba(140, 100, 60, 0.12);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-snap-type: y mandatory;
+            overflow-y: scroll;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Nunito', sans-serif;
+            color: var(--text-color);
+            background: linear-gradient(135deg, var(--bg-top) 0%, var(--bg-bottom) 100%);
+            min-height: 100vh;
+        }
+
+        section {
+            height: 100vh;
+            scroll-snap-align: start;
+            scroll-snap-stop: always;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4 {
+            font-family: 'Poppins', sans-serif;
+            color: var(--heading-color);
+        }
+
+        .content-container {
+            max-width: 1400px;
+            width: 100%;
+            padding: 0 60px;
+            text-align: center;
+        }
+
+        .scale-wrapper {
+            width: 1920px;
+            height: 945px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transform-origin: center center;
+        }
+
+        .landscape-bg {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 50vh;
+            background-image: url('../images/farm_landscape_bg.png');
+            background-size: cover;
+            background-position: bottom center;
+            background-repeat: no-repeat;
+            z-index: 0;
+            pointer-events: none;
+            opacity: 0.4;
+            mask-image: linear-gradient(to bottom, transparent 0%, black 40%);
+            -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 40%);
+        }
+
+        .slide-logo {
+            position: absolute;
+            top: 30px;
+            left: 40px;
+            height: 40px;
+            z-index: 100;
+            opacity: 0.85;
+        }
+
+        .bg-slide {
+            background-image: url('../images/Elegant wave patterns in soft hues.png');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .bg-slide .content-container h1 {
+            font-size: 72px;
+            font-weight: 800;
+            margin-bottom: 20px;
+            color: var(--brand-green);
+        }
+
+        .bg-slide .content-container h3 {
+            font-size: 32px;
+            font-weight: 400;
+            color: var(--text-color);
+            font-family: 'Nunito', sans-serif;
+        }
+
+        .bg-slide .content-container .subtitle {
+            font-size: 22px;
+            color: var(--text-color);
+            margin-top: 16px;
+            opacity: 0.8;
+        }
+
+        .two-col {
+            display: flex;
+            align-items: center;
+            gap: 60px;
+            max-width: 1400px;
+            padding: 0 80px;
+        }
+
+        .two-col .text-side {
+            flex: 1.3;
+            text-align: left;
+        }
+
+        .two-col .text-side h2 {
+            font-size: 42px;
+            line-height: 1.2;
+            margin-bottom: 24px;
+        }
+
+        .two-col .text-side p {
+            font-size: 22px;
+            line-height: 1.6;
+            color: var(--text-color);
+        }
+
+        .two-col .image-side {
+            flex: 0.7;
+        }
+
+        .two-col .image-side img {
+            max-width: 500px;
+            width: 100%;
+            height: 480px;
+            object-fit: cover;
+            border-radius: 24px;
+        }
+
+        .statement-slide {
+            text-align: center;
+            padding: 0 100px;
+        }
+
+        .statement-slide h2 {
+            font-size: 48px;
+            line-height: 1.3;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .statement-slide p {
+            font-size: 24px;
+            margin-top: 30px;
+            color: var(--text-color);
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cards-section h2 {
+            font-size: 44px;
+            margin-bottom: 50px;
+        }
+
+        .structure-cards {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .structure-card {
+            background: rgba(255, 255, 255, 0.85);
+            border-radius: 20px;
+            padding: 40px 30px;
+            max-width: 300px;
+            flex: 1;
+            min-width: 240px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06);
+            transition: transform 0.3s ease;
+        }
+
+        .structure-card:hover {
+            transform: translateY(-6px);
+        }
+
+        .structure-card .card-icon {
+            font-size: 48px;
+            margin-bottom: 20px;
+            color: var(--brand-green);
+        }
+
+        .structure-card h4 {
+            font-size: 22px;
+            margin-bottom: 12px;
+            color: var(--heading-color);
+        }
+
+        .structure-card p {
+            font-size: 16px;
+            line-height: 1.5;
+            color: var(--text-color);
+        }
+
+        .six-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .six-grid .grid-card {
+            background: rgba(255, 255, 255, 0.85);
+            border-radius: 16px;
+            padding: 30px 24px;
+            box-shadow: 0 6px 24px rgba(0, 0, 0, 0.05);
+            text-align: left;
+            transition: transform 0.3s ease;
+        }
+
+        .six-grid .grid-card:hover {
+            transform: translateY(-4px);
+        }
+
+        .six-grid .grid-card .card-icon {
+            font-size: 36px;
+            margin-bottom: 14px;
+            color: var(--accent-orange);
+        }
+
+        .six-grid .grid-card h4 {
+            font-size: 18px;
+            margin-bottom: 8px;
+        }
+
+        .six-grid .grid-card p {
+            font-size: 14px;
+            line-height: 1.5;
+            color: var(--text-color);
+        }
+
+        .cluster-slide {
+            overflow: hidden;
+        }
+
+        .cluster-slide .scale-wrapper {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+        }
+
+        .cluster-character {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            height: 700px;
+            z-index: 2;
+        }
+
+        .cluster-character img {
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .character-backdrop {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(ellipse at center bottom, rgba(18, 107, 79, 0.08) 0%, transparent 70%);
+            border-radius: 50%;
+            z-index: 1;
+        }
+
+        .cluster-title {
+            position: absolute;
+            top: 60px;
+            left: 50%;
+            transform: translateX(-50%);
+            text-align: center;
+            z-index: 5;
+        }
+
+        .cluster-title h2 {
+            font-size: 38px;
+            color: var(--heading-color);
+        }
+
+        .cluster-title .agent-role {
+            font-size: 20px;
+            color: var(--brand-green);
+            font-weight: 600;
+            margin-top: 6px;
+        }
+
+        .cluster-bullets {
+            list-style: none;
+            margin-top: 18px;
+            padding: 0;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 8px 24px;
+        }
+
+        .cluster-bullets li {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--text-color);
+            background: rgba(255, 255, 255, 0.75);
+            backdrop-filter: blur(6px);
+            padding: 6px 16px;
+            border-radius: 20px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .cluster-bullets li i {
+            font-size: 16px;
+            color: var(--brand-green);
+        }
+
+        .cluster-card-bullet {
+            position: absolute;
+            z-index: 4;
+            list-style: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--text-color);
+            background: rgba(255, 255, 255, 0.75);
+            backdrop-filter: blur(6px);
+            padding: 8px 18px;
+            border-radius: 20px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .cluster-card-bullet i {
+            font-size: 18px;
+            color: var(--brand-green);
+        }
+
+        .cluster-card {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(8px);
+            border-radius: 16px;
+            padding: 20px 24px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+            z-index: 4;
+            max-width: 260px;
+            transition: transform 0.3s ease;
+        }
+
+        .cluster-card:hover {
+            transform: translateY(-4px);
+        }
+
+        .cluster-card h4 {
+            font-size: 18px;
+            margin-bottom: 8px;
+            color: var(--heading-color);
+        }
+
+        .cluster-card p {
+            font-size: 16px;
+            line-height: 1.5;
+            color: var(--text-color);
+        }
+
+        .cluster-card .card-icon {
+            font-size: 28px;
+            margin-bottom: 10px;
+            color: var(--brand-green);
+        }
+
+        .card-top-left {
+            top: 170px;
+            left: 270px;
+        }
+
+        .card-top-right {
+            top: 270px;
+            right: 270px;
+        }
+
+        .card-bottom-left {
+            bottom: 160px;
+            left: 120px;
+        }
+
+        .card-bottom-right {
+            bottom: 160px;
+            right: 120px;
+        }
+
+        .cluster-connectors {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 3;
+            pointer-events: none;
+        }
+
+        .cluster-connectors line {
+            stroke: var(--line-color);
+            stroke-width: 2;
+            stroke-dasharray: 8, 6;
+        }
+
+        .floating-icon {
+            position: absolute;
+            font-size: 32px;
+            opacity: 0.3;
+            animation: float 4s ease-in-out infinite;
+            z-index: 1;
+            color: var(--brand-green);
+        }
+
+        .floating-icon:nth-child(2) {
+            animation-delay: 1s;
+        }
+
+        .floating-icon:nth-child(3) {
+            animation-delay: 2s;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-15px);
+            }
+        }
+
+        .channels-cards {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+        }
+
+        .channel-card {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 24px;
+            padding: 50px 40px;
+            width: 300px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06);
+            transition: transform 0.3s ease;
+        }
+
+        .channel-card:hover {
+            transform: translateY(-8px);
+        }
+
+        .channel-card .card-icon {
+            font-size: 56px;
+            margin-bottom: 24px;
+            color: var(--brand-green);
+        }
+
+        .channel-card h4 {
+            font-size: 24px;
+            margin-bottom: 12px;
+        }
+
+        .channel-card p {
+            font-size: 16px;
+            line-height: 1.5;
+            color: var(--text-color);
+        }
+
+        .trust-cards {
+            display: flex;
+            justify-content: center;
+            gap: 28px;
+            flex-wrap: wrap;
+        }
+
+        .trust-card {
+            background: rgba(255, 255, 255, 0.88);
+            border-radius: 20px;
+            padding: 36px 28px;
+            max-width: 280px;
+            flex: 1;
+            min-width: 220px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06);
+            text-align: left;
+            border-top: 4px solid var(--brand-green);
+            transition: transform 0.3s ease;
+        }
+
+        .trust-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .trust-card .card-icon {
+            font-size: 40px;
+            margin-bottom: 16px;
+            color: var(--brand-green);
+        }
+
+        .trust-card h4 {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .trust-card p {
+            font-size: 14px;
+            line-height: 1.6;
+            color: var(--text-color);
+        }
+
+        .contact-slide .content-container {
+            text-align: center;
+        }
+
+        .contact-slide h2 {
+            font-size: 44px;
+            margin-bottom: 24px;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .contact-slide p {
+            font-size: 22px;
+            color: var(--text-color);
+            margin-bottom: 40px;
+        }
+
+        .contact-btn {
+            display: inline-block;
+            background: var(--brand-green);
+            color: #fff;
+            padding: 16px 40px;
+            border-radius: 50px;
+            font-size: 20px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: background 0.3s ease, transform 0.3s ease;
+        }
+
+        .contact-btn:hover {
+            background: #0e5a40;
+            transform: translateY(-3px);
+        }
+
+        .stats-row {
+            display: flex;
+            justify-content: center;
+            gap: 60px;
+            margin-top: 50px;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-item .stat-number {
+            font-family: 'Poppins', sans-serif;
+            font-size: 52px;
+            font-weight: 800;
+            color: var(--brand-green);
+        }
+
+        .stat-item .stat-label {
+            font-size: 16px;
+            color: var(--text-color);
+            margin-top: 8px;
+        }
+
+        /* Future Team Slide */
+        .future-team-title {
+            position: absolute;
+            top: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            text-align: center;
+            z-index: 10;
+            width: 100%;
+        }
+
+        .future-team-title h2 {
+            font-size: 40px;
+            color: var(--heading-color);
+            margin-bottom: 10px;
+        }
+
+        .future-team-title p {
+            font-size: 18px;
+            color: var(--text-color);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .future-team-lineup {
+            position: absolute;
+            bottom: 5%;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            gap: 10px;
+            z-index: 5;
+        }
+
+        .future-team-member {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 280px;
+            transition: transform 0.3s ease;
+        }
+
+        .future-team-member:hover {
+            transform: translateY(-8px);
+        }
+
+        .future-team-member img {
+            width: 100%;
+            height: 420px;
+            object-fit: cover;
+            object-position: top center;
+            filter: brightness(1.0) contrast(1.25) saturate(1.1);
+            -webkit-mask-image: linear-gradient(to bottom, black 85%, transparent 100%);
+            mask-image: linear-gradient(to bottom, black 85%, transparent 100%);
+        }
+
+        .future-team-tag {
+            position: relative;
+            background: rgba(255, 255, 255, 0.95);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            border-radius: 12px;
+            padding: 8px 16px;
+            text-align: center;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+            margin-top: -12px;
+            z-index: 10;
+            min-width: 140px;
+        }
+
+        .future-team-tag h4 {
+            font-size: 20px;
+            color: var(--brand-green);
+            margin-bottom: 2px;
+            font-weight: 700;
+        }
+
+        .future-team-tag p {
+            font-size: 13px;
+            color: var(--text-color);
+            margin: 0;
+            line-height: 1.3;
+        }
+
+        .future-team-desc {
+            margin-top: 12px;
+            font-size: 13px;
+            line-height: 1.5;
+            color: var(--text-color);
+            text-align: center;
+            max-width: 240px;
+            background: rgba(255, 255, 255, 0.75);
+            backdrop-filter: blur(6px);
+            padding: 10px 14px;
+            border-radius: 12px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+        }
+
+        .highlight-green {
+            color: var(--brand-green);
+        }
+
+        .highlight-orange {
+            color: var(--accent-orange);
+        }
+
+        @media (max-width: 768px) {
+            .scale-wrapper {
+                position: relative;
+                width: 100%;
+                height: auto;
+                transform: none;
+                top: auto;
+                left: auto;
+            }
+
+            .two-col {
+                flex-direction: column;
+                padding: 0 30px;
+            }
+
+            .structure-cards,
+            .channels-cards,
+            .trust-cards {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .six-grid,
+            .future-experts {
+                grid-template-columns: 1fr;
+            }
+
+            .stats-row {
+                flex-direction: column;
+                gap: 30px;
+            }
+
+            .cluster-card {
+                position: relative;
+                top: auto !important;
+                left: auto !important;
+                right: auto !important;
+                bottom: auto !important;
+                max-width: 100%;
+                margin: 10px;
+            }
+
+            .cluster-character {
+                height: 50vh;
+            }
+
+            .cluster-connectors {
+                display: none;
+            }
+        }
+
+        /* TIMELINE STYLE CLASSES */
+        .timeline-container {
+            position: relative;
+            width: 1400px;
+            max-width: 1400px;
+            margin: 56px auto 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            z-index: 10;
+            box-sizing: border-box;
+        }
+
+        .timeline-line {
+            position: absolute;
+            top: 35px;
+            left: 7%;
+            right: 7%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--brand-green) 0%, var(--accent-orange) 50%, var(--brand-green) 100%);
+            box-shadow: 0 0 15px rgba(212, 165, 116, 0.4);
+            z-index: 5;
+        }
+
+        .timeline-step {
+            width: 17%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            z-index: 10;
+        }
+
+        .step-node {
+            width: 70px;
+            height: 70px;
+            background: white;
+            border: 4px solid var(--brand-green);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.5rem;
+            color: var(--brand-green);
+            font-weight: 800;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1), 0 0 15px rgba(59, 136, 66, 0.2);
+            transition: all 0.3s ease;
+            margin-bottom: 20px;
+            box-sizing: border-box;
+        }
+
+        .timeline-step:nth-child(even) .step-node {
+            border-color: var(--accent-orange);
+            color: var(--accent-orange);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1), 0 0 15px rgba(212, 165, 116, 0.2);
+        }
+
+        .step-card {
+            background: rgba(255, 255, 255, 0.95);
+            border: 1px solid rgba(255, 255, 255, 1);
+            border-radius: 16px;
+            padding: 14px 16px;
+            box-shadow: 0 15px 30px rgba(140, 65, 21, 0.08);
+            backdrop-filter: blur(12px);
+            text-align: left;
+            width: 100%;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .step-card h4 {
+            margin: 0;
+            font-size: 1.05rem;
+            color: var(--heading-color);
+            font-weight: 700;
+            line-height: 1.3;
+        }
+
+        .step-card span.step-duration {
+            font-size: 0.8rem;
+            font-weight: 800;
+            color: var(--accent-orange);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .timeline-step:nth-child(even) .step-card span.step-duration {
+            color: var(--brand-green);
+        }
+
+        .step-card ul {
+            list-style: none;
+            padding: 0;
+            margin: 4px 0 0 0;
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .step-card li {
+            font-size: 0.8rem;
+            line-height: 1.3;
+            color: var(--text-color);
+            display: flex;
+            align-items: flex-start;
+            gap: 6px;
+        }
+
+        .step-card li::before {
+            content: "•";
+            color: var(--brand-green);
+            font-weight: bold;
+        }
+
+        .timeline-step:nth-child(even) .step-card li::before {
+            color: var(--accent-orange);
+        }
+
+        /* TWO-LINE TIMELINE GROUP STYLES */
+        .timeline-group-container {
+            position: relative;
+            width: 1250px;
+            max-width: 100%;
+            margin: 15px auto 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+            z-index: 10;
+            box-sizing: border-box;
+        }
+
+        .timeline-group-row {
+            position: relative;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.45);
+            border: 1.5px solid rgba(59, 136, 66, 0.2);
+            border-radius: 20px;
+            padding: 22px 24px 18px 24px;
+            backdrop-filter: blur(12px);
+            box-sizing: border-box;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+        }
+
+        .timeline-group-header {
+            position: absolute;
+            top: -12px;
+            left: 24px;
+            background: var(--brand-green);
+            color: white;
+            font-size: 0.75rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            padding: 3px 14px;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(59, 136, 66, 0.3);
+        }
+
+        .timeline-group-row:nth-child(2) .timeline-group-header {
+            background: var(--accent-orange);
+            box-shadow: 0 4px 10px rgba(212, 165, 116, 0.3);
+        }
+
+        .timeline-group-row .timeline-step-two-col {
+            width: 48.5%;
+            display: flex;
+            flex-direction: row;
+            align-items: flex-start;
+            gap: 16px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .step-node-small {
+            width: 50px;
+            height: 50px;
+            min-width: 50px;
+            background: white;
+            border: 3.5px solid var(--brand-green);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.3rem;
+            color: var(--brand-green);
+            font-weight: 800;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
+            box-sizing: border-box;
+            margin-top: 4px;
+        }
+
+        .timeline-step-two-col:nth-child(even) .step-node-small {
+            border-color: var(--accent-orange);
+            color: var(--accent-orange);
+        }
+
+        .step-card-group {
+            background: rgba(255, 255, 255, 0.95);
+            border: 1px solid rgba(255, 255, 255, 1);
+            border-radius: 14px;
+            padding: 14px 18px;
+            box-shadow: 0 10px 25px rgba(140, 65, 21, 0.06);
+            backdrop-filter: blur(12px);
+            text-align: left;
+            width: 100%;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .step-card-group h4 {
+            margin: 0;
+            font-size: 1.05rem;
+            color: var(--heading-color);
+            font-weight: 700;
+            line-height: 1.25;
+        }
+
+        .step-card-group span.step-duration {
+            font-size: 0.78rem;
+            font-weight: 800;
+            color: var(--accent-orange);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .timeline-step-two-col:nth-child(even) .step-card-group span.step-duration {
+            color: var(--brand-green);
+        }
+
+        .step-card-group ul {
+            list-style: none;
+            padding: 0;
+            margin: 4px 0 0 0;
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .step-card-group li {
+            font-size: 0.95rem;
+            line-height: 1.45;
+            color: #1a252c;
+            font-weight: 550;
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+        }
+
+        .step-card-group li::before {
+            content: "•";
+            color: var(--brand-green);
+            font-weight: 800;
+            font-size: 1.15rem;
+            line-height: 1.2;
+        }
+
+        .timeline-step-two-col:nth-child(even) .step-card-group li::before {
+            color: var(--accent-orange);
+        }
+
+        /* PRICING & COST SLIDE STYLES (ENLARGED) */
+        .cost-widget-container {
+            width: 1380px;
+            max-width: 100%;
+            margin: 20px auto 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 26px;
+            z-index: 10;
+            box-sizing: border-box;
+        }
+
+        .scale-banner-wrapper {
+            background: rgba(255, 255, 255, 0.85);
+            border: 2px solid rgba(59, 136, 66, 0.3);
+            border-radius: 24px;
+            padding: 24px 32px;
+            backdrop-filter: blur(16px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.05);
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .scale-banner-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+        }
+
+        .scale-banner-title {
+            font-size: 1.2rem;
+            font-weight: 800;
+            color: var(--heading-color);
+            text-transform: uppercase;
+            letter-spacing: 0.9px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .scale-banner-val-badge {
+            background: var(--brand-green);
+            color: white;
+            font-size: 1.55rem;
+            font-weight: 800;
+            padding: 8px 24px;
+            border-radius: 30px;
+            box-shadow: 0 6px 18px rgba(59, 136, 66, 0.3);
+            letter-spacing: 0.4px;
+        }
+
+        .slider-container {
+            position: relative;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .custom-range-slider {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 100%;
+            height: 18px;
+            border-radius: 9px;
+            background: linear-gradient(90deg, var(--brand-green) 0%, var(--accent-orange) 100%);
+            outline: none;
+            cursor: pointer;
+            box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.18);
+        }
+
+        .custom-range-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            background: white;
+            border: 4.5px solid var(--brand-green);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+            cursor: pointer;
+            transition: transform 0.15s ease, border-color 0.15s ease;
+        }
+
+        .custom-range-slider::-webkit-slider-thumb:hover {
+            transform: scale(1.18);
+            border-color: var(--accent-orange);
+        }
+
+        .slider-ticks-row {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            margin-top: 6px;
+        }
+
+        .slider-tick {
+            font-size: 1.05rem;
+            font-weight: 750;
+            color: #64748b;
+            cursor: pointer;
+            transition: color 0.2s ease, transform 0.2s ease;
+            padding: 4px 8px;
+            border-radius: 6px;
+        }
+
+        .slider-tick:hover,
+        .slider-tick.active {
+            color: var(--brand-green);
+            font-weight: 800;
+            transform: translateY(-2px);
+        }
+
+        .cost-display-grid {
+            display: grid;
+            grid-template-columns: 1.3fr 1fr;
+            gap: 26px;
+            width: 100%;
+        }
+
+        .cost-hero-card {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(245, 250, 246, 0.98) 100%);
+            border: 2.5px solid var(--brand-green);
+            border-radius: 24px;
+            padding: 30px 36px;
+            backdrop-filter: blur(16px);
+            box-shadow: 0 20px 45px rgba(59, 136, 66, 0.12);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cost-hero-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 180px;
+            height: 180px;
+            background: radial-gradient(circle, rgba(59, 136, 66, 0.12) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .cost-hero-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .cost-hero-title {
+            font-size: 1.15rem;
+            font-weight: 800;
+            color: var(--brand-green);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .cost-hero-values {
+            display: flex;
+            align-items: baseline;
+            gap: 16px;
+            margin: 16px 0 14px 0;
+        }
+
+        .cost-hero-price {
+            font-size: 3.8rem;
+            font-weight: 850;
+            color: var(--heading-color);
+            letter-spacing: -1.5px;
+            line-height: 1;
+        }
+
+        .cost-hero-subtext {
+            font-size: 1.25rem;
+            color: #64748b;
+            font-weight: 700;
+        }
+
+        .unit-cost-box {
+            background: white;
+            border: 2px solid rgba(212, 165, 116, 0.45);
+            border-radius: 18px;
+            padding: 18px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.04);
+        }
+
+        .unit-cost-label {
+            font-size: 1.15rem;
+            font-weight: 750;
+            color: var(--heading-color);
+        }
+
+        .unit-cost-val {
+            font-size: 2.1rem;
+            font-weight: 850;
+            color: var(--accent-orange);
+        }
+
+        .fees-column {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .fee-card {
+            background: rgba(255, 255, 255, 0.95);
+            border: 2px solid rgba(226, 232, 240, 0.95);
+            border-radius: 22px;
+            padding: 22px 28px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.04);
+            backdrop-filter: blur(12px);
+        }
+
+        .fee-card-info h5 {
+            margin: 0;
+            font-size: 1.3rem;
+            font-weight: 800;
+            color: var(--heading-color);
+        }
+
+        .fee-card-info p {
+            margin: 4px 0 0 0;
+            font-size: 0.98rem;
+            color: #64748b;
+            font-weight: 500;
+        }
+
+        .fee-card-price {
+            font-size: 1.85rem;
+            font-weight: 850;
+            color: var(--brand-green);
+        }
+
+        .tier-table-mini {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            background: rgba(255, 255, 255, 0.85);
+            border-radius: 14px;
+            overflow: hidden;
+            border: 1px solid rgba(226, 232, 240, 0.9);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+        }
+
+        .tier-table-mini th {
+            background: rgba(59, 136, 66, 0.08);
+            color: var(--heading-color);
+            font-size: 0.75rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            padding: 8px 14px;
+            text-align: left;
+        }
+
+        .tier-table-mini td {
+            padding: 7px 14px;
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: var(--text-color);
+            border-top: 1px solid rgba(226, 232, 240, 0.6);
+            cursor: pointer;
+            transition: background 0.2s ease;
+        }
+
+        .tier-table-mini tr:hover td {
+            background: rgba(59, 136, 66, 0.05);
+        }
+
+        .tier-table-mini tr.active-row td {
+            background: rgba(59, 136, 66, 0.12);
+            color: var(--brand-green);
+            font-weight: 800;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- SLIDE 1: Title -->
+    <section class="bg-slide">
+        <img src="../images/logo.png" alt="iNua" class="slide-logo">
+        <div class="content-container">
+            <h1>iNua Technologies</h1>
+            <h3>AI Agricultural Advisor for SunCulture</h3>
+            <p class="subtitle">Voice-powered agronomy expertise for thousands of farmers across Kenya and Uganda</p>
+        </div>
+    </section>
+
+    <!-- SLIDE 2: Understanding SunCulture -->
+    <section>
+        <img src="../images/logo.png" alt="iNua" class="slide-logo">
+        <div class="two-col">
+            <div class="text-side">
+                <h2>SunCulture is transforming smallholder farming with solar irrigation.</h2>
+                <p>You sell solar-powered irrigation systems to farmers in Kenya and Uganda. Your call center handles
+                    support in Swahili, Kikuyu, Kalenjin, Kamba, and Luo.</p>
+                <p style="margin-top: 16px;">Now you can grow to an AI-powered agronomy hotline that scales beyond the
+                    call center &mdash; serving both your 50K+ active customers and 250K leads.</p>
+            </div>
+            <div class="image-side">
+                <img src="../images/stressed_farmer.png" alt="Farmer needing guidance">
+            </div>
+        </div>
+    </section>
+
+    <!-- SLIDE 3: The Opportunity -->
+    <section>
+        <img src="../images/logo.png" alt="iNua" class="slide-logo">
+        <div class="content-container">
+            <div class="statement-slide">
+                <h2>Your farmers gets agronomic support. You get their data.</h2>
+                <p>An AI voice agent that delivers real agronomy value while capturing crop data, farming practices, and
+                    engagement signals &mdash; turning every conversation into an upsell opportunity.</p>
+            </div>
+            <!-- <div class="stats-row">
+                <div class="stat-item">
+                    <div class="stat-number">85K+</div>
+                    <div class="stat-label">Active Customers</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">250K</div>
+                    <div class="stat-label">Leads Database</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">190</div>
+                    <div class="stat-label">Farmer Attributes</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">7yr</div>
+                    <div class="stat-label">Product Lifecycle</div>
+                </div>
+            </div> -->
+        </div>
+    </section>
+
+    <!-- SLIDE 5: Chris - The AI Agronomist for SunCulture -->
+    <section class="cluster-slide" style="position: relative;">
+        <img src="../images/logo.png" alt="iNua" class="slide-logo">
+        <div class="landscape-bg"></div>
+        <div class="scale-wrapper">
+            <div class="cluster-title" style="top: 20px; left: 45%; transform: translateX(-40%);">
+                <h2>Chris</h2>
+                <div class="agent-role">AI Agronomic Advisor for SunCulture Farmers</div>
+                <div class="agent-role">Integration with SunCulture Systems</div>
+            </div>
+
+            <div class="character-backdrop"></div>
+            <div class="cluster-character">
+                <img src="../images/chris_v3_nobg.png" alt="Chris">
+            </div>
+
+            <div class="cluster-card card-top-left">
+                <div class="card-icon"><i class="ph ph-plant"></i></div>
+                <h4>Crop Guidance</h4>
+                <p>Stage-by-stage advice on planting, irrigation scheduling, and harvest timing &mdash; personalized to
+                    what each farmer is growing.</p>
+            </div>
+            <div class="cluster-card-bullet" style="top: 430px; left: 270px;">
+                <i class="ph ph-book-open"></i> Trained on SunColture's agricultural knowledge
+            </div>
+            <div class="cluster-card-bullet" style="top: 210px; right: 270px;">
+                <i class="ph ph-phone-call"></i> Available via phone call
+            </div>
+            <div class="cluster-card-bullet" style="top: 270px; right: 270px;">
+                <i class="ph ph-translate"></i> Speaking Swahili
+            </div>
+            <div class="cluster-card-bullet" style="top: 330px; right: 270px;">
+                <i class="ph ph-arrows-left-right"></i> Inbound and outbound
+            </div>
+            <div class="cluster-card-bullet" style="bottom: 110px; right: 120px;">
+                <i class="ph ph-phone-transfer"></i> Intelligent handover to the call center queues
+            </div>
+            <div class="cluster-card card-bottom-left">
+                <div class="card-icon"><i class="ph ph-database"></i></div>
+                <h4>Data Collection</h4>
+                <p>Naturally captures what farmers are growing, challenges they face, and inputs they use &mdash;
+                    feeding your data warehouse.</p>
+            </div>
+            <div class="cluster-card-bullet" style="bottom: 100px; left: 120px;">
+                <i class="ph ph-database"></i> Integrated with SunCulture's data warehouse
+            </div>
+            <div class="cluster-card card-bottom-right">
+                <div class="card-icon"><i class="ph ph-user-switch"></i></div>
+                <h4>Hybrid Setup</h4>
+                <p>Handover between the AI agent and the human agent with full conversation context.</p>
+            </div>
+
+            <svg class="cluster-connectors" viewBox="0 0 1920 945">
+                <defs>
+                    <marker id="arrow-chris" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+                        <polygon points="0 0, 8 3, 0 6" fill="#eab683" />
+                    </marker>
+                </defs>
+                <line x1="360" y1="280" x2="760" y2="400" marker-end="url(#arrow-chris)" />
+                <line x1="1560" y1="280" x2="1160" y2="400" marker-end="url(#arrow-chris)" />
+                <line x1="340" y1="650" x2="760" y2="550" marker-end="url(#arrow-chris)" />
+                <line x1="1580" y1="650" x2="1160" y2="550" marker-end="url(#arrow-chris)" />
+            </svg>
+
+            <i class="ph ph-plant floating-icon" style="top: 120px; left: 250px;"></i>
+            <i class="ph ph-sun floating-icon" style="top: 300px; right: 200px;"></i>
+            <i class="ph ph-drop floating-icon" style="bottom: 150px; left: 350px;"></i>
+        </div>
+    </section>
+
+
+    <!-- SLIDE 10: Dashboard -->
+    <section style="position: relative;">
+        <img src="../images/logo.png" alt="iNua" class="slide-logo">
+        <div class="landscape-bg"></div>
+        <div class="content-container" style="position: relative; z-index: 2;">
+            <h2 style="font-size: 44px; margin-bottom: 16px;">See every conversation, question, and opportunity.</h2>
+            <p style="font-size: 20px; color: var(--text-color); max-width: 750px; margin: 0 auto 40px;">Track what
+                farmers are growing, problems solved remotely, escalations needed, and upsell signals &mdash; all in
+                real time.</p>
+            <img src="../images/dashboard-laptop.png" alt="iNua Technologies Insights Dashboard"
+                style="max-width: 900px; width: 100%; border-radius: 16px; box-shadow: 0 20px 60px rgba(0,0,0,0.12);">
+        </div>
+    </section>
+
+    <!-- SLIDE 11: Future Experts -->
+    <section class="future-team-slide" style="position: relative; overflow: hidden;">
+        <img src="../images/logo.png" alt="iNua" class="slide-logo">
+        <div class="landscape-bg"></div>
+        <div class="scale-wrapper">
+            <div class="future-team-title">
+                <h2>Start with Agronomy. Grow the Team.</h2>
+                <p>Once the agronomic advisor proves value, additional AI experts can address other SunCulture
+                    challenges:</p>
+            </div>
+
+            <div class="future-team-lineup">
+                <!-- Additional Agents per Need -->
+                <div class="future-team-member" style="opacity: 0.75; margin-right: -20px;">
+                    <svg viewBox="0 0 120 240" preserveAspectRatio="xMidYMax meet"
+                        style="width: 100%; height: 420px; fill: #888; opacity: 0.30; mix-blend-mode: multiply;">
+                        <!-- Head -->
+                        <circle cx="60" cy="28" r="16" />
+                        <!-- Neck -->
+                        <rect x="54" y="44" width="12" height="8" rx="3" />
+                        <!-- Torso -->
+                        <path d="M 35 52 C 35 50, 85 50, 85 52 L 82 120 Q 60 126, 38 120 Z" />
+                        <!-- Left Arm -->
+                        <path d="M 35 54 C 25 56, 20 75, 22 95 C 23 105, 28 115, 30 110 L 36 78 L 38 60 Z" />
+                        <!-- Right Arm -->
+                        <path d="M 85 54 C 95 56, 100 75, 98 95 C 97 105, 92 115, 90 110 L 84 78 L 82 60 Z" />
+                        <!-- Left Leg -->
+                        <path
+                            d="M 42 118 L 38 185 C 37 192, 34 195, 30 198 L 28 200 C 26 204, 48 204, 46 200 L 48 185 L 52 118 Z" />
+                        <!-- Right Leg -->
+                        <path
+                            d="M 68 118 L 72 185 C 73 192, 76 195, 80 198 L 82 200 C 84 204, 62 204, 64 200 L 62 185 L 58 118 Z" />
+                    </svg>
+                    <div class="future-team-tag">
+                        <h4>Additional Agents<br>per Need</h4>
+                    </div>
+                </div>
+                <div class="future-team-member">
+                    <img src="../images/tariq_clean.png" alt="Tariq">
+                    <div class="future-team-tag">
+                        <h4>Tariq</h4>
+                        <p>Sales & Lead Conversion</p>
+                    </div>
+                    <div class="future-team-desc">Engage 250K leads with personalized outbound calls. Qualify prospects
+                        and hand off sales-ready opportunities.</div>
+                </div>
+                <div class="future-team-member">
+                    <img src="../images/nia_v3_nobg.png" alt="Nia">
+                    <div class="future-team-tag">
+                        <h4>Nia</h4>
+                        <p>Customer Support</p>
+                    </div>
+                    <div class="future-team-desc">Handle first-line technical support for pump issues, payment questions
+                        &mdash; reducing load on your call center.</div>
+                </div>
+                <div class="future-team-member">
+                    <img src="../images/chris_v3_nobg.png" alt="Chris">
+                    <div class="future-team-tag">
+                        <h4>Chris</h4>
+                        <p>AI Agronomist</p>
+                    </div>
+                    <div class="future-team-desc">Stage-by-stage crop guidance, irrigation advice, and personalized
+                        agronomy support in Swahili.</div>
+                </div>
+                <div class="future-team-member">
+                    <img src="../images/grace_nobg.png" alt="Grace">
+                    <div class="future-team-tag">
+                        <h4>Grace</h4>
+                        <p>Data Collection & M&E</p>
+                    </div>
+                    <div class="future-team-desc">Run outbound surveys to capture what farmers are growing and gather
+                        structured feedback.</div>
+                </div>
+                <div class="future-team-member">
+                    <img src="../images/josef_nobg.png" alt="Josef">
+                    <div class="future-team-tag">
+                        <h4>Josef</h4>
+                        <p>Credit & Payment Support</p>
+                    </div>
+                    <div class="future-team-desc">Proactive payment reminders, loan status inquiries, and financial
+                        guidance for credit-based customers.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Slide 7 / 16: Pilot Recommended Structure -->
+    <section class="bg-slide"
+        style="position: relative; height: 100vh; overflow: hidden; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+
+        <div class="content-container scale-wrapper">
+            <h2
+                style="font-size: 2.6rem; color: var(--heading-color); margin-bottom: 0.4vh; font-weight: 800; text-align: center; text-transform: capitalize;">
+                Recommended Structure</h2>
+            <p
+                style="text-align: center; font-size: 1rem; color: var(--brand-green); font-weight: 700; margin-bottom: 2vh;">
+                Controlled, Slow-Growth Strategy to Protect Brand Equity & Build Customer Trust
+            </p>
+
+            <div class="timeline-group-container">
+                <!-- Line 1: Group (1, 2) - Customer Engagement Segments -->
+                <div class="timeline-group-row">
+                    <div class="timeline-group-header">Target Customer Segments</div>
+
+                    <!-- Step 1: Engage Uncommitted Leads (Lean Data) -->
+                    <div class="timeline-step-two-col">
+                        <div class="step-node-small">1</div>
+                        <div class="step-card-group">
+                            <span class="step-duration">250K Thin-File Leads</span>
+                            <h4>Uncommitted Leads (Lean Data)</h4>
+                            <ul>
+                                <li>Keep customers engaged who have not made the commitment to SunCulture using lean
+                                    data points (name & phone).</li>
+                                <li>Provide free digital agronomy Q&A to build trust & gather farming profile metadata
+                                    over time.</li>
+                                <li>Qualify prospects seamlessly into warm equipment upsell opportunities.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Step 2: Communicate with Engaged Customers (Rich Data) -->
+                    <div class="timeline-step-two-col">
+                        <div class="step-node-small">2</div>
+                        <div class="step-card-group">
+                            <span class="step-duration">80K+ Thick-File Farmers</span>
+                            <h4>Committed Customers (Rich Data)</h4>
+                            <ul>
+                                <li>Communicate with engaged customers using rich data points (190+ metadata attributes,
+                                    loan history, crop type).</li>
+                                <li>Continuously update and enrich farmer profile data saved directly in the SunCulture
+                                    data warehouse.</li>
+
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Line 2: Group (3, 4) - Implementation & Expansion -->
+                <div class="timeline-group-row">
+                    <div class="timeline-group-header">Rollout & Service Expansion</div>
+
+                    <!-- Step 3: Narrow Agronomy Focus -->
+                    <div class="timeline-step-two-col">
+                        <div class="step-node-small">3</div>
+                        <div class="step-card-group">
+                            <span class="step-duration">Low-Risk Entry</span>
+                            <h4>Agronomy Support First</h4>
+                            <ul>
+                                <li>Start narrow: launch strictly with digital agronomy support hotline ("agronomist in
+                                    every farmer's pocket").</li>
+                                <li>Test AI quality safely without ruffling internal organization or core operational
+                                    teams.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Step 4: Add Experts and Services -->
+                    <div class="timeline-step-two-col">
+                        <div class="step-node-small">4</div>
+                        <div class="step-card-group">
+                            <span class="step-duration">Phase 2 Expansion</span>
+                            <h4>Add Experts & Services</h4>
+                            <ul>
+                                <li>Deploy specialized AI agents across additional functions: Sales & Lead Conversion,
+                                    Tech Support, and Credit Servicing.</li>
+                                <li>Introduce value-added services: agri-dealer credit access, market connection
+                                    platforms, and subscription pumps.</li>
+                                <li>Maintain hybrid human guardrails with seamless escalation routing to 8 call center
+                                    queues for brand safety.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SLIDE 8: Proposal Cost Breakdown & Message Calculator -->
+    <section class="bg-slide"
+        style="position: relative; height: 100vh; overflow: hidden; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+
+        <div class="content-container scale-wrapper">
+            <h2
+                style="font-size: 3.2rem; color: var(--heading-color); margin-bottom: 0.5vh; font-weight: 800; text-align: center; text-transform: capitalize;">
+                Proposal Cost Breakdown</h2>
+            <p
+                style="text-align: center; font-size: 1.25rem; color: var(--brand-green); font-weight: 700; margin-bottom: 2vh;">
+                Transparent & Scalable Message Volume Pricing
+            </p>
+
+            <div class="cost-widget-container">
+                <!-- Continuous Scale Slider Banner -->
+                <div class="scale-banner-wrapper">
+                    <div class="scale-banner-header">
+                        <div class="scale-banner-title">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"></path>
+                                <line x1="4" y1="22" x2="4" y2="15"></line>
+                            </svg>
+                            Message Volume Scale (10,000 to 1,000,000)
+                        </div>
+                        <div class="scale-banner-val-badge" id="sliderValueBadge">100,000 Messages</div>
+                    </div>
+
+                    <div class="slider-container">
+                        <input type="range" class="custom-range-slider" id="messageSlider" min="0" max="600" step="1"
+                            value="200" oninput="onSliderInput(this.value)">
+
+                        <div class="slider-ticks-row">
+                            <span class="slider-tick" onclick="snapSliderToIndex(0)">10K</span>
+                            <span class="slider-tick" onclick="snapSliderToIndex(1)">50K</span>
+                            <span class="slider-tick active" onclick="snapSliderToIndex(2)">100K</span>
+                            <span class="slider-tick" onclick="snapSliderToIndex(3)">150K</span>
+                            <span class="slider-tick" onclick="snapSliderToIndex(4)">250K</span>
+                            <span class="slider-tick" onclick="snapSliderToIndex(5)">500K</span>
+                            <span class="slider-tick" onclick="snapSliderToIndex(6)">1M</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Display Grid -->
+                <div class="cost-display-grid">
+                    <!-- Left: Selected Package Breakdown Card -->
+                    <div class="cost-hero-card">
+                        <div>
+                            <div class="cost-hero-header">
+                                <span class="cost-hero-title">Selected Bundle Cost</span>
+                            </div>
+                            <div class="cost-hero-values">
+                                <span class="cost-hero-price" id="bundleCostDisplay">$7,635.53</span>
+                                <span class="cost-hero-subtext" id="volumeSubtext">for 100,000 messages</span>
+                            </div>
+                        </div>
+
+                        <div class="unit-cost-box">
+                            <div class="unit-cost-label">
+                                <div>Cost per 100 Messages</div>
+                                <small style="color: #64748b; font-weight: 500;" id="unitCostMessage">$0.0764 per
+                                    message</small>
+                            </div>
+                            <div class="unit-cost-val" id="costPer100Display">$7.64</div>
+                        </div>
+                    </div>
+
+                    <!-- Right: Fixed Fees & Platform Setup -->
+                    <div class="fees-column">
+                        <div class="fee-card">
+                            <div class="fee-card-info">
+                                <h5>Monthly Platform Fee</h5>
+                                <p>Recurring monthly infrastructure, upkeep & dashboard access</p>
+                            </div>
+                            <div class="fee-card-price">$701.56</div>
+                        </div>
+
+                        <div class="fee-card">
+                            <div class="fee-card-info">
+                                <h5>One-Time Onboarding</h5>
+                                <p>Initial technical setup, agronomy prompt engineering & UAT</p>
+                            </div>
+                            <div class="fee-card-price">$762.57</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SLIDE 14: Contact / Next Steps -->
+    <section class="contact-slide" style="position: relative;">
+        <img src="../images/logo.png" alt="iNua" class="slide-logo">
+        <div class="landscape-bg"></div>
+        <div class="content-container" style="position: relative; z-index: 2;">
+            <h2>Let's put an agronomist in every farmer's pocket.</h2>
+            <p>Start narrow with agronomy support. Scale broad across your entire farmer base. No friction, no shine.
+            </p>
+            <a href="mailto:info@inua-technologies.com" class="contact-btn">info@inua-technologies.com</a>
+        </div>
+    </section>
+
+    <!-- SLIDE 15: Thank You -->
+    <section class="bg-slide">
+        <img src="../images/logo.png" alt="iNua" class="slide-logo">
+        <div class="content-container">
+            <h1>Thank You</h1>
+            <h3>iNua Technologies &times; SunCulture</h3>
+            <p style="margin-top: 20px; font-size: 18px; color: var(--text-color);">The right expert. Every farmer.
+                Every language. At scale.</p>
+        </div>
+    </section>
+
+    <script>
+        function adjustScales() {
+            if (window.innerWidth <= 768) return;
+            const wrappers = document.querySelectorAll('.scale-wrapper');
+            const targetW = 1920;
+            const targetH = 945;
+            wrappers.forEach(wrapper => {
+                const parent = wrapper.parentElement;
+                const parentW = parent.clientWidth;
+                const parentH = parent.clientHeight;
+                const scaleX = parentW / targetW;
+                const scaleY = parentH / targetH;
+                const scale = Math.min(scaleX, scaleY);
+                wrapper.style.transform = `translate(-50%, -50%) scale(${scale})`;
+            });
+        }
+        window.addEventListener('load', adjustScales);
+        window.addEventListener('resize', adjustScales);
+        adjustScales();
+
+        (function () {
+            function getNextSection() {
+                const sections = Array.from(document.querySelectorAll('section'));
+                const scrollY = window.scrollY || window.pageYOffset;
+                for (let i = 0; i < sections.length; i++) {
+                    if (sections[i].offsetTop > scrollY + 10) {
+                        return sections[i];
+                    }
+                }
+                return null;
+            }
+
+            document.addEventListener('keydown', function (e) {
+                if (e.code === 'Space' || e.key === ' ') {
+                    const tag = document.activeElement.tagName.toLowerCase();
+                    if (['input', 'textarea', 'select', 'button'].includes(tag)) return;
+                    e.preventDefault();
+                    const next = getNextSection();
+                    if (next) next.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+
+            document.addEventListener('click', function (e) {
+                if (e.target.closest('a, button, input, select, textarea')) return;
+                if (window.getSelection().toString().length > 0) return;
+                const next = getNextSection();
+                if (next) next.scrollIntoView({ behavior: 'smooth' });
+            });
+        })();
+
+        // COST CALCULATOR DATA (based on Sheet10.pdf)
+        const tierAnchors = [
+            { msgs: 10000, label: "10,000", cost: 898.2976, cost100: 8.9830, badge: "Starter Tier" },
+            { msgs: 50000, label: "50,000", cost: 4042.3392, cost100: 8.0847, badge: "Growth Tier" },
+            { msgs: 100000, label: "100,000", cost: 7635.5296, cost100: 7.6355, badge: "Recommended Pilot" },
+            { msgs: 150000, label: "150,000", cost: 10779.5712, cost100: 7.1864, badge: "Expanded Pilot" },
+            { msgs: 250000, label: "250,000", cost: 16843.0800, cost100: 6.7372, badge: "Lead Base Scale" },
+            { msgs: 500000, label: "500,000", cost: 31440.4161, cost100: 6.2881, badge: "High Volume Scale" },
+            { msgs: 1000000, label: "1,000,000", cost: 58389.3442, cost100: 5.8389, badge: "Enterprise Tier" }
+        ];
+
+        function getInterpolatedCost(sliderVal) {
+            const val = Math.max(0, Math.min(600, parseFloat(sliderVal)));
+            const segmentIndex = Math.min(Math.floor(val / 100), 5);
+            const t = (val - (segmentIndex * 100)) / 100;
+
+            const lower = tierAnchors[segmentIndex];
+            const upper = tierAnchors[segmentIndex + 1];
+
+            const msgs = Math.round(lower.msgs + t * (upper.msgs - lower.msgs));
+            const cost100 = lower.cost100 + t * (upper.cost100 - lower.cost100);
+            const totalCost = (msgs / 100) * cost100;
+
+            let badge = lower.badge;
+            if (t > 0.5) badge = upper.badge;
+
+            return { msgs, totalCost, cost100, segmentIndex, badge };
+        }
+
+        function onSliderInput(sliderVal) {
+            const data = getInterpolatedCost(sliderVal);
+            const baseRate = tierAnchors[0].cost100;
+            const savingsPct = Math.round((1 - (data.cost100 / baseRate)) * 100);
+
+            // Update UI displays
+            const badgeEl = document.getElementById('sliderValueBadge');
+            if (badgeEl) badgeEl.textContent = data.msgs.toLocaleString() + ' Messages';
+
+            const bundleEl = document.getElementById('bundleCostDisplay');
+            if (bundleEl) bundleEl.textContent = '$' + data.totalCost.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+
+            const cost100El = document.getElementById('costPer100Display');
+            if (cost100El) cost100El.textContent = '$' + data.cost100.toFixed(4);
+
+            const volumeSub = document.getElementById('volumeSubtext');
+            if (volumeSub) volumeSub.textContent = 'for ' + data.msgs.toLocaleString() + ' messages';
+
+            const unitMsgEl = document.getElementById('unitCostMessage');
+            if (unitMsgEl) unitMsgEl.textContent = '$' + (data.totalCost / data.msgs).toFixed(4) + ' per message' + (savingsPct > 0 ? ' (' + savingsPct + '% volume discount)' : ' (Base rate)');
+
+            // Highlight active tick
+            const ticks = document.querySelectorAll('.slider-tick');
+            ticks.forEach((tick, i) => {
+                tick.classList.toggle('active', i === data.segmentIndex);
+            });
+        }
+
+        function snapSliderToIndex(index) {
+            const slider = document.getElementById('messageSlider');
+            if (slider) {
+                slider.value = index * 100;
+                onSliderInput(slider.value);
+            }
+        }
+
+        // Initialize cost calculator on load
+        window.addEventListener('DOMContentLoaded', () => {
+            snapSliderToIndex(2); // Default to 100,000 msgs
+        });
+    </script>
+</body>
+
+</html>

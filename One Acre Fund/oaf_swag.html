@@ -1,0 +1,2370 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>One Acre Fund Pilot Proposal</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700&family=Poppins:wght@500;600;700;800&display=swap"
+        rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+    <style>
+        :root {
+            --heading-color: #8c4115;
+            /* Rich Brown */
+            --text-color: #544a42;
+            /* Slate/Brown */
+            --accent-orange: #f28b18;
+            /* Vibrant Orange */
+            --line-color: #eab683;
+            /* Light orange for dashed lines */
+            --brand-green: #3b8842;
+            /* Vibrant green */
+            --bg-top: #FFFEFA;
+            --bg-bottom: #FFF1E0;
+            /* Very light warm tone */
+        }
+
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            scroll-behavior: smooth;
+        }
+
+        html {
+            scroll-snap-type: y mandatory;
+        }
+
+        body {
+            background: linear-gradient(135deg, #FFFEFA 0%, #FFFDF5 50%, #FFF1E0 100%);
+            font-family: 'Nunito', sans-serif;
+            color: var(--text-color);
+            overflow-x: hidden;
+        }
+
+        .bg-slide {
+            background-image: url('../Images/Elegant%20wave%20patterns%20in%20soft%20hues.png');
+            background-size: cover;
+            background-position: center 85%;
+        }
+
+        section {
+            scroll-snap-align: start;
+            scroll-snap-stop: always;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 0 5%;
+            box-sizing: border-box;
+            position: relative;
+        }
+
+        .content-container {
+            max-width: 1000px;
+            width: 100%;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-family: 'Poppins', sans-serif;
+            color: var(--heading-color);
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            margin-top: 0;
+            margin-bottom: 25px;
+        }
+
+        h1 {
+            font-size: 4.2rem;
+            line-height: 1.1;
+            text-align: center;
+            letter-spacing: -1.5px;
+        }
+
+        h2 {
+            font-size: 2.8rem;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        h3 {
+            font-size: 1.6rem;
+            color: var(--text-color);
+            font-weight: 600;
+            font-family: 'Nunito', sans-serif;
+            text-align: center;
+        }
+
+        p,
+        li {
+            font-size: 1.25rem;
+            line-height: 1.7;
+            margin-bottom: 20px;
+            font-weight: 400;
+        }
+
+        ul {
+            margin-left: 40px;
+        }
+
+        li {
+            margin-bottom: 12px;
+        }
+
+        .visual-placeholder {
+            border: 2px dashed var(--heading-color);
+            background: rgba(140, 65, 21, 0.05);
+            border-radius: 12px;
+            padding: 50px 20px;
+            text-align: center;
+            margin-top: 25px;
+            color: var(--heading-color);
+            font-style: italic;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        /* Organic Cluster Layout CSS */
+        .cluster-slide {
+            padding: 0;
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
+            scroll-snap-align: start;
+            scroll-snap-stop: always;
+            background: linear-gradient(180deg, var(--bg-top) 0%, var(--bg-bottom) 100%);
+        }
+
+        .scale-wrapper {
+            position: absolute !important;
+            top: 50% !important;
+            left: 50% !important;
+            width: 1920px !important;
+            height: 945px !important;
+            transform-origin: center center !important;
+            transform: translate(-50%, -50%) scale(1);
+            box-sizing: border-box !important;
+            margin: 0 !important;
+            flex-shrink: 0 !important;
+            flex-grow: 0 !important;
+        }
+
+        .content-container.scale-wrapper {
+            display: flex !important;
+            flex-direction: column !important;
+            justify-content: center !important;
+            align-items: center !important;
+            padding: 0 40px !important;
+        }
+
+        /* CSS Landscape Vibe */
+        .landscape-bg {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 50vh;
+            background-image: url('../Images/farm_landscape_bg.png');
+            background-size: cover;
+            background-position: bottom center;
+            background-repeat: no-repeat;
+            z-index: 0;
+            pointer-events: none;
+            opacity: 0.4;
+            mask-image: linear-gradient(to bottom, transparent 0%, black 40%);
+            -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 40%);
+        }
+
+        .floor-curve {
+            position: absolute;
+            bottom: -15vh;
+            left: 15%;
+            width: 70%;
+            height: 30vh;
+            background: #FFFFFF;
+            border-radius: 50%;
+            box-shadow: 0 -10px 40px rgba(140, 65, 21, 0.08);
+            z-index: 1;
+        }
+
+        .cluster-container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            max-width: 100%;
+            margin: 0 auto;
+        }
+
+        .cluster-title {
+            position: absolute;
+            top: 6%;
+            left: 6%;
+            z-index: 10;
+            max-width: 500px;
+        }
+
+        .info-title {
+            font-size: 4.8rem;
+            color: var(--heading-color);
+            margin-bottom: -5px;
+            line-height: 1;
+            text-align: left;
+            font-weight: 800;
+            letter-spacing: -1px;
+        }
+
+        .info-subtitle {
+            font-size: 1.6rem;
+            color: #6B7280;
+            margin-bottom: 20px;
+            font-weight: 600;
+            text-align: left;
+            font-family: 'Nunito', sans-serif;
+        }
+
+        /* Logos */
+        .logo-lockup {
+            position: absolute;
+            bottom: 30px;
+            right: 40px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            z-index: 20;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            color: var(--heading-color);
+            font-size: 1.4rem;
+        }
+
+        .logo-lockup .divider {
+            width: 2px;
+            height: 25px;
+            background: var(--line-color);
+        }
+
+        .logo-lockup .oaf {
+            color: #2e7d32;
+            font-size: 1.1rem;
+        }
+
+        .cluster-svg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 2;
+            pointer-events: none;
+        }
+
+        .cluster-svg path {
+            fill: none;
+            stroke: var(--line-color);
+            stroke-width: 2.5px;
+            stroke-dasharray: 8 8;
+            stroke-linejoin: round;
+            stroke-linecap: round;
+            vector-effect: non-scaling-stroke;
+        }
+
+        .character-backdrop {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 960px;
+            height: 803px;
+            background: radial-gradient(ellipse at 50% 60%, #FFFDF5 20%, rgba(255, 255, 255, 0.5) 50%, transparent 70%);
+            z-index: 4;
+            pointer-events: none;
+        }
+
+        .cluster-character {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            height: 803px;
+            max-width: 1152px;
+            object-fit: contain;
+            mix-blend-mode: normal;
+            filter: brightness(1.06) contrast(1.1);
+            z-index: 5;
+            pointer-events: none;
+            -webkit-mask-image: linear-gradient(to bottom, black 90%, transparent 100%);
+            mask-image: linear-gradient(to bottom, black 90%, transparent 100%);
+        }
+
+        .josef-marry-slide .cluster-character {
+            height: 90vh !important;
+        }
+
+        .cluster-card {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.95);
+            border: 1px solid rgba(255, 255, 255, 1);
+            border-radius: 16px;
+            padding: 12px 16px;
+            box-shadow: 0 15px 30px rgba(140, 65, 21, 0.08), 0 5px 15px rgba(0, 0, 0, 0.02);
+            backdrop-filter: blur(12px);
+            text-align: left;
+            z-index: 10;
+            width: 242px;
+            min-width: 190px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .cluster-card:nth-child(4n) {
+            transform: rotate(-1.5deg);
+        }
+
+        .cluster-card:nth-child(4n+1) {
+            transform: rotate(1.2deg);
+        }
+
+        .cluster-card:nth-child(4n+2) {
+            transform: rotate(-1.0deg);
+        }
+
+        .cluster-card:nth-child(4n+3) {
+            transform: rotate(1.5deg);
+        }
+
+        .cluster-card:hover {
+            transform: translateY(-8px) scale(1.05) !important;
+            box-shadow: 0 30px 60px rgba(140, 65, 21, 0.12);
+            z-index: 20;
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            margin-bottom: 4px;
+        }
+
+        .card-icon {
+            font-size: 1.35rem;
+            color: var(--accent-orange);
+            background: rgba(242, 139, 24, 0.12);
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+        }
+
+        .card-icon i {
+            font-size: inherit !important;
+        }
+
+        .cluster-card h4 {
+            color: var(--heading-color);
+            font-size: 1.1rem !important;
+            margin-bottom: 0;
+            font-weight: 700;
+            line-height: 1.1;
+        }
+
+        .cluster-card p,
+        .cluster-card ul,
+        .cluster-card li {
+            font-size: 0.85rem !important;
+            margin-bottom: 0;
+            color: var(--text-color);
+            line-height: 1.3 !important;
+        }
+
+        .floating-leaf {
+            position: absolute;
+            background: var(--heading-color);
+            opacity: 0.15;
+            border-radius: 50% 0 50% 0;
+            animation: float 6s ease-in-out infinite;
+            z-index: 3;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translate(0, 0) rotate(0deg) scale(1);
+            }
+
+            25% {
+                transform: translate(15px, -15px) rotate(15deg) scale(1.05);
+            }
+
+            50% {
+                transform: translate(-10px, -35px) rotate(-10deg) scale(0.95);
+            }
+
+            75% {
+                transform: translate(-20px, -15px) rotate(-25deg) scale(1.02);
+            }
+
+            100% {
+                transform: translate(0, 0) rotate(0deg) scale(1);
+            }
+        }
+
+        /* 3-WAY SPLIT SLIDE STYLES */
+        .torso-glass-box {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.9);
+            border: 1px solid rgba(255, 255, 255, 0.7);
+            border-radius: 12px;
+            padding: 8px 12px;
+            box-shadow: 0 8px 20px rgba(140, 65, 21, 0.06);
+            backdrop-filter: blur(8px);
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--heading-color);
+            max-width: 150px;
+            pointer-events: none;
+        }
+
+        .split-3way-container {
+            display: flex;
+        }
+
+        .split-3way-col {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            height: 100%;
+            padding: 47px 38px 142px 38px;
+            box-sizing: border-box;
+            position: relative;
+        }
+
+        .split-3way .cluster-title {
+            position: relative !important;
+            top: auto !important;
+            left: auto !important;
+            max-width: 100% !important;
+            width: 100% !important;
+            text-align: center !important;
+            transform: none !important;
+            margin-bottom: 12px !important;
+        }
+
+        .split-3way .info-title {
+            font-size: 2.2rem !important;
+            text-align: center !important;
+            margin-bottom: 2px !important;
+            font-weight: 800 !important;
+        }
+
+        .split-3way .info-subtitle {
+            font-size: 1.05rem !important;
+            text-align: center !important;
+            margin-bottom: 6px !important;
+            color: #6B7280 !important;
+            font-weight: 600 !important;
+        }
+
+        .split-3way .info-description {
+            font-size: 0.94rem !important;
+            text-align: center !important;
+            margin: 6px auto 0 auto !important;
+            max-width: 90% !important;
+            line-height: 1.4 !important;
+        }
+
+        .split-3way .cluster-character {
+            position: relative !important;
+            bottom: auto !important;
+            left: auto !important;
+            transform: none !important;
+            height: 420px !important;
+            max-height: 420px !important;
+            width: auto !important;
+            max-width: 80% !important;
+            margin: 10px 0 !important;
+            z-index: 5 !important;
+            mix-blend-mode: normal !important;
+            -webkit-mask-image: linear-gradient(to bottom, black 88%, transparent 100%) !important;
+            mask-image: linear-gradient(to bottom, black 88%, transparent 100%) !important;
+        }
+
+        .split-3way-cards-grid {
+            display: grid !important;
+            grid-template-columns: repeat(2, 1fr) !important;
+            gap: 10px !important;
+            width: 100% !important;
+            max-width: 374px !important;
+            margin-top: auto !important;
+            /* Pushes to bottom */
+            margin-bottom: -47px !important;
+            z-index: 10 !important;
+        }
+
+        .split-3way-cards-grid.chris-grid {
+            grid-template-columns: repeat(3, 1fr) !important;
+            max-width: 561px !important;
+        }
+
+        .split-3way .cluster-card {
+            position: relative !important;
+            top: auto !important;
+            left: auto !important;
+            right: auto !important;
+            bottom: auto !important;
+            width: 100% !important;
+            min-width: 0 !important;
+            margin: 0 !important;
+            transform: none !important;
+            box-shadow: 0 8px 16px rgba(140, 65, 21, 0.05) !important;
+            border: 1px solid rgba(255, 255, 255, 0.7) !important;
+            background: rgba(255, 255, 255, 0.9) !important;
+            padding: 11px 13px !important;
+            border-radius: 12px !important;
+            box-sizing: border-box !important;
+            display: flex !important;
+            flex-direction: column !important;
+            gap: 4px !important;
+        }
+
+        .split-3way .cluster-card:hover {
+            transform: translateY(-4px) scale(1.03) !important;
+            box-shadow: 0 12px 24px rgba(140, 65, 21, 0.1) !important;
+        }
+
+        .split-3way .cluster-card .card-header {
+            gap: 4px !important;
+            margin-bottom: 2px !important;
+        }
+
+        .split-3way .cluster-card .card-icon {
+            width: 24px !important;
+            height: 24px !important;
+            font-size: 1.11rem !important;
+            border-radius: 6px !important;
+        }
+
+        .split-3way .cluster-card h4 {
+            font-size: 0.95rem !important;
+            margin: 0 !important;
+        }
+
+        .split-3way .cluster-card p,
+        .split-3way .cluster-card ul,
+        .split-3way .cluster-card li {
+            font-size: 0.83rem !important;
+            line-height: 1.25 !important;
+        }
+
+        .split-3way .cluster-card ul {
+            padding-left: 12px !important;
+            margin: 4px 0 0 0 !important;
+        }
+
+        .split-3way .cluster-card li {
+            margin-bottom: 4px !important;
+        }
+
+        .split-3way .character-backdrop {
+            display: none !important;
+        }
+
+        .split-3way .floor-curve {
+            display: none !important;
+        }
+
+        .split-3way .cluster-svg {
+            display: none !important;
+        }
+
+        .split-3way .logo-lockup,
+        .split-3way .floating-leaf {
+            display: none !important;
+        }
+
+        @media (max-width: 768px) {
+            .split-3way-container {
+                position: relative !important;
+                flex-direction: column !important;
+                height: auto !important;
+                width: 100% !important;
+            }
+
+            .split-3way-col {
+                height: auto !important;
+                min-height: 100vh !important;
+                width: 100% !important;
+                padding: 40px 20px !important;
+            }
+
+            .split-3way-cards-grid {
+                max-width: 500px !important;
+            }
+        }
+
+        /* TEAM SLIDE STYLES */
+        .team-slide .cluster-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+        }
+
+        .team-title {
+            text-align: center;
+            z-index: 10;
+        }
+
+        .team-title h1 {
+            font-size: 3.5rem;
+            color: var(--brand-green);
+            margin-bottom: 0.5rem;
+        }
+
+        .team-title p {
+            font-size: 1.1rem;
+            color: var(--text-color);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .team-lineup {
+            position: absolute;
+            bottom: 10%;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+        }
+
+        .team-member {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 240px;
+            margin: 0 -50px;
+        }
+
+        .team-member img {
+            width: 100%;
+            height: 520px;
+            object-fit: cover;
+            object-position: top center;
+            mix-blend-mode: normal;
+            filter: brightness(1.0) contrast(1.3) saturate(1.1);
+            -webkit-mask-image: linear-gradient(to bottom, black 88%, transparent 100%);
+            mask-image: linear-gradient(to bottom, black 88%, transparent 100%);
+        }
+
+        .team-member:hover img {
+            filter: brightness(1.0) contrast(1.3) saturate(1.1) drop-shadow(0 -5px 15px rgba(0, 0, 0, 0.1));
+        }
+
+        .team-name-tag {
+            position: relative;
+            background: rgba(255, 255, 255, 0.95);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            border-radius: 12px;
+            padding: 8px 12px;
+            text-align: center;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+            margin-top: -10px;
+            z-index: 10;
+            min-width: 120px;
+        }
+
+        .team-name-tag h4 {
+            color: var(--brand-green);
+            font-size: 1.1rem !important;
+            margin: 0 0 5px 0 !important;
+            font-weight: 700;
+        }
+
+        .team-name-tag p {
+            font-size: 0.75rem !important;
+            color: var(--text-color);
+            margin: 0;
+            line-height: 1.2;
+        }
+
+        .team-glass-box {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            border-radius: 18px;
+            padding: 14px 18px;
+            width: 326px;
+            min-width: 250px;
+            box-shadow: 0 15px 35px rgba(140, 65, 21, 0.08);
+            z-index: 15;
+        }
+
+        .team-glass-box h4 {
+            color: var(--heading-color);
+            font-size: 1.2rem !important;
+            margin-bottom: 6px !important;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .team-glass-box h4 i {
+            color: var(--accent-orange);
+            font-size: 1.5rem;
+        }
+
+        .team-glass-box p {
+            font-size: 0.95rem !important;
+            color: var(--text-color);
+            margin: 0 !important;
+            line-height: 1.3 !important;
+        }
+
+        .future-team-slide .team-glass-box {
+            width: 268px;
+            min-width: 200px;
+            padding: 10px 14px;
+        }
+
+        .future-team-slide .team-glass-box h4 {
+            font-size: 0.95rem !important;
+            margin-bottom: 4px !important;
+        }
+
+        .future-team-slide .team-glass-box p {
+            font-size: 0.82rem !important;
+            line-height: 1.4 !important;
+        }
+
+        /* TIMELINE STYLE CLASSES */
+        .timeline-container {
+            position: relative;
+            width: 1400px;
+            max-width: 1400px;
+            margin: 56px auto 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            z-index: 10;
+            box-sizing: border-box;
+        }
+
+        .timeline-line {
+            position: absolute;
+            top: 35px;
+            left: 7%;
+            right: 7%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--brand-green) 0%, var(--accent-orange) 50%, var(--brand-green) 100%);
+            box-shadow: 0 0 15px rgba(212, 165, 116, 0.4);
+            z-index: 5;
+        }
+
+        .timeline-step {
+            width: 17%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            z-index: 10;
+        }
+
+        .step-node {
+            width: 70px;
+            height: 70px;
+            background: white;
+            border: 4px solid var(--brand-green);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.5rem;
+            color: var(--brand-green);
+            font-weight: 800;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1), 0 0 15px rgba(59, 136, 66, 0.2);
+            transition: all 0.3s ease;
+            margin-bottom: 20px;
+            box-sizing: border-box;
+        }
+
+        .timeline-step:nth-child(even) .step-node {
+            border-color: var(--accent-orange);
+            color: var(--accent-orange);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1), 0 0 15px rgba(212, 165, 116, 0.2);
+        }
+
+        .step-card {
+            background: rgba(255, 255, 255, 0.95);
+            border: 1px solid rgba(255, 255, 255, 1);
+            border-radius: 16px;
+            padding: 14px 16px;
+            box-shadow: 0 15px 30px rgba(140, 65, 21, 0.08);
+            backdrop-filter: blur(12px);
+            text-align: left;
+            width: 100%;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .step-card h4 {
+            margin: 0;
+            font-size: 1.05rem;
+            color: var(--heading-color);
+            font-weight: 700;
+            line-height: 1.3;
+        }
+
+        .step-card span.step-duration {
+            font-size: 0.8rem;
+            font-weight: 800;
+            color: var(--accent-orange);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .timeline-step:nth-child(even) .step-card span.step-duration {
+            color: var(--brand-green);
+        }
+
+        .step-card ul {
+            list-style: none;
+            padding: 0;
+            margin: 4px 0 0 0;
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .step-card li {
+            font-size: 0.8rem;
+            line-height: 1.3;
+            color: var(--text-color);
+            display: flex;
+            align-items: flex-start;
+            gap: 6px;
+        }
+
+        .step-card li::before {
+            content: "•";
+            color: var(--brand-green);
+            font-weight: bold;
+        }
+
+        .timeline-step:nth-child(even) .step-card li::before {
+            color: var(--accent-orange);
+        }
+
+        /* PILOT STRUCTURE STYLES */
+        .structure-cards {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin: 56px auto 0 auto;
+            width: 1200px;
+            max-width: 1200px;
+            z-index: 10;
+            position: relative;
+        }
+
+        .structure-card {
+            flex: 1;
+            max-width: 350px;
+            background: rgba(255, 255, 255, 0.95);
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            border-radius: 20px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 15px 35px rgba(140, 65, 21, 0.06);
+            backdrop-filter: blur(12px);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-sizing: border-box;
+        }
+
+        .structure-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 50px rgba(140, 65, 21, 0.1);
+        }
+
+        .structure-card .card-icon-large {
+            width: 80px;
+            height: 80px;
+            background: rgba(59, 136, 66, 0.1);
+            color: var(--brand-green);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 2.2rem;
+            margin-bottom: 5px;
+        }
+
+        .structure-card:nth-child(even) .card-icon-large {
+            background: rgba(212, 165, 116, 0.1);
+            color: var(--accent-orange);
+        }
+
+        .structure-card h3 {
+            margin: 0;
+            font-size: 1.6rem;
+            color: var(--heading-color);
+            font-weight: 800;
+        }
+
+        .structure-card span.card-subtitle {
+            font-size: 0.85rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--text-color);
+            opacity: 0.7;
+        }
+
+        .structure-card p {
+            margin: 5px 0 0 0 !important;
+            font-size: 0.9rem !important;
+            line-height: 1.4 !important;
+            color: var(--text-color) !important;
+        }
+
+        @media (max-width: 768px) {
+            .cluster-card {
+                position: relative;
+                top: auto !important;
+                left: auto !important;
+                right: auto !important;
+                margin: 20px auto;
+                width: 80%;
+            }
+
+            .cluster-character {
+                position: relative;
+                height: 50vh;
+                transform: none;
+                left: auto;
+            }
+
+            .cluster-svg {
+                display: none;
+            }
+
+            .cluster-title {
+                position: relative;
+                top: auto;
+                left: auto;
+                text-align: center;
+                margin: 0 auto;
+            }
+
+            .cluster-container {
+                display: flex;
+                flex-direction: column;
+                overflow-y: auto;
+                padding-top: 5vh;
+            }
+
+            .logo-lockup {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Slide 1 -->
+    <section class="bg-slide">
+        <div class="content-container scale-wrapper">
+            <h1>One Acre Fund Pilot Proposal</h1>
+            <h3>AgriFriend & iNua Technologies</h3>
+        </div>
+    </section>
+
+    <!-- Slide 2 -->
+    <section>
+        <div class="content-container scale-wrapper">
+            <h2 style="font-size: 3.8rem; line-height: 1.4; text-align: center; font-weight: 600;">
+                By <span style="color: var(--accent-orange); font-weight: 800;">2030</span>, OAF aim to serve <span
+                    style="color: var(--brand-green); font-weight: 800; padding-bottom: 2px; white-space: nowrap;">10
+                    million</span> farm families and deliver <span
+                    style="color: var(--brand-green); font-weight: 800; padding-bottom: 2px; white-space: nowrap;">$1
+                    billion</span> in annual impact
+            </h2>
+        </div>
+    </section>
+
+    <!-- Slide 3 -->
+    <section>
+        <div class="content-container scale-wrapper" style="max-width: 1600px !important;">
+            <div
+                style="display: flex; flex-direction: row; align-items: center; justify-content: space-between; gap: 90px; width: 100%; box-sizing: border-box; padding: 0 40px;">
+                <!-- Left Column: Text -->
+                <div
+                    style="flex: 1.3; display: flex; flex-direction: column; justify-content: center; text-align: left;">
+                    <h2
+                        style="font-size: 3.2rem; line-height: 1.35; text-align: left; margin-bottom: 50px; font-weight: 700; color: var(--heading-color);">
+                        Smallholder farmers are making <span
+                            style="font-weight: 800; color: var(--accent-orange); padding-bottom: 2px;">critical
+                            decisions</span>
+                        under <span style="font-weight: 800; color: var(--heading-color); padding-bottom: 2px;">changing
+                            weather,
+                            pest, and crop conditions</span>.
+                    </h2>
+                    <p
+                        style="font-size: 1.95rem; line-height: 1.6; color: var(--text-color); font-weight: 400; margin: 0; opacity: 0.95;">
+                        but they often <span style="font-weight: 800; color: #d32f2f; padding-bottom: 2px;">lack timely,
+                            trusted
+                            guidance</span> in their local language through a channel they can actually access and use.
+                    </p>
+                </div>
+                <!-- Right Column: Image -->
+                <div style="flex: 0.7; display: flex; justify-content: center; align-items: center;">
+                    <img src="../Images/stressed_farmer.png"
+                        alt="Smallholder farmer in maize field facing weather crop decisions"
+                        style="width: 100%; max-width: 500px; height: 520px; object-fit: cover; border-radius: 24px; box-shadow: 0 25px 50px rgba(140, 65, 21, 0.15), 0 10px 20px rgba(0,0,0,0.05); border: 1px solid rgba(255,255,255,0.8);" />
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Slide 4 -->
+    <section>
+        <div class="content-container scale-wrapper" style="max-width: 1600px !important;">
+            <div
+                style="display: flex; flex-direction: row; align-items: center; justify-content: space-between; gap: 90px; width: 100%; box-sizing: border-box; padding: 0 40px;">
+                <!-- Left Column: Text Content -->
+                <div
+                    style="flex: 1.25; display: flex; flex-direction: column; justify-content: center; text-align: left;">
+                    <h2
+                        style="font-size: 3.2rem; line-height: 1.45; text-align: left; margin: 0; font-weight: 700; color: var(--heading-color);">
+                        One Acre Fund needs a <span
+                            style="font-weight: 800; color: var(--brand-green); padding-bottom: 2px;">reliable,
+                            effective, and
+                            scalable</span> way to deliver practical farmer advisory to <span
+                            style="font-weight: 800; color: var(--accent-orange); padding-bottom: 2px;">rural
+                            farmers</span>.
+                    </h2>
+                </div>
+                <!-- Right Column: Image Content -->
+                <div style="flex: 0.75; display: flex; justify-content: center; align-items: center;">
+                    <img src="../Images/farmer_call.png"
+                        alt="African farmer listening to voice advisory call on mobile phone in a maize field"
+                        style="width: 100%; max-width: 500px; height: 520px; object-fit: cover; border-radius: 24px; box-shadow: 0 25px 50px rgba(140, 65, 21, 0.15), 0 10px 20px rgba(0,0,0,0.05); border: 1px solid rgba(255,255,255,0.8);" />
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Slide 5 -->
+    <section>
+        <div class="content-container scale-wrapper">
+            <h2 style="font-size: 3.5rem; color: var(--brand-green); line-height: 1.3;">The right guidance, at the right
+                time,
+                through a simple phone call.</h2>
+        </div>
+    </section>
+
+    <!-- Slide 6: Team Layout -->
+    <section class="team-slide" style="position: relative; height: 100vh; overflow: hidden;">
+        <div class="landscape-bg"></div>
+        <!-- No floor-curve here so name tags are not clipped -->
+
+        <div class="cluster-container scale-wrapper">
+            <!-- OAF Logo -->
+            <div style="text-align: center; margin-top: 10px; z-index: 10; position: relative;">
+                <img src="../Images/oaf/logo_no_background.png" alt="One Acre Fund"
+                    style="height: auto; width: 500px; opacity: 0.85;" />
+            </div>
+
+            <div class="team-title">
+                <h1>Meet the iNua Farmer Support Team</h1>
+                <p>General support, weather guidance, crop advice, financial support, and emergency alerts for every
+                    farmer.</p>
+            </div>
+
+            <!-- OAF leaf decorations -->
+            <img src="../Images/oaf/oaf_leaf.avif" alt="" aria-hidden="true"
+                style="position: absolute; top: 4%; left: 2%; width: 100px; height: auto; z-index: 3; opacity: 0.80; animation: float 7s ease-in-out infinite; transform: rotate(-20deg); pointer-events: none;" />
+            <img src="../Images/oaf/oaf_leaf.avif" alt="" aria-hidden="true"
+                style="position: absolute; top: 6%; right: 3%; width: 90px; height: auto; z-index: 3; opacity: 0.80; animation: float 8s ease-in-out infinite; animation-delay: 2s; transform: rotate(35deg); pointer-events: none;" />
+            <img src="../Images/oaf/oaf_leaf.avif" alt="" aria-hidden="true"
+                style="position: absolute; top: 38%; left: 1%; width: 85px; height: auto; z-index: 3; opacity: 0.80; animation: float 9s ease-in-out infinite; animation-delay: 3.5s; transform: rotate(120deg); pointer-events: none;" />
+            <img src="../Images/oaf/oaf_leaf.avif" alt="" aria-hidden="true"
+                style="position: absolute; top: 42%; right: 1%; width: 80px; height: auto; z-index: 3; opacity: 0.80; animation: float 7.5s ease-in-out infinite; animation-delay: 1s; transform: rotate(-60deg); pointer-events: none;" />
+            <img src="../Images/oaf/oaf_leaf.avif" alt="" aria-hidden="true"
+                style="position: absolute; bottom: 20%; left: 4%; width: 75px; height: auto; z-index: 3; opacity: 0.80; animation: float 8.5s ease-in-out infinite; animation-delay: 4s; transform: rotate(80deg); pointer-events: none;" />
+            <img src="../Images/oaf/oaf_leaf.avif" alt="" aria-hidden="true"
+                style="position: absolute; bottom: 24%; right: 2%; width: 80px; height: auto; z-index: 3; opacity: 0.80; animation: float 6.5s ease-in-out infinite; animation-delay: 0.5s; transform: rotate(-140deg); pointer-events: none;" />
+
+            <!-- Left Glass Boxes -->
+            <div class="team-glass-box" style="top: 28%; left: -5%; border-top: 3px solid rgba(46, 125, 50, 0.35);">
+                <h4><i class="ph-fill ph-chat-circle-dots"></i> General Support</h4>
+                <p>Get answers, solve issues, and stay on track.</p>
+            </div>
+
+            <div class="team-glass-box" style="top: 46%; left: -5%; border-top: 3px solid rgba(46, 125, 50, 0.35);">
+                <h4><i class="ph-fill ph-wallet"></i> Loan & Repayment</h4>
+                <p>Repayment reminders, loan guidance, and financial advice.</p>
+            </div>
+
+            <div class="team-glass-box" style="top: 64%; left: -5%; border-top: 3px solid rgba(46, 125, 50, 0.35);">
+                <h4><i class="ph-fill ph-plant"></i> Crop Advice</h4>
+                <p>Practical guidance for healthier crops and better yields.</p>
+            </div>
+
+            <!-- Right Glass Boxes -->
+            <div class="team-glass-box" style="top: 28%; right: -5%; border-top: 3px solid rgba(46, 125, 50, 0.35);">
+                <h4><i class="ph-fill ph-cloud-rain"></i> Weather Updates</h4>
+                <p>Real-time forecasts and alerts to help you plan ahead.</p>
+            </div>
+
+            <div class="team-glass-box" style="top: 46%; right: -5%; border-top: 3px solid rgba(46, 125, 50, 0.35);">
+                <h4><i class="ph-fill ph-bell-ringing"></i> Emergency Alerts</h4>
+                <p>Fast warnings and urgent guidance when farmers need it most.</p>
+            </div>
+
+            <div class="team-glass-box" style="top: 64%; right: -5%; border-top: 3px solid rgba(46, 125, 50, 0.35);">
+                <h4><i class="ph-fill ph-users-three"></i> Regional Manager</h4>
+                <p>Aggregating insights and escalating critical field issues.</p>
+            </div>
+
+            <!-- Flowchart-style SVG Connector Lines -->
+            <svg viewBox="0 0 1920 945" preserveAspectRatio="none"
+                style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 4; pointer-events: none;">
+                <defs>
+                    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7"
+                        orient="auto">
+                        <path d="M 0 1 L 8 5 L 0 9 z" fill="#d4a574" />
+                    </marker>
+                </defs>
+
+                <!-- Nia (Left edge of Torso) -->
+                <polyline points="400,310 420,310 420,500 540,500" stroke="#d4a574" stroke-width="2.5" fill="none"
+                    stroke-dasharray="8 5" stroke-linejoin="round" marker-end="url(#arrow)" opacity="0.65" />
+
+                <!-- Josef (Top of Head) -->
+                <polyline points="400,480 440,480 440,230 750,230 750,290" stroke="#d4a574" stroke-width="2.5"
+                    fill="none" stroke-dasharray="8 5" stroke-linejoin="round" marker-end="url(#arrow)"
+                    opacity="0.65" />
+
+                <!-- Chris (Top of Head) -->
+                <polyline points="400,650 460,650 460,200 890,200 890,250" stroke="#d4a574" stroke-width="2.5"
+                    fill="none" stroke-dasharray="8 5" stroke-linejoin="round" marker-end="url(#arrow)"
+                    opacity="0.65" />
+
+                <!-- Nuru (Top of Head) -->
+                <polyline points="1520,310 1500,310 1500,220 1030,220 1030,270" stroke="#d4a574" stroke-width="2.5"
+                    fill="none" stroke-dasharray="8 5" stroke-linejoin="round" marker-end="url(#arrow)"
+                    opacity="0.65" />
+
+                <!-- Marry (Bottom of Name Tag, points UP) -->
+                <polyline points="1520,480 1480,480 1480,910 1170,910 1170,870" stroke="#d4a574" stroke-width="2.5"
+                    fill="none" stroke-dasharray="8 5" stroke-linejoin="round" marker-end="url(#arrow)"
+                    opacity="0.65" />
+
+                <!-- iNua (Right edge of Torso) -->
+                <polyline points="1520,650 1460,650 1460,500 1380,500" stroke="#d4a574" stroke-width="2.5" fill="none"
+                    stroke-dasharray="8 5" stroke-linejoin="round" marker-end="url(#arrow)" opacity="0.65" />
+            </svg>
+
+            <!-- The Lineup -->
+            <div class="team-lineup">
+                <!-- Nia -->
+                <div class="team-member">
+                    <img src="../Images/nia_v2_nobg.png?v=2" alt="Nia" />
+                    <div class="team-name-tag">
+                        <h4>Nia</h4>
+                        <p>General Support</p>
+                    </div>
+                </div>
+                <!-- Josef -->
+                <div class="team-member">
+                    <img src="../Images/josef_v2_nobg.png?v=2" alt="Josef" />
+                    <div class="team-name-tag">
+                        <h4>Josef</h4>
+                        <p>Loan Advisor</p>
+                    </div>
+                </div>
+                <!-- Chris -->
+                <div class="team-member">
+                    <img src="../Images/chris_v2_nobg.png?v=2" alt="Chris" />
+                    <div class="team-name-tag">
+                        <h4>Chris</h4>
+                        <p>Crop-Coach</p>
+                    </div>
+                </div>
+                <!-- Nuru -->
+                <div class="team-member">
+                    <img src="../Images/nuru_v2_nobg.png?v=2" alt="Nuru" />
+                    <div class="team-name-tag">
+                        <h4>Nuru</h4>
+                        <p>Weather Guide</p>
+                    </div>
+                </div>
+                <!-- Marry -->
+                <div class="team-member">
+                    <img src="../Images/marry_v2_nobg.png?v=2" alt="Marry" />
+                    <div class="team-name-tag">
+                        <h4>Marry</h4>
+                        <p>Alert Advisor</p>
+                    </div>
+                </div>
+                <!-- iNua Manager -->
+                <div class="team-member">
+                    <img src="../Images/inua_v2_nobg.png?v=2" alt="iNua" />
+                    <div class="team-name-tag">
+                        <h4>iNua</h4>
+                        <p>Manager</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="logo-lockup">
+                <span class="oaf">ONE ACRE FUND</span>
+                <div class="divider"></div>
+                <span>iNua</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Slide 7: Pilot Recommended Structure -->
+    <section
+        style="position: relative; height: 100vh; overflow: hidden; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+        <div class="landscape-bg"></div>
+
+        <div class="content-container scale-wrapper" style="max-width: 1200px; z-index: 10;">
+            <h2
+                style="font-size: 3rem; color: var(--heading-color); margin-bottom: 2vh; font-weight: 800; text-align: center;">
+                Pilot Recommended Structure</h2>
+
+            <div class="structure-cards">
+                <!-- Farmers Card -->
+                <div class="structure-card">
+                    <div class="card-icon-large"><i class="ph-fill ph-users"></i></div>
+                    <span class="card-subtitle">Scale</span>
+                    <h3>100-500 Farmers</h3>
+                    <p>A focused representative cohort to gather user patterns, test audio quality, and track initial
+                        adoption.
+                    </p>
+                </div>
+
+                <!-- Crops Card -->
+                <div class="structure-card">
+                    <div class="card-icon-large"><i class="ph-fill ph-plant"></i></div>
+                    <span class="card-subtitle">Scope</span>
+                    <h3>1 Crop</h3>
+                    <p>Initial focus on a single primary crop (e.g. Maize) to isolate agronomic models and refine advice
+                        flow.</p>
+                </div>
+
+                <!-- Duration Card -->
+                <div class="structure-card">
+                    <div class="card-icon-large"><i class="ph-fill ph-calendar"></i></div>
+                    <span class="card-subtitle">Duration</span>
+                    <h3>Up to 4 Months</h3>
+                    <p>Testing throughout a complete single agricultural season from initial planting window to active
+                        harvest.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Slide 8: Nia (Cluster Layout) -->
+    <section class="cluster-slide">
+        <div class="landscape-bg"></div>
+
+
+        <div class="cluster-container scale-wrapper">
+            <div class="cluster-title">
+                <h1 class="info-title">Nia</h1>
+                <h3 class="info-subtitle">General Support Guide</h3>
+                <div class="info-description"
+                    style="font-size: 1.1rem; color: var(--text-color); margin-top: 1rem; opacity: 0.9; line-height: 1.5; text-align: left;">
+                    here to help farmers get general information about OAF, solve issues and stay on track
+                </div>
+            </div>
+
+            <svg class="cluster-svg" viewBox="0 0 1000 1000" preserveAspectRatio="none">
+                <defs>
+                    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6"
+                        orient="auto-start-reverse">
+                        <path d="M 0 1 L 8 5 L 0 9 z" fill="#eab683" />
+                    </marker>
+                </defs>
+                <!-- Top Left - We will help you with -->
+                <path d="M 450 380 L 360 380" marker-end="url(#arrow)" />
+                <!-- Bottom Left - Call Support -->
+                <path d="M 450 680 L 360 680" marker-end="url(#arrow)" />
+                <!-- Top Right - Chat with Nia -->
+                <path d="M 550 350 L 640 350" marker-end="url(#arrow)" />
+                <!-- Bottom Right - Reminders -->
+                <path d="M 550 680 L 640 680" marker-end="url(#arrow)" />
+            </svg>
+            <div class="floating-leaf" style="width: 30px; height: 30px; top: 30%; left: 35%; animation-delay: 0s;">
+            </div>
+            <div class="floating-leaf" style="width: 20px; height: 20px; top: 60%; right: 30%; animation-delay: 1.5s;">
+            </div>
+            <div class="floating-leaf"
+                style="width: 40px; height: 40px; top: 15%; right: 20%; animation-delay: 3s; border-radius: 0 50% 0 50%; opacity: 0.1;">
+            </div>
+
+            <!-- Character -->
+            <div class="character-backdrop"></div>
+            <img src="../Images/nia_v2_nobg.png?v=2" alt="Nia" class="cluster-character" />
+
+            <!-- Absolute Floating Cards -->
+            <div class="cluster-card" style="top: 33%; left: 16%;">
+                <div class="card-header" style="margin-bottom: 8px;">
+                    <h4>We will help you with</h4>
+                </div>
+                <ul
+                    style="list-style: none; padding: 0; margin: 0; line-height: 1.6; font-size: 0.9rem; color: var(--text-color);">
+                    <li style="display: flex; align-items: center; gap: 8px;"><i class="ph-fill ph-question"
+                            style="color: var(--brand-green); font-size: 1.1rem;"></i> General questions</li>
+                    <li style="display: flex; align-items: center; gap: 8px;"><i class="ph-fill ph-info"
+                            style="color: var(--brand-green); font-size: 1.1rem;"></i> Program information</li>
+                    <li style="display: flex; align-items: center; gap: 8px;"><i class="ph-fill ph-users"
+                            style="color: var(--brand-green); font-size: 1.1rem;"></i> Routing farmers to the right
+                        support channel
+                    </li>
+                </ul>
+            </div>
+
+            <div class="cluster-card" style="top: 68%; left: 18%;">
+                <div class="card-header">
+                    <div class="card-icon"><i class="ph-fill ph-phone"></i></div>
+                    <h4>Call support</h4>
+                </div>
+                <p>24/7 support in kinyarwanda</p>
+            </div>
+
+            <div class="cluster-card" style="top: 28%; right: 16%;">
+                <div class="card-header">
+                    <div class="card-icon" style="position: relative;">
+                        <i class="ph-fill ph-chat-teardrop-text"></i>
+                        <span
+                            style="position: absolute; bottom: 0px; right: -2px; width: 12px; height: 12px; background: #3b8842; border: 2px solid white; border-radius: 50%;"></span>
+                    </div>
+                    <h4>Chat with Nia</h4>
+                </div>
+                <p>Get help in real time.</p>
+            </div>
+
+            <div class="cluster-card" style="top: 65%; right: 18%;">
+                <div class="card-header">
+                    <div class="card-icon"><i class="ph-fill ph-calendar"></i></div>
+                    <h4>Reminders</h4>
+                </div>
+                <p>Never miss important updates.</p>
+            </div>
+
+            <!-- Logo Lockup -->
+            <div class="logo-lockup">
+                <span class="oaf">ONE ACRE FUND</span>
+                <div class="divider"></div>
+                <span>iNua</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Slide 9: Nuru -->
+    <section class="cluster-slide">
+        <div class="landscape-bg"></div>
+
+
+        <div class="cluster-container scale-wrapper">
+            <div class="cluster-title">
+                <h1 class="info-title">Nuru</h1>
+                <h3 class="info-subtitle">Weather Guide</h3>
+                <div class="info-description"
+                    style="font-size: 1.1rem; color: var(--text-color); margin-top: 1rem; opacity: 0.9; line-height: 1.5; text-align: left;">
+                    Helping farmers understand the upcoming weather in their location, weather risks, timings and what
+                    action they
+                    should take.
+                </div>
+            </div>
+
+            <svg class="cluster-svg" viewBox="0 0 1000 1000" preserveAspectRatio="none">
+                <defs>
+                    <marker id="arrow2" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6"
+                        orient="auto-start-reverse">
+                        <path d="M 0 1 L 8 5 L 0 9 z" fill="#eab683" />
+                    </marker>
+                </defs>
+                <!-- Top Left -->
+                <path d="M 450 380 L 360 380" marker-end="url(#arrow2)" />
+                <!-- Bottom Left -->
+                <path d="M 450 680 L 360 680" marker-end="url(#arrow2)" />
+                <!-- Top Right -->
+                <path d="M 550 350 L 640 350" marker-end="url(#arrow2)" />
+                <!-- Bottom Right -->
+                <path d="M 550 680 L 640 680" marker-end="url(#arrow2)" />
+            </svg>
+
+            <!-- Weather Background Icons -->
+            <div class="floating-leaf"
+                style="width: 35px; height: 35px; top: 25%; left: 5%; animation-delay: 0.5s; color: var(--accent-orange); opacity: 0.2;">
+                <i class="ph-fill ph-sun" style="font-size: 35px;"></i>
+            </div>
+            <div class="floating-leaf"
+                style="width: 25px; height: 25px; top: 70%; right: 10%; animation-delay: 2s; color: var(--text-color); opacity: 0.1;">
+                <i class="ph-fill ph-cloud" style="font-size: 25px;"></i>
+            </div>
+            <div class="floating-leaf"
+                style="width: 40px; height: 40px; top: 15%; right: 25%; animation-delay: 3s; color: var(--text-color); opacity: 0.15;">
+                <i class="ph-fill ph-cloud-rain" style="font-size: 40px;"></i>
+            </div>
+
+            <!-- Character -->
+            <div class="character-backdrop"></div>
+            <img src="../Images/nuru_v2_nobg.png?v=2" alt="Nuru" class="cluster-character" />
+
+            <!-- Absolute Floating Cards -->
+            <div class="cluster-card" style="top: 33%; left: 16%; ">
+                <div class="card-header" style="margin-bottom: 8px;">
+                    <h4>We will help you with</h4>
+                </div>
+                <ul
+                    style="list-style: none; padding: 0; margin: 0; line-height: 1.6; font-size: 0.9rem; color: var(--text-color);">
+                    <li style="display: flex; align-items: center; gap: 8px;"><i class="ph-fill ph-cloud-rain"
+                            style="color: var(--brand-green); font-size: 1.1rem;"></i> Rain alerts</li>
+                    <li style="display: flex; align-items: center; gap: 8px;"><i class="ph-fill ph-plant"
+                            style="color: var(--brand-green); font-size: 1.1rem;"></i> Planting timings</li>
+                    <li style="display: flex; align-items: center; gap: 8px;"><i class="ph-fill ph-basket"
+                            style="color: var(--brand-green); font-size: 1.1rem;"></i> Spraying and harvest decisions
+                    </li>
+                </ul>
+            </div>
+
+            <div class="cluster-card" style="top: 68%; left: 18%;">
+                <div class="card-header">
+                    <div class="card-icon"><i class="ph-fill ph-plant"></i></div>
+                    <h4>Planting Window</h4>
+                </div>
+                <p>We will have good conditions this week to plant maize.</p>
+            </div>
+
+            <div class="cluster-card" style="top: 28%; right: 16%;">
+                <div class="card-header">
+                    <div class="card-icon" style="position: relative;">
+                        <i class="ph-fill ph-cloud-rain"></i>
+                        <i class="ph-fill ph-warning-circle"
+                            style="position: absolute; bottom: -5px; right: -5px; color: #d32f2f; font-size: 18px; background: white; border-radius: 50%;"></i>
+                    </div>
+                    <h4>Weather Alerts</h4>
+                </div>
+                <p>Heavy rains tonight, protect new plants and avoid fertilizer application before the storm.</p>
+            </div>
+
+            <div class="cluster-card" style="top: 65%; right: 18%;">
+                <div class="card-header">
+                    <div class="card-icon"><i class="ph-fill ph-cloud-sun"></i></div>
+                    <h4>Today's Forecast</h4>
+                </div>
+                <p>Cloudy with bit of sunshine until 2pm, after that sunny. Temp: 28C</p>
+            </div>
+
+            <!-- Logo Lockup -->
+            <div class="logo-lockup">
+                <span class="oaf">ONE ACRE FUND</span>
+                <div class="divider"></div>
+                <span>iNua</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Slide 10: Chris -->
+    <section class="cluster-slide">
+        <div class="landscape-bg"></div>
+
+
+        <div class="cluster-container scale-wrapper">
+            <div class="cluster-title">
+                <h1 class="info-title">Chris</h1>
+                <h3 class="info-subtitle">Crop Coach</h3>
+                <div class="info-description"
+                    style="font-size: 1.1rem; color: var(--text-color); margin-top: 1rem; opacity: 0.9; line-height: 1.5; text-align: left;">
+                    Helping farmers with crop guidelines and real-time field related decision making.
+                </div>
+            </div>
+
+            <svg class="cluster-svg" viewBox="0 0 1000 1000" preserveAspectRatio="none">
+                <defs>
+                    <marker id="arrow3" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6"
+                        orient="auto-start-reverse">
+                        <path d="M 0 1 L 8 5 L 0 9 z" fill="#eab683" />
+                    </marker>
+                </defs>
+                <!-- Top Left -->
+                <path d="M 450 380 L 360 380" marker-end="url(#arrow3)" />
+                <!-- Bottom Left -->
+                <path d="M 450 680 L 360 680" marker-end="url(#arrow3)" />
+                <!-- Top Right -->
+                <path d="M 550 350 L 640 350" marker-end="url(#arrow3)" />
+                <!-- Bottom Right -->
+                <path d="M 550 680 L 640 680" marker-end="url(#arrow3)" />
+            </svg>
+
+            <!-- Background Field Icons -->
+            <div class="floating-leaf"
+                style="width: 35px; height: 35px; top: 25%; left: 5%; animation-delay: 0.5s; color: var(--brand-green); opacity: 0.2;">
+                <i class="ph-fill ph-leaf" style="font-size: 35px;"></i>
+            </div>
+            <div class="floating-leaf"
+                style="width: 25px; height: 25px; top: 70%; right: 10%; animation-delay: 2s; color: var(--heading-color); opacity: 0.1;">
+                <i class="ph-fill ph-plant" style="font-size: 25px;"></i>
+            </div>
+            <div class="floating-leaf"
+                style="width: 40px; height: 40px; top: 15%; right: 25%; animation-delay: 3s; color: var(--accent-orange); opacity: 0.15;">
+                <i class="ph-fill ph-bug" style="font-size: 40px;"></i>
+            </div>
+
+            <!-- Character -->
+            <div class="character-backdrop"></div>
+            <img src="../Images/chris_v2_nobg.png?v=2" alt="Chris" class="cluster-character" />
+
+            <!-- Absolute Floating Cards -->
+            <div class="cluster-card" style="top: 33%; left: 16%; ">
+                <div class="card-header" style="margin-bottom: 8px;">
+                    <h4>We will help you with</h4>
+                </div>
+                <ul
+                    style="list-style: none; padding: 0; margin: 0; line-height: 1.6; font-size: 0.9rem; color: var(--text-color);">
+                    <li style="display: flex; align-items: center; gap: 8px;"><i class="ph-fill ph-leaf"
+                            style="color: var(--brand-green); font-size: 1.1rem;"></i> Crop information</li>
+                    <li style="display: flex; align-items: center; gap: 8px;"><i class="ph-fill ph-flask"
+                            style="color: var(--brand-green); font-size: 1.1rem;"></i> Fertilizer guidance</li>
+                    <li style="display: flex; align-items: center; gap: 8px;"><i class="ph-fill ph-steps"
+                            style="color: var(--brand-green); font-size: 1.1rem;"></i> Stage by stage advice</li>
+                </ul>
+            </div>
+
+            <div class="cluster-card" style="top: 68%; left: 18%;">
+                <div class="card-header">
+                    <div class="card-icon"><i class="ph-fill ph-flask"></i></div>
+                    <h4>Fertilizer Guidance</h4>
+                </div>
+                <p>What to apply, at what stage of the grow cycle, for better results.</p>
+            </div>
+
+            <div class="cluster-card" style="top: 28%; right: 16%;">
+                <div class="card-header">
+                    <div class="card-icon"><i class="ph-fill ph-ruler"></i></div>
+                    <h4>Field Tips & Best Practices</h4>
+                </div>
+                <p>Keep spacing consistent for stronger crop growth.</p>
+            </div>
+
+            <div class="cluster-card" style="top: 65%; right: 18%;">
+                <div class="card-header">
+                    <div class="card-icon"><i class="ph-fill ph-bell-ringing"></i></div>
+                    <h4>Proactive Advisory</h4>
+                </div>
+                <p>Proactive reachout with critical crop advice timed to growth stages and the current season.</p>
+            </div>
+
+            <!-- Logo Lockup -->
+            <div class="logo-lockup">
+                <span class="oaf">ONE ACRE FUND</span>
+                <div class="divider"></div>
+                <span>iNua</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Slide 15: iNua (Field Analytics Manager) -->
+    <section class="cluster-slide">
+        <div class="landscape-bg"></div>
+
+
+        <div class="cluster-container scale-wrapper">
+            <div class="cluster-title" style="max-width: 600px;">
+                <h1 class="info-title" style="color: var(--accent-orange);">iNua</h1>
+                <h3 class="info-subtitle">Field Analytics & Insights Manager</h3>
+                <div class="info-description"
+                    style="font-size: 1.1rem; color: var(--text-color); margin-top: 1rem; opacity: 0.9; line-height: 1.5; text-align: left;">
+                    Empowering OAF leadership by turning thousands of farmer conversations into actionable insights,
+                    driving
+                    regional strategy and guiding field interventions.
+                </div>
+            </div>
+
+            <svg class="cluster-svg" viewBox="0 0 1000 1000" preserveAspectRatio="none">
+                <defs>
+                    <marker id="arrow_inua" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6"
+                        orient="auto-start-reverse">
+                        <path d="M 0 1 L 8 5 L 0 9 z" fill="#eab683" />
+                    </marker>
+                </defs>
+                <!-- 6 connecting lines -->
+                <path d="M 450 240 L 360 240" marker-end="url(#arrow_inua)" />
+                <path d="M 450 540 L 360 540" marker-end="url(#arrow_inua)" />
+                <path d="M 450 840 L 360 840" marker-end="url(#arrow_inua)" />
+                <path d="M 550 240 L 640 240" marker-end="url(#arrow_inua)" />
+                <path d="M 550 540 L 640 540" marker-end="url(#arrow_inua)" />
+                <path d="M 550 840 L 640 840" marker-end="url(#arrow_inua)" />
+            </svg>
+
+            <!-- Background Icons -->
+            <div class="floating-leaf"
+                style="width: 35px; height: 35px; top: 25%; left: 5%; animation-delay: 0.5s; color: var(--accent-orange); opacity: 0.2;">
+                <i class="ph-fill ph-chart-line-up" style="font-size: 35px;"></i>
+            </div>
+            <div class="floating-leaf"
+                style="width: 25px; height: 25px; top: 70%; right: 10%; animation-delay: 2s; color: var(--brand-green); opacity: 0.2;">
+                <i class="ph-fill ph-map-pin" style="font-size: 25px;"></i>
+            </div>
+            <div class="floating-leaf"
+                style="width: 40px; height: 40px; top: 15%; right: 25%; animation-delay: 3s; color: var(--heading-color); opacity: 0.15;">
+                <i class="ph-fill ph-trend-up" style="font-size: 40px;"></i>
+            </div>
+
+            <!-- Character -->
+            <div class="character-backdrop"></div>
+            <img src="../Images/inua_v2_nobg.png?v=2" alt="iNua" class="cluster-character" />
+
+            <!-- Left 1: Issue Triage -->
+            <div class="cluster-card" style="top: 36%; left: 16%; ">
+                <div class="card-header">
+                    <div class="card-icon"><i class="ph-fill ph-warning-circle"></i></div>
+                    <h4>Issue Triage & Alerts</h4>
+                </div>
+                <ul
+                    style="list-style: disc; margin-left: 20px; padding: 0; font-size: 0.9rem; color: var(--text-color); margin-top: 5px;">
+                    <li>Farmer issue summaries</li>
+                    <li>Urgent issue alerts</li>
+                    <li>Farmer segmentation</li>
+                </ul>
+            </div>
+
+            <!-- Left 2: Adoption Tracking -->
+            <div class="cluster-card" style="top: 60%; left: 18%; ">
+                <div class="card-header">
+                    <div class="card-icon"><i class="ph-fill ph-check-square"></i></div>
+                    <h4>Adoption Tracking</h4>
+                </div>
+                <ul
+                    style="list-style: disc; margin-left: 20px; padding: 0; font-size: 0.9rem; color: var(--text-color); margin-top: 5px;">
+                    <li>Catching missed signals</li>
+                    <li>Identifying training gaps</li>
+                    <li>Revealing adoption barriers</li>
+                </ul>
+            </div>
+
+            <!-- Left 3: Farmer Sentiment -->
+            <div class="cluster-card" style="top: 78%; left: 20%; min-width: 260px;">
+                <div class="card-header">
+                    <div class="card-icon"><i class="ph-fill ph-smiley"></i></div>
+                    <h4>Farmer Sentiment</h4>
+                </div>
+                <p>Real-time pulse on farmer satisfaction and feedback.</p>
+            </div>
+
+            <!-- Right 1: Regional Analytics -->
+            <div class="cluster-card" style="top: 20%; right: 16%; ">
+                <div class="card-header">
+                    <div class="card-icon"><i class="ph-fill ph-map-trifold"></i></div>
+                    <h4>Regional Analytics</h4>
+                </div>
+                <ul
+                    style="list-style: disc; margin-left: 20px; padding: 0; font-size: 0.9rem; color: var(--text-color); margin-top: 5px;">
+                    <li>Regional issue patterns</li>
+                    <li>Geographic risk signals</li>
+                </ul>
+            </div>
+
+            <!-- Right 2: Field Prioritization -->
+            <div class="cluster-card" style="top: 50%; right: 18%; ">
+                <div class="card-header">
+                    <div class="card-icon"><i class="ph-fill ph-users-three"></i></div>
+                    <h4>HQ Escalation & Prioritization</h4>
+                </div>
+                <p style="font-style: italic;">"47 farmers show signs of delayed fertilizer adoption. Prioritize Village
+                    3 this
+                    week."</p>
+            </div>
+
+            <!-- Right 3: Seasonal Risks -->
+            <div class="cluster-card" style="top: 75%; right: 20%; ">
+                <div class="card-header">
+                    <div class="card-icon"><i class="ph-fill ph-warning"></i></div>
+                    <h4>Seasonal Risks</h4>
+                </div>
+                <p>Early warnings for weather or pest risks based on aggregate farmer data.</p>
+            </div>
+
+            <!-- Logo Lockup -->
+            <div class="logo-lockup">
+                <span class="oaf">ONE ACRE FUND</span>
+                <div class="divider"></div>
+                <span>iNua</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Slide 12 -->
+    <section>
+        <div class="content-container scale-wrapper">
+            <h2>scale and how it looks like</h2>
+            <p>the evolution of the characters and their capabilities (josef and marry) + a dream that answer their
+                issues
+                above and byond, give a brad context and more holistic solution</p>
+        </div>
+    </section>
+
+    <!-- Slide 13: The Visionary Team of the Future (Moved here) -->
+    <section class="team-slide future-team-slide" style="position: relative; height: 100vh; overflow: hidden;">
+        <div class="landscape-bg"></div>
+        <!-- No floor-curve here so name tags are not clipped -->
+
+        <div class="cluster-container scale-wrapper">
+            <div class="team-title">
+                <h1>The Visionary Team of the Future</h1>
+                <p>A modular, dynamic architecture designed to scale and adapt from the ground up based on ongoing
+                    farmer
+                    feedback.</p>
+            </div>
+
+            <!-- Left Glass Boxes -->
+            <div class="team-glass-box" style="top: 15%; left: -5%;">
+                <h4><i class="ph-fill ph-chat-circle-dots"></i> Relationship Manager</h4>
+                <p>Maintain an ongoing voice relationship with each farmer, needs assessment, collect feedback,
+                    recommend
+                    relevant OAF products or services based on their history, and to improve farmer satisfaction and
+                    program
+                    operations.</p>
+            </div>
+
+            <div class="team-glass-box" style="top: 48%; left: -5%;">
+                <h4><i class="ph-fill ph-wallet"></i> Financial Resilience Expert</h4>
+                <p>Financial clarity and planning support.</p>
+            </div>
+
+            <div class="team-glass-box" style="top: 70%; left: -5%;">
+                <h4><i class="ph-fill ph-plant"></i> Digital Agronomist</h4>
+                <p>Integrating farm records, historical performance, input use, and adoption behavior, delivering
+                    personalized
+                    recommendations.</p>
+            </div>
+
+            <!-- Right Glass Boxes -->
+            <div class="team-glass-box" style="top: 15%; right: -5%;">
+                <h4><i class="ph-fill ph-cloud-rain"></i> Climate Resilience Coach</h4>
+                <p>Helps farmers adapt to changing climate conditions by tracking weather patterns and farmer behaviour
+                    over the
+                    years.</p>
+            </div>
+
+            <div class="team-glass-box" style="top: 48%; right: -5%;">
+                <h4><i class="ph-fill ph-bell-ringing"></i> Emergency Command Agent</h4>
+                <p>Predictive early warning and recommend pre-emptive actions.</p>
+            </div>
+
+            <div class="team-glass-box" style="top: 70%; right: -5%;">
+                <h4><i class="ph-fill ph-users-three"></i> Intelligence Manager</h4>
+                <p>Cross-agent intelligence, helping the whole system improve every season.</p>
+            </div>
+
+            <!-- Flowchart-style SVG Connector Lines -->
+            <svg viewBox="0 0 1920 945" preserveAspectRatio="none"
+                style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 4; pointer-events: none;">
+                <defs>
+                    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7"
+                        orient="auto">
+                        <path d="M 0 1 L 8 5 L 0 9 z" fill="#d4a574" />
+                    </marker>
+                </defs>
+
+                <!-- Nia (Left edge of Torso) -->
+                <polyline points="400,210 420,210 420,500 610,500" stroke="#d4a574" stroke-width="2.5" fill="none"
+                    stroke-dasharray="8 5" stroke-linejoin="round" marker-end="url(#arrow)" opacity="0.65" />
+
+                <!-- Josef (Top of Head) -->
+                <polyline points="400,480 440,480 440,230 820,230 820,290" stroke="#d4a574" stroke-width="2.5"
+                    fill="none" stroke-dasharray="8 5" stroke-linejoin="round" marker-end="url(#arrow)"
+                    opacity="0.65" />
+
+                <!-- Chris (Top of Head) -->
+                <polyline points="400,700 460,700 460,200 960,200 960,250" stroke="#d4a574" stroke-width="2.5"
+                    fill="none" stroke-dasharray="8 5" stroke-linejoin="round" marker-end="url(#arrow)"
+                    opacity="0.65" />
+
+                <!-- Nuru (Top of Head) -->
+                <polyline points="1520,210 1500,210 1500,220 1100,220 1100,270" stroke="#d4a574" stroke-width="2.5"
+                    fill="none" stroke-dasharray="8 5" stroke-linejoin="round" marker-end="url(#arrow)"
+                    opacity="0.65" />
+
+                <!-- Marry (Bottom of Name Tag, points UP) -->
+                <polyline points="1520,480 1480,480 1480,910 1240,910 1240,870" stroke="#d4a574" stroke-width="2.5"
+                    fill="none" stroke-dasharray="8 5" stroke-linejoin="round" marker-end="url(#arrow)"
+                    opacity="0.65" />
+
+                <!-- iNua (Right edge of Torso) -->
+                <polyline points="1520,700 1460,700 1460,500 1450,500" stroke="#d4a574" stroke-width="2.5" fill="none"
+                    stroke-dasharray="8 5" stroke-linejoin="round" marker-end="url(#arrow)" opacity="0.65" />
+            </svg>
+
+            <!-- The Lineup -->
+            <div class="team-lineup">
+                <!-- Additional Agents per Need -->å
+                <div class="team-member" style="opacity: 0.75; margin-right: -1vw !important;">
+                    <svg viewBox="0 0 100 200"
+                        style="width: 100%; height: 55vh; fill: #666; opacity: 0.35; mix-blend-mode: multiply;">
+                        <circle cx="50" cy="20" r="10" />
+                        <path d="M 47 28 C 47 28, 50 32, 53 28 Z" />
+                        <path
+                            d="M 33 45 C 33 35, 67 35, 67 45 C 67 55, 64 80, 64 110 C 64 115, 58 115, 58 110 L 60 75 L 57 75 L 57 195 C 57 200, 51 200, 51 195 L 50 110 L 49 195 C 49 200, 43 200, 43 195 L 43 75 L 40 75 L 42 110 C 42 115, 36 115, 36 110 C 36 80, 33 55, 33 45 Z" />
+                    </svg>
+                    <div class="team-name-tag" style="transform: translateX(-10px);">
+                        <h4>Additional Agents<br>per Need</h4>
+                    </div>
+                </div>
+                <!-- Nia -->
+                <div class="team-member">
+                    <img src="../Images/nia_v3_nobg.png?v=2" alt="Nia" />
+                    <div class="team-name-tag">
+                        <h4>Nia</h4>
+                    </div>
+                </div>
+                <!-- Josef -->
+                <div class="team-member">
+                    <img src="../Images/josef_v3_nobg.png?v=2" alt="Josef" />
+                    <div class="team-name-tag">
+                        <h4>Josef</h4>
+                    </div>
+                </div>
+                <!-- Chris -->
+                <div class="team-member">
+                    <img src="../Images/chris_v3_nobg.png?v=2" alt="Chris" />
+                    <div class="team-name-tag">
+                        <h4>Chris</h4>
+                    </div>
+                </div>
+                <!-- Nuru -->
+                <div class="team-member">
+                    <img src="../Images/nuru_v3_nobg.png?v=2" alt="Nuru" />
+                    <div class="team-name-tag">
+                        <h4>Nuru</h4>
+                    </div>
+                </div>
+                <!-- Marry -->
+                <div class="team-member">
+                    <img src="../Images/marry_v3_nobg.png?v=2" alt="Marry" />
+                    <div class="team-name-tag">
+                        <h4>Marry</h4>
+                    </div>
+                </div>
+                <!-- iNua Manager -->
+                <div class="team-member">
+                    <img src="../Images/inua_v3_nobg.png?v=2" alt="iNua" />
+                    <div class="team-name-tag">
+                        <h4>iNua</h4>
+                    </div>
+                </div>
+            </div>
+
+            <div class="logo-lockup">
+                <span class="oaf">ONE ACRE FUND</span>
+                <div class="divider"></div>
+                <span>iNua</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Slide 14: Dynamic Agent Evolution (Combined split slide) -->
+    <section class="cluster-slide split-3way">
+        <div class="landscape-bg"></div>
+
+        <div class="split-3way-container scale-wrapper">
+            <!-- COLUMN 1: NIA -->
+            <div class="split-3way-col">
+                <div class="cluster-title">
+                    <h1 class="info-title"
+                        style="color: var(--brand-green); text-shadow: 0 2px 10px rgba(255,255,255,0.8);">Nia
+                    </h1>
+                    <h3 class="info-subtitle">Personalized Voice & Relationship</h3>
+                    <div class="info-description" style="color: var(--text-color); opacity: 0.9;">
+                        Evolving into the primary, continuous voice interface—shifting from reactive support to
+                        proactive check-ins
+                        and tailored product recommendations.
+                    </div>
+                </div>
+
+                <img src="../Images/nia_v3_nobg.png?v=2" alt="Nia" class="cluster-character" />
+
+                <!-- Torso glass box -->
+                <div class="torso-glass-box" style="top: 42%; right: 8%;">
+                    <i class="ph-fill ph-translate" style="color: var(--brand-green); font-size: 1.1rem;"></i>
+                    <span>Additional languages</span>
+                </div>
+
+                <div class="split-3way-cards-grid">
+                    <!-- Proactive Engagement -->
+                    <div class="cluster-card">
+                        <div class="card-header">
+                            <div class="card-icon"><i class="ph-fill ph-microphone-stage"></i></div>
+                            <h4>Proactive Engagement</h4>
+                        </div>
+                        <p>Natural, ongoing voice check-ins and nudges customized to the farmer's schedule.</p>
+                    </div>
+
+                    <!-- Needs & Satisfaction -->
+                    <div class="cluster-card">
+                        <div class="card-header">
+                            <div class="card-icon"><i class="ph-fill ph-smiley"></i></div>
+                            <h4>Needs & Feedback</h4>
+                        </div>
+                        <p>Direct dialogue to continuously assess farmer needs and gather satisfaction feedback.</p>
+                    </div>
+
+                    <!-- Tailored Recommendations -->
+                    <div class="cluster-card" style="grid-column: span 2; border-top: 4px solid var(--brand-green);">
+                        <div class="card-header" style="justify-content: center;">
+                            <div class="card-icon"><i class="ph-fill ph-arrows-left-right"></i></div>
+                            <h4>Tailored Recommendations</h4>
+                        </div>
+                        <p style="font-style: italic; text-align: center;">Suggesting relevant OAF products, inputs, or
+                            training
+                            precisely timed to the farmer's history.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- DIVIDER 1 -->
+            <div
+                style="width: 2px; height: 75%; position: absolute; left: 33.33%; top: 12.5%; background: linear-gradient(to bottom, transparent, rgba(140, 65, 21, 0.4), transparent); z-index: 20;">
+            </div>
+
+            <!-- COLUMN 2: CHRIS -->
+            <div class="split-3way-col">
+                <div class="cluster-title">
+                    <h1 class="info-title"
+                        style="color: var(--heading-color); text-shadow: 0 2px 10px rgba(255,255,255,0.8);">
+                        Chris</h1>
+                    <h3 class="info-subtitle">Precision Agronomy & Crop Coach</h3>
+                    <div class="info-description" style="color: var(--text-color); opacity: 0.9;">
+                        Providing context-aware farming advice, moving from simple guidelines to data-driven yield
+                        optimization.
+                    </div>
+                </div>
+
+                <img src="../Images/chris_v3_nobg.png?v=2" alt="Chris" class="cluster-character" />
+
+                <!-- Torso glass box -->
+                <div class="torso-glass-box" style="top: 42%; right: 8%;">
+                    <i class="ph-fill ph-plant" style="color: var(--accent-orange); font-size: 1.1rem;"></i>
+                    <span>Additional crops</span>
+                </div>
+
+                <div class="split-3way-cards-grid">
+                    <!-- Farm Context -->
+                    <div class="cluster-card">
+                        <div class="card-header">
+                            <div class="card-icon"><i class="ph-fill ph-map-pin"></i></div>
+                            <h4>Farm Context</h4>
+                        </div>
+                        <p>Integrating soil health, local weather conditions, and growth stage to customize
+                            recommendations.</p>
+                    </div>
+
+                    <!-- Crop Health & Alerts -->
+                    <div class="cluster-card">
+                        <div class="card-header">
+                            <div class="card-icon"><i class="ph-fill ph-stethoscope"></i></div>
+                            <h4>Health & Alerts</h4>
+                        </div>
+                        <p>Diagnosing leaf deficiencies and sending warnings for localized pest threats like Armyworm.
+                        </p>
+                    </div>
+
+                    <!-- Precision Interventions -->
+                    <div class="cluster-card" style="grid-column: span 2; border-top: 4px solid var(--heading-color);">
+                        <div class="card-header" style="justify-content: center;">
+                            <div class="card-icon"><i class="ph-fill ph-crosshair"></i></div>
+                            <h4>Precision Interventions</h4>
+                        </div>
+                        <p style="font-style: italic; text-align: center;">Proactive advisory for critical activities
+                            (planting
+                            spacing, precise fertilizer timing, weed control).</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- DIVIDER 2 -->
+            <div
+                style="width: 2px; height: 75%; position: absolute; left: 66.66%; top: 12.5%; background: linear-gradient(to bottom, transparent, rgba(140, 65, 21, 0.4), transparent); z-index: 20;">
+            </div>
+
+            <!-- COLUMN 3: NURU -->
+            <div class="split-3way-col">
+                <div class="cluster-title">
+                    <h1 class="info-title"
+                        style="color: var(--brand-green); text-shadow: 0 2px 10px rgba(255,255,255,0.8);">Nuru
+                    </h1>
+                    <h3 class="info-subtitle">Predictive Risk & Climate Coach</h3>
+                    <div class="info-description" style="color: var(--text-color); opacity: 0.9;">
+                        Guiding farmers through predictive weather modeling, seasonal input planning, and long-term
+                        climate
+                        adaptation.
+                    </div>
+                </div>
+
+                <img src="../Images/nuru_v3_nobg.png?v=2" alt="Nuru" class="cluster-character" />
+
+                <!-- Torso glass box -->
+                <div class="torso-glass-box" style="top: 42%; right: 8%;">
+                    <i class="ph-fill ph-globe" style="color: var(--brand-green); font-size: 1.1rem;"></i>
+                    <span>Additional regions</span>
+                </div>
+
+                <div class="split-3way-cards-grid">
+                    <!-- Smart Seasonal Planning -->
+                    <div class="cluster-card">
+                        <div class="card-header">
+                            <div class="card-icon"><i class="ph-fill ph-calendar-check"></i></div>
+                            <h4>Smart Planning</h4>
+                        </div>
+                        <p>Optimizing planting windows, input purchase timing, water usage, and labor scheduling.</p>
+                    </div>
+
+                    <!-- Climate Adaptation -->
+                    <div class="cluster-card">
+                        <div class="card-header">
+                            <div class="card-icon"><i class="ph-fill ph-drop"></i></div>
+                            <h4>Climate Adaptation</h4>
+                        </div>
+                        <p>Recommending drought-resistant seeds, crop diversification, and soil-moisture practices.</p>
+                    </div>
+
+                    <!-- Long-Term Trend Alerts -->
+                    <div class="cluster-card" style="grid-column: span 2; border-top: 4px solid var(--brand-green);">
+                        <div class="card-header" style="justify-content: center;">
+                            <div class="card-icon"><i class="ph-fill ph-trend-up"></i></div>
+                            <h4>Visionary Alerts</h4>
+                        </div>
+                        <p style="font-style: italic; text-align: center;">Analyzing shifting multi-season weather
+                            patterns to guide
+                            preemptive farm adaptations.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Slide 15: Split Slide: Josef & Marry (Repositioned here) -->
+    <section class="cluster-slide josef-marry-slide">
+        <div class="landscape-bg"></div>
+
+        <div class="scale-wrapper" style="display: flex;">
+            <!-- LEFT HALF: JOSEF -->
+            <div style="flex: 1; position: relative;">
+                <div class="cluster-title" style="max-width: 350px;">
+                    <h1 class="info-title" style="margin-bottom: 5px; text-shadow: 0 2px 10px rgba(255,255,255,0.8);">
+                        Josef</h1>
+                    <h3 class="info-subtitle">Loan & Repayment Advisor</h3>
+                    <div class="info-description"
+                        style="font-size: 1.1rem; color: var(--text-color); margin-top: 1rem; opacity: 0.9; line-height: 1.5; text-align: center;">
+                        Helps farmers understand loans, repayment schedules, reminders, balances, and basic financial
+                        planning.
+                    </div>
+                </div>
+
+                <svg class="cluster-svg" viewBox="0 0 1000 1000" preserveAspectRatio="none">
+                    <defs>
+                        <marker id="arrow_split_l" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6"
+                            markerHeight="6" orient="auto-start-reverse">
+                            <path d="M 0 1 L 8 5 L 0 9 z" fill="#eab683" />
+                        </marker>
+                    </defs>
+                    <path d="M 380 410 L 660 410" marker-end="url(#arrow_split_l)" stroke="#d4a574" stroke-width="2.5"
+                        fill="none" stroke-dasharray="8 5" opacity="0.65" />
+                    <path d="M 410 600 L 660 600" marker-end="url(#arrow_split_l)" stroke="#d4a574" stroke-width="2.5"
+                        fill="none" stroke-dasharray="8 5" opacity="0.65" />
+                    <path d="M 380 790 L 660 790" marker-end="url(#arrow_split_l)" stroke="#d4a574" stroke-width="2.5"
+                        fill="none" stroke-dasharray="8 5" opacity="0.65" />
+                </svg>
+
+                <img src="../Images/josef_v2_nobg.png?v=2" alt="Josef" class="cluster-character" style="left: 70%;" />
+
+                <div class="cluster-card" style="top: 36%; left: 5%;">
+                    <div class="card-header">
+                        <div class="card-icon"><i class="ph-fill ph-coins"></i></div>
+                        <h4>Loan & Repayment</h4>
+                    </div>
+                    <p>Repayment reminders and loan guidance.</p>
+                </div>
+
+                <div class="cluster-card" style="top: 55%; left: 10%;">
+                    <div class="card-header">
+                        <div class="card-icon"><i class="ph-fill ph-chart-bar"></i></div>
+                        <h4>Finance Advisor</h4>
+                    </div>
+                    <p>Basic financial planning.</p>
+                </div>
+
+                <div class="cluster-card" style="top: 74%; left: 5%;">
+                    <div class="card-header">
+                        <div class="card-icon"><i class="ph-fill ph-piggy-bank"></i></div>
+                        <h4>Budgeting Tips</h4>
+                    </div>
+                    <p>It may help to set aside a small amount after each market sale. This can make repayment easier
+                        when the due
+                        date comes. I can also remind you before your next repayment date.</p>
+                </div>
+
+                <div class="logo-lockup" style="left: 10%; right: auto; transform: none;">
+                    <span class="oaf">ONE ACRE FUND</span>
+                    <div class="divider"></div>
+                    <span>iNua</span>
+                </div>
+            </div>
+
+            <!-- DIVIDER LINE -->
+            <div
+                style="width: 2px; height: 75%; margin: auto 0; background: linear-gradient(to bottom, transparent, rgba(140, 65, 21, 0.4), transparent); z-index: 20;">
+            </div>
+
+            <!-- RIGHT HALF: MARRY -->
+            <div style="flex: 1; position: relative;">
+                <div class="cluster-title" style="max-width: 350px;">
+                    <h1 class="info-title" style="margin-bottom: 5px; text-shadow: 0 2px 10px rgba(255,255,255,0.8);">
+                        Marry</h1>
+                    <h3 class="info-subtitle">Emergency Alert Advisor</h3>
+                    <div class="info-description"
+                        style="font-size: 1.1rem; color: var(--text-color); margin-top: 1rem; opacity: 0.9; line-height: 1.5; text-align: center;">
+                        Helps farmers receive timely alerts and know what to do during emergencies.
+                    </div>
+                </div>
+
+                <svg class="cluster-svg" viewBox="0 0 1000 1000" preserveAspectRatio="none">
+                    <defs>
+                        <marker id="arrow_split_r" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6"
+                            markerHeight="6" orient="auto-start-reverse">
+                            <path d="M 0 1 L 8 5 L 0 9 z" fill="#eab683" />
+                        </marker>
+                    </defs>
+                    <path d="M 620 410 L 340 410" marker-end="url(#arrow_split_r)" stroke="#d4a574" stroke-width="2.5"
+                        fill="none" stroke-dasharray="8 5" opacity="0.65" />
+                    <path d="M 590 600 L 340 600" marker-end="url(#arrow_split_r)" stroke="#d4a574" stroke-width="2.5"
+                        fill="none" stroke-dasharray="8 5" opacity="0.65" />
+                    <path d="M 620 790 L 340 790" marker-end="url(#arrow_split_r)" stroke="#d4a574" stroke-width="2.5"
+                        fill="none" stroke-dasharray="8 5" opacity="0.65" />
+                </svg>
+
+                <img src="../Images/marry_v2_nobg.png?v=2" alt="Marry" class="cluster-character" style="left: 30%;" />
+
+                <div class="cluster-card" style="top: 36%; right: 5%;">
+                    <div class="card-header">
+                        <div class="card-icon"><i class="ph-fill ph-cloud-warning"></i></div>
+                        <h4>Weather & Disease Alerts</h4>
+                    </div>
+                    <p>Flood, drought, or disease outbreak information sent directly to farmers.</p>
+                </div>
+
+                <div class="cluster-card" style="top: 55%; right: 10%;">
+                    <div class="card-header">
+                        <div class="card-icon"><i class="ph-fill ph-shield-warning"></i></div>
+                        <h4>Immediate Safety Actions</h4>
+                    </div>
+                    <p>Clear safety instructions and advising farmers on their immediate next steps during crises.</p>
+                </div>
+
+                <div class="cluster-card" style="top: 74%; right: 5%;">
+                    <div class="card-header">
+                        <div class="card-icon"><i class="ph-fill ph-siren"></i></div>
+                        <h4>Urgent Triage & Reporting</h4>
+                    </div>
+                    <p>Helping managers instantly identify and escalate urgent farmer reports.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Slide 16: Timeline (Repositioned here) -->
+    <section class="bg-slide"
+        style="position: relative; height: 100vh; overflow: hidden; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+
+        <div class="content-container scale-wrapper" style="max-width: 1500px;">
+            <h2
+                style="font-size: 3rem; color: var(--heading-color); margin-bottom: 2vh; font-weight: 800; text-align: center; text-transform: capitalize;">
+                timeline</h2>
+
+            <div class="timeline-container">
+                <!-- Glowing Timeline Connecting Line -->
+                <div class="timeline-line"></div>
+
+                <!-- Step 1: Pilot Preparation -->
+                <div class="timeline-step">
+                    <div class="step-node">1</div>
+                    <div class="step-card">
+                        <span class="step-duration">3 Months</span>
+                        <h4>Pilot Preparation</h4>
+                        <ul>
+                            <li>Setup core server infrastructure & API configurations</li>
+                            <li>Configure character workflows & dialog frameworks</li>
+                            <li>Establish language databases & localization assets</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Step 2: UAT + Adjustments -->
+                <div class="timeline-step">
+                    <div class="step-node">2</div>
+                    <div class="step-card">
+                        <span class="step-duration">1 Month</span>
+                        <h4>UAT & Adjustments</h4>
+                        <ul>
+                            <li>Conduct User Acceptance Testing (UAT) with focus groups</li>
+                            <li>Gather early audio & text feedback data</li>
+                            <li>Refine model responses, accents, and prompt configurations</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Step 3: Pilot -->
+                <div class="timeline-step">
+                    <div class="step-node">3</div>
+                    <div class="step-card">
+                        <span class="step-duration">4 Months</span>
+                        <h4>Pilot Program</h4>
+                        <ul>
+                            <li>Live testing cohort with smallholder farmers</li>
+                            <li>Monitor Advisor adoption rates & dialogue quality</li>
+                            <li>Synthesize user satisfaction metrics & performance logs</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Step 4: Prep to Scale + Features -->
+                <div class="timeline-step">
+                    <div class="step-node">4</div>
+                    <div class="step-card">
+                        <span class="step-duration">2 Months</span>
+                        <h4>Scale Preparation</h4>
+                        <ul>
+                            <li>Deploy additional crop guidelines & regional databases</li>
+                            <li>Scale server capacity & localized prompt adapters</li>
+                            <li>Enhance escalation routing & dashboard prioritization</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Step 5: Scale -->
+                <div class="timeline-step">
+                    <div class="step-node">5</div>
+                    <div class="step-card">
+                        <span class="step-duration">Continuous</span>
+                        <h4>Expansion & Scale</h4>
+                        <ul>
+                            <li>Roll out system-wide to regional hubs</li>
+                            <li>Activate cross-agent learning loop & HQ data insights</li>
+                            <li>Ongoing maintenance, security audits, and enhancements</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Slide 17: Costs (Repositioned here) -->
+    <section style="display: flex; justify-content: center; align-items: center; height: 100vh;">
+        <div class="content-container scale-wrapper" style="text-align: center;">
+            <h2 style="font-size: 4rem; color: var(--heading-color); font-weight: 800; text-transform: capitalize;">
+                costs</h2>
+        </div>
+    </section>
+
+    <!-- Slide 18: Beyond the scale (Repositioned here) -->
+    <section class="bg-slide">
+        <div class="content-container scale-wrapper">
+            <h2>beyond the scale</h2>
+        </div>
+    </section>
+
+    <script>
+        // Advance to the next slide on mouse click
+        document.addEventListener('click', function (e) {
+            if (window.getSelection().toString().length > 0) return;
+
+            const sections = Array.from(document.querySelectorAll('section'));
+            let currentIndex = 0;
+            let minDistance = Infinity;
+
+            sections.forEach((section, index) => {
+                const distance = Math.abs(section.getBoundingClientRect().top);
+                if (distance < minDistance) {
+                    minDistance = distance;
+                    currentIndex = index;
+                }
+            });
+
+            if (currentIndex < sections.length - 1) {
+                sections[currentIndex + 1].scrollIntoView({ behavior: 'smooth' });
+            }
+        });
+    </script>
+
+    <!-- Background removal is now done at build time via pre-processed _nobg.png images -->
+
+    <script>
+        // Scale presentation slides to fit the viewport perfectly while preserving aspect ratio
+        function adjustScales() {
+            const targetWidth = 1920;
+            const targetHeight = 945;
+            const scaleWrappers = document.querySelectorAll('.scale-wrapper');
+
+            if (window.innerWidth <= 768) {
+                // Disable scaling on mobile layouts
+                scaleWrappers.forEach(wrapper => {
+                    wrapper.style.transform = 'none';
+                });
+                return;
+            }
+
+            const scaleX = window.innerWidth / targetWidth;
+            const scaleY = window.innerHeight / targetHeight;
+            const scale = Math.min(scaleX, scaleY);
+
+            scaleWrappers.forEach(wrapper => {
+                wrapper.style.transform = `translate(-50%, -50%) scale(${scale})`;
+            });
+        }
+
+        window.addEventListener('resize', adjustScales);
+        window.addEventListener('load', adjustScales);
+        // Trigger immediately
+        adjustScales();
+    </script>
+</body>
+
+</html>

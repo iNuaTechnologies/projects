@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Proposal - AB InBev & AgriFriend</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Inter:wght@300;400;500;600;700&display=swap');
+
+        :root {
+            --primary-green: #173824;
+            --primary-light: #F2F5F3;
+            --secondary-gold: #C09B4D;
+            --gold-light: #FBF9F4;
+            --text-dark: #1A1C1E;
+            --text-light: #525659;
+            --bg-warm: #6B6E6B;
+            --white: #FFFFFF;
+            --border-color: #E2E4E2;
+            /* A4 dimensions at 96dpi */
+            --a4-width: 794px;
+            --a4-height: 1123px;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-warm);
+            color: var(--text-dark);
+            line-height: 1.5;
+            margin: 0;
+            padding: 30px 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        .container {
+            width: var(--a4-width);
+            min-height: var(--a4-height);
+            max-height: var(--a4-height);
+            overflow: hidden;
+            background-color: var(--white);
+            padding: 30px 38px 24px;
+            box-shadow: 0 4px 60px rgba(0, 0, 0, 0.35);
+            border-top: 7px solid var(--primary-green);
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Header & Logos */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 12px;
+            margin-bottom: 14px;
+            flex-shrink: 0;
+        }
+
+        .logos {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .logos img {
+            max-height: 44px;
+            max-width: 110px;
+            object-fit: contain;
+        }
+
+        .header-text {
+            text-align: right;
+        }
+
+        .header-text h1 {
+            margin: 0;
+            font-family: 'Playfair Display', serif;
+            font-size: 22px;
+            color: var(--primary-green);
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+
+        .header-text p {
+            margin: 3px 0 0;
+            color: var(--secondary-gold);
+            font-weight: 600;
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
+
+        /* Executive Summary */
+        .summary-box {
+            background: linear-gradient(135deg, var(--primary-green) 0%, #0F2417 100%);
+            border-left: 4px solid var(--secondary-gold);
+            padding: 12px 18px;
+            border-radius: 4px;
+            margin-bottom: 14px;
+            flex-shrink: 0;
+        }
+
+        .summary-box p {
+            margin: 0;
+            color: #E9ECEB;
+            font-size: 11px;
+            line-height: 1.55;
+            font-weight: 300;
+        }
+
+        .summary-box strong {
+            color: var(--secondary-gold);
+            font-weight: 600;
+        }
+
+        /* Section blocks */
+        .section-block {
+            margin-bottom: 12px;
+            flex-shrink: 0;
+        }
+
+        /* Sections */
+        h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 15px;
+            color: var(--primary-green);
+            margin: 0 0 8px 0;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding-bottom: 5px;
+            border-bottom: 1px solid var(--border-color);
+            flex-shrink: 0;
+        }
+
+        h2::before {
+            content: "";
+            display: block;
+            width: 6px;
+            height: 6px;
+            background-color: var(--secondary-gold);
+            transform: rotate(45deg);
+            flex-shrink: 0;
+        }
+
+        /* Tables */
+        .table-wrapper {
+            border-radius: 4px;
+            border: 1px solid var(--border-color);
+            background: var(--white);
+            flex-shrink: 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 10px;
+        }
+
+        th,
+        td {
+            padding: 7px 7px;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+            vertical-align: middle;
+        }
+
+        th {
+            background-color: var(--primary-light);
+            color: var(--primary-green);
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 8px;
+            letter-spacing: 0.08em;
+        }
+
+        tbody tr:last-child td {
+            border-bottom: none;
+        }
+
+        /* Item Cell styling with icons */
+        .item-cell {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        .item-icon {
+            width: 13px;
+            height: 13px;
+            color: var(--secondary-gold);
+            flex-shrink: 0;
+        }
+
+        /* Pricing Cells */
+        .price {
+            font-family: 'Inter', monospace;
+            font-weight: 600;
+            color: var(--text-dark);
+            white-space: nowrap;
+        }
+
+        .price-sub {
+            font-size: 8px;
+            color: #88928A;
+            font-weight: 400;
+            display: block;
+            margin-top: 1px;
+        }
+
+        .price.empty {
+            color: #A9AFA9;
+            font-weight: 400;
+        }
+
+        .total-row {
+            background-color: var(--primary-green) !important;
+            border-top: none;
+        }
+
+        .total-row td {
+            font-weight: 700;
+            color: var(--white);
+        }
+
+        .total-row .price {
+            color: var(--secondary-gold);
+        }
+
+        /* ROI Badges & Cells */
+        .roi-cell {
+            color: var(--text-light);
+            font-size: 9px;
+            line-height: 1.35;
+            width: 35%;
+        }
+
+        .roi-badge {
+            display: inline-block;
+            background-color: var(--secondary-gold);
+            color: var(--white);
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-weight: 700;
+            font-size: 7.5px;
+            margin-bottom: 3px;
+            text-transform: uppercase;
+            letter-spacing: 0.4px;
+        }
+
+        /* Highlight Table (Discount) */
+        .discount-table th {
+            background-color: var(--gold-light);
+            color: #9A7B3E;
+        }
+
+        .strike-through {
+            text-decoration: line-through;
+            color: #A9AFA9;
+            font-weight: 400;
+            margin-right: 4px;
+        }
+
+        /* Sign-off */
+        .sign-off {
+            margin-top: auto;
+            padding-top: 14px;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-light);
+            font-size: 10px;
+            text-align: center;
+            font-style: italic;
+        }
+
+        /* Print Styles */
+        @media print {
+            @page {
+                size: A4 portrait;
+                margin: 10mm;
+            }
+
+            body {
+                background: none;
+                padding: 0;
+                margin: 0;
+                display: block;
+            }
+
+            .container {
+                width: 100%;
+                max-height: none;
+                min-height: 0;
+                box-shadow: none;
+                border-top: 7px solid var(--primary-green);
+                padding: 0;
+            }
+
+            .summary-box {
+                background: var(--primary-green) !important;
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+            }
+
+            .summary-box p {
+                color: #FFFFFF !important;
+            }
+
+            .roi-badge,
+            th,
+            .total-row,
+            .discount-table th {
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+            }
+
+            .total-row td {
+                color: var(--white) !important;
+            }
+
+            .total-row .price {
+                color: var(--secondary-gold) !important;
+            }
+
+            .item-icon {
+                color: var(--secondary-gold) !important;
+            }
+
+            .table-wrapper {
+                border: 1px solid #E5E7EB !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container" id="proposal-content">
+        <div class="header">
+            <div class="logos">
+                <img src="https://1000logos.net/wp-content/uploads/2022/01/AB-InBev-logo.jpg" alt="AB InBev Logo"
+                    onerror="this.onerror=null; this.outerHTML='<span style=\'font-weight:bold; color:#1F2937;\'>AB InBev</span>';">
+                <img src="https://cdn.prod.website-files.com/6835a478c9c6fb3eed072d22/687e28dff8aecf236b8fa513_LOGO-p-2000.avif"
+                    alt="AgriFriend Logo"
+                    onerror="this.onerror=null; this.outerHTML='<span style=\'font-weight:bold; color:#2E7D32;\'>AgriFriend</span>';">
+            </div>
+            <div class="header-text">
+                <h1>Platform Implementation</h1>
+                <p>Financial Proposal & ROI</p>
+            </div>
+        </div>
+
+        <div class="summary-box">
+            <p><strong>Partnership Overview:</strong> Below is a detailed breakdown of the development scope,
+                maintenance model, and illustrative ROI across the proposed implementation phases. The platform is
+                designed to help AB InBev improve field execution, increase operational visibility, reduce
+                inefficiencies, and capture measurable value over time.</p>
+        </div>
+
+        <div class="section-block">
+            <h2>Core Implementation Modules</h2>
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Item / Module</th>
+                            <th>1-Year Plan</th>
+                            <th>3-Year Plan</th>
+                            <th>5-Year Plan</th>
+                            <th>Maintenance</th>
+                            <th>Projected Impact / ROI</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <div class="item-cell">
+                                    <svg class="item-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"></path>
+                                    </svg>
+                                    Input Management
+                                </div>
+                            </td>
+                            <td class="price">$8,060</td>
+                            <td class="price">$2,550</td>
+                            <td class="price">$1,495</td>
+                            <td class="price">$3,370</td>
+                            <td class="roi-cell">
+                                <span class="roi-badge">4x Annual ROI</span><br />
+                                Generates a 4x return <strong>every year</strong> by realizing $2 on average in
+                                operational savings per farmer (10,000 baseline).
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="item-cell">
+                                    <svg class="item-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                    </svg>
+                                    Harvest Intake & Grading
+                                </div>
+                            </td>
+                            <td class="price">$7,800</td>
+                            <td class="price">$2,470</td>
+                            <td class="price">$1,451</td>
+                            <td class="price">$3,370</td>
+                            <td class="roi-cell">
+                                <span class="roi-badge">$100,000 ANNUAL SAVINGS</span><br />
+                                Drives a 20x ROI <strong>each year</strong> by gaining better harvest and on time,
+                                saving $10 per farmer on average (10,000 baseline).
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="item-cell">
+                                    <svg class="item-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 01-2-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z">
+                                        </path>
+                                    </svg>
+                                    Contracts & Documents
+                                </div>
+                            </td>
+                            <td class="price">$5,525</td>
+                            <td class="price">$1,750</td>
+                            <td class="price">$1,028</td>
+                            <td class="price">$3,370</td>
+                            <td class="roi-cell">
+                                <span class="roi-badge">9x Annual ROI</span><br />
+                                Yields a 9x ROI <strong>every year</strong>. Eliminate lost paper contracts that lead to
+                                untracked debt. Transition to digital workflows to stop <strong>financial
+                                    leakage</strong> and know exactly what every farmer owes, saving $4 per farmer on
+                                average.
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="item-cell">
+                                    <svg class="item-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z">
+                                        </path>
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                                    </svg>
+                                    Field Measurement (GPX)
+                                </div>
+                            </td>
+                            <td class="price">$8,450</td>
+                            <td class="price">$2,676</td>
+                            <td class="price">$1,572</td>
+                            <td class="price">$4,860</td>
+                            <td class="roi-cell">
+                                <span class="roi-badge">$250,000 Annual Savings</span><br />
+                                Provides better yield predictions and reduces wasted inputs, preventing an estimated
+                                $250,000 <strong>annually</strong> by reducing input overallocation by 5%.
+                            </td>
+                        </tr>
+                        <tr class="total-row">
+                            <td>Total Core Investment</td>
+                            <td class="price">$29,835</td>
+                            <td class="price">$9,570</td>
+                            <td class="price">$5,546</td>
+                            <td class="price">$14,970</td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="section-block">
+            <h2>Cost Per Additional Users</h2>
+            <div class="table-wrapper discount-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Volume Tier</th>
+                            <th>Standard Price</th>
+                            <th>Discounted Price</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>30 Users</strong></td>
+                            <td class="price"><span class="strike-through">$2,200</span></td>
+                            <td class="price" style="color: var(--primary-green); font-size: 11px;">$1,910 <span
+                                    class="price-sub">per user</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>40 Users</strong></td>
+                            <td class="price"><span class="strike-through">$2,200</span></td>
+                            <td class="price" style="color: var(--primary-green); font-size: 11px;">$1,820 <span
+                                    class="price-sub">per user</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>50 Users</strong></td>
+                            <td class="price"><span class="strike-through">$2,200</span></td>
+                            <td class="price" style="color: var(--primary-green); font-size: 11px;">$1,725 <span
+                                    class="price-sub">per user</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="section-block">
+            <h2>Optional Expansion Modules</h2>
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Item / Module</th>
+                            <th>1-Year Plan</th>
+                            <th>3-Year Plan</th>
+                            <th>5-Year Plan</th>
+                            <th>Maintenance</th>
+                            <th>Value Proposition</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Connected Verification</strong></td>
+                            <td class="price">$19,715</td>
+                            <td class="price">$16,055</td>
+                            <td class="price">$13,137</td>
+                            <td class="price empty">-</td>
+                            <td class="roi-cell">Ensures SCFE compliance through automated delivery reporting, digital
+                                checklists, and unified network visibility. Provides <strong>bulletproof evidence for
+                                    audits</strong>.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Task Management</strong></td>
+                            <td class="price">$8,320</td>
+                            <td class="price">$2,630</td>
+                            <td class="price">$1,548</td>
+                            <td class="price">$2,350</td>
+                            <td class="roi-cell">Serves as a technical checklist for SCFE, streamlining internal
+                                agronomy operations and optimizing field scheduling and task execution.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Credit Management</strong></td>
+                            <td class="price">$6,200</td>
+                            <td class="price">$3,007</td>
+                            <td class="price">$1,178</td>
+                            <td class="price">$2,350</td>
+                            <td class="roi-cell">
+                                <span class="roi-badge">5x Annual ROI</span><br />
+                                Yields a 5x ROI <strong>every year</strong>. Eliminate untracked defaults that lead to
+                                lost capital. Digitize your credit tracking to stop <strong>financial leakage</strong>
+                                and ensure every dollar loaned returns to ABI, saving $2 per farmer on average.
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+
+</html>
