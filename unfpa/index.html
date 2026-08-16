@@ -1,0 +1,1462 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UNFPA GBV Call Center – AI Voice Agent in Swahili</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700&family=Poppins:wght@500;600;700;800&display=swap"
+        rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <style>
+        :root {
+            --heading-color: #8c4115;
+            --text-color: #544a42;
+            --accent-orange: #f2a51a;
+            --line-color: #eab683;
+            --brand-green: #126b4f;
+            --bg-top: #FFFEFA;
+            --bg-bottom: #FFF1E0;
+            --card: #FFFDF8;
+            --line-light: rgba(140, 100, 60, 0.12);
+            --danger-red: #c0392b;
+            --unfpa-blue: #009edb;
+            --unfpa-orange: #F96000;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-snap-type: y mandatory;
+            overflow-y: scroll;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Nunito', sans-serif;
+            color: var(--text-color);
+            background: linear-gradient(135deg, var(--bg-top) 0%, var(--bg-bottom) 100%);
+            min-height: 100vh;
+        }
+
+        section {
+            height: 100vh;
+            scroll-snap-align: start;
+            scroll-snap-stop: always;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4 {
+            font-family: 'Poppins', sans-serif;
+            color: var(--heading-color);
+        }
+
+        .content-container {
+            max-width: 1400px;
+            width: 100%;
+            padding: 0 60px;
+            text-align: center;
+        }
+
+        .scale-wrapper {
+            width: 1920px;
+            height: 945px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transform-origin: center center;
+        }
+
+        /* ===== LANDSCAPE BACKGROUND ===== */
+        .landscape-bg {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 50vh;
+            background-image: url('../Images/farm_landscape_bg.png');
+            background-size: cover;
+            background-position: bottom center;
+            background-repeat: no-repeat;
+            z-index: 0;
+            pointer-events: none;
+            opacity: 0.4;
+            mask-image: linear-gradient(to bottom, transparent 0%, black 40%);
+            -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 40%);
+        }
+
+        /* ===== SLIDE LOGOS ===== */
+        .slide-logo {
+            position: absolute;
+            top: 30px;
+            left: 40px;
+            height: 50px;
+            z-index: 100;
+            opacity: 0.85;
+        }
+
+        .slide-logo-right {
+            position: absolute;
+            top: 30px;
+            right: 40px;
+            height: 40px;
+            z-index: 100;
+            opacity: 0.85;
+        }
+
+        /* ===== TITLE / BG SLIDES ===== */
+        .bg-slide {
+            background-image: url('../Images/Elegant wave patterns in soft hues.png');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .bg-slide .content-container h1 {
+            font-size: 72px;
+            font-weight: 800;
+            margin-bottom: 20px;
+            color: var(--brand-green);
+        }
+
+        .bg-slide .content-container h3 {
+            font-size: 30px;
+            font-weight: 400;
+            color: var(--text-color);
+            font-family: 'Nunito', sans-serif;
+        }
+
+        .title-badge {
+            display: inline-block;
+            background: var(--brand-green);
+            color: #fff;
+            padding: 8px 24px;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            margin-bottom: 24px;
+        }
+
+        /* ===== TWO-COLUMN SLIDE ===== */
+        .two-col {
+            display: flex;
+            align-items: center;
+            gap: 60px;
+            max-width: 1400px;
+            padding: 0 80px;
+        }
+
+        .two-col .text-side {
+            flex: 1.3;
+            text-align: left;
+        }
+
+        .two-col .text-side h2 {
+            font-size: 42px;
+            line-height: 1.2;
+            margin-bottom: 24px;
+        }
+
+        .two-col .text-side p {
+            font-size: 22px;
+            line-height: 1.6;
+            color: var(--text-color);
+        }
+
+        .two-col .image-side {
+            flex: 0.7;
+        }
+
+        .two-col .image-side img {
+            max-width: 500px;
+            width: 100%;
+            height: 480px;
+            object-fit: cover;
+            border-radius: 24px;
+        }
+
+        /* ===== STATEMENT SLIDE ===== */
+        .statement-slide {
+            text-align: center;
+            padding: 0 100px;
+        }
+
+        .statement-slide h2 {
+            font-size: 48px;
+            line-height: 1.3;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .statement-slide p {
+            font-size: 24px;
+            margin-top: 30px;
+            color: var(--text-color);
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* ===== STAT HIGHLIGHTS ===== */
+        .stat-row {
+            display: flex;
+            justify-content: center;
+            gap: 60px;
+            margin-top: 50px;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-item .stat-number {
+            font-family: 'Poppins', sans-serif;
+            font-size: 56px;
+            font-weight: 800;
+            line-height: 1;
+        }
+
+        .stat-item .stat-label {
+            font-size: 16px;
+            color: var(--text-color);
+            margin-top: 8px;
+            max-width: 200px;
+        }
+
+        /* ===== STRUCTURE CARDS ===== */
+        .cards-section h2 {
+            font-size: 44px;
+            margin-bottom: 50px;
+        }
+
+        .structure-cards {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .structure-card {
+            background: rgba(255, 255, 255, 0.85);
+            border-radius: 20px;
+            padding: 40px 30px;
+            max-width: 300px;
+            flex: 1;
+            min-width: 240px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06);
+            transition: transform 0.3s ease;
+        }
+
+        .structure-card:hover {
+            transform: translateY(-6px);
+        }
+
+        .structure-card .card-icon {
+            font-size: 48px;
+            margin-bottom: 20px;
+            color: var(--brand-green);
+        }
+
+        .structure-card h4 {
+            font-size: 22px;
+            margin-bottom: 12px;
+            color: var(--heading-color);
+        }
+
+        .structure-card p {
+            font-size: 16px;
+            line-height: 1.5;
+            color: var(--text-color);
+        }
+
+        /* ===== SIX-CARD GRID ===== */
+        .six-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .six-grid .grid-card {
+            background: rgba(255, 255, 255, 0.85);
+            border-radius: 16px;
+            padding: 30px 24px;
+            box-shadow: 0 6px 24px rgba(0, 0, 0, 0.05);
+            text-align: left;
+            transition: transform 0.3s ease;
+        }
+
+        .six-grid .grid-card:hover {
+            transform: translateY(-4px);
+        }
+
+        .six-grid .grid-card .card-icon {
+            font-size: 36px;
+            margin-bottom: 14px;
+            color: var(--accent-orange);
+        }
+
+        .six-grid .grid-card h4 {
+            font-size: 18px;
+            margin-bottom: 8px;
+        }
+
+        .six-grid .grid-card p {
+            font-size: 14px;
+            line-height: 1.5;
+            color: var(--text-color);
+        }
+
+        /* ===== CLUSTER SLIDE (Grace detail) ===== */
+        .cluster-slide {
+            overflow: hidden;
+        }
+
+        .cluster-slide .scale-wrapper {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+        }
+
+        .cluster-character {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            height: 700px;
+            z-index: 2;
+        }
+
+        .cluster-character img {
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .character-backdrop {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(ellipse at center bottom, rgba(18, 107, 79, 0.08) 0%, transparent 70%);
+            border-radius: 50%;
+            z-index: 1;
+        }
+
+        .cluster-title {
+            position: absolute;
+            top: 60px;
+            left: 50%;
+            transform: translateX(-50%);
+            text-align: center;
+            z-index: 5;
+        }
+
+        .cluster-title h2 {
+            font-size: 38px;
+            color: var(--heading-color);
+        }
+
+        .cluster-title .agent-role {
+            font-size: 20px;
+            color: var(--brand-green);
+            font-weight: 600;
+            margin-top: 6px;
+        }
+
+        .cluster-card {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(8px);
+            border-radius: 16px;
+            padding: 20px 24px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+            z-index: 4;
+            max-width: 260px;
+            transition: transform 0.3s ease;
+        }
+
+        .cluster-card:hover {
+            transform: translateY(-4px);
+        }
+
+        .cluster-card h4 {
+            font-size: 16px;
+            margin-bottom: 8px;
+            color: var(--heading-color);
+        }
+
+        .cluster-card p {
+            font-size: 13px;
+            line-height: 1.5;
+            color: var(--text-color);
+        }
+
+        .cluster-card .card-icon {
+            font-size: 28px;
+            margin-bottom: 10px;
+            color: var(--brand-green);
+        }
+
+        .cluster-card-bullet {
+            position: absolute;
+            z-index: 4;
+            list-style: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--text-color);
+            background: rgba(255, 255, 255, 0.75);
+            backdrop-filter: blur(6px);
+            padding: 8px 18px;
+            border-radius: 20px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .cluster-card-bullet i {
+            font-size: 18px;
+            color: var(--brand-green);
+        }
+
+        .card-top-left {
+            top: 160px;
+            left: 100px;
+        }
+
+        .card-top-right {
+            top: 160px;
+            right: 100px;
+        }
+
+        .card-bottom-left {
+            bottom: 200px;
+            left: 80px;
+        }
+
+        .card-bottom-right {
+            bottom: 200px;
+            right: 80px;
+        }
+
+        .cluster-connectors {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 3;
+            pointer-events: none;
+        }
+
+        .cluster-connectors line {
+            stroke: var(--line-color);
+            stroke-width: 2;
+            stroke-dasharray: 8, 6;
+        }
+
+        /* ===== CALL FLOW SLIDE ===== */
+        .flow-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0;
+            max-width: 1400px;
+            padding: 0 40px;
+        }
+
+        .flow-step {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            flex: 1;
+            max-width: 220px;
+            position: relative;
+        }
+
+        .flow-node {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 36px;
+            margin-bottom: 16px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+            position: relative;
+            z-index: 2;
+        }
+
+        .flow-node.ai {
+            background: linear-gradient(135deg, var(--brand-green), #0e5a40);
+            color: #fff;
+        }
+
+        .flow-node.human {
+            background: linear-gradient(135deg, var(--accent-orange), #d4890f);
+            color: #fff;
+        }
+
+        .flow-node.start {
+            background: linear-gradient(135deg, #8c4115, #a85220);
+            color: #fff;
+        }
+
+        .flow-step h4 {
+            font-size: 16px;
+            margin-bottom: 6px;
+            color: var(--heading-color);
+        }
+
+        .flow-step p {
+            font-size: 13px;
+            line-height: 1.4;
+            color: var(--text-color);
+            max-width: 180px;
+        }
+
+        .flow-arrow {
+            width: 60px;
+            height: 2px;
+            background: var(--line-color);
+            position: relative;
+            flex-shrink: 0;
+            margin-top: -60px;
+        }
+
+        .flow-arrow::after {
+            content: '';
+            position: absolute;
+            right: -4px;
+            top: -5px;
+            border: 6px solid transparent;
+            border-left-color: var(--line-color);
+        }
+
+        .flow-arrow.handover {
+            background: var(--accent-orange);
+            height: 3px;
+        }
+
+        .flow-arrow.handover::after {
+            border-left-color: var(--accent-orange);
+        }
+
+        /* ===== HANDOVER EMPHASIS ===== */
+        .handover-highlight {
+            background: linear-gradient(135deg, rgba(242, 165, 26, 0.08), rgba(242, 165, 26, 0.03));
+            border: 2px solid rgba(242, 165, 26, 0.25);
+            border-radius: 20px;
+            padding: 40px 50px;
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .handover-highlight .handover-icon {
+            flex-shrink: 0;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--accent-orange), #d4890f);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 48px;
+            color: #fff;
+            box-shadow: 0 12px 32px rgba(242, 165, 26, 0.25);
+        }
+
+        .handover-highlight .handover-text {
+            text-align: left;
+        }
+
+        .handover-highlight .handover-text h2 {
+            font-size: 36px;
+            color: var(--heading-color);
+            margin-bottom: 16px;
+        }
+
+        .handover-highlight .handover-text p {
+            font-size: 20px;
+            line-height: 1.6;
+            color: var(--text-color);
+        }
+
+        /* ===== HANDOVER STEPS ===== */
+        .handover-steps {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            margin-top: 40px;
+        }
+
+        .handover-step {
+            background: rgba(255, 255, 255, 0.92);
+            border-radius: 20px;
+            padding: 32px 24px;
+            flex: 1;
+            max-width: 250px;
+            box-shadow: 0 8px 28px rgba(0, 0, 0, 0.06);
+            text-align: center;
+            position: relative;
+            transition: transform 0.3s ease;
+        }
+
+        .handover-step:hover {
+            transform: translateY(-5px);
+        }
+
+        .handover-step .step-number {
+            position: absolute;
+            top: -16px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 32px;
+            height: 32px;
+            background: var(--brand-green);
+            color: #fff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Poppins', sans-serif;
+            font-size: 14px;
+            font-weight: 700;
+        }
+
+        .handover-step.human-step .step-number {
+            background: var(--accent-orange);
+        }
+
+        .handover-step .step-icon {
+            font-size: 40px;
+            color: var(--brand-green);
+            margin-bottom: 14px;
+        }
+
+        .handover-step.human-step .step-icon {
+            color: var(--accent-orange);
+        }
+
+        .handover-step h4 {
+            font-size: 17px;
+            margin-bottom: 8px;
+            color: var(--heading-color);
+        }
+
+        .handover-step p {
+            font-size: 13px;
+            line-height: 1.5;
+            color: var(--text-color);
+        }
+
+        /* ===== PROBLEM CARDS ===== */
+        .problem-cards {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .problem-card {
+            background: rgba(255, 255, 255, 0.92);
+            border-radius: 20px;
+            padding: 36px 28px;
+            max-width: 320px;
+            flex: 1;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06);
+            text-align: center;
+            border-top: 4px solid var(--danger-red);
+            transition: transform 0.3s ease;
+        }
+
+        .problem-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .problem-card .problem-icon {
+            font-size: 44px;
+            color: var(--danger-red);
+            margin-bottom: 16px;
+        }
+
+        .problem-card h4 {
+            font-size: 20px;
+            margin-bottom: 10px;
+            color: var(--heading-color);
+        }
+
+        .problem-card p {
+            font-size: 15px;
+            line-height: 1.5;
+            color: var(--text-color);
+        }
+
+        /* ===== TRUST CARDS ===== */
+        .trust-cards {
+            display: flex;
+            justify-content: center;
+            gap: 28px;
+            flex-wrap: wrap;
+        }
+
+        .trust-card {
+            background: rgba(255, 255, 255, 0.88);
+            border-radius: 20px;
+            padding: 36px 28px;
+            max-width: 280px;
+            flex: 1;
+            min-width: 220px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06);
+            text-align: left;
+            border-top: 4px solid var(--brand-green);
+            transition: transform 0.3s ease;
+        }
+
+        .trust-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .trust-card .card-icon {
+            font-size: 40px;
+            margin-bottom: 16px;
+            color: var(--brand-green);
+        }
+
+        .trust-card h4 {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .trust-card p {
+            font-size: 14px;
+            line-height: 1.6;
+            color: var(--text-color);
+        }
+
+        /* ===== REFERENCE BOX ===== */
+        .reference-box {
+            background: rgba(18, 107, 79, 0.06);
+            border: 1px solid rgba(18, 107, 79, 0.2);
+            border-radius: 16px;
+            padding: 24px 36px;
+            max-width: 800px;
+            margin: 30px auto 0;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .reference-box .ref-icon {
+            font-size: 32px;
+            color: var(--brand-green);
+            flex-shrink: 0;
+        }
+
+        .reference-box p {
+            font-size: 16px;
+            color: var(--text-color);
+            text-align: left;
+            line-height: 1.5;
+        }
+
+        .reference-box a {
+            color: var(--brand-green);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .reference-box a:hover {
+            text-decoration: underline;
+        }
+
+        /* ===== BULLET LIST ===== */
+        .bullet-list {
+            list-style: none;
+            padding: 0;
+            margin: 20px 0 0 0;
+        }
+
+        .bullet-list li {
+            font-size: 20px;
+            line-height: 1.8;
+            color: var(--text-color);
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+
+        .bullet-list li::before {
+            content: '';
+            width: 10px;
+            height: 10px;
+            background: var(--brand-green);
+            border-radius: 50%;
+            flex-shrink: 0;
+            margin-top: 10px;
+        }
+
+        .bullet-list li.danger::before {
+            background: var(--danger-red);
+        }
+
+        /* ===== CONTACT SLIDE ===== */
+        .contact-slide .content-container {
+            text-align: center;
+        }
+
+        .contact-slide h2 {
+            font-size: 44px;
+            margin-bottom: 24px;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .contact-slide p {
+            font-size: 22px;
+            color: var(--text-color);
+            margin-bottom: 40px;
+        }
+
+        .contact-btn {
+            display: inline-block;
+            background: var(--brand-green);
+            color: #fff;
+            padding: 16px 40px;
+            border-radius: 50px;
+            font-size: 20px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: background 0.3s ease, transform 0.3s ease;
+        }
+
+        .contact-btn:hover {
+            background: #0e5a40;
+            transform: translateY(-3px);
+        }
+
+        /* ===== FUTURE TEAM SLIDE ===== */
+        .future-team-title {
+            position: absolute;
+            top: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            text-align: center;
+            z-index: 10;
+            width: 100%;
+        }
+
+        .future-team-title h2 {
+            font-size: 40px;
+            color: var(--heading-color);
+            margin-bottom: 10px;
+        }
+
+        .future-team-title p {
+            font-size: 18px;
+            color: var(--text-color);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .future-team-lineup {
+            position: absolute;
+            bottom: 5%;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            gap: 10px;
+            z-index: 5;
+        }
+
+        .future-team-member {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 280px;
+            transition: transform 0.3s ease;
+        }
+
+        .future-team-member:hover {
+            transform: translateY(-8px);
+        }
+
+        .future-team-member img {
+            width: 100%;
+            height: 420px;
+            object-fit: cover;
+            object-position: top center;
+            filter: brightness(1.0) contrast(1.25) saturate(1.1);
+            -webkit-mask-image: linear-gradient(to bottom, black 85%, transparent 100%);
+            mask-image: linear-gradient(to bottom, black 85%, transparent 100%);
+        }
+
+        .future-team-tag {
+            position: relative;
+            background: rgba(255, 255, 255, 0.95);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            border-radius: 12px;
+            padding: 8px 16px;
+            text-align: center;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+            margin-top: -12px;
+            z-index: 10;
+            min-width: 140px;
+        }
+
+        .future-team-tag h4 {
+            font-size: 20px;
+            color: var(--brand-green);
+            margin-bottom: 2px;
+            font-weight: 700;
+        }
+
+        .future-team-tag p {
+            font-size: 13px;
+            color: var(--text-color);
+            margin: 0;
+            line-height: 1.3;
+        }
+
+        .future-team-desc {
+            margin-top: 12px;
+            font-size: 13px;
+            line-height: 1.5;
+            color: var(--text-color);
+            text-align: center;
+            max-width: 240px;
+            background: rgba(255, 255, 255, 0.75);
+            backdrop-filter: blur(6px);
+            padding: 10px 14px;
+            border-radius: 12px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+        }
+
+        /* ===== FLOATING ICONS ===== */
+        .floating-icon {
+            position: absolute;
+            font-size: 32px;
+            opacity: 0.3;
+            animation: float 4s ease-in-out infinite;
+            z-index: 1;
+            color: var(--brand-green);
+        }
+
+        .floating-icon:nth-child(2) {
+            animation-delay: 1s;
+        }
+
+        .floating-icon:nth-child(3) {
+            animation-delay: 2s;
+        }
+
+        .floating-icon:nth-child(4) {
+            animation-delay: 3s;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-15px);
+            }
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            .scale-wrapper {
+                position: relative;
+                width: 100%;
+                height: auto;
+                transform: none;
+                top: auto;
+                left: auto;
+            }
+
+            .two-col {
+                flex-direction: column;
+                padding: 0 30px;
+            }
+
+            .structure-cards,
+            .trust-cards,
+            .problem-cards {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .six-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .flow-container {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .flow-arrow {
+                width: 2px;
+                height: 40px;
+                margin-top: 0;
+            }
+
+            .handover-highlight {
+                flex-direction: column;
+                text-align: center;
+                padding: 30px;
+            }
+
+            .handover-steps {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .stat-row {
+                flex-direction: column;
+                gap: 30px;
+            }
+
+            .cluster-card {
+                position: relative;
+                top: auto !important;
+                left: auto !important;
+                right: auto !important;
+                bottom: auto !important;
+                max-width: 100%;
+                margin: 10px;
+            }
+
+            .cluster-character {
+                height: 50vh;
+            }
+
+            .cluster-connectors {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- SLIDE 1: Title -->
+    <section class="bg-slide">
+        <img src="Logo-unfpa-blue.svg" alt="UNFPA" class="slide-logo">
+        <img src="../Images/logo.png" alt="iNua Technologies" class="slide-logo-right">
+        <div class="content-container">
+            <div class="title-badge">Project Proposal</div>
+            <h1>GBV Call Center</h1>
+            <h3>AI Voice Agent in Swahili — Expanding lifeline access for survivors of gender-based violence</h3>
+        </div>
+    </section>
+
+    <!-- SLIDE 2: The GBV Crisis in Tanzania -->
+    <section>
+        <img src="Logo-unfpa-blue.svg" alt="UNFPA" class="slide-logo">
+        <div class="statement-slide">
+            <h2>Gender-based violence is one of the most prevalent <span style="color: var(--danger-red);">human rights
+                    violations</span> in the world.</h2>
+            <p>Violence against women and girls knows no social, economic, or national boundaries. In Tanzania, the
+                scale demands urgent, scalable response.</p>
+            <div class="stat-row" style="margin-top: 50px;">
+                <div class="stat-item">
+                    <div class="stat-number" style="color: var(--danger-red);">1 in 3</div>
+                    <div class="stat-label">Women worldwide will experience physical or sexual abuse in her lifetime
+                    </div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" style="color: var(--danger-red);">39.5%</div>
+                    <div class="stat-label">Of married women aged 15–49 in Tanzania have experienced intimate partner
+                        violence</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" style="color: var(--danger-red);">30%</div>
+                    <div class="stat-label">Of girls experience sexual violence before the age of 18</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SLIDE 3: UNFPA's Response in Tanzania -->
+    <section>
+        <img src="Logo-unfpa-blue.svg" alt="UNFPA" class="slide-logo">
+        <div class="content-container">
+            <h2 style="font-size: 44px; margin-bottom: 16px;">UNFPA is already fighting GBV in Tanzania.</h2>
+            <p style="font-size: 20px; color: var(--text-color); max-width: 750px; margin: 0 auto 40px;">UNFPA supports
+                the National Plans of Action to End Violence Against Women and Children (NPA-VAWC) through
+                multi-sectoral response and prevention.</p>
+            <div class="problem-cards">
+                <div class="problem-card" style="border-top-color: var(--brand-green);">
+                    <div class="problem-icon" style="color: var(--brand-green);"><i class="ph ph-first-aid"></i></div>
+                    <h4>One Stop Centres</h4>
+                    <p>Emergency assistance, medical and psychosocial support, legal aid, and referrals — across
+                        Mainland Tanzania and Zanzibar.</p>
+                </div>
+                <div class="problem-card" style="border-top-color: var(--brand-green);">
+                    <div class="problem-icon" style="color: var(--brand-green);"><i class="ph ph-phone-call"></i></div>
+                    <h4>National Child Helpline</h4>
+                    <p>Technical and financial support to scale the helpline and Police Gender & Children's Desks that
+                        receive and respond to GBV reports.</p>
+                </div>
+                <div class="problem-card" style="border-top-color: var(--brand-green);">
+                    <div class="problem-icon" style="color: var(--brand-green);"><i class="ph ph-graduation-cap"></i>
+                    </div>
+                    <h4>Capacity Building</h4>
+                    <p>Training police, judiciary, healthcare providers, teachers, and traditional elders — the
+                        frontline "duty bearers" in GBV response.</p>
+                </div>
+                <div class="problem-card" style="border-top-color: var(--brand-green);">
+                    <div class="problem-icon" style="color: var(--brand-green);"><i class="ph ph-map-trifold"></i></div>
+                    <h4>Technology & Outreach</h4>
+                    <p>Open-source mapping to locate remote villages, enabling targeted FGM prevention and community
+                        outreach in Serengeti and Kigoma.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SLIDE 4: Building on UNFPA's Existing Work -->
+    <section>
+        <img src="Logo-unfpa-blue.svg" alt="UNFPA" class="slide-logo">
+        <div class="statement-slide">
+            <h2>UNFPA has already proven that <span style="color: var(--brand-green);">helplines save lives.</span></h2>
+            <p>UNFPA-supported interventions in Tanzania — including toll-free helplines, child protection committees,
+                and safe spaces — have enabled children and communities to report abuse, prevent child marriage, and
+                access critical services.</p>
+            <div class="reference-box">
+                <div class="ref-icon"><i class="ph ph-newspaper"></i></div>
+                <p><strong>UN News:</strong> "Tanzania helpline calls time on child marriage and abuse" — documenting
+                    how UNFPA's hotline has become a lifeline for young girls across rural Tanzania. <a
+                        href="https://news.un.org/en/story/2021/05/1091972" target="_blank">Read the full story →</a>
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SLIDE 5: The Need — What UNFPA Needs to Scale Impact -->
+    <section>
+        <img src="Logo-unfpa-blue.svg" alt="UNFPA" class="slide-logo">
+        <div class="statement-slide">
+            <h2>To protect survivors at scale, UNFPA needs a <span style="color: var(--brand-green);">first responder
+                    that never sleeps</span> — one that speaks Swahili, follows protocol, and connects every caller to a
+                trained human counsellor.</h2>
+        </div>
+    </section>
+
+    <!-- SLIDE 6: Meet Grace — AI GBV Support Expert -->
+    <section class="cluster-slide" style="position: relative;">
+        <img src="Logo-unfpa-blue.svg" alt="UNFPA" class="slide-logo">
+        <div class="landscape-bg"></div>
+        <div class="scale-wrapper">
+            <div class="cluster-title" style="top: 20px; left: 45%; transform: translateX(-40%);">
+                <h2>Grace</h2>
+                <div class="agent-role">AI GBV Support & Intake Specialist</div>
+                <div class="agent-role">Swahili Voice Agent for UNFPA</div>
+            </div>
+
+            <div class="character-backdrop"></div>
+            <div class="cluster-character">
+                <img src="../Images/grace_nobg.png" alt="Grace">
+            </div>
+
+            <div class="cluster-card card-top-left">
+                <div class="card-icon"><i class="ph ph-phone-call"></i></div>
+                <h4>24/7 First Response</h4>
+                <p>Answers every call instantly in fluent Swahili — warm, safe, and non-judgmental, day or night.</p>
+            </div>
+            <div class="cluster-card-bullet" style="top: 430px; left: 270px;">
+                <i class="ph ph-shield-check"></i> Trained on UNFPA-approved GBV protocols
+            </div>
+            <div class="cluster-card-bullet" style="top: 210px; right: 270px;">
+                <i class="ph ph-phone-call"></i> Available 24/7 via phone call
+            </div>
+            <div class="cluster-card-bullet" style="top: 270px; right: 270px;">
+                <i class="ph ph-translate"></i> Speaking fluent Swahili
+            </div>
+            <div class="cluster-card-bullet" style="top: 330px; right: 270px;">
+                <i class="ph ph-clipboard-text"></i> Trauma-informed structured intake
+            </div>
+            <div class="cluster-card-bullet" style="bottom: 110px; right: 120px;">
+                <i class="ph ph-phone-transfer"></i> Intelligent handover to human counsellors
+            </div>
+            <div class="cluster-card card-bottom-left">
+                <div class="card-icon"><i class="ph ph-funnel"></i></div>
+                <h4>Risk Assessment & Triage</h4>
+                <p>Classifies severity using UNFPA protocols and routes to the right specialist — trauma counsellor,
+                    legal advisor, or emergency responder.</p>
+            </div>
+            <div class="cluster-card-bullet" style="bottom: 100px; left: 120px;">
+                <i class="ph ph-hand-heart"></i> AI handles intake, humans provide care
+            </div>
+            <div class="cluster-card card-bottom-right">
+                <div class="card-icon"><i class="ph ph-user-switch"></i></div>
+                <h4>Warm Handover</h4>
+                <p>Transfers caller to a trained human counsellor with full conversation context — no story needs
+                    repeating.</p>
+            </div>
+
+            <svg class="cluster-connectors" viewBox="0 0 1920 945">
+                <defs>
+                    <marker id="arrow-grace" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+                        <polygon points="0 0, 8 3, 0 6" fill="#eab683" />
+                    </marker>
+                </defs>
+                <line x1="360" y1="280" x2="760" y2="400" marker-end="url(#arrow-grace)" />
+                <line x1="1560" y1="280" x2="1160" y2="400" marker-end="url(#arrow-grace)" />
+                <line x1="340" y1="650" x2="760" y2="550" marker-end="url(#arrow-grace)" />
+                <line x1="1580" y1="650" x2="1160" y2="550" marker-end="url(#arrow-grace)" />
+            </svg>
+
+            <i class="ph ph-phone-call floating-icon" style="top: 120px; left: 250px;"></i>
+            <i class="ph ph-shield-check floating-icon" style="top: 300px; right: 200px;"></i>
+            <i class="ph ph-hand-heart floating-icon" style="bottom: 150px; left: 350px;"></i>
+        </div>
+    </section>
+
+    <!-- SLIDE 8: Human Handover — Emphasis -->
+    <section style="position: relative;">
+        <img src="Logo-unfpa-blue.svg" alt="UNFPA" class="slide-logo">
+        <div class="landscape-bg"></div>
+        <div class="content-container" style="position: relative; z-index: 2;">
+            <div class="handover-highlight">
+                <div class="handover-icon"><i class="ph ph-arrows-split"></i></div>
+                <div class="handover-text">
+                    <h2>Grace handles the intake.<br><span style="color: var(--accent-orange);">Humans provide the
+                            care.</span></h2>
+                    <p>Grace is never a replacement for human counsellors. She is the <strong>bridge</strong> that
+                        ensures every caller reaches a trained professional — with their story already heard, their
+                        needs already understood, and the right specialist already identified.</p>
+                </div>
+            </div>
+            <div class="handover-steps">
+                <div class="handover-step">
+                    <div class="step-number">1</div>
+                    <div class="step-icon"><i class="ph ph-microphone"></i></div>
+                    <h4>Grace Listens</h4>
+                    <p>Compassionate, Swahili-speaking intake — available 24/7, even when no counsellor is free.</p>
+                </div>
+                <div class="handover-step">
+                    <div class="step-number">2</div>
+                    <div class="step-icon"><i class="ph ph-file-text"></i></div>
+                    <h4>Context Package</h4>
+                    <p>Grace creates a structured case summary: incident type, urgency level, location, caller state.
+                    </p>
+                </div>
+                <div class="handover-step">
+                    <div class="step-number">3</div>
+                    <div class="step-icon"><i class="ph ph-detective"></i></div>
+                    <h4>Smart Routing</h4>
+                    <p>Case is routed to the right specialist: trauma counsellor, legal advisor, or emergency responder.
+                    </p>
+                </div>
+                <div class="handover-step human-step">
+                    <div class="step-number">4</div>
+                    <div class="step-icon"><i class="ph ph-user-circle"></i></div>
+                    <h4>Human Takes Over</h4>
+                    <p>Counsellor joins the call with full context. Caller never has to repeat their story.</p>
+                </div>
+                <div class="handover-step human-step">
+                    <div class="step-number">5</div>
+                    <div class="step-icon"><i class="ph ph-heart"></i></div>
+                    <h4>Follow-Up</h4>
+                    <p>System tracks case resolution, enables follow-up calls, and feeds anonymised data to dashboards.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- SLIDE: Dashboard -->
+    <section style="position: relative;">
+        <img src="Logo-unfpa-blue.svg" alt="UNFPA" class="slide-logo">
+        <div class="landscape-bg"></div>
+        <div class="content-container" style="position: relative; z-index: 2;">
+            <h2 style="font-size: 44px; margin-bottom: 16px;">See every call, case, escalation, and outcome.</h2>
+            <p style="font-size: 20px; color: var(--text-color); max-width: 750px; margin: 0 auto 40px;">Track call
+                volumes, case types, response times, geographic patterns, and counsellor workload — all in real time.
+            </p>
+            <img src="../Images/dashboard-laptop.png" alt="iNua Technologies Insights Dashboard"
+                style="max-width: 900px; width: 100%; border-radius: 16px; box-shadow: 0 20px 60px rgba(0,0,0,0.12);">
+        </div>
+    </section>
+
+    <!-- SLIDE: Additional Experts -->
+    <section class="future-team-slide" style="position: relative; overflow: hidden;">
+        <img src="Logo-unfpa-blue.svg" alt="UNFPA" class="slide-logo">
+        <div class="landscape-bg"></div>
+        <div class="scale-wrapper">
+            <div class="future-team-title">
+                <h2>Start with GBV Intake. Grow the Team.</h2>
+                <p>Once Grace proves value, additional AI experts can address other UNFPA programme needs:</p>
+            </div>
+
+            <div class="future-team-lineup">
+                <!-- Additional Agents per Need -->
+                <div class="future-team-member" style="opacity: 0.75; margin-right: -20px;">
+                    <svg viewBox="0 0 120 240" preserveAspectRatio="xMidYMax meet"
+                        style="width: 100%; height: 420px; fill: #888; opacity: 0.30; mix-blend-mode: multiply;">
+                        <circle cx="60" cy="28" r="16" />
+                        <rect x="54" y="44" width="12" height="8" rx="3" />
+                        <path d="M 35 52 C 35 50, 85 50, 85 52 L 82 120 Q 60 126, 38 120 Z" />
+                        <path d="M 35 54 C 25 56, 20 75, 22 95 C 23 105, 28 115, 30 110 L 36 78 L 38 60 Z" />
+                        <path d="M 85 54 C 95 56, 100 75, 98 95 C 97 105, 92 115, 90 110 L 84 78 L 82 60 Z" />
+                        <path
+                            d="M 42 118 L 38 185 C 37 192, 34 195, 30 198 L 28 200 C 26 204, 48 204, 46 200 L 48 185 L 52 118 Z" />
+                        <path
+                            d="M 68 118 L 72 185 C 73 192, 76 195, 80 198 L 82 200 C 84 204, 62 204, 64 200 L 62 185 L 58 118 Z" />
+                    </svg>
+                    <div class="future-team-tag">
+                        <h4>Additional Agents<br>per Need</h4>
+                    </div>
+                </div>
+                <div class="future-team-member">
+                    <img src="../Images/nia_v3_nobg.png" alt="Nia">
+                    <div class="future-team-tag">
+                        <h4>Nia</h4>
+                        <p>Community Outreach</p>
+                    </div>
+                    <div class="future-team-desc">Proactive outbound calls to communities for GBV awareness, prevention
+                        messaging, and follow-up support.</div>
+                </div>
+                <div class="future-team-member">
+                    <img src="../Images/grace_nobg.png" alt="Grace">
+                    <div class="future-team-tag">
+                        <h4>Grace</h4>
+                        <p>GBV Intake & Support</p>
+                    </div>
+                    <div class="future-team-desc">24/7 Swahili-speaking GBV intake, trauma-informed support, and warm
+                        handover to human counsellors.</div>
+                </div>
+                <div class="future-team-member">
+                    <img src="../Images/marry_v3_nobg.png" alt="Marry">
+                    <div class="future-team-tag">
+                        <h4>Marry</h4>
+                        <p>Emergency Response</p>
+                    </div>
+                    <div class="future-team-desc">Urgent case escalation for immediate danger — coordinates with police,
+                        medical, and safe shelter services.</div>
+                </div>
+                <div class="future-team-member">
+                    <img src="../Images/faith_nobg.png" alt="Faith">
+                    <div class="future-team-tag">
+                        <h4>Faith</h4>
+                        <p>Data & M&E</p>
+                    </div>
+                    <div class="future-team-desc">Run outbound surveys to capture programme outcomes, gather structured
+                        feedback, and track case resolution.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SLIDE: Contact -->
+    <section class="contact-slide" style="position: relative;">
+        <img src="Logo-unfpa-blue.svg" alt="UNFPA" class="slide-logo">
+        <div class="landscape-bg"></div>
+        <div class="content-container" style="position: relative; z-index: 2;">
+            <h2>Every missed call is a missed chance to protect someone.</h2>
+            <p>Let's ensure no survivor calls into silence.</p>
+            <a href="mailto:info@inua-technologies.com" class="contact-btn">info@inua-technologies.com</a>
+        </div>
+    </section>
+
+    <!-- SLIDE 14: Thank You -->
+    <section class="bg-slide">
+        <img src="Logo-unfpa-blue.svg" alt="UNFPA" class="slide-logo">
+        <img src="../Images/logo.png" alt="iNua Technologies" class="slide-logo-right">
+        <div class="content-container">
+            <h1>Thank You</h1>
+            <h3>UNFPA × iNua Technologies</h3>
+            <p style="margin-top: 20px; font-size: 18px; color: var(--text-color);">Listen. Protect. Connect. At scale.
+            </p>
+        </div>
+    </section>
+
+    <script>
+        // Scale wrapper system
+        function adjustScales() {
+            if (window.innerWidth <= 768) return;
+            const wrappers = document.querySelectorAll('.scale-wrapper');
+            const targetW = 1920;
+            const targetH = 945;
+            wrappers.forEach(wrapper => {
+                const parent = wrapper.parentElement;
+                const parentW = parent.clientWidth;
+                const parentH = parent.clientHeight;
+                const scaleX = parentW / targetW;
+                const scaleY = parentH / targetH;
+                const scale = Math.min(scaleX, scaleY);
+                wrapper.style.transform = `translate(-50%, -50%) scale(${scale})`;
+            });
+        }
+        window.addEventListener('load', adjustScales);
+        window.addEventListener('resize', adjustScales);
+        adjustScales();
+
+        // Navigation: spacebar and click to advance
+        (function () {
+            function getNextSection() {
+                const sections = Array.from(document.querySelectorAll('section'));
+                const scrollY = window.scrollY || window.pageYOffset;
+                for (let i = 0; i < sections.length; i++) {
+                    if (sections[i].offsetTop > scrollY + 10) {
+                        return sections[i];
+                    }
+                }
+                return null;
+            }
+
+            document.addEventListener('keydown', function (e) {
+                if (e.code === 'Space' || e.key === ' ') {
+                    const tag = document.activeElement.tagName.toLowerCase();
+                    if (['input', 'textarea', 'select', 'button'].includes(tag)) return;
+                    e.preventDefault();
+                    const next = getNextSection();
+                    if (next) next.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+
+            document.addEventListener('click', function (e) {
+                if (e.target.closest('a, button, input, select, textarea')) return;
+                if (window.getSelection().toString().length > 0) return;
+                const next = getNextSection();
+                if (next) next.scrollIntoView({ behavior: 'smooth' });
+            });
+        })();
+    </script>
+</body>
+
+</html>
