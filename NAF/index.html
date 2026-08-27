@@ -54,7 +54,7 @@
     }
 
     .bg-slide {
-      background-image: url('../../projects/Images/Elegant wave patterns in soft hues.png');
+      background-image: url('../Images/Elegant%20wave%20patterns%20in%20soft%20hues.png');
       background-size: cover;
       background-position: center 85%;
     }
@@ -152,7 +152,7 @@
       left: 0;
       width: 100%;
       height: 50vh;
-      background-image: url('../../projects/Images/farm_landscape_bg.png');
+      background-image: url('../Images/farm_landscape_bg.png');
       background-size: cover;
       background-position: bottom center;
       background-repeat: no-repeat;
@@ -196,18 +196,19 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 40px;
-      margin-bottom: 60px;
+      gap: 60px;
+      margin-bottom: 40px;
     }
 
     .title-logos img {
-      height: 80px;
+      height: 240px;
+      max-height: 240px;
       object-fit: contain;
     }
 
     .title-logos .logo-divider {
-      width: 2px;
-      height: 60px;
+      width: 4px;
+      height: 180px;
       background: var(--line-color);
     }
 
@@ -579,15 +580,16 @@
     }
 
     .value-card h4 {
-      font-size: 1.2rem;
+      font-size: 1.45rem;
       color: var(--heading-color);
       margin: 0;
       font-weight: 700;
+      line-height: 1.25;
     }
 
     .value-card p {
-      font-size: 0.95rem !important;
-      line-height: 1.5 !important;
+      font-size: 1.25rem !important;
+      line-height: 1.45 !important;
       color: var(--text-color);
       margin: 0 !important;
     }
@@ -736,7 +738,30 @@
   </section>
 
   <!-- ============================== -->
-  <!-- SLIDE 2: WHAT IS INUA?         -->
+  <!-- SLIDE 2: INUA MISSION          -->
+  <!-- ============================== -->
+  <section class="bg-slide"
+    style="position: relative; height: 100vh; overflow: hidden; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+    <div class="content-container scale-wrapper" style="z-index: 10; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center;">
+      <h2
+        style="font-size: 3.8rem; line-height: 1.35; text-align: center; font-weight: 700; color: var(--heading-color); max-width: 1400px; margin: 0 auto; letter-spacing: -1px;">
+        iNua Technologies builds <span
+          style="font-weight: 800; color: var(--brand-green); padding-bottom: 2px;">AI-powered experts</span>
+        for organizations across <span
+          style="font-weight: 800; color: var(--naf-teal); padding-bottom: 2px;">Africa</span>.
+      </h2>
+
+      <!-- Logo lockup -->
+      <div class="logo-lockup">
+        <span class="naf">NEW AFRICA FUND</span>
+        <div class="divider"></div>
+        <span>iNua</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================== -->
+  <!-- SLIDE 3: MEET AMARA            -->
   <!-- ============================== -->
   <section>
     <div class="content-container scale-wrapper">
@@ -744,33 +769,33 @@
         style="display: flex; flex-direction: row; align-items: center; justify-content: space-between; gap: 80px; width: 100%; max-width: 1700px; margin: 0 auto; box-sizing: border-box; padding: 0 40px;">
         <!-- Left Column: Text -->
         <div style="flex: 1.15; display: flex; flex-direction: column; justify-content: center; text-align: left;">
-          <h2
-            style="font-size: 2.8rem; line-height: 1.3; text-align: left; margin-bottom: 24px; font-weight: 700; color: var(--heading-color);">
-            iNua Technologies builds <span
-              style="font-weight: 800; color: var(--brand-green); padding-bottom: 2px;">AI-powered experts</span>
-            for organizations across <span
-              style="font-weight: 800; color: var(--naf-teal); padding-bottom: 2px;">Africa</span>.
-          </h2>
           <p
-            style="font-size: 1.45rem; line-height: 1.55; color: var(--text-color); font-weight: 400; margin: 0 0 28px 0; opacity: 0.95;">
-            We create tailored AI agents <span style="font-weight: 700; color: var(--brand-green);">for you</span> that communicate via <span
+            style="font-size: 1.8rem; line-height: 1.6; color: var(--text-color); font-weight: 400; margin: 0 0 40px 0; opacity: 0.95;">
+            We created an AI agent tailored <span style="font-weight: 700; color: var(--brand-green);">for you</span> that communicates via <span
               style="font-weight: 700; color: var(--brand-green);">WhatsApp</span> — always available,
-            multilingual, and deeply personalized to each organization's needs.
+            multilingual, and deeply personalized to your organization's needs.
           </p>
           <p
-            style="font-size: 2.2rem; line-height: 1.35; color: var(--heading-color); font-weight: 700; margin: 0; padding-top: 15px; border-top: 2px solid rgba(234, 182, 131, 0.4);">
+            style="font-size: 2.3rem; line-height: 1.4; color: var(--heading-color); font-weight: 700; margin: 0; padding-top: 30px; border-top: 2px solid rgba(234, 182, 131, 0.4);">
             We are your <span style="color: var(--brand-green); font-weight: 800;">technology partner</span> —
             working alongside <span style="color: var(--naf-teal); font-weight: 800;">NAF</span> to help your organization raise more funds, engage more donors, and build long-term sustainability.
           </p>
         </div>
         <!-- Right Column: Character with Title above head -->
         <div style="flex: 0.95; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center;">
-          <h3 style="font-size: 2.1rem; font-weight: 800; color: var(--naf-teal); margin: 0 0 16px 0; font-family: 'Poppins', sans-serif;">
+          <h3 style="font-size: 2.2rem; font-weight: 800; color: var(--naf-teal); margin: 0 0 16px 0; font-family: 'Poppins', sans-serif;">
             Meet Amara, <span style="color: var(--brand-green);">your Fundraising Expert</span>
           </h3>
           <img src="amara_nobg.png" alt="Amara — AI Fundraising Expert"
             style="width: 100%; max-width: 680px; max-height: 760px; height: auto; object-fit: contain; filter: drop-shadow(0 25px 50px rgba(0,0,0,0.12));" />
         </div>
+      </div>
+
+      <!-- Logo lockup -->
+      <div class="logo-lockup">
+        <span class="naf">NEW AFRICA FUND</span>
+        <div class="divider"></div>
+        <span>iNua</span>
       </div>
     </div>
   </section>
@@ -934,7 +959,7 @@
           <div class="value-card" style="flex: 1; max-width: 375px; padding: 20px 18px;">
             <div class="card-icon-medium"><i class="ph-fill ph-shield-check"></i></div>
             <h4>Full Transparency</h4>
-            <p>Real-time dashboard showing every conversation, every donation, every metric — you're always in complete control.</p>
+            <p>Real-time dashboard showing every conversation, every donation, every metric — you're getting real time information from the ground up.</p>
           </div>
         </div>
 
@@ -1004,7 +1029,7 @@
         <!-- Right Column: Dashboard Image -->
         <div style="flex: 1.1; display: flex; justify-content: center; align-items: center;">
           <div class="dashboard-perspective">
-            <img src="../../projects/Images/Dashboard1.jpg"
+            <img src="../Images/Dashboard1.jpg"
               alt="iNua real-time dashboard showing fundraising metrics and donor engagement data" />
             <!-- Floating accent badge -->
             <div class="live-badge">
