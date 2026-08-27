@@ -1,0 +1,1102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Welcome to iNua — New Africa Fund</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700&family=Poppins:wght@500;600;700;800&display=swap"
+    rel="stylesheet">
+  <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+  <style>
+    :root {
+      --heading-color: #8c4115;
+      /* Rich Brown */
+      --text-color: #544a42;
+      /* Slate/Brown */
+      --accent-orange: #f28b18;
+      /* Vibrant Orange */
+      --line-color: #eab683;
+      /* Light orange for dashed lines */
+      --brand-green: #3b8842;
+      /* Vibrant green */
+      --bg-top: #FFFEFA;
+      --bg-bottom: #FFF1E0;
+      /* Very light warm tone */
+
+      /* NAF Brand Colors */
+      --naf-teal: #1A5276;
+      --naf-gold: #C9A555;
+      --naf-dark: #1a1a2e;
+    }
+
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+      scroll-behavior: smooth;
+    }
+
+    html {
+      scroll-snap-type: y mandatory;
+    }
+
+    body {
+      background: linear-gradient(135deg, #FFFEFA 0%, #FFFDF5 50%, #FFF1E0 100%);
+      font-family: 'Nunito', sans-serif;
+      color: var(--text-color);
+      overflow-x: hidden;
+    }
+
+    .bg-slide {
+      background-image: url('../../projects/Images/Elegant wave patterns in soft hues.png');
+      background-size: cover;
+      background-position: center 85%;
+    }
+
+    section {
+      scroll-snap-align: start;
+      scroll-snap-stop: always;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 0 5%;
+      box-sizing: border-box;
+      position: relative;
+    }
+
+    .content-container {
+      max-width: 1000px;
+      width: 100%;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      font-family: 'Poppins', sans-serif;
+      color: var(--heading-color);
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      margin-top: 0;
+      margin-bottom: 25px;
+    }
+
+    h1 {
+      font-size: 4.2rem;
+      line-height: 1.1;
+      text-align: center;
+      letter-spacing: -1.5px;
+    }
+
+    h2 {
+      font-size: 2.8rem;
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    h3 {
+      font-size: 1.6rem;
+      color: var(--text-color);
+      font-weight: 600;
+      font-family: 'Nunito', sans-serif;
+      text-align: center;
+    }
+
+    p,
+    li {
+      font-size: 1.25rem;
+      line-height: 1.7;
+      margin-bottom: 20px;
+      font-weight: 400;
+    }
+
+    /* Scale wrapper for consistent 1920x945 design */
+    .scale-wrapper {
+      position: absolute !important;
+      top: 50% !important;
+      left: 50% !important;
+      width: 1920px !important;
+      height: 945px !important;
+      max-width: none !important;
+      max-height: none !important;
+      transform-origin: center center !important;
+      transform: translate(-50%, -50%) scale(1);
+      box-sizing: border-box !important;
+      margin: 0 !important;
+      flex-shrink: 0 !important;
+      flex-grow: 0 !important;
+    }
+
+    .content-container.scale-wrapper {
+      display: flex !important;
+      flex-direction: column !important;
+      justify-content: center !important;
+      align-items: center !important;
+      padding: 0 40px !important;
+    }
+
+    /* CSS Landscape Vibe */
+    .landscape-bg {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 50vh;
+      background-image: url('../../projects/Images/farm_landscape_bg.png');
+      background-size: cover;
+      background-position: bottom center;
+      background-repeat: no-repeat;
+      z-index: 0;
+      pointer-events: none;
+      opacity: 0.4;
+      mask-image: linear-gradient(to bottom, transparent 0%, black 40%);
+      -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 40%);
+    }
+
+    /* Logo lockup */
+    .logo-lockup {
+      position: absolute;
+      bottom: 30px;
+      right: 40px;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      z-index: 20;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      color: var(--heading-color);
+      font-size: 1.4rem;
+    }
+
+    .logo-lockup .divider {
+      width: 2px;
+      height: 25px;
+      background: var(--line-color);
+    }
+
+    .logo-lockup .naf {
+      color: var(--naf-teal);
+      font-size: 1.1rem;
+    }
+
+    /* ======================================== */
+    /* SLIDE 1: TITLE                          */
+    /* ======================================== */
+    .title-logos {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 40px;
+      margin-bottom: 60px;
+    }
+
+    .title-logos img {
+      height: 80px;
+      object-fit: contain;
+    }
+
+    .title-logos .logo-divider {
+      width: 2px;
+      height: 60px;
+      background: var(--line-color);
+    }
+
+    .title-subtitle {
+      font-size: 1.8rem;
+      color: var(--naf-teal);
+      font-weight: 600;
+      font-family: 'Nunito', sans-serif;
+      text-align: center;
+      margin-top: 10px;
+    }
+
+    /* ======================================== */
+    /* SLIDE 3: CLUSTER / CHARACTER LAYOUT      */
+    /* ======================================== */
+    .cluster-slide {
+      padding: 0;
+      position: relative;
+      width: 100vw;
+      height: 100vh;
+      overflow: hidden;
+      scroll-snap-align: start;
+      scroll-snap-stop: always;
+      background: linear-gradient(180deg, var(--bg-top) 0%, var(--bg-bottom) 100%);
+    }
+
+    .cluster-container {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      max-width: 100%;
+      margin: 0 auto;
+    }
+
+    .cluster-title {
+      position: absolute;
+      top: 5%;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 10;
+      text-align: center;
+      width: 100%;
+      max-width: 900px;
+    }
+
+    .info-title {
+      font-size: 3.2rem;
+      color: var(--heading-color);
+      margin-bottom: 5px;
+      line-height: 1.15;
+      text-align: center;
+      font-weight: 800;
+      letter-spacing: -1px;
+    }
+
+    .info-subtitle {
+      font-size: 1.3rem;
+      color: #6B7280;
+      margin-bottom: 10px;
+      font-weight: 600;
+      text-align: center;
+      font-family: 'Nunito', sans-serif;
+    }
+
+    .character-backdrop {
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 825px;
+      height: 825px;
+      background: radial-gradient(ellipse at 50% 60%, #FFFDF5 25%, rgba(255, 255, 255, 0.6) 55%, transparent 75%);
+      z-index: 4;
+      pointer-events: none;
+    }
+
+    .cluster-character {
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      height: 835px;
+      max-width: 740px;
+      object-fit: contain;
+      z-index: 5;
+      pointer-events: none;
+      -webkit-mask-image: linear-gradient(to bottom, black 92%, transparent 100%);
+      mask-image: linear-gradient(to bottom, black 92%, transparent 100%);
+    }
+
+    .cluster-card {
+      position: absolute;
+      background: rgba(255, 255, 255, 0.95);
+      border: 1px solid rgba(255, 255, 255, 1);
+      border-radius: 24px;
+      padding: 24px 28px;
+      box-shadow: 0 15px 35px rgba(140, 65, 21, 0.08), 0 5px 15px rgba(0, 0, 0, 0.02);
+      backdrop-filter: blur(12px);
+      text-align: left;
+      z-index: 10;
+      width: 440px;
+      min-width: 350px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      box-sizing: border-box;
+    }
+
+    .cluster-card:nth-child(4n) {
+      transform: rotate(-1.2deg);
+    }
+
+    .cluster-card:nth-child(4n+1) {
+      transform: rotate(1.0deg);
+    }
+
+    .cluster-card:nth-child(4n+2) {
+      transform: rotate(-0.8deg);
+    }
+
+    .cluster-card:nth-child(4n+3) {
+      transform: rotate(1.2deg);
+    }
+
+    .cluster-card:hover {
+      transform: translateY(-8px) scale(1.04) !important;
+      box-shadow: 0 30px 60px rgba(140, 65, 21, 0.14);
+      z-index: 20;
+    }
+
+    .card-header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 2px;
+    }
+
+    .card-icon {
+      font-size: 1.8rem;
+      color: var(--accent-orange);
+      background: rgba(242, 139, 24, 0.12);
+      width: 52px;
+      height: 52px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 16px;
+      flex-shrink: 0;
+    }
+
+    .card-icon i {
+      font-size: inherit !important;
+    }
+
+    .card-icon.teal {
+      color: var(--naf-teal);
+      background: rgba(26, 82, 118, 0.10);
+    }
+
+    .card-icon.green {
+      color: var(--brand-green);
+      background: rgba(59, 136, 66, 0.10);
+    }
+
+    .card-icon.gold {
+      color: var(--naf-gold);
+      background: rgba(201, 165, 85, 0.12);
+    }
+
+    .cluster-card h4 {
+      color: var(--heading-color);
+      font-size: 1.45rem !important;
+      margin-bottom: 0;
+      font-weight: 700;
+      line-height: 1.25;
+    }
+
+    .cluster-card p,
+    .cluster-card ul,
+    .cluster-card li {
+      font-size: 1.18rem !important;
+      margin-bottom: 0;
+      color: var(--text-color);
+      line-height: 1.55 !important;
+    }
+
+    /* Floating decorative leaves */
+    .floating-leaf {
+      position: absolute;
+      background: var(--heading-color);
+      opacity: 0.15;
+      border-radius: 50% 0 50% 0;
+      animation: float 6s ease-in-out infinite;
+      z-index: 3;
+    }
+
+    @keyframes float {
+      0% {
+        transform: translate(0, 0) rotate(0deg) scale(1);
+      }
+
+      25% {
+        transform: translate(15px, -15px) rotate(15deg) scale(1.05);
+      }
+
+      50% {
+        transform: translate(-10px, -35px) rotate(-10deg) scale(0.95);
+      }
+
+      75% {
+        transform: translate(-20px, -15px) rotate(-25deg) scale(1.02);
+      }
+
+      100% {
+        transform: translate(0, 0) rotate(0deg) scale(1);
+      }
+    }
+
+    /* ======================================== */
+    /* STRUCTURE CARDS (Slide 4)                */
+    /* ======================================== */
+    .structure-cards {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      margin: 56px auto 0 auto;
+      width: 1400px;
+      max-width: 1400px;
+      z-index: 10;
+      position: relative;
+    }
+
+    .structure-card {
+      flex: 1;
+      max-width: 400px;
+      background: rgba(255, 255, 255, 0.95);
+      border: 1px solid rgba(255, 255, 255, 0.8);
+      border-radius: 20px;
+      padding: 30px;
+      text-align: center;
+      box-shadow: 0 15px 35px rgba(140, 65, 21, 0.06);
+      backdrop-filter: blur(12px);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 15px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      box-sizing: border-box;
+    }
+
+    .structure-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 25px 50px rgba(140, 65, 21, 0.1);
+    }
+
+    .structure-card .card-icon-large {
+      width: 80px;
+      height: 80px;
+      background: rgba(59, 136, 66, 0.1);
+      color: var(--brand-green);
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 2.2rem;
+      margin-bottom: 5px;
+    }
+
+    .structure-card:nth-child(even) .card-icon-large {
+      background: rgba(201, 165, 85, 0.12);
+      color: var(--naf-gold);
+    }
+
+    .structure-card h3 {
+      margin: 0;
+      font-size: 1.6rem;
+      color: var(--heading-color);
+      font-weight: 800;
+    }
+
+    .structure-card span.card-subtitle {
+      font-size: 0.85rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--text-color);
+      opacity: 0.7;
+    }
+
+    .structure-card p {
+      margin: 5px 0 0 0 !important;
+      font-size: 0.95rem !important;
+      line-height: 1.45 !important;
+      color: var(--text-color) !important;
+    }
+
+    /* ======================================== */
+    /* VALUE GRID (Slide 5)                    */
+    /* ======================================== */
+    .value-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      max-width: 1400px;
+      margin: 40px auto 0 auto;
+      z-index: 10;
+      position: relative;
+    }
+
+    .value-card {
+      background: rgba(255, 255, 255, 0.92);
+      border: 1px solid rgba(255, 255, 255, 0.8);
+      border-radius: 20px;
+      padding: 28px 24px;
+      text-align: left;
+      box-shadow: 0 12px 28px rgba(140, 65, 21, 0.05);
+      backdrop-filter: blur(12px);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .value-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 40px rgba(140, 65, 21, 0.1);
+    }
+
+    .value-card .card-icon-medium {
+      width: 56px;
+      height: 56px;
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.8rem;
+      margin-bottom: 4px;
+    }
+
+    .value-card:nth-child(1) .card-icon-medium {
+      background: rgba(59, 136, 66, 0.10);
+      color: var(--brand-green);
+    }
+
+    .value-card:nth-child(2) .card-icon-medium {
+      background: rgba(26, 82, 118, 0.10);
+      color: var(--naf-teal);
+    }
+
+    .value-card:nth-child(3) .card-icon-medium {
+      background: rgba(242, 139, 24, 0.10);
+      color: var(--accent-orange);
+    }
+
+    .value-card:nth-child(4) .card-icon-medium {
+      background: rgba(201, 165, 85, 0.12);
+      color: var(--naf-gold);
+    }
+
+    .value-card:nth-child(5) .card-icon-medium {
+      background: rgba(59, 136, 66, 0.10);
+      color: var(--brand-green);
+    }
+
+    .value-card:nth-child(6) .card-icon-medium {
+      background: rgba(26, 82, 118, 0.10);
+      color: var(--naf-teal);
+    }
+
+    .value-card h4 {
+      font-size: 1.2rem;
+      color: var(--heading-color);
+      margin: 0;
+      font-weight: 700;
+    }
+
+    .value-card p {
+      font-size: 0.95rem !important;
+      line-height: 1.5 !important;
+      color: var(--text-color);
+      margin: 0 !important;
+    }
+
+    /* ======================================== */
+    /* DASHBOARD SLIDE (Slide 6)               */
+    /* ======================================== */
+    .dashboard-perspective {
+      position: relative;
+      transform: perspective(1200px) rotateY(-4deg) rotateX(2deg);
+      transition: transform 0.4s ease;
+    }
+
+    .dashboard-perspective:hover {
+      transform: perspective(1200px) rotateY(-1deg) rotateX(1deg);
+    }
+
+    .dashboard-perspective img {
+      width: 100%;
+      max-width: 850px;
+      border-radius: 16px;
+      box-shadow: 0 30px 60px rgba(140, 65, 21, 0.12), 0 15px 30px rgba(0, 0, 0, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.6);
+    }
+
+    .live-badge {
+      position: absolute;
+      top: -15px;
+      right: -15px;
+      background: var(--brand-green);
+      color: white;
+      padding: 8px 16px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      box-shadow: 0 4px 12px rgba(59, 136, 66, 0.3);
+    }
+
+    .cta-button {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--brand-green);
+      color: #fff;
+      padding: 16px 36px;
+      border-radius: 50px;
+      font-size: 1.15rem;
+      font-weight: 700;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      box-shadow: 0 8px 24px rgba(59, 136, 66, 0.25);
+      font-family: 'Poppins', sans-serif;
+      margin-top: 30px;
+    }
+
+    .cta-button:hover {
+      background: #2e7230;
+      transform: translateY(-3px);
+      box-shadow: 0 12px 30px rgba(59, 136, 66, 0.35);
+    }
+
+    .cta-button i {
+      font-size: 1.3rem;
+    }
+
+    /* SVG dashed connectors */
+    .cluster-svg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 2;
+      pointer-events: none;
+    }
+
+    .cluster-svg path {
+      fill: none;
+      stroke: var(--line-color);
+      stroke-width: 2.5px;
+      stroke-dasharray: 8 8;
+      stroke-linejoin: round;
+      stroke-linecap: round;
+      vector-effect: non-scaling-stroke;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .cluster-card {
+        position: relative;
+        top: auto !important;
+        left: auto !important;
+        right: auto !important;
+        margin: 20px auto;
+        width: 80%;
+      }
+
+      .cluster-character {
+        position: relative;
+        height: 50vh;
+        transform: none;
+        left: auto;
+      }
+
+      .cluster-svg {
+        display: none;
+      }
+
+      .cluster-title {
+        position: relative;
+        top: auto;
+        left: auto;
+        text-align: center;
+        margin: 0 auto;
+        transform: none;
+      }
+
+      .value-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .structure-cards {
+        flex-direction: column;
+        align-items: center;
+        width: 100% !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ============================== -->
+  <!-- SLIDE 1: TITLE                 -->
+  <!-- ============================== -->
+  <section class="bg-slide">
+    <div class="content-container scale-wrapper">
+      <div class="title-logos">
+        <img src="naf_logo.png" alt="New Africa Fund">
+        <div class="logo-divider"></div>
+        <img src="inua_logo.png" alt="iNua Technologies">
+      </div>
+      <h1>Welcome to iNua</h1>
+      <p class="title-subtitle">New Africa Fund × iNua Technologies</p>
+    </div>
+  </section>
+
+  <!-- ============================== -->
+  <!-- SLIDE 2: WHAT IS INUA?         -->
+  <!-- ============================== -->
+  <section>
+    <div class="content-container scale-wrapper">
+      <div
+        style="display: flex; flex-direction: row; align-items: center; justify-content: space-between; gap: 80px; width: 100%; max-width: 1700px; margin: 0 auto; box-sizing: border-box; padding: 0 40px;">
+        <!-- Left Column: Text -->
+        <div style="flex: 1.15; display: flex; flex-direction: column; justify-content: center; text-align: left;">
+          <h2
+            style="font-size: 2.8rem; line-height: 1.3; text-align: left; margin-bottom: 24px; font-weight: 700; color: var(--heading-color);">
+            iNua Technologies builds <span
+              style="font-weight: 800; color: var(--brand-green); padding-bottom: 2px;">AI-powered experts</span>
+            for organizations across <span
+              style="font-weight: 800; color: var(--naf-teal); padding-bottom: 2px;">Africa</span>.
+          </h2>
+          <p
+            style="font-size: 1.45rem; line-height: 1.55; color: var(--text-color); font-weight: 400; margin: 0 0 28px 0; opacity: 0.95;">
+            We create tailored AI agents <span style="font-weight: 700; color: var(--brand-green);">for you</span> that communicate via <span
+              style="font-weight: 700; color: var(--brand-green);">WhatsApp</span> — always available,
+            multilingual, and deeply personalized to each organization's needs.
+          </p>
+          <p
+            style="font-size: 2.2rem; line-height: 1.35; color: var(--heading-color); font-weight: 700; margin: 0; padding-top: 15px; border-top: 2px solid rgba(234, 182, 131, 0.4);">
+            We are your <span style="color: var(--brand-green); font-weight: 800;">technology partner</span> —
+            working alongside <span style="color: var(--naf-teal); font-weight: 800;">NAF</span> to help your organization raise more funds, engage more donors, and build long-term sustainability.
+          </p>
+        </div>
+        <!-- Right Column: Character with Title above head -->
+        <div style="flex: 0.95; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center;">
+          <h3 style="font-size: 2.1rem; font-weight: 800; color: var(--naf-teal); margin: 0 0 16px 0; font-family: 'Poppins', sans-serif;">
+            Meet Amara, <span style="color: var(--brand-green);">your Fundraising Expert</span>
+          </h3>
+          <img src="amara_nobg.png" alt="Amara — AI Fundraising Expert"
+            style="width: 100%; max-width: 680px; max-height: 760px; height: auto; object-fit: contain; filter: drop-shadow(0 25px 50px rgba(0,0,0,0.12));" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================== -->
+  <!-- SLIDE 3: WHAT THE SYSTEM DOES  -->
+  <!-- ============================== -->
+  <section class="cluster-slide" style="position: relative; height: 100vh; overflow: hidden;">
+    <div class="landscape-bg"></div>
+
+    <div class="cluster-container scale-wrapper">
+      <!-- Title -->
+      <div class="cluster-title">
+        <h2 class="info-title">Meet Amara</h2>
+        <p class="info-subtitle">Your AI-Powered Fundraising Expert</p>
+      </div>
+
+      <!-- Character -->
+      <div class="character-backdrop"></div>
+      <img src="amara_nobg.png" alt="Amara" class="cluster-character" />
+
+      <!-- SVG dashed connector lines for 4 cards -->
+      <svg class="cluster-svg" viewBox="0 0 1920 945" preserveAspectRatio="none">
+        <defs>
+          <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+            <path d="M 0 1 L 8 5 L 0 9 z" fill="#d4a574" />
+          </marker>
+        </defs>
+        <!-- Lines from 4 cards to center Amara -->
+        <path d="M 520 260 C 620 300, 700 350, 780 390" />
+        <path d="M 520 640 C 620 610, 700 570, 780 530" />
+        <path d="M 1400 260 C 1300 300, 1220 350, 1140 390" />
+        <path d="M 1400 640 C 1300 610, 1220 570, 1140 530" />
+      </svg>
+
+      <!-- LEFT CARDS -->
+      <div class="cluster-card" style="top: 160px; left: 80px; width: 440px;">
+        <div class="card-header">
+          <div class="card-icon teal"><i class="ph-fill ph-whatsapp-logo"></i></div>
+          <h4>WhatsApp Donor Engagement</h4>
+        </div>
+        <p>Engages donors through natural, personalized WhatsApp conversations, telling your story with warmth and passion.</p>
+      </div>
+
+      <div class="cluster-card" style="top: 530px; left: 80px; width: 440px;">
+        <div class="card-header">
+          <div class="card-icon green"><i class="ph-fill ph-wallet"></i></div>
+          <h4>Local & Diaspora Payments</h4>
+        </div>
+        <p>Direct connection to your organization's mobile money wallet. Donors give, you instantly receive. + Credit card donations via the NAF link, only 2.2% Stripe fee. No extra costs.</p>
+      </div>
+
+      <!-- RIGHT CARDS -->
+      <div class="cluster-card" style="top: 160px; right: 80px; width: 440px;">
+        <div class="card-header">
+          <div class="card-icon teal"><i class="ph-fill ph-chart-bar"></i></div>
+          <h4>Dashboard & Analytics</h4>
+        </div>
+        <p>Track donations, donor activity, and performance in real time, all in your unique dashboard.</p>
+      </div>
+
+      <div class="cluster-card" style="top: 530px; right: 80px; width: 440px;">
+        <div class="card-header">
+          <div class="card-icon gold"><i class="ph-fill ph-sliders-horizontal"></i></div>
+          <h4>Full Control and Customization</h4>
+        </div>
+        <p>Control agent availability, human handover rules, and how the agent identifies itself to donors.</p>
+      </div>
+
+      <!-- Decorative floating leaves -->
+      <div class="floating-leaf" style="top: 15%; left: 42%; width: 18px; height: 18px; animation-delay: 0s;"></div>
+      <div class="floating-leaf" style="top: 35%; right: 38%; width: 14px; height: 14px; animation-delay: 2s;"></div>
+      <div class="floating-leaf" style="bottom: 25%; left: 38%; width: 20px; height: 20px; animation-delay: 4s;"></div>
+
+      <!-- Logo lockup -->
+      <div class="logo-lockup">
+        <span class="naf">NEW AFRICA FUND</span>
+        <div class="divider"></div>
+        <span>iNua</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================== -->
+  <!-- SLIDE 4: PURPOSE & GOALS       -->
+  <!-- ============================== -->
+  <section
+    style="position: relative; height: 100vh; overflow: hidden; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+    <div class="landscape-bg"></div>
+
+    <div class="content-container scale-wrapper" style="z-index: 10;">
+      <h2
+        style="font-size: 3rem; line-height: 1.45; text-align: center; font-weight: 600; max-width: 1300px; margin: 0 auto 60px auto;">
+        Our goal is to significantly increase your <span
+          style="color: var(--brand-green); font-weight: 800;">fundraising capabilities</span> — both <span
+          style="color: var(--naf-teal); font-weight: 800;">locally</span> and from the <span
+          style="color: var(--accent-orange); font-weight: 800;">diaspora</span>.
+      </h2>
+
+      <div class="structure-cards" style="display: flex; justify-content: center; gap: 60px; max-width: 1200px; margin: 0 auto;">
+        <!-- Reach Card -->
+        <div class="structure-card" style="flex: 1; max-width: 520px; padding: 40px 35px;">
+          <div class="card-icon-large" style="width: 90px; height: 90px; font-size: 2.5rem;"><i class="ph-fill ph-paper-plane-tilt"></i></div>
+          <span class="card-subtitle" style="font-size: 1rem;">Reach</span>
+          <h3 style="font-size: 2.2rem; margin: 10px 0;">7,000 Messages</h3>
+          <p style="font-size: 1.25rem !important; line-height: 1.6 !important;">Each organization receives up to 7,000 outbound WhatsApp messages to engage donors, run campaigns, and collect contributions.</p>
+        </div>
+
+        <!-- Transparency Card -->
+        <div class="structure-card" style="flex: 1; max-width: 520px; padding: 40px 35px;">
+          <div class="card-icon-large" style="width: 90px; height: 90px; font-size: 2.5rem;"><i class="ph-fill ph-eye"></i></div>
+          <span class="card-subtitle" style="font-size: 1rem;">Transparency</span>
+          <h3 style="font-size: 2.2rem; margin: 10px 0;">Full Oversight</h3>
+          <p style="font-size: 1.25rem !important; line-height: 1.6 !important;">A unique dashboard for each organization, plus a NAF admin dashboard.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================== -->
+  <!-- SLIDE 5: THE VALUE YOU GET      -->
+  <!-- ============================== -->
+  <section
+    style="position: relative; height: 100vh; overflow: hidden; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+    <div class="landscape-bg"></div>
+
+    <div class="content-container scale-wrapper" style="z-index: 10;">
+      <h2
+        style="font-size: 3rem; color: var(--heading-color); margin-bottom: 8px; font-weight: 800; text-align: center;">
+        The Value You Get
+      </h2>
+      <p style="text-align: center; font-size: 1.2rem; color: #6B7280; font-weight: 600; margin-bottom: 24px;">
+        What working with iNua means for your organization
+      </p>
+
+      <div style="display: flex; flex-direction: column; gap: 18px; max-width: 1560px; margin: 0 auto; z-index: 10; position: relative; width: 100%;">
+        <!-- Row 1: 4 Cards -->
+        <div style="display: flex; justify-content: center; gap: 18px; width: 100%;">
+          <!-- Card 1 -->
+          <div class="value-card" style="flex: 1; max-width: 375px; padding: 20px 18px;">
+            <div class="card-icon-medium"><i class="ph-fill ph-globe-hemisphere-west"></i></div>
+            <h4>Always-On Fundraising</h4>
+            <p>Your AI expert works 24/7, engaging donors while you focus on your mission. No downtime, no missed opportunities.</p>
+          </div>
+
+          <!-- Card 2 -->
+          <div class="value-card" style="flex: 1; max-width: 375px; padding: 20px 18px;">
+            <div class="card-icon-medium"><i class="ph-fill ph-user-switch"></i></div>
+            <h4>Agent & Human Mode</h4>
+            <p>Switch independently between AI agent mode and manual human mode at any time, giving your team total control over every conversation.</p>
+          </div>
+
+          <!-- Card 3 -->
+          <div class="value-card" style="flex: 1; max-width: 375px; padding: 20px 18px;">
+            <div class="card-icon-medium"><i class="ph-fill ph-device-mobile-speaker"></i></div>
+            <h4>Meet Donors Where They Are</h4>
+            <p>WhatsApp is already on every phone. No apps to download, no barriers to giving — just a seamless conversation.</p>
+          </div>
+
+          <!-- Card 4 -->
+          <div class="value-card" style="flex: 1; max-width: 375px; padding: 20px 18px;">
+            <div class="card-icon-medium"><i class="ph-fill ph-shield-check"></i></div>
+            <h4>Full Transparency</h4>
+            <p>Real-time dashboard showing every conversation, every donation, every metric — you're always in complete control.</p>
+          </div>
+        </div>
+
+        <!-- Row 2: 3 Cards Centered -->
+        <div style="display: flex; justify-content: center; gap: 20px; width: 100%;">
+          <!-- Card 5 -->
+          <div class="value-card" style="flex: 1; max-width: 440px; padding: 20px 22px;">
+            <div class="card-icon-medium"><i class="ph-fill ph-target"></i></div>
+            <h4>Personalized to You</h4>
+            <p>Your AI agent knows your organization's story, programs, and impact — and tells it to donors with warmth and authenticity.</p>
+          </div>
+
+          <!-- Card 6 -->
+          <div class="value-card" style="flex: 1; max-width: 440px; padding: 20px 22px;">
+            <div class="card-icon-medium"><i class="ph-fill ph-trend-up"></i></div>
+            <h4>Data-Driven Growth</h4>
+            <p>Learn what works, refine your approach, and grow your donor base season after season with actionable insights.</p>
+          </div>
+
+          <!-- Card 7 -->
+          <div class="value-card" style="flex: 1; max-width: 440px; padding: 20px 22px;">
+            <div class="card-icon-medium"><i class="ph-fill ph-lightbulb"></i></div>
+            <h4>No Technical Expertise Needed</h4>
+            <p>We handle all the technology. You focus on your impact. Onboarding is guided, simple, and fully supported.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================== -->
+  <!-- SLIDE 6: DASHBOARD & SEND-OFF  -->
+  <!-- ============================== -->
+  <section class="bg-slide"
+    style="position: relative; height: 100vh; overflow: hidden; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+    <div class="landscape-bg"></div>
+
+    <div class="content-container scale-wrapper" style="z-index: 10;">
+      <div
+        style="display: flex; flex-direction: row; align-items: center; justify-content: space-between; gap: 60px; width: 100%; max-width: 1700px; margin: 0 auto; box-sizing: border-box; padding: 0 40px;">
+        <!-- Left Column: Text -->
+        <div style="flex: 0.9; display: flex; flex-direction: column; justify-content: center; text-align: left;">
+          <p
+            style="font-size: 0.95rem; font-weight: 800; text-transform: uppercase; letter-spacing: 1.5px; color: var(--brand-green); margin: 0 0 12px 0;">
+            <i class="ph-fill ph-chart-bar" style="margin-right: 6px;"></i> Your Dashboard
+          </p>
+          <h2
+            style="font-size: 3rem; line-height: 1.3; text-align: left; margin: 0 0 24px 0; font-weight: 800; color: var(--heading-color);">
+            Let's Start <span style="color: var(--brand-green);">Raising Funds</span> Together
+          </h2>
+          <p
+            style="font-size: 1.35rem; line-height: 1.6; color: var(--text-color); font-weight: 400; margin: 0 0 10px 0; opacity: 0.95;">
+            Your organization's dashboard is ready. Track donations, view donor conversations, and monitor your
+            fundraising progress — all in one place, in real time.
+          </p>
+
+          <a href="#" class="cta-button">
+            <i class="ph-fill ph-arrow-square-out"></i>
+            Open Your Dashboard
+          </a>
+
+          <p
+            style="font-size: 2.2rem; color: var(--heading-color); font-weight: 800; margin-top: 40px; font-family: 'Poppins', sans-serif; letter-spacing: -0.5px;">
+            Welcome to the iNua family <span style="color: var(--brand-green);">🌱</span>
+          </p>
+        </div>
+        <!-- Right Column: Dashboard Image -->
+        <div style="flex: 1.1; display: flex; justify-content: center; align-items: center;">
+          <div class="dashboard-perspective">
+            <img src="../../projects/Images/Dashboard1.jpg"
+              alt="iNua real-time dashboard showing fundraising metrics and donor engagement data" />
+            <!-- Floating accent badge -->
+            <div class="live-badge">
+              <i class="ph-fill ph-lightning" style="margin-right: 4px;"></i> Live Data
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Logo lockup at bottom -->
+      <div class="logo-lockup">
+        <span class="naf">NEW AFRICA FUND</span>
+        <div class="divider"></div>
+        <span>iNua</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================== -->
+  <!-- SCRIPTS                         -->
+  <!-- ============================== -->
+
+  <!-- Click-to-advance navigation -->
+  <script>
+    document.addEventListener('click', function (e) {
+      if (e.target.closest('a, button, input, select, textarea')) return;
+      if (window.getSelection().toString().length > 0) return;
+
+      const sections = Array.from(document.querySelectorAll('section'));
+      let currentIndex = 0;
+      let minDistance = Infinity;
+
+      sections.forEach((section, index) => {
+        const distance = Math.abs(section.getBoundingClientRect().top);
+        if (distance < minDistance) {
+          minDistance = distance;
+          currentIndex = index;
+        }
+      });
+
+      if (currentIndex < sections.length - 1) {
+        sections[currentIndex + 1].scrollIntoView({ behavior: 'smooth' });
+      }
+    });
+
+    // Spacebar to advance
+    document.addEventListener('keydown', function (e) {
+      if (e.code === 'Space' || e.key === ' ') {
+        const tag = document.activeElement.tagName.toLowerCase();
+        if (['input', 'textarea', 'select', 'button'].includes(tag)) return;
+        e.preventDefault();
+
+        const sections = Array.from(document.querySelectorAll('section'));
+        const scrollY = window.scrollY || window.pageYOffset;
+        for (let i = 0; i < sections.length; i++) {
+          if (sections[i].offsetTop > scrollY + 10) {
+            sections[i].scrollIntoView({ behavior: 'smooth' });
+            break;
+          }
+        }
+      }
+    });
+  </script>
+
+  <!-- Scale presentation slides to fit viewport -->
+  <script>
+    function adjustScales() {
+      const targetWidth = 1920;
+      const targetHeight = 945;
+      const scaleWrappers = document.querySelectorAll('.scale-wrapper');
+
+      if (window.innerWidth <= 768) {
+        scaleWrappers.forEach(wrapper => {
+          wrapper.style.transform = 'none';
+        });
+        return;
+      }
+
+      const scaleX = window.innerWidth / targetWidth;
+      const scaleY = window.innerHeight / targetHeight;
+      const scale = Math.min(scaleX, scaleY);
+
+      scaleWrappers.forEach(wrapper => {
+        wrapper.style.transform = `translate(-50%, -50%) scale(${scale})`;
+      });
+    }
+
+    window.addEventListener('resize', adjustScales);
+    window.addEventListener('load', adjustScales);
+    adjustScales();
+  </script>
+
+</body>
+
+</html>
