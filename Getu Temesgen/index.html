@@ -1,0 +1,2631 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>iNua Technologies × AgriFriend – Domestic Sunflower Sourcing at Scale | Ethiopia</title>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <style>
+        :root {
+            --heading-color: #8c4115;
+            --text-color: #544a42;
+            --accent-orange: #f2a51a;
+            --line-color: #eab683;
+            --brand-green: #126b4f;
+            --bg-top: #FFFEFA;
+            --bg-bottom: #FFF1E0;
+            --card: #FFFDF8;
+            --line-light: rgba(140, 100, 60, 0.12);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-snap-type: y mandatory;
+            overflow-y: scroll;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Nunito', sans-serif;
+            color: var(--text-color);
+            background: linear-gradient(135deg, var(--bg-top) 0%, var(--bg-bottom) 100%);
+            min-height: 100vh;
+        }
+
+        section {
+            height: 100vh;
+            scroll-snap-align: start;
+            scroll-snap-stop: always;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Poppins', sans-serif;
+            color: var(--heading-color);
+        }
+
+        .content-container {
+            max-width: 1400px;
+            width: 100%;
+            padding: 0 60px;
+            text-align: center;
+        }
+
+        .scale-wrapper {
+            width: 1920px;
+            height: 945px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transform-origin: center center;
+        }
+
+        /* ===== LANDSCAPE BACKGROUND (used from team-slide onward) ===== */
+        .landscape-bg {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 50vh;
+            background-image: url('images/farm_landscape_bg.png');
+            background-size: cover;
+            background-position: bottom center;
+            background-repeat: no-repeat;
+            z-index: 0;
+            pointer-events: none;
+            opacity: 0.4;
+            mask-image: linear-gradient(to bottom, transparent 0%, black 40%);
+            -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 40%);
+        }
+
+        /* ===== SLIDE LOGO ===== */
+        .slide-logo {
+            position: absolute;
+            top: 30px;
+            left: 40px;
+            height: 40px;
+            z-index: 100;
+            opacity: 0.85;
+        }
+
+        /* ===== TITLE / BG SLIDES ===== */
+        .bg-slide {
+            background-image: url('images/Elegant wave patterns in soft hues.png');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .bg-slide .content-container h1 {
+            font-size: 72px;
+            font-weight: 800;
+            margin-bottom: 20px;
+            color: var(--brand-green);
+        }
+
+        .bg-slide .content-container h3 {
+            font-size: 32px;
+            font-weight: 400;
+            color: var(--text-color);
+            font-family: 'Nunito', sans-serif;
+        }
+
+        /* ===== TWO-COLUMN SLIDE ===== */
+        .two-col {
+            display: flex;
+            align-items: center;
+            gap: 60px;
+            max-width: 1400px;
+            padding: 0 80px;
+        }
+
+        .two-col .text-side {
+            flex: 1.3;
+            text-align: left;
+        }
+
+        .two-col .text-side h2 {
+            font-size: 42px;
+            line-height: 1.2;
+            margin-bottom: 24px;
+        }
+
+        .two-col .text-side p {
+            font-size: 22px;
+            line-height: 1.6;
+            color: var(--text-color);
+        }
+
+        .two-col .image-side {
+            flex: 0.7;
+        }
+
+        .two-col .image-side img {
+            max-width: 500px;
+            width: 100%;
+            height: 480px;
+            object-fit: cover;
+            border-radius: 24px;
+        }
+
+        /* ===== STATEMENT SLIDE ===== */
+        .statement-slide {
+            text-align: center;
+            padding: 0 100px;
+        }
+
+        .statement-slide h2 {
+            font-size: 48px;
+            line-height: 1.3;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .statement-slide p {
+            font-size: 24px;
+            margin-top: 30px;
+            color: var(--text-color);
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* ===== STRUCTURE CARDS (3-4 in a row) ===== */
+        .cards-section h2 {
+            font-size: 44px;
+            margin-bottom: 50px;
+        }
+
+        .structure-cards {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .structure-card {
+            background: rgba(255, 255, 255, 0.85);
+            border-radius: 20px;
+            padding: 40px 30px;
+            max-width: 300px;
+            flex: 1;
+            min-width: 240px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06);
+            transition: transform 0.3s ease;
+        }
+
+        .structure-card:hover {
+            transform: translateY(-6px);
+        }
+
+        .structure-card .card-icon {
+            font-size: 48px;
+            margin-bottom: 20px;
+            color: var(--brand-green);
+        }
+
+        .structure-card h4 {
+            font-size: 22px;
+            margin-bottom: 12px;
+            color: var(--heading-color);
+        }
+
+        .structure-card p {
+            font-size: 16px;
+            line-height: 1.5;
+            color: var(--text-color);
+        }
+
+        /* ===== SIX-CARD GRID ===== */
+        .six-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .six-grid .grid-card {
+            background: rgba(255, 255, 255, 0.85);
+            border-radius: 16px;
+            padding: 30px 24px;
+            box-shadow: 0 6px 24px rgba(0, 0, 0, 0.05);
+            text-align: left;
+            transition: transform 0.3s ease;
+        }
+
+        .six-grid .grid-card:hover {
+            transform: translateY(-4px);
+        }
+
+        .six-grid .grid-card .card-icon {
+            font-size: 36px;
+            margin-bottom: 14px;
+            color: var(--accent-orange);
+        }
+
+        .six-grid .grid-card h4 {
+            font-size: 18px;
+            margin-bottom: 8px;
+        }
+
+        .six-grid .grid-card p {
+            font-size: 14px;
+            line-height: 1.5;
+            color: var(--text-color);
+        }
+
+        /* ===== TEAM SLIDE (hero-lineup-wrap style) ===== */
+        .team-slide {
+            flex-direction: column;
+            gap: 0;
+        }
+
+        .team-slide .scale-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 40px;
+        }
+
+        .team-title {
+            text-align: center;
+            z-index: 10;
+        }
+
+        .team-title h1 {
+            font-size: 3.5rem;
+            color: var(--brand-green);
+            margin-bottom: 0.5rem;
+        }
+
+        .team-title p {
+            font-size: 1.1rem;
+            color: var(--text-color);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Team Group Banner (matching website hero-lineup-wrap) */
+        .team-group-banner {
+            position: relative;
+            border-radius: 24px;
+            background: linear-gradient(180deg, #FFFEFA 0%, #FFFDF5 50%, #FFF1E0 100%);
+            border: 1px solid var(--line-light);
+            box-shadow: 0 16px 45px rgba(140, 65, 21, 0.1);
+            height: 525px;
+            width: 970px;
+            max-width: 90%;
+            margin: 0 auto;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .team-group-banner::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 10%;
+            right: 10%;
+            height: 24px;
+            background: radial-gradient(ellipse at center, rgba(140, 65, 21, 0.07) 0%, transparent 70%);
+            border-radius: 50%;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .team-lineup-flex {
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            z-index: 2;
+            height: 540px;
+            padding: 0 40px;
+        }
+
+        .team-lineup-member {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 160px;
+            margin: 0 6px;
+            flex-shrink: 0;
+            position: relative;
+        }
+
+        .team-lineup-member:nth-child(4) {
+            z-index: 6;
+            transform: scale(1.08);
+        }
+
+        .team-lineup-member img {
+            height: 540px;
+            width: auto;
+            max-width: none;
+            object-fit: contain;
+            object-position: bottom center;
+            mix-blend-mode: multiply;
+        }
+
+        /* ===== AGENTS CAROUSEL (mirroring website agents-carousel-wrapper) ===== */
+        .carousel-slide {
+            flex-direction: column;
+            gap: 0;
+        }
+
+        .carousel-slide .scale-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 40px;
+        }
+
+        .carousel-title {
+            text-align: center;
+            z-index: 10;
+        }
+
+        .carousel-title h2 {
+            font-size: 2.8rem;
+            color: var(--heading-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .carousel-title p {
+            font-size: 1.1rem;
+            color: var(--text-color);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .agents-carousel-wrapper {
+            position: relative;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            width: 1200px;
+            max-width: 90%;
+            z-index: 10;
+        }
+
+        .agents-showcase-viewport {
+            flex: 1;
+            overflow-x: auto;
+            scroll-behavior: smooth;
+            border-radius: 24px;
+            background: rgba(255, 253, 248, 0.7);
+            border: 1px solid var(--line-light);
+            backdrop-filter: blur(8px);
+            padding: 30px 18px;
+            scrollbar-width: none;
+        }
+
+        .agents-showcase-viewport::-webkit-scrollbar {
+            display: none;
+        }
+
+        .agents-showcase {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+        }
+
+        .agent-mini {
+            flex: 0 0 230px;
+            min-width: 230px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 0 10px 16px;
+            border-radius: 20px;
+            background: var(--card);
+            border: 1.5px solid rgba(140, 100, 60, 0.25);
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .agent-mini:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 25px rgba(140, 65, 21, 0.1);
+            border-color: var(--line-color);
+        }
+
+        .agent-mini img {
+            width: 240px;
+            height: 312px;
+            object-fit: contain;
+            object-position: bottom;
+            margin-bottom: 8px;
+            mix-blend-mode: multiply;
+            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.08));
+        }
+
+        .agent-mini strong {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--heading-color);
+            margin-bottom: 4px;
+        }
+
+        .agent-mini small {
+            font-size: 0.88rem;
+            color: var(--text-color);
+            line-height: 1.25;
+        }
+
+        .carousel-nav-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--card);
+            border: 1px solid var(--line-light);
+            color: var(--heading-color);
+            font-size: 1.6rem;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(140, 65, 21, 0.12);
+            transition: all 0.25s ease;
+            z-index: 5;
+            flex-shrink: 0;
+        }
+
+        .carousel-nav-btn:hover {
+            background: var(--brand-green);
+            color: #fff;
+            border-color: var(--brand-green);
+            transform: scale(1.1);
+        }
+
+        /* ===== CLUSTER SLIDE ===== */
+        .cluster-slide {
+            overflow: hidden;
+        }
+
+        .cluster-slide .scale-wrapper {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+        }
+
+        .cluster-character {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            height: 700px;
+            z-index: 2;
+        }
+
+        .cluster-character img {
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .character-backdrop {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(ellipse at center bottom, rgba(18, 107, 79, 0.08) 0%, transparent 70%);
+            border-radius: 50%;
+            z-index: 1;
+        }
+
+        .cluster-title {
+            position: absolute;
+            top: 60px;
+            left: 50%;
+            transform: translateX(-50%);
+            text-align: center;
+            z-index: 5;
+        }
+
+        .cluster-title h2 {
+            font-size: 38px;
+            color: var(--heading-color);
+        }
+
+        .cluster-title .agent-role {
+            font-size: 20px;
+            color: var(--brand-green);
+            font-weight: 600;
+            margin-top: 6px;
+        }
+
+        .cluster-card {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.94);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 24px 28px;
+            box-shadow: 0 12px 36px rgba(0, 0, 0, 0.09);
+            z-index: 4;
+            max-width: 360px;
+            transition: transform 0.3s ease;
+        }
+
+        .cluster-card:hover {
+            transform: translateY(-4px);
+        }
+
+        .cluster-card h4 {
+            font-size: 24px;
+            font-weight: 700;
+            line-height: 1.25;
+            margin-bottom: 10px;
+            color: var(--heading-color);
+        }
+
+        .cluster-card p {
+            font-size: 19.5px;
+            line-height: 1.45;
+            color: var(--text-color);
+        }
+
+        .cluster-card .card-icon {
+            font-size: 34px;
+            margin-bottom: 12px;
+            color: var(--brand-green);
+        }
+
+        .card-top-left { top: 140px; left: 340px; }
+        .card-top-right { top: 140px; right: 340px; }
+        .card-bottom-left { bottom: 140px; left: 320px; }
+        .card-bottom-right { bottom: 140px; right: 320px; }
+
+        .cluster-connectors {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 3;
+            pointer-events: none;
+        }
+
+        .cluster-connectors line {
+            stroke: var(--line-color);
+            stroke-width: 2;
+            stroke-dasharray: 8, 6;
+        }
+
+        .floating-icon {
+            position: absolute;
+            font-size: 32px;
+            opacity: 0.3;
+            animation: float 4s ease-in-out infinite;
+            z-index: 1;
+            color: var(--brand-green);
+        }
+
+        .floating-icon:nth-child(2) { animation-delay: 1s; }
+        .floating-icon:nth-child(3) { animation-delay: 2s; }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+
+        
+        /* ===== WHATSAPP CONVERSATION SLIDES (CENTERED CHAT ONLY) ===== */
+        .whatsapp-conv-slide {
+            overflow: hidden;
+            position: relative;
+        }
+
+        .whatsapp-conv-slide .scale-wrapper {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 1920px;
+            height: 945px;
+        }
+
+        .wa-centered-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 100%;
+            position: relative;
+            z-index: 10;
+        }
+
+        .wa-phone-device {
+            width: 580px;
+            height: 760px;
+            background: #efeae2;
+            border-radius: 36px;
+            box-shadow: 0 25px 70px rgba(140, 65, 21, 0.18), 0 8px 30px rgba(0, 0, 0, 0.1);
+            border: 4px solid #ffffff;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .wa-phone-top-bar {
+            height: 14px;
+            background: #064e46;
+            width: 100%;
+        }
+
+        .wa-chat-header {
+            background: #075E54;
+            color: #ffffff;
+            padding: 14px 20px;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            height: 72px;
+            box-sizing: border-box;
+            flex-shrink: 0;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+        }
+
+        .wa-header-avatar {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: #ffffff;
+            object-fit: cover;
+            object-position: top center;
+            border: 2px solid rgba(255, 255, 255, 0.4);
+            flex-shrink: 0;
+        }
+
+        .wa-header-info {
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+        }
+
+        .wa-header-info .wa-contact-name {
+            font-weight: 700;
+            font-size: 19px;
+            font-family: 'Poppins', sans-serif;
+            letter-spacing: 0.2px;
+        }
+
+        .wa-header-info .wa-contact-status {
+            font-size: 13.5px;
+            opacity: 0.88;
+        }
+
+        .wa-header-actions {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            font-size: 22px;
+            opacity: 0.9;
+        }
+
+        .wa-chat-body {
+            flex: 1;
+            padding: 18px 18px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            background-image: radial-gradient(rgba(0, 0, 0, 0.04) 1px, transparent 1px);
+            background-size: 16px 16px;
+            box-sizing: border-box;
+            scrollbar-width: thin;
+            scrollbar-color: rgba(7, 94, 84, 0.45) rgba(0, 0, 0, 0.05);
+        }
+
+        .wa-chat-body::-webkit-scrollbar {
+            width: 6px;
+            display: block;
+        }
+
+        .wa-chat-body::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.04);
+            border-radius: 4px;
+        }
+
+        .wa-chat-body::-webkit-scrollbar-thumb {
+            background: rgba(7, 94, 84, 0.4);
+            border-radius: 4px;
+        }
+
+        .wa-chat-body::-webkit-scrollbar-thumb:hover {
+            background: rgba(7, 94, 84, 0.7);
+        }
+
+        .wa-msg {
+            max-width: 86%;
+            padding: 11px 15px;
+            font-size: 16.5px;
+            line-height: 1.44;
+            position: relative;
+            box-shadow: 0 1.5px 3px rgba(0, 0, 0, 0.08);
+            word-wrap: break-word;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .wa-msg.incoming {
+            background: #ffffff;
+            color: #262626;
+            align-self: flex-start;
+            border-radius: 0 14px 14px 14px;
+        }
+
+        .wa-msg.outgoing {
+            background: #dcf8c6;
+            color: #1a1a1a;
+            align-self: flex-end;
+            border-radius: 14px 0 14px 14px;
+        }
+
+        .wa-msg-meta {
+            font-size: 12px;
+            color: #7d7d7d;
+            align-self: flex-end;
+            margin-top: 4px;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .wa-msg-meta i {
+            color: #34b7f1;
+            font-size: 13px;
+        }
+
+        .wa-chat-footer {
+            background: #f0f0f0;
+            padding: 10px 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            height: 60px;
+            box-sizing: border-box;
+            flex-shrink: 0;
+            border-top: 1px solid rgba(0,0,0,0.06);
+        }
+
+        .wa-input-pill {
+            background: #ffffff;
+            border-radius: 24px;
+            flex: 1;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            padding: 0 16px;
+            font-size: 15.5px;
+            color: #8c8c8c;
+            border: 1px solid rgba(0, 0, 0, 0.06);
+        }
+
+        .wa-circle-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: #128c7e;
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 19px;
+            flex-shrink: 0;
+        }
+
+        /* ===== CHANNELS SLIDE ===== */
+        .channels-cards {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+        }
+
+        .channel-card {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 24px;
+            padding: 50px 40px;
+            width: 300px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06);
+            transition: transform 0.3s ease;
+        }
+
+        .channel-card:hover {
+            transform: translateY(-8px);
+        }
+
+        .channel-card .card-icon {
+            font-size: 56px;
+            margin-bottom: 24px;
+            color: var(--brand-green);
+        }
+
+        .channel-card h4 {
+            font-size: 24px;
+            margin-bottom: 12px;
+        }
+
+        .channel-card p {
+            font-size: 16px;
+            line-height: 1.5;
+            color: var(--text-color);
+        }
+
+        /* ===== TRUST CARDS ===== */
+        .trust-cards {
+            display: flex;
+            justify-content: center;
+            gap: 28px;
+            flex-wrap: wrap;
+        }
+
+        .trust-card {
+            background: rgba(255, 255, 255, 0.88);
+            border-radius: 20px;
+            padding: 36px 28px;
+            max-width: 280px;
+            flex: 1;
+            min-width: 220px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06);
+            text-align: left;
+            border-top: 4px solid var(--brand-green);
+            transition: transform 0.3s ease;
+        }
+
+        .trust-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .trust-card .card-icon {
+            font-size: 40px;
+            margin-bottom: 16px;
+            color: var(--brand-green);
+        }
+
+        .trust-card h4 {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .trust-card p {
+            font-size: 14px;
+            line-height: 1.6;
+            color: var(--text-color);
+        }
+
+        /* ===== CONTACT SLIDE ===== */
+        .contact-slide .content-container {
+            text-align: center;
+        }
+
+        .contact-slide h2 {
+            font-size: 44px;
+            margin-bottom: 24px;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .contact-slide p {
+            font-size: 22px;
+            color: var(--text-color);
+            margin-bottom: 40px;
+        }
+
+        .contact-btn {
+            display: inline-block;
+            background: var(--brand-green);
+            color: #fff;
+            padding: 16px 40px;
+            border-radius: 50px;
+            font-size: 20px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: background 0.3s ease, transform 0.3s ease;
+        }
+
+        .contact-btn:hover {
+            background: #0e5a40;
+            transform: translateY(-3px);
+        }
+
+        /* ===== RESPONSIVE – TABLET (≤1024px) ===== */
+        @media (max-width: 1024px) {
+            .content-container {
+                padding: 0 36px;
+            }
+
+            .two-col {
+                gap: 36px;
+                padding: 0 40px;
+            }
+
+            .two-col .text-side h2 {
+                font-size: 34px;
+            }
+
+            .two-col .text-side p {
+                font-size: 18px;
+            }
+
+            .two-col .image-side img {
+                max-width: 360px;
+                height: 380px;
+            }
+
+            .statement-slide {
+                padding: 0 50px;
+            }
+
+            .statement-slide h2 {
+                font-size: 38px;
+            }
+
+            .statement-slide p {
+                font-size: 20px;
+            }
+
+            .cards-section h2 {
+                font-size: 36px;
+                margin-bottom: 36px;
+            }
+
+            .six-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 18px;
+            }
+
+            .channel-card {
+                width: 240px;
+                padding: 36px 28px;
+            }
+
+            .channel-card .card-icon {
+                font-size: 44px;
+            }
+
+            .channel-card h4 {
+                font-size: 20px;
+            }
+
+            .trust-card {
+                max-width: 240px;
+                min-width: 200px;
+                padding: 28px 22px;
+            }
+        }
+
+        /* ===== RESPONSIVE – MOBILE (≤768px) ===== */
+        @media (max-width: 768px) {
+            /* Sections become auto-height with minimum full viewport */
+            section {
+                height: auto;
+                min-height: 100vh;
+                min-height: 100dvh;   /* dynamic viewport height for mobile browsers */
+                padding: 80px 0 40px;
+                scroll-snap-align: start;
+            }
+
+            /* Disable the fixed-size scale-wrapper on mobile */
+            .scale-wrapper {
+                position: relative;
+                width: 100%;
+                height: auto;
+                transform: none !important;
+                top: auto;
+                left: auto;
+            }
+
+            /* ---- General typography ---- */
+            .content-container {
+                padding: 0 20px;
+            }
+
+            .bg-slide .content-container h1 {
+                font-size: 40px;
+                margin-bottom: 14px;
+            }
+
+            .bg-slide .content-container h3 {
+                font-size: 20px;
+            }
+
+            /* ---- Slide logo ---- */
+            .slide-logo {
+                top: 16px;
+                left: 16px;
+                height: 30px;
+            }
+
+            /* ---- Two-column slide ---- */
+            .two-col {
+                flex-direction: column;
+                padding: 0 20px;
+                gap: 28px;
+            }
+
+            .two-col .text-side {
+                flex: none;
+            }
+
+            .two-col .text-side h2 {
+                font-size: 28px;
+                margin-bottom: 16px;
+            }
+
+            .two-col .text-side p {
+                font-size: 16px;
+            }
+
+            .two-col .image-side {
+                flex: none;
+                text-align: center;
+            }
+
+            .two-col .image-side img {
+                max-width: 100%;
+                height: 260px;
+                border-radius: 16px;
+            }
+
+            /* ---- Statement slide ---- */
+            .statement-slide {
+                padding: 0 20px;
+            }
+
+            .statement-slide h2 {
+                font-size: 26px;
+            }
+
+            .statement-slide p {
+                font-size: 17px;
+                margin-top: 20px;
+            }
+
+            /* ---- Cards section ---- */
+            .cards-section h2 {
+                font-size: 28px;
+                margin-bottom: 28px;
+            }
+
+            /* ---- Structure cards ---- */
+            .structure-cards {
+                flex-direction: column;
+                align-items: center;
+                gap: 16px;
+            }
+
+            .structure-card {
+                max-width: 100%;
+                min-width: 0;
+                width: 100%;
+                padding: 28px 24px;
+            }
+
+            .structure-card .card-icon {
+                font-size: 36px;
+                margin-bottom: 14px;
+            }
+
+            .structure-card h4 {
+                font-size: 19px;
+            }
+
+            /* ---- Six-grid ---- */
+            .six-grid {
+                grid-template-columns: 1fr;
+                gap: 14px;
+                max-width: 100%;
+            }
+
+            .six-grid .grid-card {
+                padding: 22px 20px;
+            }
+
+            .six-grid .grid-card .card-icon {
+                font-size: 30px;
+                margin-bottom: 10px;
+            }
+
+            .six-grid .grid-card h4 {
+                font-size: 16px;
+            }
+
+            .six-grid .grid-card p {
+                font-size: 13px;
+            }
+
+            /* ---- Team slide ---- */
+            .team-slide .scale-wrapper {
+                position: relative !important;
+                top: auto !important;
+                left: auto !important;
+                width: 100% !important;
+                height: auto !important;
+                transform: none !important;
+                gap: 24px;
+                padding: 0 16px;
+            }
+
+            .team-title h1 {
+                font-size: 1.8rem;
+            }
+
+            .team-title p {
+                font-size: 0.9rem;
+                padding: 0 10px;
+            }
+
+            .team-group-banner {
+                height: 250px;
+                width: 100%;
+                max-width: 100%;
+                border-radius: 16px;
+                overflow: hidden;
+                position: relative;
+            }
+
+            .team-group-banner::after {
+                display: none;
+            }
+
+            .team-lineup-flex {
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                height: 250px;
+                padding: 0 6px;
+                justify-content: center;
+                gap: 0;
+            }
+
+            .team-lineup-member {
+                flex: 1 1 0;
+                width: 0;
+                margin: 0;
+                min-width: 0;
+                overflow: visible;
+            }
+
+            .team-lineup-member:nth-child(4) {
+                transform: scale(1.08);
+                z-index: 6;
+            }
+
+            .team-lineup-member img {
+                height: 240px;
+                width: auto;
+                min-width: 100%;
+                max-width: none;
+                object-fit: contain;
+                object-position: bottom center;
+            }
+
+            /* ---- Carousel slide ---- */
+            .carousel-slide .scale-wrapper {
+                position: relative !important;
+                top: auto !important;
+                left: auto !important;
+                width: 100% !important;
+                height: auto !important;
+                transform: none !important;
+                gap: 24px;
+                padding: 0 16px;
+            }
+
+            .carousel-title h2 {
+                font-size: 1.8rem;
+            }
+
+            .carousel-title p {
+                font-size: 0.95rem;
+                padding: 0 10px;
+            }
+
+            .agents-carousel-wrapper {
+                width: 100%;
+                max-width: 100%;
+                gap: 8px;
+            }
+
+            .agents-showcase-viewport {
+                padding: 20px 12px;
+                border-radius: 16px;
+            }
+
+            .agents-showcase {
+                gap: 10px;
+            }
+
+            .agent-mini {
+                flex: 0 0 130px;
+                min-width: 130px;
+                border-radius: 12px;
+            }
+
+            .agent-mini img {
+                width: 130px;
+                height: 160px;
+            }
+
+            .agent-mini strong {
+                font-size: 0.78rem;
+            }
+
+            .agent-mini small {
+                font-size: 0.65rem;
+            }
+
+            .carousel-nav-btn {
+                width: 32px;
+                height: 32px;
+                font-size: 1.3rem;
+            }
+
+            /* ---- Cluster slides (agent detail) ---- */
+            .cluster-slide {
+                overflow: visible;
+            }
+
+            .cluster-slide .scale-wrapper {
+                position: relative !important;
+                top: auto !important;
+                left: auto !important;
+                width: 100% !important;
+                height: auto !important;
+                transform: none !important;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 16px;
+                padding: 0 16px;
+            }
+
+            .cluster-title {
+                position: relative;
+                top: auto;
+                left: auto;
+                transform: none;
+            }
+
+            .cluster-title h2 {
+                font-size: 28px;
+            }
+
+            .cluster-title .agent-role {
+                font-size: 16px;
+            }
+
+            .cluster-character {
+                position: relative;
+                left: auto;
+                bottom: auto;
+                transform: none;
+                height: 240px;
+            }
+
+            .character-backdrop {
+                display: none;
+            }
+
+            .cluster-card {
+                position: relative !important;
+                top: auto !important;
+                left: auto !important;
+                right: auto !important;
+                bottom: auto !important;
+                max-width: 100%;
+                width: 100%;
+                margin: 0;
+            }
+
+            .cluster-card h4 {
+                font-size: 15px;
+            }
+
+            .cluster-card p {
+                font-size: 12px;
+            }
+
+            .cluster-connectors {
+                display: none;
+            }
+
+            .floating-icon {
+                display: none;
+            }
+
+            /* ---- Channels cards ---- */
+            .channels-cards {
+                flex-direction: column;
+                align-items: center;
+                gap: 16px;
+            }
+
+            .channel-card {
+                width: 100%;
+                max-width: 100%;
+                padding: 32px 24px;
+                border-radius: 16px;
+            }
+
+            .channel-card .card-icon {
+                font-size: 40px;
+                margin-bottom: 16px;
+            }
+
+            .channel-card h4 {
+                font-size: 20px;
+            }
+
+            .channel-card p {
+                font-size: 14px;
+            }
+
+            /* ---- Dashboard slide ---- */
+            .content-container img[alt="iNua Technologies Insights Dashboard"] {
+                border-radius: 10px !important;
+            }
+
+            /* ---- Trust cards ---- */
+            .trust-cards {
+                flex-direction: column;
+                align-items: center;
+                gap: 14px;
+            }
+
+            .trust-card {
+                max-width: 100%;
+                min-width: 0;
+                width: 100%;
+                padding: 24px 20px;
+            }
+
+            .trust-card .card-icon {
+                font-size: 32px;
+                margin-bottom: 12px;
+            }
+
+            .trust-card h4 {
+                font-size: 16px;
+            }
+
+            .trust-card p {
+                font-size: 13px;
+            }
+
+            /* ---- Contact slide ---- */
+            .contact-slide h2 {
+                font-size: 28px;
+                margin-bottom: 16px;
+            }
+
+            .contact-slide p {
+                font-size: 17px;
+                margin-bottom: 28px;
+            }
+
+            .contact-btn {
+                padding: 14px 32px;
+                font-size: 16px;
+            }
+
+            /* ---- Landscape background ---- */
+            .landscape-bg {
+                height: 35vh;
+                opacity: 0.25;
+            }
+        }
+
+        /* ===== RESPONSIVE – SMALL MOBILE (≤480px) ===== */
+        @media (max-width: 480px) {
+            section {
+                padding: 70px 0 30px;
+            }
+
+            .bg-slide .content-container h1 {
+                font-size: 32px;
+            }
+
+            .bg-slide .content-container h3 {
+                font-size: 17px;
+            }
+
+            .two-col .text-side h2 {
+                font-size: 24px;
+            }
+
+            .two-col .text-side p {
+                font-size: 15px;
+            }
+
+            .two-col .image-side img {
+                height: 200px;
+            }
+
+            .statement-slide h2 {
+                font-size: 22px;
+            }
+
+            .statement-slide p {
+                font-size: 15px;
+            }
+
+            .cards-section h2 {
+                font-size: 24px;
+            }
+
+            .team-title h1 {
+                font-size: 1.6rem;
+            }
+
+            .team-group-banner {
+                height: 170px;
+            }
+
+            .team-lineup-flex {
+                height: 170px;
+            }
+
+            .team-lineup-member img {
+                height: 170px;
+            }
+
+            .carousel-title h2 {
+                font-size: 1.5rem;
+            }
+
+            .agent-mini {
+                flex: 0 0 110px;
+                min-width: 110px;
+            }
+
+            .agent-mini img {
+                width: 110px;
+                height: 130px;
+            }
+
+            .cluster-character {
+                height: 180px;
+            }
+
+            .cluster-title h2 {
+                font-size: 24px;
+            }
+
+            .contact-slide h2 {
+                font-size: 24px;
+            }
+
+            .contact-btn {
+                padding: 12px 28px;
+                font-size: 15px;
+            }
+        }
+    </style>
+    <style>
+        /* Specific adjustments for Getu Temesgen Presentation */
+        .highlight-chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(18, 107, 79, 0.1);
+            color: var(--brand-green);
+            padding: 6px 16px;
+            border-radius: 99px;
+            font-size: 14px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            border: 1px solid rgba(18, 107, 79, 0.2);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        .pilot-timeline {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            max-width: 1200px;
+            margin: 40px auto 0;
+            text-align: left;
+        }
+        .timeline-card {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 16px;
+            padding: 24px 20px;
+            border: 1px solid var(--line-light);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.05);
+            position: relative;
+        }
+        .timeline-card .phase-badge {
+            display: inline-block;
+            background: var(--accent-orange);
+            color: white;
+            font-weight: 700;
+            font-size: 12px;
+            padding: 3px 10px;
+            border-radius: 6px;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+        }
+        .timeline-card h4 {
+            font-size: 17px;
+            margin-bottom: 8px;
+            color: var(--heading-color);
+        }
+        .timeline-card p {
+            font-size: 13.5px;
+            line-height: 1.45;
+            color: var(--text-color);
+        }
+        .stat-callout {
+            font-size: 32px;
+            font-weight: 800;
+            color: var(--brand-green);
+            font-family: 'Poppins', sans-serif;
+            margin: 8px 0;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- SLIDE 1: Title / Cover Slide -->
+    <section id="slide-1" class="bg-slide">
+        <img src="images/logo.png" alt="iNua" class="slide-logo">
+        <div class="content-container">
+            <h1 style="font-size: 64px; line-height: 1.15; margin-bottom: 24px;">iNua Technologies × AgriFriend</h1>
+            <h3 style="font-size: 28px; max-width: 950px; margin: 0 auto 24px; color: var(--heading-color); font-weight: 600;">
+                Scaling Domestic Sunflower Sourcing & Farmer Advisory for Ethiopia's Edible Oil Value Chain
+            </h3>
+            <p style="font-size: 20px; color: var(--text-color); max-width: 800px; margin: 0 auto; line-height: 1.6;">
+                AI-Powered Field Experts at Scale • 24/7 Outbound & Inbound Support in Amharic via Phone Calls, WhatsApp & SMS
+            </p>
+        </div>
+    </section>
+
+<section id="slide-2" >
+        <img src="images/logo.png" alt="iNua" class="slide-logo">
+        <div class="two-col">
+            <div class="text-side">
+                <div class="highlight-chip" style="background: rgba(211, 47, 47, 0.1); color: #d32f2f; border-color: rgba(211, 47, 47, 0.2);"><i class="ph ph-warning-circle"></i> Current Bottleneck</div>
+                <h2 style="font-size: 38px; line-height: 1.25; margin-bottom: 20px;">Operating a 100,000 MT Plant in an Input-Constrained Market</h2>
+                <p style="font-size: 19px; line-height: 1.6; margin-bottom: 16px; color: var(--text-color);">
+                    The state-of-the-art Dukem's solvent extraction plant has an amazing capacity of <strong>100,000 metric tons</strong>, built to drive Ethiopia's import-substitution mandate and supply the flagship Tena Oil brand.
+                </p>
+                <p style="font-size: 18px; line-height: 1.6; margin-bottom: 24px; color: var(--text-color); opacity: 0.9;">
+                    However, the facility is currently operating under-capacity due to low domestic sunflower supply. To displace costly foreign crude oil imports, the plant requires a reliable, synchronized flow of domestic raw materials from thousands of hectares.
+                </p>
+                <div style="display: flex; gap: 20px;">
+                    <div style="flex: 1; background: rgba(255,255,255,0.85); padding: 16px 20px; border-radius: 12px; border: 1px solid rgba(140,65,21,0.12); box-shadow: 0 4px 12px rgba(0,0,0,0.03);">
+                        <div style="font-size: 30px; font-weight: 800; color: var(--brand-green); font-family: 'Poppins', sans-serif;">100,000 MT</div>
+                        <div style="font-size: 13px; font-weight: 700; color: var(--heading-color); margin-top: 4px;">Crushing Capacity at Dukem</div>
+                    </div>
+                    <div style="flex: 1; background: rgba(255,255,255,0.85); padding: 16px 20px; border-radius: 12px; border: 1px solid rgba(140,65,21,0.12); box-shadow: 0 4px 12px rgba(0,0,0,0.03);">
+                        <div style="font-size: 30px; font-weight: 800; color: #d32f2f; font-family: 'Poppins', sans-serif;">Under-Capacity</div>
+                        <div style="font-size: 13px; font-weight: 700; color: var(--heading-color); margin-top: 4px;">Raw Material Supply Deficit</div>
+                    </div>
+                </div>
+            </div>
+            <div class="image-side">
+                <img src="images/dukem_plant.jpg" alt="The state-of-the-art Dukem's solvent extraction plant" style="width: 100%; height: auto; border-radius: 20px; box-shadow: 0 16px 40px rgba(0,0,0,0.14); object-fit: cover;">
+            </div>
+        </div>
+    </section>
+
+<section id="slide-3" >
+        <img src="images/logo.png" alt="iNua" class="slide-logo">
+        <div class="two-col">
+            <div class="text-side">
+                <div class="highlight-chip" style="background: rgba(211, 47, 47, 0.1); color: #d32f2f; border-color: rgba(211, 47, 47, 0.2);"><i class="ph ph-warning-circle"></i> Current Bottleneck</div>
+                <h2 style="font-size: 38px; line-height: 1.25; margin-bottom: 20px;">The High-Investment / High-Return Paradox</h2>
+                <div style="margin: 20px 0; padding: 20px 24px; background: rgba(255, 255, 255, 0.88); border-left: 4px solid var(--accent-orange); border-radius: 12px; box-shadow: 0 6px 20px rgba(0,0,0,0.04);">
+                    <p style="font-size: 19px; line-height: 1.6; color: var(--text-color); margin: 0;">
+                        Hybrid sunflower seed requires ~<strong>37,000 ETB/ha</strong> in input costs. While gross revenue potential is high (><strong>130,000 ETB/ha</strong>), farmers fear adopting an unfamiliar crop, and banks fear loan defaults under rainfed farming conditions.
+                    </p>
+                </div>
+                <p style="color: #d32f2f; font-weight: 700; font-size: 20px; line-height: 1.5; margin-top: 24px; background: rgba(211, 47, 47, 0.06); padding: 14px 18px; border-radius: 10px; border: 1px solid rgba(211, 47, 47, 0.15);">
+                    Deploying hundreds of field agronomists across diverse Woredas is financially impossible. Without scalable outreach, the 100,000 MT capacity remains under-utilized.
+                </p>
+            </div>
+            <div class="image-side">
+                <img src="images/stressed_farmer.png" alt="Farmer facing agronomic and input investment challenges" style="width: 100%; height: auto; border-radius: 20px; box-shadow: 0 16px 40px rgba(0,0,0,0.14); object-fit: cover;">
+            </div>
+        </div>
+    </section>
+
+<section id="slide-4" >
+        <img src="images/logo.png" alt="iNua" class="slide-logo">
+        <div class="statement-slide">
+            <h2 style="font-size: 42px; max-width: 1050px; margin: 0 auto; line-height: 1.3;">A reliable, effective, and scalable way to deliver practical farmer advisory to rural farmers.</h2>
+            <p style="font-size: 22px; max-width: 900px; margin: 24px auto 0; line-height: 1.6;">
+                Specialized AI agronomists and onboarding agents available through <strong style="color: var(--brand-green);">Phone Calls</strong>, <strong style="color: var(--accent-orange);">WhatsApp</strong>, and <strong style="color: var(--brand-green);">SMS</strong> in fluent <strong>Amharic</strong> and regional dialects.
+            </p>
+            <p style="font-size: 18px; color: var(--text-color); max-width: 820px; margin: 16px auto 0; opacity: 0.9;">
+                Trained directly on your company's hybrid sunflower specifications, contract farming agreements, and input finance mechanisms. No smartphones, no internet, with zero literacy barriers.
+            </p>
+            <div style="margin-top: 48px;">
+                <p style="font-size: 30px; font-weight: 700; color: var(--brand-green); max-width: 1050px; margin: 0 auto; line-height: 1.35; font-family: 'Poppins', sans-serif;">
+                    The right guidance, at the right time, through the channels they are already using.
+                </p>
+            </div>
+        </div>
+    </section>
+
+<section id="slide-5" class="team-slide" style="position: relative; height: 100vh; overflow: hidden;">
+        <img src="images/logo.png" alt="iNua" class="slide-logo">
+        <div class="landscape-bg"></div>
+
+        <div class="scale-wrapper">
+            <div class="team-title">
+                <h1>Meet the iNua's AI Team</h1>
+                <p>Purpose-built experts working side-by-side with the company's agronomy leads to drive domestic oilseed production.</p>
+            </div>
+
+            <div class="team-group-banner">
+                <img src="images/team_inua_4experts.png" alt="iNua AI Team: Chris, Nia, iNua, Grace, Nuru" style="height: 505px; width: auto; max-width: 96%; object-fit: contain; object-position: bottom center; z-index: 2; mix-blend-mode: multiply;">
+            </div>
+        </div>
+    </section>
+
+<section id="slide-6" class="cluster-slide" style="position: relative;">
+        <img src="images/logo.png" alt="iNua" class="slide-logo">
+        <div class="landscape-bg"></div>
+        <div class="scale-wrapper">
+            <div class="cluster-title">
+                <h2>Chris</h2>
+                <div class="agent-role">Sunflower Agronomist</div>
+            </div>
+
+            <div class="character-backdrop"></div>
+            <div class="cluster-character">
+                <img src="images/chris_v3_nobg.png" alt="Chris">
+            </div>
+
+            <div class="cluster-card card-top-left">
+                <div class="card-icon"><i class="ph ph-seedling"></i></div>
+                <h4>Seeding, Planting & Growing</h4>
+                <p>Guides farmers on optimal seedbed depth, soil temperature, and plants to HA density to maximize head diameter.</p>
+            </div>
+            <div class="cluster-card card-top-right">
+                <div class="card-icon"><i class="ph ph-flask"></i></div>
+                <h4>Fertilizer Optimization</h4>
+                <p>Protects farmer imvesment with excat timings for fertilizers, according to rainfall and weather conditions</p>
+            </div>
+            <div class="cluster-card card-bottom-left">
+                <div class="card-icon"><i class="ph ph-phone-call"></i></div>
+                <h4>24/7 Amharic Hotline</h4>
+                <p>Real two-way conversational voice AI in fluent Amharic. Farmers call anytime to discuss seed germination, planting depth, or head development</p>
+            </div>
+            <div class="cluster-card card-bottom-right">
+                <div class="card-icon"><i class="ph ph-broadcast"></i></div>
+                <h4>Proactive Crop Calendar scheduleing</h4>
+                <p>Triggers timely proactive guidance calls at crucial milestones: emergence, budding, flowering, and seed fill. ensuring essential agronomic steps happen before yields drop</p>
+            </div>
+
+            <svg class="cluster-connectors" viewBox="0 0 1920 945">
+                <defs><marker id="arrow-chris" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto"><polygon points="0 0, 8 3, 0 6" fill="#eab683"/></marker></defs>
+                <line x1="700" y1="250" x2="780" y2="380" marker-end="url(#arrow-chris)"/>
+                <line x1="1220" y1="250" x2="1140" y2="380" marker-end="url(#arrow-chris)"/>
+                <line x1="680" y1="695" x2="780" y2="570" marker-end="url(#arrow-chris)"/>
+                <line x1="1240" y1="695" x2="1140" y2="570" marker-end="url(#arrow-chris)"/>
+            </svg>
+
+            <i class="ph ph-sun floating-icon" style="top: 120px; left: 220px;"></i>
+            <i class="ph ph-plant floating-icon" style="top: 300px; right: 200px;"></i>
+            <i class="ph ph-drop floating-icon" style="bottom: 150px; left: 200px;"></i>
+        </div>
+    </section>
+
+<section id="slide-7" class="whatsapp-conv-slide">
+        <img src="images/logo.png" alt="iNua" class="slide-logo">
+        <div class="landscape-bg"></div>
+        <div class="scale-wrapper">
+            <div class="wa-centered-wrapper">
+                <div class="wa-phone-device">
+                    <div class="wa-phone-top-bar"></div>
+                    <div class="wa-chat-header">
+                        <img src="images/chris_v3_nobg.png" alt="Chris" class="wa-header-avatar">
+                        <div class="wa-header-info">
+                            <span class="wa-contact-name">Chris • Agronomist</span>
+                            <span class="wa-contact-status">online • iNua Advisory</span>
+                        </div>
+                        <div class="wa-header-actions">
+                            <i class="ph ph-phone"></i>
+                            <i class="ph ph-dots-three-vertical"></i>
+                        </div>
+                    </div>
+                    <div class="chat-body wa-chat-body">
+                        <div class="wa-msg incoming">
+                            Selam Chris! Rain fell yesterday and my soil is soft. How deep should I plant the sunflower seeds?
+                            <div class="wa-msg-meta">08:14</div>
+                        </div>
+                        <div class="wa-msg outgoing">
+                            Selam Ato Dawit! Plant the seeds about <strong>two finger-widths deep (4 to 5 cm)</strong>. If you plant too deep, the seeds will stay in the cold ground and not come up. If too shallow, the hot sun will dry them out.
+                            <div class="wa-msg-meta">08:15 <i class="ph ph-checks"></i></div>
+                        </div>
+                        <div class="wa-msg incoming">
+                            Understood. Should I put the fertilizer in the same hole with the seed?
+                            <div class="wa-msg-meta">08:17</div>
+                        </div>
+                        <div class="wa-msg outgoing">
+                            No, do not let the fertilizer touch the seed! Put the fertilizer a small hand-distance away so it does not burn the baby shoot. Cover both with loose soil.
+                            <div class="wa-msg-meta">08:18 <i class="ph ph-checks"></i></div>
+                        </div>
+                        <div class="wa-msg incoming">
+                            Thank you Chris! I will follow this with my family today.
+                            <div class="wa-msg-meta">08:20</div>
+                        </div>
+                    </div>
+                    <div class="wa-chat-footer">
+                        <div class="wa-input-pill">Type a message...</div>
+                        <div class="wa-circle-btn"><i class="ph ph-paper-plane-tilt"></i></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+<section id="slide-8" class="cluster-slide" style="position: relative;">
+        <img src="images/logo.png" alt="iNua" class="slide-logo">
+        <div class="landscape-bg"></div>
+        <div class="scale-wrapper">
+            <div class="cluster-title">
+                <h2>Nia</h2>
+                <div class="agent-role">Onboarding, Contract & Bank Financing Expert</div>
+            </div>
+
+            <div class="character-backdrop"></div>
+            <div class="cluster-character">
+                <img src="images/nia_v3_nobg.png" alt="Nia">
+            </div>
+
+            <div class="cluster-card card-top-left">
+                <div class="card-icon"><i class="ph ph-chat-circle-dots"></i></div>
+                <h4>Addressing Grower Doubts & Pushback</h4>
+                <p>Handles both inbound inquiries and outbound calls, answering hesitant farmers' questions regarding soil suitability, price volatility, and offtake security.</p>
+            </div>
+            <div class="cluster-card card-top-right">
+                <div class="card-icon"><i class="ph ph-file-text"></i></div>
+                <h4>Contract Farming Clarity</h4>
+                <p>Explains Tena Oil guaranteed purchase agreements, collection centers, quality grades, and prompt payment timelines.</p>
+            </div>
+            <div class="cluster-card card-bottom-left">
+                <div class="card-icon"><i class="ph ph-bank"></i></div>
+                <h4>Bank and Loan Guidance</h4>
+                <p>Explains the bank financing structure, aggregator seed distribution, and automatic loan deduction upon harvest delivery. removing financial barriers for growers.</p>
+            </div>
+            <div class="cluster-card card-bottom-right">
+                <div class="card-icon"><i class="ph ph-user-switch"></i></div>
+                <h4>Human-in-the-Loop Escalation</h4>
+                <p>Identifies commercial farmers ready to commit and instantly transfers detailed profile notes directly toa team member to handle in person.</p>
+            </div>
+
+            <svg class="cluster-connectors" viewBox="0 0 1920 945">
+                <defs><marker id="arrow-nia" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto"><polygon points="0 0, 8 3, 0 6" fill="#eab683"/></marker></defs>
+                <line x1="700" y1="250" x2="840" y2="380" marker-end="url(#arrow-nia)"/>
+                <line x1="1220" y1="250" x2="1080" y2="380" marker-end="url(#arrow-nia)"/>
+                <line x1="680" y1="695" x2="840" y2="570" marker-end="url(#arrow-nia)"/>
+                <line x1="1240" y1="695" x2="1080" y2="570" marker-end="url(#arrow-nia)"/>
+            </svg>
+
+            <i class="ph ph-chat-centered-text floating-icon" style="top: 120px; left: 220px;"></i>
+            <i class="ph ph-handshake floating-icon" style="top: 300px; right: 200px;"></i>
+            <i class="ph ph-check-circle floating-icon" style="bottom: 150px; left: 200px;"></i>
+        </div>
+    </section>
+
+<section id="slide-9" class="whatsapp-conv-slide">
+        <img src="images/logo.png" alt="iNua" class="slide-logo">
+        <div class="landscape-bg"></div>
+        <div class="scale-wrapper">
+            <div class="wa-centered-wrapper">
+                <div class="wa-phone-device">
+                    <div class="wa-phone-top-bar"></div>
+                    <div class="wa-chat-header">
+                        <img src="images/nia_v3_nobg.png" alt="Nia" class="wa-header-avatar">
+                        <div class="wa-header-info">
+                            <span class="wa-contact-name">Nia • Sourcing & Onboarding</span>
+                            <span class="wa-contact-status">online • iNua Support</span>
+                        </div>
+                        <div class="wa-header-actions">
+                            <i class="ph ph-phone"></i>
+                            <i class="ph ph-dots-three-vertical"></i>
+                        </div>
+                    </div>
+                    <div class="chat-body wa-chat-body">
+                        <div class="wa-msg incoming">
+                            Selam Nia. My neighbors say sunflower pays better than wheat, but I don't have cash to buy the seed. Can I still join?
+                            <div class="wa-msg-meta">10:05</div>
+                        </div>
+                        <div class="wa-msg outgoing">
+                            Selam Gashe Bekele! Yes, you do not need cash in hand! The bank program gives you the certified seed and fertilizer upfront through your local aggregator.
+                            <div class="wa-msg-meta">10:06 <i class="ph ph-checks"></i></div>
+                        </div>
+                        <div class="wa-msg incoming">
+                            What if I cannot pay the bank back? How do they collect?
+                            <div class="wa-msg-meta">10:08</div>
+                        </div>
+                        <div class="wa-msg outgoing">
+                            Tena Oil buys all your sunflower crop at a guaranteed fixed price. When you bring your harvest to the storehouse, the seed cost is paid automatically, and all your cash profit goes straight to you!
+                            <div class="wa-msg-meta">10:10 <i class="ph ph-checks"></i></div>
+                        </div>
+                        <div class="wa-msg incoming">
+                            good. how can I sign up?
+                            <div class="wa-msg-meta">10:12</div>
+                        </div>
+                        <div class="wa-msg outgoing">
+                            You are registered, Ato Bekele! Your aggregator will inform you the pickup day for your seed bags.
+                            <div class="wa-msg-meta">10:13 <i class="ph ph-checks"></i></div>
+                        </div>
+                    </div>
+                    <div class="wa-chat-footer">
+                        <div class="wa-input-pill">Type a message...</div>
+                        <div class="wa-circle-btn"><i class="ph ph-paper-plane-tilt"></i></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+<section id="slide-10" class="cluster-slide" style="position: relative;">
+        <img src="images/logo.png" alt="iNua" class="slide-logo">
+        <div class="landscape-bg"></div>
+        <div class="scale-wrapper">
+            <div class="cluster-title">
+                <h2>Nuru</h2>
+                <div class="agent-role">Weather & Harvest Timing Advisor</div>
+            </div>
+
+            <div class="character-backdrop"></div>
+            <div class="cluster-character">
+                <img src="images/nuru_full.png" alt="Nuru">
+            </div>
+
+            <div class="cluster-card card-top-left">
+                <div class="card-icon"><i class="ph ph-cloud-rain"></i></div>
+                <h4>Actionable Weather Directives</h4>
+                <p>Nuru translates weather into practical actionable advice: "Heavy rain expected in 48 hours; finish your urea top-dressing before tonight to maximize nutrient absorption."</p>
+            </div>
+            <div class="cluster-card card-top-right">
+                <div class="card-icon"><i class="ph ph-calendar-blank"></i></div>
+                <h4>Sowing Window Precision</h4>
+                <p>Pinpoints optimal planting windows across Oromia, Awasa, and Rift Valley to prevent seed death in dry soil.</p>
+            </div>
+            <div class="cluster-card card-bottom-left">
+                <div class="card-icon"><i class="ph ph-shield-warning"></i></div>
+                <h4>weather linked outbound informative advice</h4>
+                <p>"Hold sunflower harvest until next Tuesday. Harvesting before rain risks mould and high acidity during extraction."</p>
+            </div>
+            <div class="cluster-card card-bottom-right">
+                <div class="card-icon"><i class="ph ph-truck"></i></div>
+                <h4>Dukem Factory Inflow Coordination</h4>
+                <p>Coordinates regional harvest schedules to prevent single-week gluts and ensure steady truck inflows into Dukem.</p>
+            </div>
+
+            <svg class="cluster-connectors" viewBox="0 0 1920 945">
+                <defs><marker id="arrow-nuru" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto"><polygon points="0 0, 8 3, 0 6" fill="#eab683"/></marker></defs>
+                <line x1="700" y1="250" x2="820" y2="380" marker-end="url(#arrow-nuru)"/>
+                <line x1="1220" y1="250" x2="1100" y2="380" marker-end="url(#arrow-nuru)"/>
+                <line x1="680" y1="695" x2="820" y2="570" marker-end="url(#arrow-nuru)"/>
+                <line x1="1240" y1="695" x2="1090" y2="570" marker-end="url(#arrow-nuru)"/>
+            </svg>
+
+            <i class="ph ph-sun floating-icon" style="top: 120px; left: 220px;"></i>
+            <i class="ph ph-cloud floating-icon" style="top: 300px; right: 200px;"></i>
+            <i class="ph ph-thermometer floating-icon" style="bottom: 150px; left: 200px;"></i>
+        </div>
+    </section>
+
+<section id="slide-11" class="whatsapp-conv-slide">
+        <img src="images/logo.png" alt="iNua" class="slide-logo">
+        <div class="landscape-bg"></div>
+        <div class="scale-wrapper">
+            <div class="wa-centered-wrapper">
+                <div class="wa-phone-device">
+                    <div class="wa-phone-top-bar"></div>
+                    <div class="wa-chat-header">
+                        <img src="images/nuru_full.png" alt="Nuru" class="wa-header-avatar">
+                        <div class="wa-header-info">
+                            <span class="wa-contact-name">Nuru • Weather Advisor</span>
+                            <span class="wa-contact-status">online • iNua Weather</span>
+                        </div>
+                        <div class="wa-header-actions">
+                            <i class="ph ph-phone"></i>
+                            <i class="ph ph-dots-three-vertical"></i>
+                        </div>
+                    </div>
+                    <div class="chat-body wa-chat-body">
+                        <div class="wa-msg outgoing">
+                            ⚠️ Weather Alert: Heavy rain is coming in two days. If your white fertilizer (Urea) is ready, spread it on the field before tonight so the rain melts it into the roots.
+                            <div class="wa-msg-meta">07:30 <i class="ph ph-checks"></i></div>
+                        </div>
+                        <div class="wa-msg incoming">
+                            Selam Nuru! My sunflower heads are brown. Should I cut them down today before the rain hits?
+                            <div class="wa-msg-meta">07:42</div>
+                        </div>
+                        <div class="wa-msg outgoing">
+                            No, do not cut them yet! Wet harvested heads will rot and grow mold in your store. Let them stay standing through the rain. Wait for 3 hot sunny days next week so the seeds dry fully.
+                            <div class="wa-msg-meta">07:44 <i class="ph ph-checks"></i></div>
+                        </div>
+                        <div class="wa-msg incoming">
+                            Okay, I will wait. When can I bring my sacks to the Dukem collection center?
+                            <div class="wa-msg-meta">07:46</div>
+                        </div>
+                        <div class="wa-msg outgoing">
+                            Bring your sacks next Wednesday morning. The trucks will weigh and unload your bags immediately without waiting in line.
+                            <div class="wa-msg-meta">07:48 <i class="ph ph-checks"></i></div>
+                        </div>
+                    </div>
+                    <div class="wa-chat-footer">
+                        <div class="wa-input-pill">Type a message...</div>
+                        <div class="wa-circle-btn"><i class="ph ph-paper-plane-tilt"></i></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+<section id="slide-12" class="cluster-slide" style="position: relative;">
+        <img src="images/logo.png" alt="iNua" class="slide-logo">
+        <div class="landscape-bg"></div>
+        <div class="scale-wrapper">
+            <div class="cluster-title">
+                <h2>Grace</h2>
+                <div class="agent-role">Supply Chain M&E & Field Verification</div>
+            </div>
+
+            <div class="character-backdrop"></div>
+            <div class="cluster-character">
+                <img src="images/grace_full.png" alt="Grace">
+            </div>
+
+            <div class="cluster-card card-top-left">
+                <div class="card-icon"><i class="ph ph-clipboard-text"></i></div>
+                <h4>Conversational Audits</h4>
+                <p>Calls thousands of growers to verify planted hectares, germination percentage, and input usage without manual paperwork.</p>
+            </div>
+            <div class="cluster-card card-top-right">
+                <div class="card-icon"><i class="ph ph-shield-check"></i></div>
+                <h4>Bank De-Risking Records</h4>
+                <p>Delivers audited field verification data to partner banks, confirming crop status and slashing default anxiety.</p>
+            </div>
+            <div class="cluster-card card-bottom-left">
+                <div class="card-icon"><i class="ph ph-truck"></i></div>
+                <h4>Dukem Intake Forecasting</h4>
+                <p>Aggregates predicted harvest dates and tonnages to give factory managers reliable schedules weeks in advance.</p>
+            </div>
+            <div class="cluster-card card-bottom-right">
+                <div class="card-icon"><i class="ph ph-bell-simple-ringing"></i></div>
+                <h4>Early Warning System</h4>
+                <p>Flags localized input shortages, aggregator friction, or farmer dissatisfaction long before harvest time.</p>
+            </div>
+
+            <svg class="cluster-connectors" viewBox="0 0 1920 945">
+                <defs><marker id="arrow-grace" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto"><polygon points="0 0, 8 3, 0 6" fill="#eab683"/></marker></defs>
+                <line x1="700" y1="250" x2="835" y2="380" marker-end="url(#arrow-grace)"/>
+                <line x1="1220" y1="250" x2="1085" y2="380" marker-end="url(#arrow-grace)"/>
+                <line x1="680" y1="695" x2="835" y2="570" marker-end="url(#arrow-grace)"/>
+                <line x1="1240" y1="695" x2="1085" y2="570" marker-end="url(#arrow-grace)"/>
+            </svg>
+
+            <i class="ph ph-chart-pie floating-icon" style="top: 120px; left: 220px;"></i>
+            <i class="ph ph-check-square-offset floating-icon" style="top: 300px; right: 200px;"></i>
+            <i class="ph ph-database floating-icon" style="bottom: 150px; left: 200px;"></i>
+        </div>
+    </section>
+
+<section id="slide-13" class="whatsapp-conv-slide">
+        <img src="images/logo.png" alt="iNua" class="slide-logo">
+        <div class="landscape-bg"></div>
+        <div class="scale-wrapper">
+            <div class="wa-centered-wrapper">
+                <div class="wa-phone-device">
+                    <div class="wa-phone-top-bar"></div>
+                    <div class="wa-chat-header">
+                        <img src="images/grace_full.png" alt="Grace" class="wa-header-avatar">
+                        <div class="wa-header-info">
+                            <span class="wa-contact-name">Grace • Field Verification</span>
+                            <span class="wa-contact-status">online • iNua Field Team</span>
+                        </div>
+                        <div class="wa-header-actions">
+                            <i class="ph ph-phone"></i>
+                            <i class="ph ph-dots-three-vertical"></i>
+                        </div>
+                    </div>
+                    <div class="chat-body wa-chat-body">
+                        <div class="wa-msg outgoing">
+                            Selam Ato Mulugeta! This is Grace from iNua. Just checking on your farm: Have your sunflower sprouts appeared from the soil yet?
+                            <div class="wa-msg-meta">14:10 <i class="ph ph-checks"></i></div>
+                        </div>
+                        <div class="wa-msg incoming">
+                            Selam Grace! Yes, green rows are showing nicely. Almost every seed sprouted.
+                            <div class="wa-msg-meta">14:12</div>
+                        </div>
+                        <div class="wa-msg outgoing">
+                            That is wonderful news! Did you receive all the fertilizer bags from the cooperative store without any problems?
+                            <div class="wa-msg-meta">14:13 <i class="ph ph-checks"></i></div>
+                        </div>
+                        <div class="wa-msg incoming">
+                            Yes, received all bags on time and already applied.
+                            <div class="wa-msg-meta">14:15</div>
+                        </div>
+                        <div class="wa-msg outgoing">
+                            Good work. I have recorded your farm as healthy in the system. The bank and factory now have your farm confirmed. We are here if you need anything!
+                            <div class="wa-msg-meta">14:16 <i class="ph ph-checks"></i></div>
+                        </div>
+                    </div>
+                    <div class="wa-chat-footer">
+                        <div class="wa-input-pill">Type a message...</div>
+                        <div class="wa-circle-btn"><i class="ph ph-paper-plane-tilt"></i></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+<section id="slide-14" class="cluster-slide" style="position: relative;">
+        <img src="images/logo.png" alt="iNua" class="slide-logo">
+        <div class="landscape-bg"></div>
+        <div class="scale-wrapper">
+            <div class="cluster-title">
+                <h2>iNua</h2>
+                <div class="agent-role">Data Analyst & Operations Intelligence</div>
+            </div>
+
+            <div class="character-backdrop"></div>
+            <div class="cluster-character">
+                <img src="images/inua_full.png" alt="iNua">
+            </div>
+
+            <div class="cluster-card card-top-left">
+                <div class="card-icon"><i class="ph ph-cpu"></i></div>
+                <h4>Cross-Agent Data Synthesis</h4>
+                <p>Unifies real-time field data streams from Chris, Nia, Nuru, and Grace into a single synchronized supply chain intelligence layer.</p>
+            </div>
+            <div class="cluster-card card-top-right">
+                <div class="card-icon"><i class="ph ph-chart-line-up"></i></div>
+                <h4>Executive & Bank Dashboards</h4>
+                <p>Translates thousands of farmer conversations into executive decision dashboards and audited risk metrics for partner banks.</p>
+            </div>
+            <div class="cluster-card card-bottom-left">
+                <div class="card-icon"><i class="ph ph-warning-circle"></i></div>
+                <h4>Operational Blind-Spot Diagnostics</h4>
+                <p>Identifies systemic bottlenecks, underperforming Woredas, or loan default risks before they impact processing quotas.</p>
+            </div>
+            <div class="cluster-card card-bottom-right">
+                <div class="card-icon"><i class="ph ph-chart-polar"></i></div>
+                <h4>100,000 MT Capacity Modeling</h4>
+                <p>Predicts harvest inflow curves and models processing scenarios to guarantee Dukem's extraction plant hits peak efficiency.</p>
+            </div>
+
+            <svg class="cluster-connectors" viewBox="0 0 1920 945">
+                <defs><marker id="arrow-inua" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto"><polygon points="0 0, 8 3, 0 6" fill="#eab683"/></marker></defs>
+                <line x1="700" y1="250" x2="830" y2="380" marker-end="url(#arrow-inua)"/>
+                <line x1="1220" y1="250" x2="1090" y2="380" marker-end="url(#arrow-inua)"/>
+                <line x1="680" y1="695" x2="830" y2="570" marker-end="url(#arrow-inua)"/>
+                <line x1="1240" y1="695" x2="1090" y2="570" marker-end="url(#arrow-inua)"/>
+            </svg>
+
+            <i class="ph ph-chart-bar floating-icon" style="top: 120px; left: 220px;"></i>
+            <i class="ph ph-graph floating-icon" style="top: 300px; right: 200px;"></i>
+            <i class="ph ph-database floating-icon" style="bottom: 150px; left: 200px;"></i>
+        </div>
+    </section>
+
+<section id="slide-15" class="carousel-slide" style="position: relative; height: 100vh; overflow: hidden;">
+        <img src="images/logo.png" alt="iNua" class="slide-logo">
+        <div class="landscape-bg"></div>
+
+        <div class="scale-wrapper">
+            <div class="carousel-title">
+                <h2>Endless Experts. One Unified Platform</h2>
+                <p>iNua offers endless expers, tailored made to your organiztion's supply chain needs</p>
+            </div>
+
+            <div class="agents-carousel-wrapper">
+                <button class="carousel-nav-btn prev" id="carouselPrev" aria-label="Previous agents">&#8249;</button>
+                <div class="agents-showcase-viewport" id="showcaseViewport">
+                    <div class="agents-showcase">
+                        <div class="agent-mini" style="--agent-color: #5a7247">
+                            <img src="images/faith_full.png" alt="Faith">
+                            <strong>Faith</strong>
+                            <small>Pest & Disease Expert</small>
+                        </div>
+                        <div class="agent-mini" style="--agent-color: #d97736">
+                            <img src="images/tariq_full.png" alt="Tariq">
+                            <strong>Tariq</strong>
+                            <small>Sales Expert</small>
+                        </div>
+                        <div class="agent-mini" style="--agent-color: #b71c1c">
+                            <img src="images/marry_full.png" alt="Mary">
+                            <strong>Mary</strong>
+                            <small>Emergency & Crisis Response</small>
+                        </div>
+                        <div class="agent-mini" style="--agent-color: #e65100">
+                            <img src="images/amara_full.png" alt="Amara">
+                            <strong>Amara</strong>
+                            <small>Project Partner Relations</small>
+                        </div>
+                    </div>
+                </div>
+                <button class="carousel-nav-btn next" id="carouselNext" aria-label="Next agents">&#8250;</button>
+            </div>
+        </div>
+    </section>
+
+<section id="slide-16" class="cards-section">
+        <img src="images/logo.png" alt="iNua" class="slide-logo">
+        <div class="content-container">
+            <h2>From Sourcing Strategy to Factory Delivery</h2>
+            <div class="structure-cards">
+                <div class="structure-card">
+                    <div class="card-icon"><i class="ph ph-megaphone"></i></div>
+                    <h4>1. Advocate & Onboard</h4>
+                    <p>Reaches commercial farmers and smallholder clusters to explain the economic upside of sunflower and guaranteed Tena Oil offtake.</p>
+                </div>
+                <div class="structure-card">
+                    <div class="card-icon"><i class="ph ph-plant"></i></div>
+                    <h4>2. Guide Agronomy</h4>
+                    <p>Delivers stage-by-stage guidance for growing sunflowers, from seedbed preparation, planting depth, fertilizer timing, disease prevention, until harvest.</p>
+                </div>
+                <div class="structure-card">
+                    <div class="card-icon"><i class="ph ph-cloud-sun"></i></div>
+                    <h4>3. minimize Risk & Manage Schedule</h4>
+                    <p>Translates weather forecasts into practical farming actions, and coordinates harvest flow across all farmers to prevent factory congestion.</p>
+                </div>
+                <div class="structure-card">
+                    <div class="card-icon"><i class="ph ph-chart-line-up"></i></div>
+                    <h4>4. Verify & Finance</h4>
+                    <p>Audits acreage and crop progress in real-time, giving lending banks verification data to de-risk input loans.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<section id="slide-17" class="cards-section" style="position: relative;">
+        <img src="images/logo.png" alt="iNua" class="slide-logo">
+        <div class="landscape-bg"></div>
+        <div class="content-container" style="position: relative; z-index: 2;">
+            <h2>Reaching Ethiopian Farmers on the Channels They Already Use</h2>
+            <div class="channels-cards" style="margin-top: 50px;">
+                <div class="channel-card">
+                    <div class="card-icon"><i class="ph ph-phone-call" style="font-size: 54px; color: var(--brand-green);"></i></div>
+                    <h4>Interactive Phone Calls</h4>
+                    <p>Natural voice calls in Amharic. Works on basic feature phones with zero internet or literacy requirements.</p>
+                </div>
+                <div class="channel-card">
+                    <div class="card-icon"><i class="ph ph-chats-circle" style="font-size: 54px; color: var(--accent-orange);"></i></div>
+                    <h4>SMS Direct Alerts</h4>
+                    <p>Text messages for input pickup schedules, weather alerts, contract IDs, and payment notifications. Works on every type of phones.</p>
+                </div>
+                <div class="channel-card">
+                    <div class="card-icon"><i class="ph ph-whatsapp-logo" style="font-size: 54px; color: #25D366;"></i></div>
+                    <h4>WhatsApp Business</h4>
+                    <p>Rich conversational support for commercial farm managers and aggregators: photo, voice notes, and share documents.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<section id="slide-18" style="position: relative;">
+        <img src="images/logo.png" alt="iNua" class="slide-logo">
+        <div class="landscape-bg"></div>
+        <div class="content-container" style="position: relative; z-index: 2;">
+            <h2 style="font-size: 42px; margin-bottom: 14px;">Complete visibility: from field to factory</h2>
+            <p style="font-size: 19px; color: var(--text-color); max-width: 820px; margin: 0 auto 30px;">
+                A centralized live dashboard giving factory directors, supply chain managers, and partner banks real-time visibility across every conversation, farmer and location.
+            </p>
+            <img src="images/dashboard-laptop.png" alt="iNua Sourcing Intelligence Dashboard" style="max-width: 680px; width: 100%; border-radius: 16px; box-shadow: 0 20px 60px rgba(0,0,0,0.14);">
+        </div>
+    </section>
+
+<section id="slide-19" class="cards-section" style="position: relative;">
+        <img src="images/logo.png" alt="iNua" class="slide-logo">
+        <div class="landscape-bg"></div>
+        <div class="content-container" style="position: relative; z-index: 2;">
+            <h2>Concrete Value Creation for the Dukem Sourcing Model</h2>
+            <div class="six-grid" style="margin-top: 36px;">
+                <div class="grid-card">
+                    <div class="card-icon"><i class="ph ph-factory"></i></div>
+                    <h4>Maximize 100k MT Capacity</h4>
+                    <p>Fills plant crushing lines with consistent domestic sunflower raw material, slashing idle downtime.</p>
+                </div>
+                <div class="grid-card">
+                    <div class="card-icon"><i class="ph ph-users-three"></i></div>
+                    <h4>Onboard 50+ Ha Commercials</h4>
+                    <p>Targets commercial investors with personalized ROI models, signing larger acreage with minimal effort.</p>
+                </div>
+                <div class="grid-card">
+                    <div class="card-icon"><i class="ph ph-user-plus"></i></div>
+                    <h4>Zero Headcount Expansion</h4>
+                    <p>Provides the reach of endless agronomists without hiring, vehicles, fuel, or administrative overhead.</p>
+                </div>
+                <div class="grid-card">
+                    <div class="card-icon"><i class="ph ph-bank"></i></div>
+                    <h4>Unlocks Bank Financing</h4>
+                    <p>Field verification data gives partner banks the confidence to disburse loans safely.</p>
+                </div>
+                <div class="grid-card">
+                    <div class="card-icon"><i class="ph ph-arrows-clockwise"></i></div>
+                    <h4>Synchronized Harvest Intake</h4>
+                    <p>Sync harvest timing across zones to prevent truck congestion and seed moisture spoilage at the gate.</p>
+                </div>
+                <div class="grid-card">
+                    <div class="card-icon"><i class="ph ph-flag"></i></div>
+                    <h4>Sovereign Import Substitution</h4>
+                    <p>Directly delivers on Ethiopia's national vision by replacing imported crude oil with domestic Tena Oil.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<section id="slide-20" class="cards-section" style="position: relative;">
+        <img src="images/logo.png" alt="iNua" class="slide-logo">
+        <div class="landscape-bg"></div>
+        <div class="content-container" style="position: relative; z-index: 2;">
+            <h2>Adapted to the Practical Realities of Ethiopian Agriculture</h2>
+            <div class="six-grid" style="margin-top: 36px;">
+                <div class="grid-card">
+                    <div class="card-icon"><i class="ph ph-translate"></i></div>
+                    <h4>Native Amharic Fluency</h4>
+                    <p>Spoken voice conversations with natural rural agricultural terminology and zero literacy barriers.</p>
+                </div>
+                <div class="grid-card">
+                    <div class="card-icon"><i class="ph ph-cell-signal-medium"></i></div>
+                    <h4>2G/3G Network Resilient</h4>
+                    <p>Engineered for rural connectivity. No heavy apps or 4G data required on the farmer's end.</p>
+                </div>
+                <div class="grid-card">
+                    <div class="card-icon"><i class="ph ph-shield-check"></i></div>
+                    <h4>Strict Knowledge Boundaries</h4>
+                    <p>Agents strictly follow company-approved hybrid agronomy guidelines. Zero hallucinations or off-script advice.</p>
+                </div>
+                <div class="grid-card">
+                    <div class="card-icon"><i class="ph ph-user-circle-gear"></i></div>
+                    <h4>Human-in-the-Loop Control</h4>
+                    <p>Company managers set all routing triggers and receive immediate notifications for contract negotiations.</p>
+                </div>
+                <div class="grid-card">
+                    <div class="card-icon"><i class="ph ph-handshake"></i></div>
+                    <h4>Multi-Stakeholder Alignment</h4>
+                    <p>Harmonizes communication between commercial farmers, aggregators, local bank branches, and factory managers.</p>
+                </div>
+                <div class="grid-card">
+                    <div class="card-icon"><i class="ph ph-trend-up"></i></div>
+                    <h4>Seamless Scaling</h4>
+                    <p>Easily expands from an initial 100-farmer cohort to 20,000+ growers across all Ethiopian agricultural zones.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<section id="slide-21" class="cards-section" style="position: relative;">
+        <img src="images/logo.png" alt="iNua" class="slide-logo">
+        <div class="landscape-bg"></div>
+        <div class="content-container" style="position: relative; z-index: 2;">
+            <h2>Why Industrial Leaders Trust iNua & AgriFriend</h2>
+            <div class="trust-cards" style="margin-top: 50px;">
+                <div class="trust-card">
+                    <div class="card-icon"><i class="ph ph-shield-star"></i></div>
+                    <h4>Proven Enterprise Technology</h4>
+                    <p>Bringing battle-tested conversational AI infrastructure from the US & Europe directly into East African agribusiness.</p>
+                </div>
+                <div class="trust-card">
+                    <div class="card-icon"><i class="ph ph-lock-key"></i></div>
+                    <h4>Enterprise Data Confidentiality</h4>
+                    <p>Strict corporate data sovereignty. All farmer lists, yield figures, and contracts remain 100% private to the company.</p>
+                </div>
+                <div class="trust-card">
+                    <div class="card-icon"><i class="ph ph-microphone-stage"></i></div>
+                    <h4>True Conversational AI</h4>
+                    <p>Dynamic, responsive two-way dialogues — not static, frustrating pre-recorded IVR trees or basic SMS bots.</p>
+                </div>
+                <div class="trust-card">
+                    <div class="card-icon"><i class="ph ph-globe-hemisphere-east"></i></div>
+                    <h4>Deep Ground Partnerships</h4>
+                    <p>Co-developed with AgriFriend, combining deep on-the-ground Ethiopian rural field experience with cutting-edge tech.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<section id="slide-22" class="cards-section" style="position: relative;">
+        <img src="images/logo.png" alt="iNua" class="slide-logo">
+        <div class="landscape-bg"></div>
+        <div class="content-container" style="position: relative; z-index: 2;">
+            <h2 style="font-size: 38px; margin-bottom: 10px;">3-Month Pilot Deployment Pathway</h2>
+            <p style="font-size: 18px; color: var(--text-color); max-width: 750px; margin: 0 auto;">
+                A structured, fast-validation rollout designed to demonstrate measurable sourcing value with minimal operational risk.
+            </p>
+
+            <div class="pilot-timeline">
+                <div class="timeline-card">
+                    <h4>Phase 1: Knowledge Ingestion</h4>
+                    <p>Ingest company hybrid sunflower agronomy guides, 37k ETB input packages, contract farming terms, and bank requirements into the AI engine.</p>
+                </div>
+                <div class="timeline-card">
+                    <h4>Phase 2: Amharic Setup & Testing</h4>
+                    <p>Configure Chris, Nia, Nuru, and Grace with local phone lines. Run voice verification trials directly with company agronomy leads.</p>
+                </div>
+                <div class="timeline-card">
+                    <h4>Phase 3: Targeted Farmer Launch</h4>
+                    <p>Initiate outbound advocacy and 24/7 inbound advisory for an initial cohort of commercial farmers (50–200 farmers / 2,000–5,000 ha).</p>
+                </div>
+                <div class="timeline-card">
+                    <h4>Phase 4: Factory Scale-Up</h4>
+                    <p>Evaluate farmer adoption rates, agronomic compliance, and bank loan utilization, before expanding nationally to feed the 100,000 MT plant.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<section id="slide-23" class="bg-slide">
+        <img src="images/logo.png" alt="iNua" class="slide-logo">
+        <div class="content-container">
+            <h1 style="font-size: 54px; line-height: 1.2; margin-bottom: 20px;">Securing Ethiopia's Edible Oil Independence</h1>
+            <h3 style="font-size: 26px; color: var(--heading-color); max-width: 850px; margin: 0 auto 24px;">
+                iNua Technologies × AgriFriend
+            </h3>
+            <p style="font-size: 20px; color: var(--text-color); max-width: 800px; margin: 0 auto 36px; line-height: 1.6;">
+                Partnering with company leadership to build a high-yielding, resilient, and fully digitized domestic sunflower supply chain.
+            </p>
+            <div>
+                <a href="mailto:info@inua-technologies.com" class="contact-btn" style="display: inline-block; background: var(--brand-green); color: white; padding: 14px 36px; border-radius: 99px; text-decoration: none; font-weight: 700; font-size: 17px; box-shadow: 0 8px 24px rgba(18,107,79,0.25);">
+                    info@inua-technologies.com
+                </a>
+            </div>
+        </div>
+        <p style="position: absolute; bottom: 24px; left: 0; right: 0; text-align: center; font-size: 13px; color: var(--text-color); opacity: 0.7; letter-spacing: 0.02em;">
+            &copy; 2026 iNua Technologies. All rights reserved. Confidential.
+        </p>
+    </section>
+
+
+    <!-- Floating Slide Controller & Counter -->
+    <div id="deckNavWidget" style="position: fixed; bottom: 24px; right: 28px; z-index: 99999; display: flex; align-items: center; gap: 8px; background: rgba(255, 255, 255, 0.94); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); padding: 6px 16px; border-radius: 99px; box-shadow: 0 4px 24px rgba(0,0,0,0.14); border: 1px solid rgba(140, 65, 21, 0.18); font-family: 'Poppins', sans-serif; user-select: none;">
+        <button id="navPrevSlide" type="button" style="background: transparent; border: none; cursor: pointer; color: #8c4115; font-size: 20px; display: flex; align-items: center; justify-content: center; width: 32px; height: 32px; border-radius: 50%; transition: all 0.2s; outline: none;" title="Previous Slide (Up / Left Arrow)">
+            <i class="ph ph-caret-left" style="pointer-events: none;"></i>
+        </button>
+        <span id="slideCounterText" style="font-size: 14px; font-weight: 700; color: #8c4115; min-width: 60px; text-align: center; letter-spacing: 0.05em; pointer-events: none;">1 / 23</span>
+        <button id="navNextSlide" type="button" style="background: transparent; border: none; cursor: pointer; color: #8c4115; font-size: 20px; display: flex; align-items: center; justify-content: center; width: 32px; height: 32px; border-radius: 50%; transition: all 0.2s; outline: none;" title="Next Slide (Down / Right Arrow / Space)">
+            <i class="ph ph-caret-right" style="pointer-events: none;"></i>
+        </button>
+    </div>
+
+<script>
+        // Scaling engine for 1920x945 wrappers
+        function adjustScales() {
+            const wrappers = document.querySelectorAll('.scale-wrapper');
+            const targetW = 1920;
+            const targetH = 945;
+
+            wrappers.forEach(wrapper => {
+                const parent = wrapper.parentElement;
+                const parentW = parent.clientWidth;
+                const parentH = parent.clientHeight;
+                const scaleX = parentW / targetW;
+                const scaleY = parentH / targetH;
+                const scale = Math.min(scaleX, scaleY);
+                wrapper.style.transform = `translate(-50%, -50%) scale(${scale})`;
+            });
+        }
+        window.addEventListener('load', adjustScales);
+        window.addEventListener('resize', adjustScales);
+        adjustScales();
+
+        // Support for single-slide rendering when exported or queried with ?slide=X
+        (function() {
+            const params = new URLSearchParams(window.location.search);
+            const slideParam = params.get('slide');
+            if (slideParam) {
+                const targetIdx = parseInt(slideParam, 10) - 1;
+                const sections = document.querySelectorAll('section');
+                sections.forEach((s, idx) => {
+                    if (idx !== targetIdx) {
+                        s.style.display = 'none';
+                    } else {
+                        s.style.display = 'flex';
+                        s.style.height = '100vh';
+                    }
+                });
+                const counter = document.getElementById('slideCounterText');
+                if (counter) counter.textContent = slideParam + ' / ' + sections.length;
+            }
+        })();
+
+        // Carousel navigation
+        (function() {
+            const viewport = document.getElementById('showcaseViewport');
+            const prevBtn = document.getElementById('carouselPrev');
+            const nextBtn = document.getElementById('carouselNext');
+
+            if (viewport && prevBtn && nextBtn) {
+                const updateArrows = () => {
+                    prevBtn.style.opacity = viewport.scrollLeft <= 10 ? '0.4' : '1';
+                    const maxScroll = viewport.scrollWidth - viewport.clientWidth;
+                    nextBtn.style.opacity = viewport.scrollLeft >= maxScroll - 10 ? '0.4' : '1';
+                };
+
+                prevBtn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    viewport.scrollBy({ left: -220, behavior: 'smooth' });
+                });
+
+                nextBtn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    viewport.scrollBy({ left: 220, behavior: 'smooth' });
+                });
+
+                viewport.addEventListener('scroll', updateArrows);
+                window.addEventListener('resize', updateArrows);
+                updateArrows();
+            }
+        })();
+
+        // Robust Full-Deck Navigation & Live Slide Counter Controller
+        (function() {
+            function initDeckController() {
+                const sections = Array.from(document.querySelectorAll('section'));
+                const counterText = document.getElementById('slideCounterText');
+                const prevBtn = document.getElementById('navPrevSlide');
+                const nextBtn = document.getElementById('navNextSlide');
+
+                if (!sections.length || !counterText || !prevBtn || !nextBtn) return;
+
+                let activeIndex = 0;
+
+                function updateCounterUI(idx) {
+                    activeIndex = Math.max(0, Math.min(idx, sections.length - 1));
+                    counterText.textContent = (activeIndex + 1) + ' / ' + sections.length;
+                    prevBtn.style.opacity = activeIndex === 0 ? '0.3' : '1';
+                    prevBtn.style.cursor = activeIndex === 0 ? 'default' : 'pointer';
+                    nextBtn.style.opacity = activeIndex === sections.length - 1 ? '0.3' : '1';
+                    nextBtn.style.cursor = activeIndex === sections.length - 1 ? 'default' : 'pointer';
+                }
+
+                function getSlideIndexFromScroll() {
+                    const scrollY = window.scrollY || window.pageYOffset;
+                    const centerPoint = scrollY + (window.innerHeight / 2);
+                    let closestIdx = 0;
+                    let minDiff = Infinity;
+                    sections.forEach((sec, idx) => {
+                        const secCenter = sec.offsetTop + (sec.offsetHeight / 2);
+                        const diff = Math.abs(secCenter - centerPoint);
+                        if (diff < minDiff) {
+                            minDiff = diff;
+                            closestIdx = idx;
+                        }
+                    });
+                    return closestIdx;
+                }
+
+                function onScrollOrResize() {
+                    const idx = getSlideIndexFromScroll();
+                    updateCounterUI(idx);
+                }
+
+                window.addEventListener('scroll', onScrollOrResize, { passive: true });
+                window.addEventListener('resize', onScrollOrResize);
+
+                // Use IntersectionObserver for precision with CSS scroll snap
+                if ('IntersectionObserver' in window) {
+                    const observer = new IntersectionObserver((entries) => {
+                        entries.forEach(entry => {
+                            if (entry.isIntersecting && entry.intersectionRatio >= 0.5) {
+                                const idx = sections.indexOf(entry.target);
+                                if (idx !== -1) {
+                                    updateCounterUI(idx);
+                                }
+                            }
+                        });
+                    }, { threshold: [0.5] });
+
+                    sections.forEach(sec => observer.observe(sec));
+                }
+
+                // Initial count update
+                updateCounterUI(getSlideIndexFromScroll());
+
+                function navigateToSlide(idx) {
+                    if (idx >= 0 && idx < sections.length) {
+                        sections[idx].scrollIntoView({ behavior: 'smooth' });
+                        updateCounterUI(idx);
+                    }
+                }
+
+                prevBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    const curr = getSlideIndexFromScroll();
+                    navigateToSlide(curr - 1);
+                });
+
+                nextBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    const curr = getSlideIndexFromScroll();
+                    navigateToSlide(curr + 1);
+                });
+
+                // Hover effects
+                [prevBtn, nextBtn].forEach(btn => {
+                    btn.addEventListener('mouseenter', () => {
+                        btn.style.backgroundColor = 'rgba(140, 65, 21, 0.1)';
+                    });
+                    btn.addEventListener('mouseleave', () => {
+                        btn.style.backgroundColor = 'transparent';
+                    });
+                });
+
+                // Keyboard shortcuts
+                document.addEventListener('keydown', function(e) {
+                    const tag = document.activeElement.tagName.toLowerCase();
+                    if (['input', 'textarea', 'select', 'button'].includes(tag)) return;
+
+                    const curr = getSlideIndexFromScroll();
+                    if (['ArrowDown', 'ArrowRight', 'PageDown', ' '].includes(e.key)) {
+                        e.preventDefault();
+                        navigateToSlide(curr + 1);
+                    } else if (['ArrowUp', 'ArrowLeft', 'PageUp'].includes(e.key)) {
+                        e.preventDefault();
+                        navigateToSlide(curr - 1);
+                    } else if (e.key === 'Home') {
+                        e.preventDefault();
+                        navigateToSlide(0);
+                    } else if (e.key === 'End') {
+                        e.preventDefault();
+                        navigateToSlide(sections.length - 1);
+                    }
+                });
+
+                // Click on empty space advances
+                document.addEventListener('click', function(e) {
+                    if (e.target.closest('a, button, input, select, textarea, #deckNavWidget, .agents-carousel-wrapper')) return;
+                    if (window.getSelection && window.getSelection().toString().length > 0) return;
+                    const curr = getSlideIndexFromScroll();
+                    navigateToSlide(curr + 1);
+                });
+            }
+
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', initDeckController);
+            } else {
+                initDeckController();
+            }
+        })();
+    </script>
+
+</body>
+</html>
