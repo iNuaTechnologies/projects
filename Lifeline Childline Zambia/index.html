@@ -1,0 +1,2682 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lifeline/Childline Zambia × iNua Technologies</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700&family=Poppins:wght@500;600;700;800&display=swap"
+        rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <style>
+        :root {
+            --heading-color: #8c4115;
+            --text-color: #544a42;
+            --accent-orange: #f2a51a;
+            --line-color: #eab683;
+            --brand-green: #126b4f;
+            --danger-red: #c0392b;
+            --bg-top: #FFFEFA;
+            --bg-bottom: #FFF1E0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-snap-type: y mandatory;
+            overflow-y: scroll;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Nunito', sans-serif;
+            color: var(--text-color);
+            background: linear-gradient(135deg, var(--bg-top) 0%, var(--bg-bottom) 100%);
+            min-height: 100vh;
+        }
+
+        section {
+            height: 100vh;
+            scroll-snap-align: start;
+            scroll-snap-stop: always;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4 {
+            font-family: 'Poppins', sans-serif;
+            color: var(--heading-color);
+        }
+
+        .content-container {
+            max-width: 1400px;
+            width: 100%;
+            padding: 0 60px;
+            text-align: center;
+        }
+
+        .scale-wrapper {
+            width: 1920px;
+            height: 945px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transform-origin: center center;
+        }
+
+        /* ===== LANDSCAPE BACKGROUND ===== */
+        .landscape-bg {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 50vh;
+            background-image: url('../Images/farm_landscape_bg.png');
+            background-size: cover;
+            background-position: bottom center;
+            background-repeat: no-repeat;
+            z-index: 0;
+            pointer-events: none;
+            opacity: 0.4;
+            mask-image: linear-gradient(to bottom, transparent 0%, black 40%);
+            -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 40%);
+        }
+
+        /* ===== TITLE / BG SLIDES ===== */
+        .bg-slide {
+            background-image: url('../Images/Elegant wave patterns in soft hues.png');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .title-slide {
+            background-position: center calc(50% - 10vh);
+        }
+
+        .bg-slide .content-container h1 {
+            font-size: 72px;
+            font-weight: 800;
+            margin-bottom: 20px;
+            color: var(--brand-green);
+        }
+
+        .bg-slide .content-container h3 {
+            font-size: 30px;
+            font-weight: 400;
+            color: var(--text-color);
+            font-family: 'Nunito', sans-serif;
+        }
+
+        .title-badge {
+            display: inline-block;
+            background: var(--brand-green);
+            color: #fff;
+            padding: 8px 24px;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            margin-bottom: 24px;
+        }
+
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 16px;
+            border-radius: 999px;
+            background: rgba(242, 165, 26, 0.12);
+            color: var(--heading-color);
+            font-size: 14px;
+            font-weight: 700;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            margin-bottom: 14px;
+        }
+
+        .eyebrow i {
+            color: var(--accent-orange);
+        }
+
+        .slide-subtitle {
+            font-size: 20px;
+            max-width: 980px;
+            margin: -30px auto 40px;
+        }
+
+        /* ===== STAT HIGHLIGHTS ===== */
+        .stat-row {
+            display: flex;
+            justify-content: center;
+            gap: 60px;
+            margin-top: 50px;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-item .stat-number {
+            font-family: 'Poppins', sans-serif;
+            font-size: 56px;
+            font-weight: 800;
+            line-height: 1;
+        }
+
+        .stat-item .stat-label {
+            font-size: 16px;
+            color: var(--text-color);
+            margin-top: 8px;
+            max-width: 200px;
+        }
+
+        /* ===== STRUCTURE CARDS ===== */
+        .cards-section h2 {
+            font-size: 44px;
+            margin-bottom: 50px;
+        }
+
+        .structure-cards {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .structure-card {
+            background: rgba(255, 255, 255, 0.85);
+            border-radius: 20px;
+            padding: 40px 30px;
+            max-width: 300px;
+            flex: 1;
+            min-width: 240px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06);
+            transition: transform 0.3s ease;
+        }
+
+        .structure-cards.five-up {
+            flex-wrap: nowrap;
+            gap: 20px;
+        }
+
+        .structure-cards.five-up .structure-card {
+            min-width: 0;
+            padding: 32px 22px;
+        }
+
+        .structure-card:hover {
+            transform: translateY(-6px);
+        }
+
+        .structure-card .card-icon {
+            font-size: 48px;
+            margin-bottom: 20px;
+            color: var(--brand-green);
+        }
+
+        .structure-card.problem-tone .card-icon {
+            color: var(--accent-orange);
+        }
+
+        .structure-card h4 {
+            font-size: 22px;
+            margin-bottom: 12px;
+            color: var(--heading-color);
+        }
+
+        .structure-card p {
+            font-size: 16px;
+            line-height: 1.5;
+            color: var(--text-color);
+        }
+
+        /* ===== CLUSTER SLIDE (agent detail) ===== */
+        .cluster-slide {
+            overflow: hidden;
+        }
+
+        .cluster-character {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            height: 700px;
+            z-index: 2;
+        }
+
+        .cluster-character img {
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .character-backdrop {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(ellipse at center bottom, rgba(18, 107, 79, 0.08) 0%, transparent 70%);
+            border-radius: 50%;
+            z-index: 1;
+        }
+
+        .cluster-title {
+            position: absolute;
+            top: 60px;
+            left: 50%;
+            transform: translateX(-50%);
+            text-align: center;
+            z-index: 5;
+        }
+
+        .cluster-title h2 {
+            font-size: 48px;
+            color: var(--heading-color);
+        }
+
+        .cluster-title .agent-role {
+            font-size: 24px;
+            color: var(--brand-green);
+            font-weight: 600;
+            margin-top: 6px;
+        }
+
+        .cluster-card {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(8px);
+            border-radius: 16px;
+            padding: 20px 24px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+            z-index: 4;
+            max-width: 340px;
+            transition: transform 0.3s ease;
+        }
+
+        .cluster-card:hover {
+            transform: translateY(-4px);
+        }
+
+        .cluster-card h4 {
+            font-size: 21px;
+            margin-bottom: 8px;
+            color: var(--heading-color);
+        }
+
+        .cluster-card p {
+            font-size: 17px;
+            line-height: 1.45;
+            color: var(--text-color);
+        }
+
+        .cluster-card .card-icon {
+            font-size: 32px;
+            margin-bottom: 10px;
+            color: var(--brand-green);
+        }
+
+        .cluster-card-bullet {
+            position: absolute;
+            z-index: 4;
+            list-style: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 21px;
+            font-weight: 600;
+            color: var(--text-color);
+            background: rgba(255, 255, 255, 0.75);
+            backdrop-filter: blur(6px);
+            padding: 8px 18px;
+            border-radius: 20px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .cluster-card-bullet i {
+            font-size: 21px;
+            color: var(--brand-green);
+        }
+
+        .card-top-left {
+            top: 160px;
+            left: 100px;
+        }
+
+        .card-top-right {
+            top: 160px;
+            right: 100px;
+        }
+
+        .card-bottom-left {
+            bottom: 130px;
+            left: 80px;
+        }
+
+        .card-bottom-right {
+            bottom: 130px;
+            right: 80px;
+        }
+
+        .cluster-connectors {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 3;
+            pointer-events: none;
+        }
+
+        .cluster-connectors line {
+            stroke: var(--line-color);
+            stroke-width: 2;
+            stroke-dasharray: 8, 6;
+        }
+
+        /* ===== HANDOVER STEPS ===== */
+        .handover-steps {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            margin-top: 40px;
+        }
+
+        .handover-step {
+            background: rgba(255, 255, 255, 0.92);
+            border-radius: 20px;
+            padding: 32px 24px;
+            flex: 1;
+            max-width: 250px;
+            box-shadow: 0 8px 28px rgba(0, 0, 0, 0.06);
+            text-align: center;
+            position: relative;
+            transition: transform 0.3s ease;
+        }
+
+        .handover-step:hover {
+            transform: translateY(-5px);
+        }
+
+        .handover-step .step-number {
+            position: absolute;
+            top: -16px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 32px;
+            height: 32px;
+            background: var(--brand-green);
+            color: #fff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Poppins', sans-serif;
+            font-size: 14px;
+            font-weight: 700;
+        }
+
+        .handover-step.human-step .step-number {
+            background: var(--accent-orange);
+        }
+
+        .handover-step .step-icon {
+            font-size: 40px;
+            color: var(--brand-green);
+            margin-bottom: 14px;
+        }
+
+        .handover-step.human-step .step-icon {
+            color: var(--accent-orange);
+        }
+
+        .handover-step h4 {
+            font-size: 17px;
+            margin-bottom: 8px;
+            color: var(--heading-color);
+        }
+
+        .handover-step p {
+            font-size: 14px;
+            line-height: 1.5;
+            color: var(--text-color);
+        }
+
+        .safeguard-note {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 36px;
+            padding: 12px 26px;
+            border-radius: 999px;
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--heading-color);
+            background: rgba(242, 165, 26, 0.12);
+        }
+
+        .safeguard-note i {
+            color: var(--accent-orange);
+            font-size: 22px;
+        }
+
+        /* ===== TRUST CARDS ===== */
+        .trust-cards {
+            display: flex;
+            justify-content: center;
+            gap: 28px;
+            flex-wrap: wrap;
+        }
+
+        .trust-card {
+            background: rgba(255, 255, 255, 0.88);
+            border-radius: 20px;
+            padding: 36px 28px;
+            max-width: 300px;
+            flex: 1;
+            min-width: 220px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06);
+            text-align: left;
+            border-top: 4px solid var(--brand-green);
+            transition: transform 0.3s ease;
+        }
+
+        .trust-card.open-item {
+            border-top-color: var(--accent-orange);
+        }
+
+        .trust-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .trust-card .card-icon {
+            font-size: 40px;
+            margin-bottom: 16px;
+            color: var(--brand-green);
+        }
+
+        .trust-card.open-item .card-icon {
+            color: var(--accent-orange);
+        }
+
+        .trust-card h4 {
+            font-size: 19px;
+            margin-bottom: 10px;
+        }
+
+        .trust-card p {
+            font-size: 15px;
+            line-height: 1.6;
+            color: var(--text-color);
+        }
+
+        /* ===== KPI TABLE ===== */
+        .kpi-table {
+            width: 1100px;
+            margin: 0 auto;
+            border-collapse: separate;
+            border-spacing: 0 12px;
+            text-align: left;
+        }
+
+        .kpi-table th {
+            font-family: 'Poppins', sans-serif;
+            font-size: 14px;
+            font-weight: 700;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            color: var(--heading-color);
+            padding: 0 24px;
+        }
+
+        .kpi-table td {
+            background: rgba(255, 255, 255, 0.92);
+            padding: 20px 24px;
+            font-size: 18px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.04);
+        }
+
+        .kpi-table td:first-child {
+            border-radius: 16px 0 0 16px;
+            font-weight: 700;
+            color: var(--heading-color);
+        }
+
+        .kpi-table td:first-child i {
+            color: var(--brand-green);
+            font-size: 24px;
+            vertical-align: middle;
+            margin-right: 10px;
+        }
+
+        .kpi-table td:last-child {
+            border-radius: 0 16px 16px 0;
+            font-weight: 700;
+            color: var(--brand-green);
+        }
+
+        /* ===== TIMELINE ===== */
+        .timeline-container {
+            position: relative;
+            width: 100%;
+            margin: 56px auto 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            z-index: 10;
+        }
+
+        .timeline-line {
+            position: absolute;
+            top: 35px;
+            left: 7%;
+            right: 7%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--brand-green) 0%, var(--accent-orange) 50%, var(--brand-green) 100%);
+            box-shadow: 0 0 15px rgba(212, 165, 116, 0.4);
+            z-index: 5;
+        }
+
+        .timeline-step {
+            width: 18.5%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            z-index: 10;
+        }
+
+        .step-node {
+            width: 70px;
+            height: 70px;
+            background: white;
+            border: 4px solid var(--brand-green);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.5rem;
+            color: var(--brand-green);
+            font-weight: 800;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1), 0 0 15px rgba(59, 136, 66, 0.2);
+            margin-bottom: 20px;
+        }
+
+        .timeline-step:nth-child(even) .step-node {
+            border-color: var(--accent-orange);
+            color: var(--accent-orange);
+        }
+
+        .step-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 16px;
+            padding: 16px 18px;
+            box-shadow: 0 15px 30px rgba(140, 65, 21, 0.08);
+            text-align: left;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .step-card h4 {
+            font-size: 1.1rem;
+            line-height: 1.3;
+        }
+
+        .step-card .step-duration {
+            font-size: 0.8rem;
+            font-weight: 800;
+            color: var(--accent-orange);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .timeline-step:nth-child(even) .step-card .step-duration {
+            color: var(--brand-green);
+        }
+
+        .step-card ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            margin-top: 4px;
+        }
+
+        .step-card li {
+            font-size: 0.9rem;
+            line-height: 1.4;
+            display: flex;
+            align-items: flex-start;
+            gap: 6px;
+        }
+
+        .step-card li::before {
+            content: "•";
+            color: var(--brand-green);
+            font-weight: bold;
+        }
+
+        .timeline-step:nth-child(even) .step-card li::before {
+            color: var(--accent-orange);
+        }
+
+        /* ===== CHANNEL ROW ===== */
+        .channel-row {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+            margin-top: 36px;
+        }
+
+        .channel-label {
+            font-family: 'Poppins', sans-serif;
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--heading-color);
+            margin-right: 8px;
+        }
+
+        .channel-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            background: var(--channel);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+            font-size: 32px;
+            color: #fff;
+        }
+
+        .channel-icon .whatsapp-logo {
+            width: 32px;
+            height: 32px;
+        }
+
+        /* ===== TEAM SLIDE ===== */
+        .future-team-title {
+            position: absolute;
+            top: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            text-align: center;
+            z-index: 10;
+            width: 100%;
+        }
+
+        .future-team-title h2 {
+            font-size: 48px;
+            color: var(--heading-color);
+            margin-bottom: 10px;
+        }
+
+        .future-team-title p {
+            font-size: 22px;
+            color: var(--text-color);
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .future-team-title .handover-note {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            max-width: none;
+            margin-top: 14px;
+            padding: 8px 20px;
+            border-radius: 999px;
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--heading-color);
+            background: rgba(242, 165, 26, 0.12);
+        }
+
+        .future-team-title .handover-note i {
+            color: var(--accent-orange);
+        }
+
+        .future-team-lineup {
+            position: absolute;
+            bottom: 5%;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            gap: 40px;
+            z-index: 5;
+        }
+
+        .future-team-member {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 360px;
+            transition: transform 0.3s ease;
+        }
+
+        .future-team-member:hover {
+            transform: translateY(-8px);
+        }
+
+        .future-team-member img {
+            width: 100%;
+            height: 440px;
+            object-fit: cover;
+            object-position: top center;
+            filter: brightness(1.0) contrast(1.25) saturate(1.1);
+            -webkit-mask-image: linear-gradient(to bottom, black 85%, transparent 100%);
+            mask-image: linear-gradient(to bottom, black 85%, transparent 100%);
+        }
+
+        .future-team-tag {
+            position: relative;
+            background: rgba(255, 255, 255, 0.95);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            border-radius: 12px;
+            padding: 8px 16px;
+            text-align: center;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+            margin-top: -12px;
+            z-index: 10;
+            min-width: 140px;
+        }
+
+        .future-team-tag h4 {
+            font-size: 26px;
+            color: var(--brand-green);
+            margin-bottom: 2px;
+            font-weight: 700;
+        }
+
+        .future-team-tag p {
+            font-size: 17px;
+            color: var(--text-color);
+            margin: 0;
+            line-height: 1.3;
+        }
+
+        .future-team-desc {
+            margin-top: 12px;
+            font-size: 17px;
+            line-height: 1.5;
+            color: var(--text-color);
+            text-align: center;
+            max-width: 330px;
+            background: rgba(255, 255, 255, 0.75);
+            backdrop-filter: blur(6px);
+            padding: 10px 14px;
+            border-radius: 12px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+        }
+
+        /* ===== CONTACT / CTA ===== */
+        .contact-btn {
+            display: inline-block;
+            background: var(--brand-green);
+            color: #fff;
+            padding: 16px 40px;
+            border-radius: 50px;
+            font-size: 20px;
+            font-weight: 600;
+            text-decoration: none;
+            margin-top: 36px;
+            transition: background 0.3s ease, transform 0.3s ease;
+        }
+
+        .contact-btn:hover {
+            background: #0e5a40;
+            transform: translateY(-3px);
+        }
+
+        /* ===== KPI CARDS ===== */
+        .kpi-cards {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+        }
+
+        .kpi-card {
+            background: rgba(255, 255, 255, 0.92);
+            border-radius: 20px;
+            padding: 34px 30px 30px;
+            flex: 1;
+            max-width: 390px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06);
+            text-align: left;
+            border-top: 4px solid var(--accent-orange);
+            transition: transform 0.3s ease;
+        }
+
+        .kpi-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .kpi-card.highlight {
+            border-top-color: var(--brand-green);
+            box-shadow: 0 12px 40px rgba(18, 107, 79, 0.16);
+        }
+
+        .kpi-card .kpi-index {
+            font-family: 'Poppins', sans-serif;
+            font-size: 14px;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: #8a7f75;
+        }
+
+        .kpi-card h4 {
+            font-size: 26px;
+            margin: 6px 0 22px;
+        }
+
+        .kpi-compare {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 20px;
+        }
+
+        .kpi-compare > i {
+            font-size: 28px;
+            color: var(--line-color);
+        }
+
+        .kpi-value {
+            font-family: 'Poppins', sans-serif;
+            font-size: 32px;
+            font-weight: 800;
+            line-height: 1.1;
+            white-space: nowrap;
+        }
+
+        .kpi-caption {
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            color: #8a7f75;
+        }
+
+        .kpi-card p {
+            font-size: 16px;
+            line-height: 1.5;
+            color: var(--text-color);
+        }
+
+        .phase-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            margin-top: 18px;
+            padding: 6px 14px;
+            border-radius: 999px;
+            font-size: 14px;
+            font-weight: 700;
+            background: rgba(242, 165, 26, 0.14);
+            color: var(--heading-color);
+        }
+
+        .phase-badge.green {
+            background: var(--brand-green);
+            color: #fff;
+        }
+
+        .phase-card .phase-badge {
+            align-self: flex-start;
+        }
+
+        .cluster-kpis {
+            position: absolute;
+            top: 60px;
+            right: 100px;
+            display: flex;
+            gap: 10px;
+            z-index: 5;
+        }
+
+        .cluster-kpis .phase-badge {
+            margin-top: 0;
+            font-size: 18px;
+            padding: 8px 18px;
+        }
+
+        .cluster-title .phase-badge,
+        .future-team-tag .phase-badge {
+            margin-top: 8px;
+        }
+
+        .future-team-tag .phase-badge {
+            font-size: 12px;
+            padding: 3px 10px;
+        }
+
+        /* ===== PHASE ROADMAP ===== */
+        .phase-cards {
+            display: flex;
+            justify-content: center;
+            align-items: stretch;
+            gap: 18px;
+        }
+
+        .phase-card {
+            background: rgba(255, 255, 255, 0.92);
+            border-radius: 20px;
+            padding: 30px 28px;
+            flex: 1;
+            max-width: 420px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06);
+            text-align: left;
+            border-top: 4px solid var(--accent-orange);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .phase-card.highlight {
+            border-top-color: var(--brand-green);
+            box-shadow: 0 12px 40px rgba(18, 107, 79, 0.16);
+        }
+
+        .phase-card .kpi-index {
+            font-family: 'Poppins', sans-serif;
+            font-size: 14px;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: #8a7f75;
+        }
+
+        .phase-card h4 {
+            font-size: 24px;
+            margin: 6px 0 18px;
+        }
+
+        .phase-head {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .phase-head h4 {
+            margin-bottom: 0;
+        }
+
+        .phase-card > ul {
+            margin-top: 18px;
+        }
+
+        .phase-avatar {
+            position: relative;
+            flex-shrink: 0;
+            width: 84px;
+            height: 84px;
+            border-radius: 50%;
+            overflow: hidden;
+            background: rgba(18, 107, 79, 0.08);
+        }
+
+        .phase-avatar img {
+            position: absolute;
+            width: 300%;
+            left: -100%;
+            top: 4%;
+        }
+
+        .phase-card ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            flex: 1;
+        }
+
+        .phase-card li {
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+            font-size: 16px;
+            line-height: 1.45;
+        }
+
+        .phase-card li i {
+            color: var(--brand-green);
+            font-size: 18px;
+            margin-top: 2px;
+        }
+
+        .phase-arrow {
+            align-self: center;
+            font-size: 34px;
+            color: var(--line-color);
+        }
+
+
+
+
+        .future-team-lineup.five-up {
+            gap: 24px;
+        }
+
+        .future-team-lineup.five-up .future-team-member {
+            width: 300px;
+        }
+
+        .future-team-lineup.five-up .future-team-member img {
+            height: 390px;
+        }
+
+        .future-team-lineup.five-up .future-team-desc {
+            font-size: 15px;
+            max-width: 290px;
+        }
+
+        /* ===== DASHBOARD ===== */
+        .dash-wrap {
+            --series-1: #15845a;
+            --series-2: #e0820b;
+            --series-3: #3b82c4;
+            --dash-surface: #ffffff;
+            --dash-line: #efe7dd;
+            --ink-1: #2f2924;
+            --ink-2: #6b6058;
+            --ink-3: #9a8f86;
+            --status-good: #1f7a3a;
+            --status-warning: #b45309;
+            --status-critical: #c0392b;
+            width: 1800px;
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+        }
+
+        .dash-heading {
+            text-align: center;
+        }
+
+        .dash-heading h2 {
+            font-size: 40px;
+        }
+
+        .dash {
+            background: var(--dash-surface);
+            border-radius: 22px;
+            box-shadow: 0 20px 60px rgba(140, 65, 21, 0.12);
+            overflow: hidden;
+            text-align: left;
+        }
+
+        .dash-top {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 14px 24px;
+            background: var(--brand-green);
+            color: #fff;
+        }
+
+        .dash-brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .dash-brand strong {
+            display: block;
+            font-family: 'Poppins', sans-serif;
+            font-size: 17px;
+        }
+
+        .dash-brand span {
+            font-size: 13px;
+            opacity: 0.8;
+        }
+
+        .dash-logo {
+            width: 38px;
+            height: 38px;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.16);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+        }
+
+        .dash-tabs {
+            display: flex;
+            gap: 6px;
+        }
+
+        .dash-tabs span {
+            padding: 7px 16px;
+            border-radius: 999px;
+            font-size: 14px;
+            font-weight: 600;
+            opacity: 0.75;
+        }
+
+        .dash-tabs span.active {
+            background: rgba(255, 255, 255, 0.18);
+            opacity: 1;
+        }
+
+        .dash-controls {
+            display: flex;
+            gap: 8px;
+        }
+
+        .dash-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 14px;
+            border-radius: 999px;
+            font-size: 13px;
+            font-weight: 700;
+            background: rgba(255, 255, 255, 0.14);
+        }
+
+        .dash-pill.sample {
+            background: #fff;
+            color: var(--heading-color);
+        }
+
+        .live-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #7ff0b8;
+            box-shadow: 0 0 0 3px rgba(127, 240, 184, 0.3);
+        }
+
+        .dash-tiles {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 14px;
+            padding: 18px 22px 0;
+        }
+
+        .dash-tile {
+            border: 1px solid var(--dash-line);
+            border-radius: 14px;
+            padding: 14px 16px;
+        }
+
+        .tile-label {
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--ink-2);
+        }
+
+        .tile-row {
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
+            gap: 8px;
+            height: 44px;
+        }
+
+        .tile-value {
+            font-family: 'Poppins', sans-serif;
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--ink-1);
+            line-height: 1.15;
+        }
+
+        .tile-spark {
+            width: 90px;
+            height: 28px;
+            margin-bottom: 8px;
+            overflow: visible;
+        }
+
+        .tile-spark polyline {
+            fill: none;
+            stroke: #d8cfc5;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .tile-spark .spark-now {
+            stroke: var(--series-1);
+        }
+
+        .tile-spark circle {
+            fill: var(--series-1);
+            stroke: var(--dash-surface);
+            stroke-width: 2;
+        }
+
+        .tile-delta {
+            margin-top: 4px;
+            font-size: 12.5px;
+            font-weight: 600;
+            color: var(--ink-2);
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .tile-delta.good i {
+            color: var(--status-good);
+        }
+
+        .tile-delta.muted {
+            color: var(--ink-3);
+        }
+
+        .dash-grid {
+            display: grid;
+            grid-template-columns: 1.45fr 1fr 1fr;
+            grid-template-rows: 254px 280px;
+            gap: 14px;
+            padding: 14px 22px 22px;
+        }
+
+        .dash-card {
+            border: 1px solid var(--dash-line);
+            border-radius: 14px;
+            padding: 14px 18px;
+            display: flex;
+            flex-direction: column;
+            min-height: 0;
+        }
+
+        .dash-card-head {
+            display: flex;
+            align-items: baseline;
+            justify-content: space-between;
+            margin-bottom: 8px;
+        }
+
+        .dash-card-head h5 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 16px;
+            color: var(--ink-1);
+        }
+
+        .dash-card-sub {
+            font-size: 12.5px;
+            color: var(--ink-3);
+        }
+
+        .dash-chart {
+            width: 100%;
+            flex: 1;
+            min-height: 0;
+        }
+
+        .dash-chart .grid line {
+            stroke: var(--dash-line);
+            stroke-width: 1;
+        }
+
+        .dash-chart .axis-text text {
+            font-size: 12px;
+            fill: var(--ink-3);
+            font-family: 'Nunito', sans-serif;
+            font-variant-numeric: tabular-nums;
+        }
+
+        .dash-chart .area {
+            fill: var(--series-1);
+            opacity: 0.1;
+        }
+
+        .dash-chart .line {
+            fill: none;
+            stroke: var(--series-1);
+            stroke-width: 2;
+            stroke-linejoin: round;
+            stroke-linecap: round;
+        }
+
+        .dash-chart .end-dot {
+            fill: var(--series-1);
+            stroke: var(--dash-surface);
+            stroke-width: 2;
+        }
+
+        .dash-chart .event-line {
+            stroke: var(--ink-3);
+            stroke-width: 1;
+        }
+
+        .dash-chart .event-label,
+        .dash-chart .value-label {
+            font-size: 13px;
+            font-weight: 600;
+            fill: var(--ink-2);
+            font-family: 'Nunito', sans-serif;
+        }
+
+        .dash-chart .value-label.strong {
+            font-size: 20px;
+            font-weight: 700;
+            fill: var(--ink-1);
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .dash-chart .hit circle {
+            fill: transparent;
+            cursor: default;
+        }
+
+        .donut-wrap {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            flex: 1;
+        }
+
+        .donut {
+            width: 190px;
+            height: 190px;
+            flex-shrink: 0;
+        }
+
+        .donut circle {
+            fill: none;
+            stroke-width: 26;
+        }
+
+        .donut .donut-track {
+            stroke: #f6f1ea;
+        }
+
+        .donut .seg.s1 { stroke: var(--series-1); }
+        .donut .seg.s2 { stroke: var(--series-2); }
+        .donut .seg.s3 { stroke: var(--series-3); }
+
+        .donut .donut-value {
+            font-family: 'Poppins', sans-serif;
+            font-size: 30px;
+            font-weight: 700;
+            fill: var(--ink-1);
+        }
+
+        .donut .donut-caption {
+            font-size: 12px;
+            fill: var(--ink-3);
+            font-family: 'Nunito', sans-serif;
+        }
+
+        .dash-legend {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            flex: 1;
+        }
+
+        .dash-legend li {
+            display: grid;
+            grid-template-columns: 12px 1fr auto;
+            align-items: center;
+            gap: 10px;
+            font-size: 14px;
+            color: var(--ink-2);
+        }
+
+        .dash-legend .lg-val {
+            font-weight: 700;
+            color: var(--ink-1);
+        }
+
+        .sw {
+            width: 12px;
+            height: 12px;
+            border-radius: 3px;
+        }
+
+        .sw.s1 { background: var(--series-1); }
+        .sw.s2 { background: var(--series-2); }
+        .sw.s3 { background: var(--series-3); }
+
+        .hbars {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            margin-top: 6px;
+        }
+
+        .hbars.compact {
+            gap: 9px;
+        }
+
+        .hbar {
+            display: grid;
+            grid-template-columns: 90px 1fr 92px;
+            align-items: center;
+            gap: 12px;
+            font-size: 14px;
+        }
+
+        .funnel .hbar {
+            grid-template-columns: 120px 1fr 92px;
+        }
+
+        .compact .hbar {
+            grid-template-columns: 150px 1fr 40px;
+            font-size: 13.5px;
+        }
+
+        .hb-label {
+            color: var(--ink-2);
+            white-space: nowrap;
+        }
+
+        .hb-track {
+            height: 18px;
+            display: flex;
+            align-items: center;
+        }
+
+        .compact .hb-track {
+            height: 16px;
+        }
+
+        .hb-fill {
+            display: block;
+            height: 100%;
+            min-width: 4px;
+            background: var(--series-1);
+            border-radius: 0 4px 4px 0;
+        }
+
+        .hb-val {
+            font-weight: 700;
+            color: var(--ink-1);
+            font-variant-numeric: tabular-nums;
+            white-space: nowrap;
+        }
+
+        .dash-callout {
+            margin-top: auto;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 12px;
+            border-radius: 10px;
+            background: #f6f1ea;
+            font-size: 13.5px;
+            font-weight: 600;
+            color: var(--ink-2);
+        }
+
+        .dash-callout i {
+            color: var(--brand-green);
+            font-size: 16px;
+        }
+
+        .alerts {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .alerts li {
+            display: grid;
+            grid-template-columns: 22px 1fr auto;
+            align-items: center;
+            gap: 10px;
+            padding: 6px 12px;
+            border-radius: 10px;
+            background: #faf6f1;
+        }
+
+        .alerts li i {
+            font-size: 20px;
+        }
+
+        .alerts li.critical i { color: var(--status-critical); }
+        .alerts li.warning i { color: var(--status-warning); }
+        .alerts li.good i { color: var(--status-good); }
+
+        .alerts strong {
+            display: block;
+            font-size: 14px;
+            color: var(--ink-1);
+        }
+
+        .alerts span {
+            font-size: 12.5px;
+            color: var(--ink-3);
+        }
+
+        .alerts em {
+            font-style: normal;
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--ink-2);
+            padding: 3px 10px;
+            border-radius: 999px;
+            background: #fff;
+            border: 1px solid var(--dash-line);
+        }
+
+        #viz-tip {
+            position: fixed;
+            z-index: 1000;
+            pointer-events: none;
+            background: #2f2924;
+            color: #fff;
+            font-size: 13px;
+            font-weight: 600;
+            padding: 6px 10px;
+            border-radius: 8px;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.18);
+            opacity: 0;
+            transition: opacity 0.12s ease;
+            white-space: nowrap;
+        }
+
+        [data-tip] {
+            cursor: default;
+        }
+
+        .hbar:hover .hb-fill,
+        .donut .seg:hover {
+            filter: brightness(1.08);
+        }
+
+        /* ===== LAPTOP FRAME ===== */
+        .laptop {
+            width: 1520px;
+            margin: 0 auto;
+        }
+
+        .laptop-screen {
+            position: relative;
+            background: #1d1d1f;
+            border: 2px solid #3a3a3c;
+            border-radius: 28px 28px 0 0;
+            padding: 24px 20px 20px;
+            box-shadow: 0 30px 70px rgba(60, 30, 10, 0.22);
+        }
+
+        .laptop-cam {
+            position: absolute;
+            top: 9px;
+            left: 50%;
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: #48484a;
+            transform: translateX(-50%);
+        }
+
+        .laptop-display {
+            border-radius: 6px;
+            overflow: hidden;
+            background: #fff;
+        }
+
+        .laptop-display .dash {
+            width: 1800px;
+            zoom: 0.82;
+            border-radius: 0;
+            box-shadow: none;
+        }
+
+        .laptop-base {
+            position: relative;
+            width: 1680px;
+            height: 26px;
+            margin-left: -80px;
+            background: linear-gradient(180deg, #e9e7e4 0%, #c9c6c2 70%, #a9a6a2 100%);
+            border-radius: 2px 2px 26px 26px;
+            box-shadow: 0 20px 34px rgba(60, 30, 10, 0.18);
+        }
+
+        .laptop-notch {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 240px;
+            height: 10px;
+            background: #b3b0ac;
+            border-radius: 0 0 14px 14px;
+            transform: translateX(-50%);
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            section {
+                height: auto;
+                min-height: 100vh;
+                padding: 40px 16px;
+            }
+
+            .content-container {
+                padding: 0 16px;
+            }
+
+            .scale-wrapper {
+                position: relative;
+                width: 100%;
+                height: auto;
+                transform: none;
+                top: auto;
+                left: auto;
+                flex-direction: column;
+            }
+
+            .structure-cards,
+            .structure-cards.five-up,
+            .trust-cards,
+            .handover-steps,
+            .kpi-cards,
+            .phase-cards,
+            .stat-row {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .cluster-title,
+            .cluster-kpis,
+            .future-team-title,
+            .future-team-lineup,
+            .cluster-character,
+            .character-backdrop {
+                position: relative;
+                top: auto;
+                left: auto;
+                transform: none;
+            }
+
+            .future-team-lineup {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .cluster-card,
+            .cluster-card-bullet {
+                position: relative;
+                top: auto !important;
+                left: auto !important;
+                right: auto !important;
+                bottom: auto !important;
+                max-width: 100%;
+                margin: 8px;
+            }
+
+            .cluster-character {
+                height: 50vh;
+            }
+
+            .cluster-connectors {
+                display: none;
+            }
+
+            .kpi-table,
+            .timeline-container {
+                width: 100%;
+            }
+
+            .timeline-container {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .timeline-line,
+            .phase-arrow {
+                display: none;
+            }
+
+            .timeline-step {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- SLIDE 1: Title -->
+    <section class="bg-slide title-slide">
+        <div class="content-container">
+            <span class="title-badge">Concept note</span>
+            <h1 style="font-size: 60px;"><span style="color: var(--brand-green);">Every call</span> <span style="color: var(--heading-color);">answered.</span><br><span style="color: var(--brand-green);">Every child</span> <span style="color: var(--accent-orange);">heard.</span></h1>
+            <h3>Lifeline/Childline Zambia &times; iNua Technologies</h3>
+            <div class="channel-row">
+                <span class="channel-label">One connected helpline</span>
+                <span class="channel-icon" title="Phone" style="--channel: var(--accent-orange);"><i class="ph-fill ph-phone"></i></span>
+                <span class="channel-icon" title="WhatsApp" style="--channel: #25d366;"><svg class="whatsapp-logo" viewBox="0 0 24 24" aria-label="WhatsApp"><path fill="currentColor" d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg></span>
+                <span class="channel-icon" title="SMS" style="--channel: #4a90c2;"><i class="ph-fill ph-chat-text"></i></span>
+            </div>
+        </div>
+    </section>
+
+    <!-- SLIDE: About Lifeline (call 05:24 – 10:48) -->
+    <section class="cards-section">
+        <div class="content-container">
+            <span class="eyebrow"><i class="ph-fill ph-heart"></i> About Lifeline/Childline Zambia</span>
+            <h2>A national lifeline for <span style="color: var(--brand-green);">children and families</span>.</h2>
+            <p class="slide-subtitle">Free, countrywide and open 24/7.</p>
+            <div class="structure-cards five-up">
+                <div class="structure-card">
+                    <div class="card-icon"><i class="ph ph-phone-call"></i></div>
+                    <h4>Helpline Services</h4>
+                    <p>Information and psychosocial support by phone, SMS and WhatsApp.</p>
+                </div>
+                <div class="structure-card">
+                    <div class="card-icon"><i class="ph ph-signpost"></i></div>
+                    <h4>Referrals</h4>
+                    <p>Callers connected to the nearest police, health and child protection services.</p>
+                </div>
+                <div class="structure-card">
+                    <div class="card-icon"><i class="ph ph-shield-check"></i></div>
+                    <h4>GBV &amp; Child Protection</h4>
+                    <p>Programmes tackling gender-based violence and child marriage.</p>
+                </div>
+                <div class="structure-card">
+                    <div class="card-icon"><i class="ph ph-users-three"></i></div>
+                    <h4>Community Engagement</h4>
+                    <p>Radio, TV and printed materials bring communities to the helpline.</p>
+                </div>
+                <div class="structure-card">
+                    <div class="card-icon"><i class="ph ph-cloud-lightning"></i></div>
+                    <h4>Disaster Response</h4>
+                    <p>A government partner for risk communication in droughts and outbreaks.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SLIDE: Current operation and challenges (figures from the 27 Oct 2026 call: 10:48, 12:10, 13:16, 20:53, 25:32) -->
+    <section class="cards-section">
+        <div class="content-container">
+            <span class="eyebrow"><i class="ph-fill ph-headset"></i> Your current operation and challenges</span>
+            <h2>A national helpline that <span style="color: var(--brand-green);">can't afford to miss a call</span>.</h2>
+            <div class="stat-row">
+                <div class="stat-item">
+                    <div class="stat-number" style="color: var(--brand-green);">~500</div>
+                    <div class="stat-label">calls a day, up to 1,500 during the drought emergency</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" style="color: var(--danger-red);">60%</div>
+                    <div class="stat-label">answer rate in the first half of the year</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" style="color: var(--accent-orange);">30–60s</div>
+                    <div class="stat-label">to answer today, against a 10–20 second goal</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" style="color: var(--heading-color);">35</div>
+                    <div class="stat-label">counsellors covering 24/7 across three shifts</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" style="color: var(--danger-red);">100%</div>
+                    <div class="stat-label">of referral follow-ups done manually</div>
+                </div>
+            </div>
+            <p style="font-size: 20px; margin-top: 50px; font-style: italic;">“A child calling from a risk environment may have less than 30 seconds to ask for help.”</p>
+        </div>
+    </section>
+
+    <!-- SLIDE: The problems -->
+    <section class="cards-section">
+        <div class="content-container">
+            <span class="eyebrow"><i class="ph-fill ph-warning"></i> The problems</span>
+            <h2>Where the helpline <span style="color: var(--accent-orange);">needs more support</span>.</h2>
+            <div class="structure-cards">
+                <div class="structure-card problem-tone">
+                    <div class="card-icon"><i class="ph ph-phone-x"></i></div>
+                    <h4>Four in Ten Calls Missed</h4>
+                    <p>40% of calls went unanswered in the first half of the year. Weak networks drop calls, and demand triples in an emergency.</p>
+                </div>
+                <div class="structure-card problem-tone">
+                    <div class="card-icon"><i class="ph ph-timer"></i></div>
+                    <h4>Callers Wait Too Long</h4>
+                    <p>Calls take 30 to 60 seconds to answer. A child at risk may not have that long.</p>
+                </div>
+                <div class="structure-card problem-tone">
+                    <div class="card-icon"><i class="ph ph-arrows-clockwise"></i></div>
+                    <h4>Follow-Ups Fall Through</h4>
+                    <p>Follow-ups depend on someone remembering. Reports show blanks, and there is no structured way to hear back from callers.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SLIDE: The three KPIs (call 25:32 – 27:56) -->
+    <section class="cards-section">
+        <div class="content-container">
+            <span class="eyebrow"><i class="ph-fill ph-target"></i> What matters most</span>
+            <h2>Three things <span style="color: var(--brand-green);">you want to improve</span>.</h2>
+            <div class="kpi-cards">
+                <div class="kpi-card">
+                    <span class="kpi-index">KPI 1</span>
+                    <h4>Answer Rate</h4>
+                    <div class="kpi-compare">
+                        <div>
+                            <div class="kpi-value" style="color: var(--danger-red);">60%</div>
+                            <div class="kpi-caption">Today</div>
+                        </div>
+                        <i class="ph-bold ph-arrow-right"></i>
+                        <div>
+                            <div class="kpi-value" style="color: var(--brand-green);">100%</div>
+                            <div class="kpi-caption">Every call answered</div>
+                        </div>
+                    </div>
+                    <p>No caller should reach silence, even when demand triples.</p>
+                </div>
+                <div class="kpi-card">
+                    <span class="kpi-index">KPI 2</span>
+                    <h4>Time to Answer</h4>
+                    <div class="kpi-compare">
+                        <div>
+                            <div class="kpi-value" style="color: var(--danger-red);">30–60s</div>
+                            <div class="kpi-caption">Today</div>
+                        </div>
+                        <i class="ph-bold ph-arrow-right"></i>
+                        <div>
+                            <div class="kpi-value" style="color: var(--brand-green);">5–10s</div>
+                            <div class="kpi-caption">With iNua</div>
+                        </div>
+                    </div>
+                    <p>A child at risk may have less than 30 seconds to ask for help.</p>
+                </div>
+                <div class="kpi-card">
+                    <span class="kpi-index">KPI 3</span>
+                    <h4>Follow-Up Rate</h4>
+                    <div class="kpi-compare">
+                        <div>
+                            <div class="kpi-value" style="color: var(--danger-red);">Manual</div>
+                            <div class="kpi-caption">Blanks in reports</div>
+                        </div>
+                        <i class="ph-bold ph-arrow-right"></i>
+                        <div>
+                            <div class="kpi-value" style="color: var(--brand-green);">100%</div>
+                            <div class="kpi-caption">Referrals followed up</div>
+                        </div>
+                    </div>
+                    <p>Know which referrals were completed and how satisfied callers were.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SLIDE: Our technology -->
+    <section class="cards-section">
+        <div class="content-container">
+            <span class="eyebrow"><i class="ph-fill ph-cpu"></i> Our technology</span>
+            <h2>AI advisors that <span style="color: var(--brand-green);">extend your counsellors</span>.</h2>
+            <div class="structure-cards five-up">
+                <div class="structure-card">
+                    <div class="card-icon"><i class="ph ph-lightning"></i></div>
+                    <h4>Answered in Seconds</h4>
+                    <p>Every call picked up, day and night.</p>
+                </div>
+                <div class="structure-card">
+                    <div class="card-icon"><i class="ph ph-chats-circle"></i></div>
+                    <h4>Human-Like Conversations</h4>
+                    <p>Natural voice and chat, not a menu.</p>
+                </div>
+                <div class="structure-card">
+                    <div class="card-icon"><i class="ph ph-devices"></i></div>
+                    <h4>Phone, WhatsApp and SMS</h4>
+                    <p>One history per person, on every channel.</p>
+                </div>
+                <div class="structure-card">
+                    <div class="card-icon"><i class="ph ph-book-open-text"></i></div>
+                    <h4>Your Approved Protocols</h4>
+                    <p>Lifeline FAQs and Ministry of Health guidance.</p>
+                </div>
+                <div class="structure-card">
+                    <div class="card-icon"><i class="ph ph-user-switch"></i></div>
+                    <h4>Counsellors Stay in Charge</h4>
+                    <p>Sensitive cases go to a counsellor, with a summary.</p>
+                </div>
+            </div>
+            <p style="font-size: 20px; margin-top: 36px;">Conversations in <strong style="color: var(--brand-green);">English, Bemba, Nyanja and Tonga</strong>, including mixed-language speech.</p>
+        </div>
+    </section>
+
+    <!-- SLIDE: The full team -->
+    <!-- REVIEW: Nia (intake) and Nuru (community feedback) were not presented on the call. Confirm these roles before sending. -->
+    <section class="future-team-slide" style="position: relative; overflow: hidden;">
+        <div class="landscape-bg"></div>
+        <div class="scale-wrapper">
+            <div class="future-team-title">
+                <h2>Your dream call centre team, <span style="color: var(--brand-green);">built for Lifeline</span>.</h2>
+                <p>One team working together on every KPI, trained on your protocols, referral directory and M&amp;E framework, and sharing one record of every conversation.</p>
+                <p class="handover-note"><i class="ph-fill ph-user-switch"></i> Anything outside agreed boundaries goes straight to a counsellor.</p>
+            </div>
+
+            <div class="future-team-lineup five-up">
+                <div class="future-team-member">
+                    <img src="../Images/grace_nobg.png" alt="Grace">
+                    <div class="future-team-tag">
+                        <h4>Grace</h4>
+                        <p>Follow-Up &amp; M&amp;E Advisor</p>
+                    </div>
+                    <div class="future-team-desc">Calls referred callers back and records outcomes and satisfaction.</div>
+                </div>
+                <div class="future-team-member">
+                    <img src="../Images/nia_v3_nobg.png" alt="Nia">
+                    <div class="future-team-tag">
+                        <h4>Nia</h4>
+                        <p>Helpline Intake Advisor</p>
+                    </div>
+                    <div class="future-team-desc">Picks up every call in seconds and routes it to the right help.</div>
+                </div>
+                <div class="future-team-member">
+                    <img src="../Images/marry_v3_nobg.png" alt="Mary">
+                    <div class="future-team-tag">
+                        <h4>Mary</h4>
+                        <p>Emergency &amp; Information Advisor</p>
+                    </div>
+                    <div class="future-team-desc">Answers protocol questions and runs outreach during droughts and outbreaks.</div>
+                </div>
+                <div class="future-team-member">
+                    <img src="../Images/nuru_v3_nobg.png" alt="Nuru">
+                    <div class="future-team-tag">
+                        <h4>Nuru</h4>
+                        <p>Community Feedback Advisor</p>
+                    </div>
+                    <div class="future-team-desc">Checks in with communities between field visits, so issues like drug stock-outs surface in days.</div>
+                </div>
+                <div class="future-team-member">
+                    <img src="../Images/inua_v3_nobg.png" alt="iNua">
+                    <div class="future-team-tag">
+                        <h4>iNua</h4>
+                        <p>Insights &amp; Early Warning Lead</p>
+                    </div>
+                    <div class="future-team-desc">Tracks your KPIs and flags emerging trends for government and partners.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SLIDE: Meet Grace -->
+    <section class="cluster-slide" style="position: relative;">
+        <div class="landscape-bg"></div>
+        <div class="scale-wrapper">
+            <div class="cluster-title">
+                <h2>Grace</h2>
+                <div class="agent-role">AI Follow-Up &amp; M&amp;E Advisor for Lifeline/Childline Zambia</div>
+            </div>
+            <div class="cluster-kpis">
+                <span class="phase-badge green"><i class="ph-fill ph-target"></i> KPI 3: Follow-Up Rate</span>
+            </div>
+
+            <div class="character-backdrop"></div>
+            <div class="cluster-character">
+                <img src="../Images/grace_nobg.png" alt="Grace">
+            </div>
+
+            <div class="cluster-card card-top-left">
+                <div class="card-icon"><i class="ph ph-arrows-clockwise"></i></div>
+                <h4>Referral Follow-Up</h4>
+                <p>Grace calls back after a referral: did you reach the service, and what got in the way?</p>
+            </div>
+            <div class="cluster-card card-top-right">
+                <div class="card-icon"><i class="ph ph-handshake"></i></div>
+                <h4>Service-Level Checks</h4>
+                <p>She asks whether the referral partner met the minimum service levels you agreed with them.</p>
+            </div>
+            <div class="cluster-card card-bottom-left">
+                <div class="card-icon"><i class="ph ph-identification-card"></i></div>
+                <h4>Right Person, Safely</h4>
+                <p>Grace confirms she is speaking to the original caller before raising anything sensitive.</p>
+            </div>
+            <div class="cluster-card card-bottom-right">
+                <div class="card-icon"><i class="ph ph-smiley"></i></div>
+                <h4>Satisfaction Measured</h4>
+                <p>Each follow-up ends with a short satisfaction question, giving you a rate to share with partners.</p>
+            </div>
+            <div class="cluster-card-bullet" style="top: 425px; left: 230px;">
+                <i class="ph ph-check-circle"></i> Timed by priority
+            </div>
+            <div class="cluster-card-bullet" style="top: 485px; left: 230px;">
+                <i class="ph ph-check-circle"></i> Outcomes saved to the case
+            </div>
+            <div class="cluster-card-bullet" style="top: 425px; right: 230px;">
+                <i class="ph ph-check-circle"></i> Bemba, Nyanja, Tonga
+            </div>
+            <div class="cluster-card-bullet" style="top: 485px; right: 230px;">
+                <i class="ph ph-check-circle"></i> Risks go to a counsellor
+            </div>
+
+            <svg class="cluster-connectors" viewBox="0 0 1920 945">
+                <defs>
+                    <marker id="arrow-grace" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+                        <polygon points="0 0, 8 3, 0 6" fill="#eab683" />
+                    </marker>
+                </defs>
+                <line x1="360" y1="280" x2="760" y2="380" marker-end="url(#arrow-grace)" />
+                <line x1="1560" y1="280" x2="1160" y2="380" marker-end="url(#arrow-grace)" />
+                <line x1="340" y1="650" x2="760" y2="560" marker-end="url(#arrow-grace)" />
+                <line x1="1580" y1="650" x2="1160" y2="560" marker-end="url(#arrow-grace)" />
+            </svg>
+        </div>
+    </section>
+
+    <!-- SLIDE: Meet Nia -->
+    <!-- REVIEW: returning dropped calls needs a safeguarding rule agreed with Lifeline (e.g. GBV callers), same identity check as follow-ups. -->
+    <section class="cluster-slide" style="position: relative;">
+        <div class="landscape-bg"></div>
+        <div class="scale-wrapper">
+            <div class="cluster-title">
+                <h2>Nia</h2>
+                <div class="agent-role">AI Helpline Intake Advisor for Lifeline/Childline Zambia</div>
+            </div>
+            <div class="cluster-kpis">
+                <span class="phase-badge green"><i class="ph-fill ph-target"></i> KPI 1: Answer Rate</span>
+                <span class="phase-badge green"><i class="ph-fill ph-target"></i> KPI 2: Time to Answer</span>
+            </div>
+
+            <div class="character-backdrop"></div>
+            <div class="cluster-character">
+                <img src="../Images/nia_v3_nobg.png" alt="Nia">
+            </div>
+
+            <div class="cluster-card card-top-left">
+                <div class="card-icon"><i class="ph ph-lightning"></i></div>
+                <h4>Answered in Seconds</h4>
+                <p>Nia picks up every call, day and night, even at 1,500 calls a day during an emergency.</p>
+            </div>
+            <div class="cluster-card card-top-right">
+                <div class="card-icon"><i class="ph ph-translate"></i></div>
+                <h4>Speaks Their Language</h4>
+                <p>English, Bemba, Nyanja and Tonga, including mixed speech. She asks which language the caller prefers.</p>
+            </div>
+            <div class="cluster-card card-bottom-left">
+                <div class="card-icon"><i class="ph ph-signpost"></i></div>
+                <h4>Routes to the Right Help</h4>
+                <p>Information goes to Mary, follow-ups to Grace, and disclosures straight to a counsellor.</p>
+            </div>
+            <div class="cluster-card card-bottom-right">
+                <div class="card-icon"><i class="ph ph-phone-incoming"></i></div>
+                <h4>Dropped Calls Returned</h4>
+                <p>When a call drops on a weak network, Nia calls back, with the same identity check Grace uses.</p>
+            </div>
+            <div class="cluster-card-bullet" style="top: 425px; left: 230px;">
+                <i class="ph ph-check-circle"></i> Answers 24/7
+            </div>
+            <div class="cluster-card-bullet" style="top: 485px; left: 230px;">
+                <i class="ph ph-check-circle"></i> Scales with demand
+            </div>
+            <div class="cluster-card-bullet" style="top: 425px; right: 230px;">
+                <i class="ph ph-check-circle"></i> Knows returning callers
+            </div>
+            <div class="cluster-card-bullet" style="top: 485px; right: 230px;">
+                <i class="ph ph-check-circle"></i> Never handles a disclosure alone
+            </div>
+
+            <svg class="cluster-connectors" viewBox="0 0 1920 945">
+                <defs>
+                    <marker id="arrow-nia" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+                        <polygon points="0 0, 8 3, 0 6" fill="#eab683" />
+                    </marker>
+                </defs>
+                <line x1="360" y1="280" x2="760" y2="380" marker-end="url(#arrow-nia)" />
+                <line x1="1560" y1="280" x2="1160" y2="380" marker-end="url(#arrow-nia)" />
+                <line x1="340" y1="650" x2="760" y2="560" marker-end="url(#arrow-nia)" />
+                <line x1="1580" y1="650" x2="1160" y2="560" marker-end="url(#arrow-nia)" />
+            </svg>
+        </div>
+    </section>
+
+    <!-- SLIDE: Meet Mary -->
+    <section class="cluster-slide" style="position: relative;">
+        <div class="landscape-bg"></div>
+        <div class="scale-wrapper">
+            <div class="cluster-title">
+                <h2>Mary</h2>
+                <div class="agent-role">AI Emergency &amp; Information Advisor for Lifeline/Childline Zambia</div>
+            </div>
+
+            <div class="character-backdrop"></div>
+            <div class="cluster-character">
+                <img src="../Images/marry_v3_nobg.png" alt="Mary">
+            </div>
+
+            <div class="cluster-card card-top-left">
+                <div class="card-icon"><i class="ph ph-question"></i></div>
+                <h4>Common Questions Answered</h4>
+                <p>Questions on services, rights and the law are answered from your approved FAQs, so counsellors focus where they're needed.</p>
+            </div>
+            <div class="cluster-card card-top-right">
+                <div class="card-icon"><i class="ph ph-first-aid-kit"></i></div>
+                <h4>Approved Health Protocols</h4>
+                <p>Mary gives Ministry of Health guidance, such as cholera or Ebola protocols, and points callers to their nearest facility.</p>
+            </div>
+            <div class="cluster-card card-bottom-left">
+                <div class="card-icon"><i class="ph ph-megaphone"></i></div>
+                <h4>Emergency Outreach</h4>
+                <p>During droughts or outbreaks, Mary calls and messages communities with guidance for their area.</p>
+            </div>
+            <div class="cluster-card card-bottom-right">
+                <div class="card-icon"><i class="ph ph-siren"></i></div>
+                <h4>Instant Escalation</h4>
+                <p>Disclosures of abuse, GBV or a child at risk go straight to a counsellor, with a summary attached.</p>
+            </div>
+            <div class="cluster-card-bullet" style="top: 425px; left: 230px;">
+                <i class="ph ph-check-circle"></i> Answers 24/7
+            </div>
+            <div class="cluster-card-bullet" style="top: 485px; left: 230px;">
+                <i class="ph ph-check-circle"></i> Scales in a crisis
+            </div>
+            <div class="cluster-card-bullet" style="top: 425px; right: 230px;">
+                <i class="ph ph-check-circle"></i> Updated as protocols change
+            </div>
+            <div class="cluster-card-bullet" style="top: 485px; right: 230px;">
+                <i class="ph ph-check-circle"></i> Never handles a case alone
+            </div>
+
+            <svg class="cluster-connectors" viewBox="0 0 1920 945">
+                <defs>
+                    <marker id="arrow-mary" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+                        <polygon points="0 0, 8 3, 0 6" fill="#eab683" />
+                    </marker>
+                </defs>
+                <line x1="360" y1="280" x2="760" y2="380" marker-end="url(#arrow-mary)" />
+                <line x1="1560" y1="280" x2="1160" y2="380" marker-end="url(#arrow-mary)" />
+                <line x1="340" y1="650" x2="760" y2="560" marker-end="url(#arrow-mary)" />
+                <line x1="1580" y1="650" x2="1160" y2="560" marker-end="url(#arrow-mary)" />
+            </svg>
+        </div>
+    </section>
+
+    <!-- SLIDE: Meet iNua -->
+    <section class="cluster-slide" style="position: relative;">
+        <div class="landscape-bg"></div>
+        <div class="scale-wrapper">
+            <div class="cluster-title">
+                <h2>iNua</h2>
+                <div class="agent-role">AI Insights &amp; Early Warning Lead for Lifeline/Childline Zambia</div>
+            </div>
+
+            <div class="character-backdrop"></div>
+            <div class="cluster-character">
+                <img src="../Images/inua_v3_nobg.png" alt="iNua">
+            </div>
+
+            <div class="cluster-card card-top-left">
+                <div class="card-icon"><i class="ph ph-chart-line-up"></i></div>
+                <h4>Live KPI Dashboard</h4>
+                <p>Answer rate, time to answer, follow-up rate and satisfaction in one place, updated live.</p>
+            </div>
+            <div class="cluster-card card-top-right">
+                <div class="card-icon"><i class="ph ph-seal-check"></i></div>
+                <h4>Validated Data</h4>
+                <p>Every conversation is recorded and transcribed in its original language, with a translation, so partners can trust what you report.</p>
+            </div>
+            <div class="cluster-card card-bottom-left">
+                <div class="card-icon"><i class="ph ph-file-text"></i></div>
+                <h4>Partner-Ready Reports</h4>
+                <p>Anonymised summaries for government departments and partners, within your data-sharing agreements.</p>
+            </div>
+            <div class="cluster-card card-bottom-right">
+                <div class="card-icon"><i class="ph ph-warning-circle"></i></div>
+                <h4>Early Warning Signals</h4>
+                <p>iNua spots rising topics by district, such as drought anxiety or child-marriage concerns, before they peak.</p>
+            </div>
+            <div class="cluster-card-bullet" style="top: 425px; left: 230px;">
+                <i class="ph ph-check-circle"></i> Reads every conversation
+            </div>
+            <div class="cluster-card-bullet" style="top: 485px; left: 230px;">
+                <i class="ph ph-check-circle"></i> You validate the findings
+            </div>
+            <div class="cluster-card-bullet" style="top: 425px; right: 230px;">
+                <i class="ph ph-check-circle"></i> Flags issues beyond KPIs
+            </div>
+            <div class="cluster-card-bullet" style="top: 485px; right: 230px;">
+                <i class="ph ph-check-circle"></i> Built on your own data
+            </div>
+
+            <svg class="cluster-connectors" viewBox="0 0 1920 945">
+                <defs>
+                    <marker id="arrow-inua" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+                        <polygon points="0 0, 8 3, 0 6" fill="#eab683" />
+                    </marker>
+                </defs>
+                <line x1="360" y1="280" x2="760" y2="380" marker-end="url(#arrow-inua)" />
+                <line x1="1560" y1="280" x2="1160" y2="380" marker-end="url(#arrow-inua)" />
+                <line x1="340" y1="650" x2="760" y2="560" marker-end="url(#arrow-inua)" />
+                <line x1="1580" y1="650" x2="1160" y2="560" marker-end="url(#arrow-inua)" />
+            </svg>
+        </div>
+    </section>
+
+    <!-- SLIDE: Dashboard -->
+    <!-- All figures on this slide are illustrative, consistent with ~500 calls a day. Keep the "Illustrative data" chip. -->
+    <section class="dashboard-slide" style="position: relative;">
+        <div class="scale-wrapper">
+            <div class="dash-wrap">
+                <div class="dash-heading">
+                    <span class="eyebrow"><i class="ph-fill ph-chart-line-up"></i> Your live dashboard</span>
+                    <h2>Every call and every KPI, <span style="color: var(--brand-green);">in one view</span>.</h2>
+                </div>
+
+                <div class="laptop">
+                    <div class="laptop-screen">
+                        <span class="laptop-cam"></span>
+                        <div class="laptop-display">
+                <div class="dash">
+                    <div class="dash-top">
+                        <div class="dash-brand">
+                            <span class="dash-logo"><i class="ph-fill ph-chart-pie-slice"></i></span>
+                            <div>
+                                <strong>iNua Insights</strong>
+                                <span>Lifeline/Childline Zambia helpline</span>
+                            </div>
+                        </div>
+                        <div class="dash-tabs">
+                            <span class="active">Overview</span>
+                            <span>Follow-ups</span>
+                            <span>Early warning</span>
+                            <span>Reports</span>
+                        </div>
+                        <div class="dash-controls">
+                            <span class="dash-pill"><i class="ph ph-calendar-blank"></i> Last 30 days</span>
+                            <span class="dash-pill live"><span class="live-dot"></span> Live</span>
+                            <span class="dash-pill sample">Illustrative data</span>
+                        </div>
+                    </div>
+
+                    <div class="dash-tiles">
+                        <div class="dash-tile">
+                            <div class="tile-label">Calls handled</div>
+                            <div class="tile-row">
+                                <div class="tile-value">15,240</div>
+                                <svg class="tile-spark" viewBox="0 0 90 28" aria-hidden="true"><polyline points="0,26 8.2,14 16.4,20 24.5,6 32.7,10 40.9,16 49.1,2 57.3,12 65.5,18 73.6,8 81.8,14" /><polyline class="spark-now" points="81.8,14 90,15.2" /><circle cx="90" cy="15.2" r="3" /></svg>
+                            </div>
+                            <div class="tile-delta muted">~508 a day, phone, WhatsApp and SMS</div>
+                        </div>
+                        <div class="dash-tile">
+                            <div class="tile-label">Answer rate</div>
+                            <div class="tile-row">
+                                <div class="tile-value">99.6%</div>
+                                <svg class="tile-spark" viewBox="0 0 90 28" aria-hidden="true"><polyline points="0,26 8.2,24.3 16.4,24.8 24.5,23.7 32.7,9.8 40.9,5.2 49.1,3.5 57.3,2.5 65.5,2.2 73.6,2.1 81.8,2" /><polyline class="spark-now" points="81.8,2 90,2" /><circle cx="90" cy="2" r="3" /></svg>
+                            </div>
+                            <div class="tile-delta good"><i class="ph-bold ph-arrow-up"></i> 39.6 pts vs H1 2026</div>
+                        </div>
+                        <div class="dash-tile">
+                            <div class="tile-label">Average time to answer</div>
+                            <div class="tile-row">
+                                <div class="tile-value">6s</div>
+                            </div>
+                            <div class="tile-delta good"><i class="ph-bold ph-arrow-down"></i> from 30–60s</div>
+                        </div>
+                        <div class="dash-tile">
+                            <div class="tile-label">Referrals followed up</div>
+                            <div class="tile-row">
+                                <div class="tile-value">98%</div>
+                            </div>
+                            <div class="tile-delta good"><i class="ph-bold ph-arrow-up"></i> from manual follow-up</div>
+                        </div>
+                        <div class="dash-tile">
+                            <div class="tile-label">Caller satisfaction</div>
+                            <div class="tile-row">
+                                <div class="tile-value">89%</div>
+                            </div>
+                            <div class="tile-delta muted"><i class="ph ph-sparkle"></i> Measured for the first time</div>
+                        </div>
+                        <div class="dash-tile">
+                            <div class="tile-label">Handed to counsellors</div>
+                            <div class="tile-row">
+                                <div class="tile-value">1,830</div>
+                            </div>
+                            <div class="tile-delta muted">12% of calls, each with a summary</div>
+                        </div>
+                    </div>
+
+                    <div class="dash-grid">
+                        <!-- Answer rate trend: weekly, y 40–100% -->
+                        <div class="dash-card">
+                            <div class="dash-card-head">
+                                <h5>Answer rate by week</h5>
+                                <span class="dash-card-sub">Last 12 weeks</span>
+                            </div>
+                            <svg class="dash-chart" viewBox="0 0 660 210" role="img" aria-label="Answer rate rose from about 60% in weeks 1 to 4 to 99.6% by week 12 after the AI advisors went live.">
+                                <g class="grid">
+                                    <line x1="40" y1="15" x2="640" y2="15" />
+                                    <line x1="40" y1="70" x2="640" y2="70" />
+                                    <line x1="40" y1="125" x2="640" y2="125" />
+                                    <line x1="40" y1="180" x2="640" y2="180" />
+                                </g>
+                                <g class="axis-text" text-anchor="end">
+                                    <text x="32" y="19">100%</text>
+                                    <text x="32" y="74">80%</text>
+                                    <text x="32" y="129">60%</text>
+                                    <text x="32" y="184">40%</text>
+                                </g>
+                                <g class="axis-text" text-anchor="middle">
+                                    <text x="40" y="202">Wk 1</text>
+                                    <text x="203.6" y="202">Wk 4</text>
+                                    <text x="421.8" y="202">Wk 8</text>
+                                    <text x="640" y="202">Wk 12</text>
+                                </g>
+                                <line class="event-line" x1="231" y1="15" x2="231" y2="180" />
+                                <text class="event-label" x="239" y="172">AI advisors live</text>
+                                <path class="area" d="M40,130.5 L94.5,122.3 L149.1,125 L203.6,119.5 L258.2,53.5 L312.7,31.5 L367.3,23.3 L421.8,18.3 L476.4,17.2 L530.9,16.7 L585.5,16.4 L640,16.1 L640,180 L40,180 Z" />
+                                <polyline class="line" points="40,130.5 94.5,122.3 149.1,125 203.6,119.5 258.2,53.5 312.7,31.5 367.3,23.3 421.8,18.3 476.4,17.2 530.9,16.7 585.5,16.4 640,16.1" />
+                                <text class="value-label" x="122" y="150" text-anchor="middle">~60% before</text>
+                                <text class="value-label strong" x="628" y="40" text-anchor="end">99.6%</text>
+                                <circle class="end-dot" cx="640" cy="16.1" r="5" />
+                                <g class="hit">
+                                    <circle cx="40" cy="130.5" r="12" data-tip="Week 1 · 58% answered" />
+                                    <circle cx="94.5" cy="122.3" r="12" data-tip="Week 2 · 61% answered" />
+                                    <circle cx="149.1" cy="125" r="12" data-tip="Week 3 · 60% answered" />
+                                    <circle cx="203.6" cy="119.5" r="12" data-tip="Week 4 · 62% answered" />
+                                    <circle cx="258.2" cy="53.5" r="12" data-tip="Week 5 · 86% answered" />
+                                    <circle cx="312.7" cy="31.5" r="12" data-tip="Week 6 · 94% answered" />
+                                    <circle cx="367.3" cy="23.3" r="12" data-tip="Week 7 · 97% answered" />
+                                    <circle cx="421.8" cy="18.3" r="12" data-tip="Week 8 · 98.8% answered" />
+                                    <circle cx="476.4" cy="17.2" r="12" data-tip="Week 9 · 99.2% answered" />
+                                    <circle cx="530.9" cy="16.7" r="12" data-tip="Week 10 · 99.4% answered" />
+                                    <circle cx="585.5" cy="16.4" r="12" data-tip="Week 11 · 99.5% answered" />
+                                    <circle cx="640" cy="16.1" r="12" data-tip="Week 12 · 99.6% answered" />
+                                </g>
+                            </svg>
+                        </div>
+
+                        <!-- How calls were resolved: donut, 80 / 12 / 8 -->
+                        <div class="dash-card">
+                            <div class="dash-card-head">
+                                <h5>How calls were resolved</h5>
+                                <span class="dash-card-sub">15,240 calls</span>
+                            </div>
+                            <div class="donut-wrap">
+                                <svg class="donut" viewBox="0 0 200 200" role="img" aria-label="80% resolved by AI advisors, 12% handed to a counsellor, 8% referred to a service.">
+                                    <circle class="donut-track" cx="100" cy="100" r="70" />
+                                    <g transform="rotate(-90 100 100)">
+                                        <circle class="seg s1" cx="100" cy="100" r="70" stroke-dasharray="349.9 439.8" stroke-dashoffset="0" data-tip="Resolved by AI advisors · 12,192 calls (80%)" />
+                                        <circle class="seg s2" cx="100" cy="100" r="70" stroke-dasharray="50.8 439.8" stroke-dashoffset="-351.9" data-tip="Handed to a counsellor · 1,830 calls (12%)" />
+                                        <circle class="seg s3" cx="100" cy="100" r="70" stroke-dasharray="33.2 439.8" stroke-dashoffset="-404.6" data-tip="Referred to a service · 1,218 calls (8%)" />
+                                    </g>
+                                    <text class="donut-value" x="100" y="102" text-anchor="middle">80%</text>
+                                    <text class="donut-caption" x="100" y="124" text-anchor="middle">by AI advisors</text>
+                                </svg>
+                                <ul class="dash-legend">
+                                    <li><span class="sw s1"></span><span class="lg-name">Resolved by AI advisors</span><span class="lg-val">80%</span></li>
+                                    <li><span class="sw s2"></span><span class="lg-name">Handed to a counsellor</span><span class="lg-val">12%</span></li>
+                                    <li><span class="sw s3"></span><span class="lg-name">Referred to a service</span><span class="lg-val">8%</span></li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- Time to answer distribution -->
+                        <div class="dash-card">
+                            <div class="dash-card-head">
+                                <h5>Time to answer</h5>
+                                <span class="dash-card-sub">Share of calls</span>
+                            </div>
+                            <div class="hbars">
+                                <div class="hbar" data-tip="Under 5 seconds · 62% of calls"><span class="hb-label">Under 5s</span><span class="hb-track"><span class="hb-fill" style="width: 100%;"></span></span><span class="hb-val">62%</span></div>
+                                <div class="hbar" data-tip="5 to 10 seconds · 35% of calls"><span class="hb-label">5–10s</span><span class="hb-track"><span class="hb-fill" style="width: 56.5%;"></span></span><span class="hb-val">35%</span></div>
+                                <div class="hbar" data-tip="10 to 20 seconds · 2.6% of calls"><span class="hb-label">10–20s</span><span class="hb-track"><span class="hb-fill" style="width: 4.2%;"></span></span><span class="hb-val">2.6%</span></div>
+                                <div class="hbar" data-tip="Over 20 seconds · 0.4% of calls"><span class="hb-label">Over 20s</span><span class="hb-track"><span class="hb-fill" style="width: 1.2%;"></span></span><span class="hb-val">0.4%</span></div>
+                            </div>
+                            <div class="dash-callout"><i class="ph-fill ph-lightning"></i> 97% of calls answered within 10 seconds</div>
+                        </div>
+
+                        <!-- Referral follow-up funnel -->
+                        <div class="dash-card">
+                            <div class="dash-card-head">
+                                <h5>Referral follow-up</h5>
+                                <span class="dash-card-sub">Referrals this month</span>
+                            </div>
+                            <div class="hbars funnel">
+                                <div class="hbar" data-tip="Referrals made · 1,218"><span class="hb-label">Referrals made</span><span class="hb-track"><span class="hb-fill" style="width: 100%;"></span></span><span class="hb-val">1,218</span></div>
+                                <div class="hbar" data-tip="Followed up by Grace · 1,194 (98%)"><span class="hb-label">Followed up</span><span class="hb-track"><span class="hb-fill" style="width: 98%;"></span></span><span class="hb-val">1,194 · 98%</span></div>
+                                <div class="hbar" data-tip="Service received · 1,035 (85% of referrals)"><span class="hb-label">Service received</span><span class="hb-track"><span class="hb-fill" style="width: 85%;"></span></span><span class="hb-val">1,035 · 85%</span></div>
+                                <div class="hbar" data-tip="Satisfied with the service · 921 (89% of those served)"><span class="hb-label">Satisfied</span><span class="hb-track"><span class="hb-fill" style="width: 75.6%;"></span></span><span class="hb-val">921 · 89%</span></div>
+                            </div>
+                            <div class="dash-callout"><i class="ph-fill ph-handshake"></i> 3 referral partners below agreed service levels</div>
+                        </div>
+
+                        <!-- Calls by topic -->
+                        <div class="dash-card">
+                            <div class="dash-card-head">
+                                <h5>Calls by topic</h5>
+                                <span class="dash-card-sub">Share of calls</span>
+                            </div>
+                            <div class="hbars compact">
+                                <div class="hbar" data-tip="Gender-based violence · 31%"><span class="hb-label">Gender-based violence</span><span class="hb-track"><span class="hb-fill" style="width: 100%;"></span></span><span class="hb-val">31%</span></div>
+                                <div class="hbar" data-tip="Psychosocial support · 22%"><span class="hb-label">Psychosocial support</span><span class="hb-track"><span class="hb-fill" style="width: 71%;"></span></span><span class="hb-val">22%</span></div>
+                                <div class="hbar" data-tip="Child protection · 14%"><span class="hb-label">Child protection</span><span class="hb-track"><span class="hb-fill" style="width: 45.2%;"></span></span><span class="hb-val">14%</span></div>
+                                <div class="hbar" data-tip="Health information (cholera, Ebola) · 13%"><span class="hb-label">Health information</span><span class="hb-track"><span class="hb-fill" style="width: 41.9%;"></span></span><span class="hb-val">13%</span></div>
+                                <div class="hbar" data-tip="Drought and food security · 11%"><span class="hb-label">Drought &amp; food</span><span class="hb-track"><span class="hb-fill" style="width: 35.5%;"></span></span><span class="hb-val">11%</span></div>
+                                <div class="hbar" data-tip="Other topics · 9%"><span class="hb-label">Other</span><span class="hb-track"><span class="hb-fill" style="width: 29%;"></span></span><span class="hb-val">9%</span></div>
+                            </div>
+                        </div>
+
+                        <!-- Early warning alerts -->
+                        <div class="dash-card">
+                            <div class="dash-card-head">
+                                <h5>Early warning</h5>
+                                <span class="dash-card-sub">This week</span>
+                            </div>
+                            <ul class="alerts">
+                                <li class="critical">
+                                    <i class="ph-fill ph-warning-octagon"></i>
+                                    <div><strong>Cholera questions up 42%</strong><span>Lusaka Province · 186 calls</span></div>
+                                    <em>Critical</em>
+                                </li>
+                                <li class="critical">
+                                    <i class="ph-fill ph-pill"></i>
+                                    <div><strong>Drug stock-out reported</strong><span>Southern Province · 3 sites</span></div>
+                                    <em>Critical</em>
+                                </li>
+                                <li class="warning">
+                                    <i class="ph-fill ph-trend-up"></i>
+                                    <div><strong>Child marriage concerns up 18%</strong><span>Eastern Province · 64 calls</span></div>
+                                    <em>Watch</em>
+                                </li>
+                                <li class="good">
+                                    <i class="ph-fill ph-trend-down"></i>
+                                    <div><strong>Drought anxiety down 12%</strong><span>Western Province · 98 calls</span></div>
+                                    <em>Easing</em>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                        </div>
+                    </div>
+                    <div class="laptop-base"><span class="laptop-notch"></span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SLIDE: Suggested path -->
+    <section class="cards-section">
+        <div class="content-container">
+            <span class="eyebrow"><i class="ph-fill ph-path"></i> Suggested path</span>
+            <h2>A natural place <span style="color: var(--brand-green);">to start</span>.</h2>
+            <p class="slide-subtitle">Begin where the value is clear and live calls stay untouched, then build towards your dream call centre.</p>
+            <div class="phase-cards">
+                <div class="phase-card highlight">
+                    <div class="phase-head">
+                        <div class="phase-avatar"><img src="../Images/grace_nobg.png" alt="Grace"></div>
+                        <div>
+                            <span class="kpi-index">Step 1 · Start here</span>
+                            <h4>Follow Up Every Referral</h4>
+                        </div>
+                    </div>
+                    <ul>
+                        <li><i class="ph-fill ph-check-circle"></i>Builds on referral records you already keep</li>
+                        <li><i class="ph-fill ph-check-circle"></i>No change to live calls</li>
+                        <li><i class="ph-fill ph-check-circle"></i>Satisfaction measured for the first time</li>
+                    </ul>
+                    <span class="phase-badge green"><i class="ph-fill ph-target"></i> KPI 3: follow-up rate</span>
+                </div>
+                <i class="ph-bold ph-caret-right phase-arrow"></i>
+                <div class="phase-card">
+                    <div class="phase-head">
+                        <div class="phase-avatar"><img src="../Images/nia_v3_nobg.png" alt="Nia"></div>
+                        <div>
+                            <span class="kpi-index">Step 2</span>
+                            <h4>Answer Every Call</h4>
+                        </div>
+                    </div>
+                    <ul>
+                        <li><i class="ph-fill ph-check-circle"></i>Nia picks up when every counsellor is busy</li>
+                        <li><i class="ph-fill ph-check-circle"></i>Mary answers information and protocol calls</li>
+                        <li><i class="ph-fill ph-check-circle"></i>Dropped calls returned</li>
+                    </ul>
+                    <span class="phase-badge"><i class="ph-fill ph-target"></i> KPI 1: answer rate</span>
+                </div>
+                <i class="ph-bold ph-caret-right phase-arrow"></i>
+                <div class="phase-card">
+                    <div class="phase-head">
+                        <div class="phase-avatar"><img src="../Images/marry_v3_nobg.png" alt="Mary"></div>
+                        <div>
+                            <span class="kpi-index">Step 3 · Dream call centre</span>
+                            <h4>Answered in Seconds</h4>
+                        </div>
+                    </div>
+                    <ul>
+                        <li><i class="ph-fill ph-check-circle"></i>AI advisors pick up first, day and night</li>
+                        <li><i class="ph-fill ph-check-circle"></i>Counsellors focus on calls that need a human</li>
+                        <li><i class="ph-fill ph-check-circle"></i>Community feedback and early warnings</li>
+                    </ul>
+                    <span class="phase-badge"><i class="ph-fill ph-target"></i> KPI 2: time to answer</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SLIDE: Technical requirements -->
+    <!-- REVIEW: "asel" in the transcript is assumed to be Aselo (Tech Matters' helpline platform). Confirm integration options with Lifeline's IT person. -->
+    <section class="cards-section">
+        <div class="content-container">
+            <span class="eyebrow"><i class="ph-fill ph-plugs-connected"></i> Technical requirements</span>
+            <h2>Works with <span style="color: var(--brand-green);">what you already have</span>.</h2>
+            <div class="trust-cards">
+                <div class="trust-card">
+                    <div class="card-icon"><i class="ph ph-plugs"></i></div>
+                    <h4>Your Existing Systems</h4>
+                    <p>We connect to Aselo (Tech Matters) and your SMS and WhatsApp platform, so counsellors keep working in the tools they know.</p>
+                </div>
+                <div class="trust-card">
+                    <div class="card-icon"><i class="ph ph-wrench"></i></div>
+                    <h4>iNua Does the Integration</h4>
+                    <p>Telephony, WhatsApp, SMS and system connections are set up and maintained by our team.</p>
+                </div>
+                <div class="trust-card">
+                    <div class="card-icon"><i class="ph ph-folder-open"></i></div>
+                    <h4>Lifeline Provides the Knowledge</h4>
+                    <p>Your referral directory, service-level agreements, FAQs, emergency protocols and M&amp;E questions to train the advisors.</p>
+                </div>
+                <div class="trust-card">
+                    <div class="card-icon"><i class="ph ph-browser"></i></div>
+                    <h4>No New Hardware</h4>
+                    <p>The dashboard runs in a web browser. Your IT team confirms the connection points with ours.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SLIDE: Thank you -->
+    <section class="bg-slide">
+        <div class="content-container">
+            <h1>Thank You</h1>
+            <h3>iNua Technologies &amp; Lifeline/Childline Zambia</h3>
+        </div>
+    </section>
+
+
+    <script>
+        // Scale wrapper system
+        function adjustScales() {
+            if (window.innerWidth <= 768) return;
+            const wrappers = document.querySelectorAll('.scale-wrapper');
+            const targetW = 1920;
+            const targetH = 945;
+            wrappers.forEach(wrapper => {
+                const parent = wrapper.parentElement;
+                const parentW = parent.clientWidth;
+                const parentH = parent.clientHeight;
+                const scaleX = parentW / targetW;
+                const scaleY = parentH / targetH;
+                const scale = Math.min(scaleX, scaleY);
+                wrapper.style.transform = `translate(-50%, -50%) scale(${scale})`;
+            });
+        }
+        window.addEventListener('load', adjustScales);
+        window.addEventListener('resize', adjustScales);
+        adjustScales();
+
+        // Navigation: spacebar and click to advance
+        (function () {
+            function getNextSection() {
+                const sections = Array.from(document.querySelectorAll('section'));
+                const scrollY = window.scrollY || window.pageYOffset;
+                for (let i = 0; i < sections.length; i++) {
+                    if (sections[i].offsetTop > scrollY + 10) {
+                        return sections[i];
+                    }
+                }
+                return null;
+            }
+
+            document.addEventListener('keydown', function (e) {
+                if (e.code === 'Space' || e.key === ' ') {
+                    const tag = document.activeElement.tagName.toLowerCase();
+                    if (['input', 'textarea', 'select', 'button'].includes(tag)) return;
+                    e.preventDefault();
+                    const next = getNextSection();
+                    if (next) next.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+
+            document.addEventListener('click', function (e) {
+                if (e.target.closest('a, button, input, select, textarea')) return;
+                if (window.getSelection().toString().length > 0) return;
+                const next = getNextSection();
+                if (next) next.scrollIntoView({ behavior: 'smooth' });
+            });
+        })();
+
+        // Dashboard hover tooltips: any element with data-tip
+        (function () {
+            const tip = document.createElement('div');
+            tip.id = 'viz-tip';
+            document.body.appendChild(tip);
+            document.addEventListener('mousemove', function (e) {
+                const target = e.target.closest('[data-tip]');
+                if (!target) {
+                    tip.style.opacity = 0;
+                    return;
+                }
+                tip.textContent = target.getAttribute('data-tip');
+                tip.style.left = (e.clientX + 14) + 'px';
+                tip.style.top = (e.clientY - 34) + 'px';
+                tip.style.opacity = 1;
+            });
+        })();
+    </script>
+</body>
+
+</html>
