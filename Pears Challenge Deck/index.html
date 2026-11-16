@@ -1,0 +1,1463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>iNua – Pears Challenge 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,600;0,700;0,800;1,400;1,600&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
+<style>
+/* =========================================================
+   iNua – Pears Challenge 2026 endorsement deck (draft)
+   Stage is a fixed 1920x1080 canvas, scaled to fit the window.
+   Keys: ← → / space navigate · N script · A anonymise orgs · F fullscreen
+   ========================================================= */
+:root{
+  --brown:#8c4115; --text:#544a42; --muted:#8a7d72; --orange:#f2a51a; --orange-deep:#e07b1a;
+  --line:#eab683; --green:#126b4f; --green-2:#1d8a66; --green-soft:#e3f1ea;
+  --bg-top:#FFFEFA; --bg-bottom:#FFF1E0; --card:#FFFDF8; --line-light:rgba(140,100,60,.14);
+  --grey:#cdc4bb; --grey-2:#e6dfd8;
+  --chris:#4f7a2a; --nia:#00897b; --tariq:#6a4c93; --josef:#1565c0; --mary:#c0392b;
+  --inua:#126b4f; --gift:#c98a12; --nuru:#2e86c1;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{height:100%;background:#17130f;overflow:hidden}
+body{font-family:'Nunito',sans-serif;color:var(--text);-webkit-font-smoothing:antialiased}
+h1,h2,h3,h4{font-family:'Poppins',sans-serif;color:var(--brown);font-weight:700;line-height:1.15}
+.ms{font-family:'Material Symbols Rounded';font-weight:normal;font-style:normal;line-height:1;letter-spacing:normal;
+  text-transform:none;display:inline-block;white-space:nowrap;font-feature-settings:'liga';-webkit-font-feature-settings:'liga';
+  font-variation-settings:'FILL' 1,'wght' 500,'GRAD' 0,'opsz' 48}
+
+#viewport{position:fixed;inset:0;display:flex;align-items:center;justify-content:center}
+#stage{width:1920px;height:1080px;position:relative;flex-shrink:0;transform-origin:center center}
+
+.slide{position:absolute;inset:0;overflow:hidden;background:linear-gradient(135deg,var(--bg-top) 0%,var(--bg-bottom) 100%);
+  opacity:0;visibility:hidden;transition:opacity .55s ease,visibility 0s linear .55s}
+.slide.active{opacity:1;visibility:visible;transition:opacity .55s ease}
+.notes{display:none}
+
+.logo-corner{position:absolute;top:34px;left:44px;height:40px;opacity:.9;z-index:20}
+.logo-corner.on-dark{filter:brightness(0) invert(1);opacity:.75}
+.source{font-size:16px;color:var(--muted);line-height:1.35}
+.source b{font-weight:700;color:#7a6c60}
+.tag-illustrative{position:absolute;left:36px;bottom:30px;font-size:15px;letter-spacing:.06em;text-transform:uppercase;
+  color:rgba(255,255,255,.7);display:flex;gap:8px;align-items:center;z-index:5}
+.tag-illustrative.dark{color:rgba(84,74,66,.7)}
+.pill{display:inline-flex;align-items:center;gap:10px;padding:10px 22px;border-radius:999px;background:#fff;
+  border:1px solid var(--line-light);box-shadow:0 6px 20px rgba(140,65,21,.06);font-weight:700;font-size:20px;color:var(--brown)}
+.pill .ms{font-size:24px;color:var(--orange-deep)}
+.statement{font-family:'Poppins';font-weight:700;color:var(--brown);text-align:center}
+
+/* ---------- entrance animations (run when slide becomes active) ---------- */
+@keyframes rise{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:none}}
+@keyframes fade{from{opacity:0}to{opacity:1}}
+@keyframes pop{0%{opacity:0;transform:scale(.6)}70%{transform:scale(1.06)}100%{opacity:1;transform:scale(1)}}
+@keyframes growX{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+@keyframes pulseRing{0%{transform:scale(.6);opacity:.85}100%{transform:scale(2.4);opacity:0}}
+@keyframes glowPulse{0%,100%{box-shadow:0 0 0 0 rgba(242,165,26,.0),0 0 40px 6px rgba(242,165,26,.25)}50%{box-shadow:0 0 0 10px rgba(242,165,26,.12),0 0 70px 16px rgba(242,165,26,.4)}}
+@keyframes wave{0%,100%{transform:scaleY(.35)}50%{transform:scaleY(1)}}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.35}}
+.active .a-rise{animation:rise .8s cubic-bezier(.2,.7,.2,1) both;animation-delay:var(--d,0s)}
+.active .a-fade{animation:fade 1s ease both;animation-delay:var(--d,0s)}
+.active .a-pop{animation:pop .7s cubic-bezier(.2,.7,.2,1) both;animation-delay:var(--d,0s)}
+.static .slide *, .static .slide *::before, .static .slide *::after{animation:none!important;transition:none!important}
+
+/* ---------- people (real personas) ---------- */
+.person{display:flex;align-items:center;gap:20px}
+.person.col{flex-direction:column;text-align:center;gap:12px}
+.p-photo{--ps:120px;width:var(--ps);height:var(--ps);border-radius:50%;position:relative;overflow:hidden;flex-shrink:0;
+  background:linear-gradient(140deg,#f8e2c8,#e9b789);border:5px solid #fff;box-shadow:0 10px 28px rgba(140,65,21,.16);
+  display:grid;place-items:center}
+.p-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.p-initial{font-family:'Poppins';font-weight:700;color:#fff;font-size:calc(var(--ps)*.42);text-shadow:0 2px 8px rgba(140,65,21,.25)}
+.p-missing{position:absolute;bottom:6%;left:50%;transform:translateX(-50%);font-size:calc(var(--ps)*.11);font-weight:800;
+  letter-spacing:.08em;text-transform:uppercase;color:#fff;background:rgba(140,65,21,.55);padding:2px 8px;border-radius:99px;white-space:nowrap}
+.p-name{font-family:'Poppins';font-weight:700;color:var(--brown);font-size:30px;line-height:1.1}
+.p-org{font-size:20px;color:var(--muted);font-weight:600;margin-top:4px}
+.p-logo{height:34px;margin-top:8px;display:block}
+.person.col .p-logo{margin:6px auto 0}
+.anon .p-logo{display:none}
+
+/* ---------- agents ---------- */
+.av{--size:72px;--c:var(--inua);width:var(--size);height:var(--size);border-radius:50%;background-color:#fff;background-repeat:no-repeat;
+  background-size:250%;background-position:50% 2%;border:4px solid color-mix(in srgb,var(--c) 45%,#fff);
+  box-shadow:0 6px 16px rgba(0,0,0,.12);flex-shrink:0}
+.av-chris{--c:var(--chris);background-image:url('images/agents/chris.png')}
+.av-nia{--c:var(--nia);background-image:url('images/agents/nia.png')}
+.av-tariq{--c:var(--tariq);background-image:url('images/agents/tariq.png')}
+.av-josef{--c:var(--josef);background-image:url('images/agents/josef.png')}
+.av-mary{--c:var(--mary);background-image:url('images/agents/mary.png')}
+.av-inua{--c:var(--inua);background-image:url('images/agents/inua.png')}
+.av-gift{--c:var(--gift);background-image:url('images/agents/gift.png')}
+.av-nuru{--c:var(--nuru);background-image:url('images/agents/nuru.png')}
+.agent-chip{display:inline-flex;align-items:center;gap:8px;padding:8px 18px;border-radius:999px;color:#fff;font-weight:800;
+  font-family:'Poppins';font-size:20px;background:var(--c)}
+.agent-chip small{font-family:'Nunito';font-weight:700;font-size:16px;opacity:.9}
+
+/* voice waveform */
+.waveform{display:inline-flex;align-items:center;gap:5px;height:44px;padding:0 18px;border-radius:999px;background:#fff;
+  box-shadow:0 6px 18px rgba(0,0,0,.12)}
+.waveform i{display:block;width:6px;height:30px;border-radius:4px;background:var(--wc,var(--green));transform-origin:center;
+  animation:wave 1s ease-in-out infinite}
+.waveform i:nth-child(2){animation-delay:.12s;height:22px}.waveform i:nth-child(3){animation-delay:.24s}
+.waveform i:nth-child(4){animation-delay:.36s;height:18px}.waveform i:nth-child(5){animation-delay:.48s;height:28px}
+.waveform i:nth-child(6){animation-delay:.6s;height:20px}.waveform i:nth-child(7){animation-delay:.72s}
+
+/* ---------- feature phone ---------- */
+.fphone{width:250px;height:470px;border-radius:44px 44px 54px 54px;background:linear-gradient(160deg,#3b3a40,#1f1e23);
+  padding:26px 22px;box-shadow:0 30px 60px rgba(0,0,0,.45),inset 0 2px 0 rgba(255,255,255,.12);position:relative}
+.fp-speaker{width:56px;height:6px;border-radius:4px;background:#111;margin:0 auto 16px}
+.fp-screen{height:200px;border-radius:14px;background:#cfe3d6;position:relative;overflow:hidden;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;gap:4px;font-weight:800;color:#1c3329;text-align:center}
+.fp-layer{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px}
+.fp-icon{width:66px;height:66px;border-radius:50%;display:grid;place-items:center;position:relative}
+.fp-icon .ms{font-size:40px}
+.fp-l1{font-size:22px;font-family:'Poppins';font-weight:700}
+.fp-l2{font-size:17px;font-weight:700;opacity:.8}
+.fp-keys{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:22px}
+.fp-keys i{height:34px;border-radius:12px;background:linear-gradient(#55545c,#3d3c43);box-shadow:inset 0 1px 0 rgba(255,255,255,.15)}
+.fp-keys i:nth-child(-n+3){height:26px;border-radius:999px}
+.ring::before,.ring::after{content:'';position:absolute;inset:0;border-radius:50%;border:3px solid currentColor;animation:pulseRing 1.6s ease-out infinite}
+.ring::after{animation-delay:.8s}
+/* states */
+.fp-ringing{background:#d6e9dc;color:#1f5e44}
+.fp-ringing .fp-icon{background:#2e8b62;color:#fff}
+.fp-missed{background:#d9d6d3;color:#6a6460}
+.fp-missed .fp-icon{background:#a59e98;color:#fff}
+.fp-connected{background:#d9f1e3;color:#125a3f}
+.fp-connected .fp-icon{background:var(--green);color:#fff}
+/* ringing -> no answer sequence (slide 1) : base = final state (missed) */
+.seq-missed .fp-ringing{opacity:0}
+.active .seq-missed .fp-ringing{animation:ringThenHide 4.8s ease forwards}
+@keyframes ringThenHide{0%,88%{opacity:1}100%{opacity:0}}
+.active .seq-missed .fp-missed{animation:fade .5s ease 4.4s both}
+
+/* ---------- girl scene (SVG built by JS) ---------- */
+.girl-scene{position:relative;overflow:hidden}
+.girl-scene svg{position:absolute;inset:0;width:100%;height:100%;display:block}
+.g-ring{transform-box:fill-box;transform-origin:center;animation:pulseRing 1.8s ease-out infinite}
+.g-ring.r2{animation-delay:.9s}
+
+/* ---------- generic layout bits ---------- */
+.half{position:absolute;top:0;bottom:0;width:50%}
+.half.left{left:0}.half.right{right:0}
+.photo-fill{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+
+/* ---------- SLIDE 0 : title ---------- */
+#s-title{background:url('images/brand/waves.jpg') center bottom/cover no-repeat,linear-gradient(135deg,var(--bg-top),var(--bg-bottom))}
+#s-title .center{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:34px;padding-bottom:170px}
+#s-gabriel .person .p-photo,#s-tom .person .p-photo{--ps:170px}
+#s-gabriel .person .p-name,#s-tom .person .p-name{font-size:38px}
+#s-gabriel .person .p-org,#s-tom .person .p-org{font-size:24px}
+#s-title .big-logo{height:150px}
+#s-title h1{font-size:62px;color:var(--green);text-align:center;font-weight:800;max-width:1300px}
+#s-title .sub{font-size:30px;color:var(--text);display:flex;gap:26px;align-items:center}
+#s-title .sub .dot{width:8px;height:8px;border-radius:50%;background:var(--orange)}
+/* the iNua team as one group: overlapping head-and-shoulder crops of the agent cutouts */
+.team-heads{display:flex;justify-content:center;align-items:flex-end;height:230px;padding:0 40px;
+  -webkit-mask-image:linear-gradient(to bottom,#000 72%,transparent 100%),linear-gradient(to right,transparent 0,#000 9%,#000 91%,transparent 100%);
+  -webkit-mask-composite:source-in;
+  mask-image:linear-gradient(to bottom,#000 72%,transparent 100%),linear-gradient(to right,transparent 0,#000 9%,#000 91%,transparent 100%);
+  mask-composite:intersect}
+.team-heads i{display:block;width:190px;height:230px;margin:0 -34px;position:relative;z-index:var(--z,1);
+  background:var(--img) no-repeat;background-size:760px auto;background-position:50% -22px}
+#s-title .founders{position:absolute;bottom:56px;left:0;right:0;text-align:center;font-size:22px;color:var(--muted);font-weight:700;letter-spacing:.02em}
+
+/* ---------- SLIDE 1 : Gabriel ---------- */
+#s-gabriel .girl-scene{position:absolute;inset:0}
+#s-gabriel .fphone{position:absolute;right:110px;top:250px;transform:rotate(4deg)}
+#s-gabriel .right{padding:110px 110px 70px 120px;display:flex;flex-direction:column}
+#s-gabriel .stat{margin-top:60px}
+.funding{margin-top:70px;display:flex;flex-direction:column;gap:22px;width:640px}
+.funding .fr{display:grid;grid-template-columns:220px 1fr;align-items:center;gap:20px}
+.funding .fl{display:flex;align-items:center;gap:10px;font-weight:800;font-size:22px;color:var(--text)}
+.funding .fl .ms{font-size:28px;color:var(--brown)}
+.funding .track{height:16px;position:relative}
+.funding .solid{position:absolute;inset:0;border-radius:99px;background:var(--green);transform-origin:left}
+.funding .seg{position:absolute;top:0;bottom:0;border-radius:99px;background:var(--orange);transform-origin:left}
+.funding .tick{position:absolute;top:-8px;bottom:-8px;width:3px;border-radius:2px;background:var(--brown);opacity:.5}
+.active .funding .solid,.active .funding .seg{animation:growX 1s ease both;animation-delay:var(--d,0s)}
+#s-gabriel .num{font-family:'Poppins';font-weight:800;font-size:250px;line-height:.9;color:var(--green);letter-spacing:-.02em}
+#s-gabriel .num-label{font-size:40px;font-weight:700;color:var(--text);margin-top:10px}
+.phones{display:flex;gap:14px;margin-top:48px}
+.phones span{width:58px;height:58px;border-radius:50%;display:grid;place-items:center;color:#fff}
+.phones span .ms{font-size:32px}
+.phones .ok{background:var(--green)}
+.phones .miss{background:var(--grey);color:#fff}
+#s-gabriel .source{margin-top:auto}
+
+/* ---------- SLIDE 2 : Tom ---------- */
+#s-tom .left img{filter:saturate(.45) brightness(.97) contrast(.95)}
+#s-tom .left::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,rgba(40,30,20,.0) 50%,rgba(255,248,238,.25))}
+.thought{position:absolute;top:170px;right:120px;width:210px;height:210px;border-radius:50%;background:#fff;
+  box-shadow:0 18px 40px rgba(0,0,0,.18);display:grid;place-items:center;z-index:3}
+.thought::before,.thought::after{content:'';position:absolute;border-radius:50%;background:#fff;box-shadow:0 8px 18px rgba(0,0,0,.14)}
+.thought::before{width:46px;height:46px;bottom:-34px;left:22px}
+.thought::after{width:24px;height:24px;bottom:-66px;left:-4px}
+.thought .ms{font-size:110px;color:var(--orange)}
+.thought .q{position:absolute;top:22px;right:30px;font-family:'Poppins';font-weight:800;font-size:56px;color:var(--brown)}
+#s-tom .right{padding:90px 100px 60px 110px;display:flex;flex-direction:column}
+.tom-top{display:flex;align-items:center;gap:50px;margin-top:40px}
+.cust{display:flex;align-items:center;gap:18px}
+.cust .lg{font-size:22px;font-weight:700;line-height:1.1}
+.cust .lg b{display:block;font-family:'Poppins';font-size:38px;color:var(--green);white-space:nowrap}
+.dotfield.small{grid-template-columns:repeat(11,16px);gap:6px;margin:0}
+.dotfield.small i{width:16px;height:16px}
+.leads-box{margin-top:34px;border:3px dashed var(--grey);border-radius:28px;padding:22px 26px 20px;background:rgba(255,255,255,.55);position:relative;align-self:flex-start}
+.leads-head{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:6px}
+.leads-head .chip{display:inline-flex;align-items:center;gap:8px;background:var(--brown);color:#fff;font-weight:800;font-size:19px;padding:7px 16px;border-radius:99px}
+.leads-head .chip .ms{font-size:22px}
+.leads-head .idle{display:inline-flex;align-items:center;gap:6px;font-weight:800;font-size:19px;color:var(--muted)}
+.leads-head .idle .ms{font-size:24px;color:var(--orange-deep)}
+.leads-box .dotfield{margin-top:14px;grid-template-columns:repeat(25,18px);gap:8px}
+.leads-box .dotfield i{width:18px;height:18px}
+.leads-n{margin-top:16px;font-size:30px;font-weight:700;color:var(--text)}
+.leads-n b{font-family:'Poppins';font-size:56px;color:var(--brown);margin-right:6px}
+.agents-row{display:flex;align-items:center;gap:18px}
+.agents-row .ms{font-size:66px;color:var(--brown)}
+.big-n{font-family:'Poppins';font-weight:800;font-size:92px;line-height:1;color:var(--brown)}
+.big-l{font-size:28px;font-weight:700;color:var(--text);line-height:1.2}
+.dotfield{display:grid;grid-template-columns:repeat(25,22px);gap:9px;margin-top:40px}
+.dotfield i{width:22px;height:22px;border-radius:50%;background:var(--grey-2);border:2px solid var(--grey)}
+.dotfield i.c{background:var(--green);border-color:var(--green)}
+.active .dotfield i{animation:pop .35s ease both;animation-delay:calc(var(--i) * 6ms + .6s)}
+.legend{display:flex;gap:44px;margin-top:28px;align-items:flex-start}
+.legend div{display:flex;gap:14px;align-items:center}
+.legend i{width:26px;height:26px;border-radius:50%;flex-shrink:0}
+.legend .lg-c{background:var(--green)}.legend .lg-g{background:var(--grey-2);border:2px solid var(--grey)}
+.legend b{font-family:'Poppins';font-size:40px;color:var(--brown);display:block;line-height:1}
+.legend span{font-size:22px;font-weight:700}
+#s-tom .source{margin-top:auto}
+
+/* ---------- SLIDE 3 : same problem ---------- */
+.prob-text{position:absolute;left:130px;top:0;bottom:0;width:1000px;display:flex;flex-direction:column;justify-content:center;gap:54px}
+.prob-text h1{font-size:96px;font-weight:800;color:var(--brown);letter-spacing:-.01em}
+.pblock{display:flex;flex-direction:column;align-items:flex-start;gap:16px}
+.plabel{display:inline-block;font-family:'Poppins';font-weight:700;font-size:22px;letter-spacing:.12em;text-transform:uppercase;color:#fff;padding:6px 20px;border-radius:99px}
+.plabel.what{background:var(--green)}.plabel.why{background:var(--orange-deep)}
+.what-t{font-family:'Poppins';font-weight:700;font-size:54px;line-height:1.18;color:var(--brown)}
+.what-t em{font-style:normal;color:var(--green)}
+.why-t{font-family:'Poppins';font-weight:600;font-size:42px;line-height:1.25;color:var(--text)}
+.prob-visual{position:absolute;right:110px;top:70px;bottom:70px;width:600px;display:flex;flex-direction:column;justify-content:space-between;align-items:center}
+.prob-visual .pcard{width:600px;height:400px}
+.vjoin{position:relative;flex:1;width:4px;border-left:4px dashed var(--line);margin-left:4px}
+.vjoin .node{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:130px;height:130px;border-radius:50%;
+  background:#fff;box-shadow:0 12px 34px rgba(140,65,21,.18);display:grid;place-items:center;z-index:3}
+.vjoin .node .ms{font-size:66px;color:var(--brown)}
+.vjoin .node .one{position:absolute;bottom:-10px;right:-6px;background:var(--orange);color:#fff;font-family:'Poppins';font-weight:800;
+  width:48px;height:48px;border-radius:50%;display:grid;place-items:center;font-size:24px;border:4px solid #fff}
+.pcard{width:700px;height:560px;border-radius:36px;overflow:hidden;position:relative;box-shadow:0 24px 60px rgba(90,50,20,.18)}
+.pcard img{filter:saturate(.45)}
+.pcard .cap{position:absolute;left:24px;bottom:22px;display:flex;align-items:center;gap:10px;background:rgba(255,255,255,.93);
+  padding:10px 20px;border-radius:999px;font-weight:800;font-size:22px;color:var(--text)}
+.pcard .cap .ms{color:#b0a49a;font-size:28px}
+.pcard .who{position:absolute;top:20px;left:20px}
+.pcard .who .p-photo{--ps:84px}
+.joiner{position:absolute;top:390px;left:50%;transform:translateX(-50%);width:420px;height:2px;z-index:2}
+.joiner::before{content:'';position:absolute;inset:0;border-top:4px dashed var(--line);transform-origin:left}
+.active .joiner::before{animation:growX 1.2s ease .4s both}
+.joiner .node{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:150px;height:150px;border-radius:50%;
+  background:#fff;box-shadow:0 12px 34px rgba(140,65,21,.18);display:grid;place-items:center}
+.joiner .node .ms{font-size:76px;color:var(--brown)}
+.joiner .node .one{position:absolute;bottom:-14px;right:-6px;background:var(--orange);color:#fff;font-family:'Poppins';font-weight:800;
+  width:52px;height:52px;border-radius:50%;display:grid;place-items:center;font-size:26px;border:4px solid #fff}
+#s-same .statement{position:absolute;left:180px;right:180px;bottom:110px;font-size:58px;line-height:1.22}
+#s-same .statement em{font-style:normal;color:var(--green)}
+
+/* ---------- 2x2 matrix (slides 4 & 9) ---------- */
+.matrix{position:absolute;width:900px;height:780px}
+.matrix .grid{position:absolute;left:90px;top:0;right:0;bottom:90px;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:18px}
+.matrix .q{border-radius:28px;background:rgba(255,255,255,.6);border:1px solid var(--line-light);position:relative;display:flex;
+  flex-direction:column;align-items:center;justify-content:center;gap:14px;text-align:center;padding:20px}
+.matrix .q .ic{width:110px;height:110px;border-radius:50%;background:#fff;display:grid;place-items:center;box-shadow:0 10px 26px rgba(140,65,21,.12)}
+.matrix .q .ic .ms{font-size:62px;color:var(--brown)}
+.matrix .q .lbl{font-family:'Poppins';font-weight:700;font-size:28px;color:var(--brown);line-height:1.2}
+.matrix .q .meh{font-size:20px;font-weight:700;color:var(--muted)}
+.matrix .q.empty{background:transparent;border:3px dashed var(--orange);animation:glowPulse 2.6s ease-in-out infinite}
+.matrix .q.empty .ms.big{font-size:120px;color:var(--orange)}
+.matrix .q.dim{background:rgba(255,255,255,.25)}
+.matrix .ax-y{position:absolute;left:30px;top:0;bottom:90px;width:4px;background:var(--brown);border-radius:4px}
+.matrix .ax-y::before{content:'';position:absolute;top:-14px;left:-10px;border:12px solid transparent;border-bottom:18px solid var(--brown);border-top:0}
+.matrix .ax-x{position:absolute;left:30px;right:0;bottom:60px;height:4px;background:var(--brown);border-radius:4px}
+.matrix .ax-x::after{content:'';position:absolute;right:-14px;top:-10px;border:12px solid transparent;border-left:18px solid var(--brown);border-right:0}
+.matrix .lab-y{position:absolute;left:-30px;top:44%;transform:translate(-50%,-50%) rotate(-90deg);transform-origin:center;font-family:'Poppins';font-weight:700;
+  font-size:30px;color:var(--brown);display:flex;gap:10px;align-items:center;white-space:nowrap}
+.matrix .lab-x{position:absolute;right:20px;bottom:0;font-family:'Poppins';font-weight:700;font-size:30px;color:var(--brown);display:flex;gap:10px;align-items:center}
+.matrix .lab-y .ms,.matrix .lab-x .ms{font-size:34px;color:var(--orange-deep)}
+
+/* ---------- SLIDE 4 ---------- */
+#s-matrix .matrix{left:150px;top:150px}
+#s-matrix .stats{position:absolute;right:120px;top:170px;width:620px;display:flex;flex-direction:column;gap:70px}
+.stat-n{font-family:'Poppins';font-weight:800;font-size:150px;line-height:.9;color:var(--orange-deep)}
+.stat-l{font-size:30px;font-weight:700;color:var(--text);margin:10px 0 18px;line-height:1.25}
+.bars{display:flex;flex-direction:column;gap:12px;margin-bottom:14px}
+.bar{display:grid;grid-template-columns:110px 1fr 70px;align-items:center;gap:14px;font-weight:800;font-size:20px}
+.bar .track{height:22px;border-radius:99px;background:var(--grey-2);overflow:hidden}
+.bar .fill{height:100%;border-radius:99px;background:var(--grey);transform-origin:left}
+.bar.rural .fill{background:var(--orange-deep)}
+.active .bar .fill{animation:growX 1.1s cubic-bezier(.2,.7,.2,1) both;animation-delay:var(--d,0s)}
+.phonemix{display:flex;gap:16px;align-items:flex-end;margin:6px 0 14px}
+.mfp,.msp{display:inline-block;position:relative;flex-shrink:0}
+.mfp{width:38px;height:68px;border-radius:12px 12px 14px 14px;background:var(--orange-deep)}
+.mfp::before{content:'';position:absolute;left:6px;right:6px;top:7px;height:20px;border-radius:4px;background:#fff5e6}
+.mfp::after{content:'';position:absolute;left:7px;right:7px;top:33px;bottom:7px;
+  background:radial-gradient(circle,#fff5e6 2.2px,transparent 2.6px) 0 0/8px 8px}
+.msp{width:40px;height:76px;border-radius:9px;background:var(--grey)}
+.msp::before{content:'';position:absolute;inset:5px 4px 9px;border-radius:5px;background:#f3eee9}
+.phonemix .msp{opacity:.9}
+.pm-legend{display:flex;gap:26px;font-size:18px;font-weight:800;color:var(--muted);margin-bottom:14px}
+.pm-legend span{display:inline-flex;align-items:center;gap:8px}
+.pm-legend .mfp{width:14px;height:24px;border-radius:5px}.pm-legend .mfp::before,.pm-legend .mfp::after{display:none}
+.pm-legend .msp{width:14px;height:26px;border-radius:4px}.pm-legend .msp::before{inset:2px 2px 4px}
+.active .phonemix i{animation:pop .45s ease both}
+.active .phonemix i:nth-child(1){animation-delay:2.9s}.active .phonemix i:nth-child(2){animation-delay:2.98s}.active .phonemix i:nth-child(3){animation-delay:3.06s}
+.active .phonemix i:nth-child(4){animation-delay:3.14s}.active .phonemix i:nth-child(5){animation-delay:3.22s}.active .phonemix i:nth-child(6){animation-delay:3.3s}
+.active .phonemix i:nth-child(n+7){animation-delay:3.5s}
+.pie-row{display:flex;align-items:center;gap:30px}
+.pie{width:120px;height:120px;border-radius:50%;background:conic-gradient(var(--orange-deep) 0 25%, var(--grey-2) 25% 100%);flex-shrink:0;position:relative}
+.pie::after{content:'';position:absolute;inset:26px;border-radius:50%;background:var(--bg-bottom)}
+
+/* ---------- SLIDE 5 : who ---------- */
+#s-who h2{position:absolute;top:58px;left:0;right:0;text-align:center;font-size:48px}
+#s-who .wall{position:absolute;top:150px;left:50%;transform:translateX(-50%);display:flex;gap:14px;align-items:center;
+  background:var(--brown);color:#fff;padding:14px 34px;border-radius:999px;font-weight:800;font-size:24px;white-space:nowrap}
+#s-who .wall .ms{font-size:30px;color:var(--orange)}
+#s-who .tiles{position:absolute;top:150px;left:100px;right:100px;bottom:80px;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:28px}
+.tile{background:#fff;border-radius:30px;padding:0 0 26px;box-shadow:0 14px 40px rgba(140,65,21,.09);border:1px solid var(--line-light);
+  display:flex;flex-direction:column;align-items:center;text-align:center;position:relative;overflow:hidden}
+.tile .p-photo{--ps:220px;border-width:6px}
+.tile .person.col{margin-top:-60px;position:relative;z-index:2}
+.tile .p-name{font-size:34px}
+.tile .p-org{font-size:19px}
+#s-who .p-logo{display:none}
+.seg-title{width:100%;height:150px;flex-shrink:0;padding:0 18px 56px;background:var(--brown);color:#fff;font-family:'Poppins';font-weight:700;
+  font-size:27px;line-height:1.12;display:flex;align-items:center;justify-content:center;gap:12px}
+.seg-title .ms{font-size:40px;color:var(--orange)}
+.pains{list-style:none;width:100%;padding:30px 26px 0;display:flex;flex-direction:column;gap:26px;text-align:left}
+.pains li{display:flex;align-items:center;gap:16px;font-weight:800;font-size:24px;line-height:1.2;color:var(--text)}
+.pains .ms{width:60px;height:60px;border-radius:50%;background:#fbe4df;color:#c0392b;display:grid;place-items:center;font-size:32px;flex-shrink:0}
+#s-who .around{bottom:28px;font-size:16px}
+.tile .seg{display:inline-flex;align-items:center;gap:8px;margin-top:12px;font-size:17px;font-weight:800;color:var(--green);
+  background:var(--green-soft);padding:6px 14px;border-radius:99px}
+.tile .seg .ms{font-size:20px}
+.tile q{display:block;font-size:21px;font-style:italic;line-height:1.38;color:var(--muted);margin-top:auto;padding:16px 26px 0;quotes:"“" "”"}
+.tile .when{margin-top:auto;font-size:15px;color:var(--muted);font-weight:700}
+#s-who .people-band{position:absolute;left:110px;right:110px;bottom:92px;height:200px;border-radius:30px;background:linear-gradient(90deg,#f4e3cf,#fbefe1);
+  display:flex;align-items:center;gap:34px;padding:0 40px}
+.band-label{font-family:'Poppins';font-weight:700;font-size:26px;color:var(--brown);line-height:1.15;width:210px;flex-shrink:0}
+.band-faces{display:flex;align-items:center;gap:18px}
+.band-faces .circ{width:140px;height:140px;border-radius:50%;overflow:hidden;border:5px solid #fff;box-shadow:0 8px 20px rgba(0,0,0,.12);position:relative;flex-shrink:0}
+.band-faces .circ img{width:100%;height:100%;object-fit:cover}
+.crowd{display:flex;align-items:flex-end;gap:2px;height:130px}
+.crowd svg{height:100%;width:auto}
+.crowd{flex:1;min-width:0;overflow:hidden;justify-content:center}
+.band-chips{display:flex;flex-direction:column;gap:12px;margin-left:auto;flex-shrink:0}
+.band-chips > span{display:inline-flex;align-items:center;gap:10px;background:#fff;padding:8px 18px;border-radius:99px;font-weight:800;font-size:19px;white-space:nowrap}
+.band-chips .ms{color:var(--orange-deep);font-size:24px}
+#s-who .around{position:absolute;left:110px;right:110px;bottom:30px;display:flex;justify-content:center;gap:16px;align-items:center;font-size:19px;font-weight:700;color:var(--muted)}
+#s-who .around span{display:inline-flex;align-items:center;gap:8px}
+#s-who .around .ms{font-size:22px;color:var(--line)}
+
+/* ---------- SLIDE 6 : imagine now ---------- */
+#s-imagine .head{position:absolute;top:44px;left:0;right:0;text-align:center}
+#s-imagine .head h2{font-size:52px;color:var(--green);font-weight:800}
+#s-imagine .panels{position:absolute;top:150px;left:70px;right:70px;bottom:50px;display:grid;grid-template-columns:1fr 1fr;gap:40px}
+.panel{background:#fff;border-radius:34px;box-shadow:0 18px 50px rgba(140,65,21,.1);overflow:hidden;display:flex;flex-direction:column;
+  transition:opacity .7s ease,filter .7s ease}
+.panel .visual{height:580px;position:relative;overflow:hidden}
+.panel .hdr{position:absolute;top:20px;left:20px;z-index:4;display:flex;align-items:center;gap:12px;background:rgba(255,255,255,.94);
+  padding:8px 20px 8px 8px;border-radius:999px;box-shadow:0 6px 16px rgba(0,0,0,.1)}
+.panel .hdr .p-photo{--ps:58px;border-width:3px}
+.panel .hdr b{font-family:'Poppins';font-size:22px;color:var(--brown)}
+.panel .hdr small{display:block;font-size:15px;font-weight:800;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+.steps{display:flex;align-items:flex-start;justify-content:center;gap:6px;padding:30px 26px 10px}
+.step{flex:1;display:flex;flex-direction:column;align-items:center;text-align:center;gap:12px}
+.step .ic{width:84px;height:84px;border-radius:50%;display:grid;place-items:center;background:var(--green-soft);color:var(--green)}
+.step .ic .ms{font-size:46px}
+.step .t{font-family:'Poppins';font-weight:600;font-size:21px;color:var(--brown);line-height:1.2}
+.step-arrow{color:var(--line);font-size:40px;margin-top:22px}
+.tags{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;padding:12px 26px 26px;margin-top:auto}
+.tags span{font-size:15px;font-weight:800;color:var(--muted);border:1.5px solid var(--grey-2);padding:5px 12px;border-radius:99px}
+.active .panel .step{animation:rise .7s ease both}
+.active .panel .step:nth-of-type(1){animation-delay:.5s}.active .panel .step:nth-of-type(2){animation-delay:1.1s}.active .panel .step:nth-of-type(3){animation-delay:1.7s}
+#s-imagine[data-step="0"] .panel.tom{opacity:.22;filter:grayscale(1)}
+#s-imagine[data-step="0"] .panel.tom .step{animation:none;opacity:.6}
+#s-imagine[data-step="1"] .panel.tom .step{animation:rise .7s ease both}
+#s-imagine[data-step="1"] .panel.tom .step:nth-of-type(1){animation-delay:.4s}
+#s-imagine[data-step="1"] .panel.tom .step:nth-of-type(2){animation-delay:1s}
+#s-imagine[data-step="1"] .panel.tom .step:nth-of-type(3){animation-delay:1.6s}
+/* Gabriel visual */
+.gab-visual .girl-scene{position:absolute;inset:0}
+.gab-visual .fphone{position:absolute;left:330px;top:120px;transform:scale(.72) rotate(-3deg);transform-origin:top left}
+.agent-bubble{position:absolute;width:250px;height:250px;border-radius:50%;background:radial-gradient(circle at 50% 40%,#fff,#fdf3e6);
+  overflow:hidden;box-shadow:0 18px 40px rgba(0,0,0,.18);border:6px solid #fff}
+.agent-bubble img{position:absolute;left:50%;top:6%;width:190%;transform:translateX(-50%)}
+.agent-bubble .name{position:absolute;bottom:14px;left:50%;transform:translateX(-50%);z-index:2}
+.gab-visual .agent-bubble{right:40px;top:96px}
+.gab-visual .waveform{position:absolute;right:250px;top:330px;--wc:var(--nia)}
+/* Tom visual */
+.tom-visual img.photo-fill{object-position:30% 30%}
+.tom-visual .agent-bubble{right:40px;top:84px}
+.tom-visual .waveform{position:absolute;right:270px;top:300px;--wc:var(--chris)}
+.tom-visual .callout{position:absolute;left:24px;bottom:22px;background:rgba(255,255,255,.95);border-radius:20px;padding:12px 18px;
+  display:flex;gap:10px;align-items:center;font-weight:800;font-size:19px;box-shadow:0 8px 20px rgba(0,0,0,.12)}
+.tom-visual .callout .ms{color:var(--nuru);font-size:30px}
+
+/* ---------- SLIDE 7 : technology ---------- */
+#s-tech h2{position:absolute;top:50px;left:0;right:0;text-align:center;font-size:50px}
+.tech-hero{position:absolute;left:420px;width:430px;bottom:0;height:900px}
+.tech-hero::before{content:'';position:absolute;left:50%;top:48%;width:520px;height:520px;transform:translate(-50%,-50%);border-radius:50%;
+  background:radial-gradient(circle,rgba(18,107,79,.15),rgba(18,107,79,0) 68%)}
+.tech-hero img{position:absolute;left:50%;bottom:-10px;height:860px;transform:translateX(-50%)}
+#s-tech svg.tlinks{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.tnode{position:absolute;width:370px;display:flex;gap:18px;align-items:center}
+.tnode .ic{width:84px;height:84px;border-radius:24px;background:#fff;box-shadow:0 10px 26px rgba(140,65,21,.12);display:grid;place-items:center;flex-shrink:0}
+.tnode .ic .ms{font-size:46px;color:var(--green)}
+.tnode b{font-family:'Poppins';font-weight:700;font-size:25px;color:var(--brown);line-height:1.15;display:block}
+.tnode small{display:block;font-size:18px;font-weight:700;color:var(--muted);margin-top:6px;line-height:1.3}
+.tnode .chan{display:flex;gap:6px;margin-top:10px;flex-wrap:wrap}
+.tnode .chan span{display:inline-flex;align-items:center;gap:5px;background:var(--green-soft);color:var(--green);font-weight:800;font-size:16px;padding:4px 10px;border-radius:99px}
+.tnode .chan .ms{font-size:18px}
+.convo{position:absolute;left:1270px;right:70px;top:150px;bottom:170px;background:#fff;border-radius:34px;box-shadow:0 20px 56px rgba(140,65,21,.12);
+  display:flex;flex-direction:column;overflow:hidden}
+.convo-head{display:flex;align-items:center;gap:10px;padding:16px 22px;background:var(--green);color:#fff}
+.convo-head .ms{font-size:30px}
+.convo-head b{font-family:'Poppins';font-size:21px;margin-right:4px}
+.convo-head .tag{background:rgba(255,255,255,.18);padding:4px 12px;border-radius:99px;font-weight:800;font-size:16px}
+.convo-head .live{margin-left:auto;display:flex;align-items:center;gap:8px;font-weight:800;font-size:16px}
+.convo-head .live i{width:10px;height:10px;border-radius:50%;background:#7dffb5;animation:blink 1.2s infinite}
+.thread{flex:1;padding:18px 20px;display:flex;flex-direction:column;justify-content:space-between;gap:12px;background:linear-gradient(#fffdf8,#fff7ec)}
+.msg{max-width:88%;font-size:17px;font-weight:700;line-height:1.3}
+.active .msg{animation:rise .6s ease both;animation-delay:var(--d,0s)}
+.msg.me{align-self:flex-end;background:#ece6df;color:var(--text);padding:9px 14px;border-radius:20px 20px 4px 20px}
+.msg.ag{display:flex;gap:12px;align-items:flex-start}
+.msg.ag .av{--size:48px}
+.msg.ag > div{background:#fff;border:2px solid color-mix(in srgb,var(--c) 35%,#fff);padding:8px 12px 10px;border-radius:4px 20px 20px 20px;color:var(--text)}
+.msg em{display:block;font-style:normal;font-family:'Poppins';font-weight:700;font-size:14px;color:var(--c);margin-bottom:2px}
+.msg .ok{display:inline-flex;align-items:center;gap:4px;color:var(--green);font-weight:800;margin-left:6px}
+.msg .ok .ms{font-size:20px}
+.msg.handover{display:flex;gap:12px;align-items:center;max-width:100%;--c:var(--brown)}
+.msg.handover .hic{width:48px;height:48px;border-radius:50%;background:var(--brown);color:#fff;display:grid;place-items:center;flex-shrink:0}
+.msg.handover .hic .ms{font-size:26px}
+.msg.handover > div{background:#fff4e6;border:2px dashed var(--line);padding:8px 12px 10px;border-radius:18px;color:var(--text)}
+.convo-foot{position:absolute;left:1270px;right:70px;bottom:44px;display:flex;flex-direction:column;align-items:stretch;gap:10px}
+.convo-foot > span{display:inline-flex;align-items:center;gap:10px;background:#fff;border:1px solid var(--line-light);box-shadow:0 6px 18px rgba(140,65,21,.08);
+  padding:9px 16px;border-radius:99px;font-weight:800;font-size:17px;color:var(--brown);white-space:nowrap;justify-content:center}
+.convo-foot .ms{color:var(--orange-deep);font-size:26px}
+
+/* ---------- SLIDE 7b : experts ---------- */
+#s-experts h2{position:absolute;top:56px;left:0;right:0;text-align:center;font-size:50px}
+.xgrid{position:absolute;top:140px;left:70px;right:70px;bottom:120px;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:20px}
+#s-experts svg.xlinks{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:1}
+#s-experts .p-logo{display:none}
+.xcol{display:flex;flex-direction:column;align-items:center;position:relative;z-index:2}
+.xseg{display:inline-flex;align-items:center;gap:8px;background:var(--brown);color:#fff;font-family:'Poppins';font-weight:700;font-size:19px;
+  padding:7px 18px;border-radius:99px;margin-bottom:14px;white-space:nowrap}
+.xseg .ms{font-size:24px;color:var(--orange)}
+.xcol .person{gap:14px;text-align:left}
+.xcol .person .p-photo{--ps:104px;border-width:4px}
+.xcol .p-name{font-size:28px}.xcol .p-org{font-size:16px;max-width:170px;line-height:1.25}
+.xcol .arrow{color:var(--line);font-size:40px;margin:2px 0 0}
+.xcol .stage{position:relative;flex:1;width:100%;display:flex;align-items:flex-end;justify-content:center;min-height:0}
+.xcol .stage::before{content:'';position:absolute;bottom:-8px;left:12%;right:12%;height:40px;border-radius:50%;background:radial-gradient(ellipse,rgba(140,65,21,.18),transparent 70%)}
+.xcol .stage img{height:420px;position:relative}
+.xcol .chips{display:flex;justify-content:center;gap:8px;margin-top:18px}
+.xcol.center .stage::before{background:radial-gradient(ellipse,rgba(106,76,147,.28),transparent 70%)}
+.xcol.center .shared{margin-top:290px;font-family:'Poppins';font-weight:700;font-size:20px;color:#fff;background:var(--tariq);padding:8px 20px;border-radius:99px;
+  box-shadow:0 8px 20px rgba(106,76,147,.25)}
+#s-experts .line{position:absolute;bottom:40px;left:0;right:0;text-align:center;font-family:'Poppins';font-weight:700;font-size:36px;color:var(--green)}
+
+/* ---------- SLIDE 7c : dashboard ---------- */
+#s-dash h2{position:absolute;top:50px;left:0;right:0;text-align:center;font-size:50px}
+.feeders{position:absolute;left:150px;top:250px;display:flex;flex-direction:column;gap:44px;z-index:2}
+.feed{position:relative}
+.feed .av{--size:96px;display:block}
+.feed .ch{position:absolute;right:-10px;bottom:-4px;width:40px;height:40px;border-radius:50%;background:var(--green);color:#fff;display:grid;place-items:center;border:3px solid #fff}
+.feed .ch .ms{font-size:22px}
+#s-dash svg.flow{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.active #s-dash svg.flow path, #s-dash.active svg.flow path{stroke-dashoffset:0;animation:dashmove 1.2s linear infinite}
+@keyframes dashmove{to{stroke-dashoffset:-28}}
+.dash{position:absolute;left:520px;right:80px;top:150px;bottom:90px;background:#fff;border-radius:28px;box-shadow:0 24px 60px rgba(90,50,20,.16);
+  display:flex;overflow:hidden;border:1px solid var(--line-light)}
+.dside{width:220px;background:var(--green);padding:24px 16px;display:flex;flex-direction:column;gap:26px;flex-shrink:0}
+.dside img{height:30px;filter:brightness(0) invert(1);align-self:flex-start;margin-left:6px}
+.dside nav{display:flex;flex-direction:column;gap:6px}
+.dside nav span{display:flex;align-items:center;gap:10px;color:rgba(255,255,255,.8);font-weight:700;font-size:17px;padding:9px 12px;border-radius:12px}
+.dside nav span .ms{font-size:22px}
+.dside nav span.on{background:rgba(255,255,255,.16);color:#fff}
+.dmain{flex:1;padding:22px 26px;display:flex;flex-direction:column;gap:18px;background:#fbf8f3;min-width:0}
+.dtop{display:flex;align-items:center;gap:10px}
+.dtop b{font-family:'Poppins';font-size:24px;color:var(--brown);margin-right:10px}
+.dtop .chip{background:#fff;border:1px solid var(--line-light);padding:5px 14px;border-radius:99px;font-weight:800;font-size:15px;color:var(--muted)}
+.dtop .live{margin-left:auto;display:flex;align-items:center;gap:8px;font-weight:800;font-size:15px;color:var(--green)}
+.dtop .live i{width:10px;height:10px;border-radius:50%;background:#2ecc71;animation:blink 1.2s infinite}
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.kpi{background:#fff;border-radius:18px;padding:16px 18px;border:1px solid var(--line-light);display:grid;grid-template-columns:auto 1fr;grid-template-rows:auto auto;column-gap:12px;align-items:center}
+.kpi .ms{grid-row:span 2;width:52px;height:52px;border-radius:14px;background:var(--green-soft);color:var(--green);display:grid;place-items:center;font-size:30px}
+.kpi b{font-family:'Poppins';font-size:34px;color:var(--brown);line-height:1}
+.kpi small{font-size:15px;font-weight:700;color:var(--muted)}
+.kpi.warm .ms{background:#fdeedd;color:var(--orange-deep)}
+.dgrid{flex:1;display:grid;grid-template-columns:1.45fr 1fr;gap:14px;min-height:0}
+.panel-d{background:#fff;border-radius:18px;border:1px solid var(--line-light);padding:16px 18px}
+.panel-d h4{font-family:'Poppins';font-size:18px;color:var(--brown);margin-bottom:10px}
+.feed-list .row{display:grid;grid-template-columns:auto 1fr auto auto auto;align-items:center;gap:12px;padding:13px 0;border-top:1px solid #f1ebe4}
+.feed-list .row:first-of-type{border-top:0}
+.active .feed-list .row{animation:rise .5s ease both}
+.active .feed-list .row:nth-of-type(1){animation-delay:.9s}.active .feed-list .row:nth-of-type(2){animation-delay:1.1s}.active .feed-list .row:nth-of-type(3){animation-delay:1.3s}
+.active .feed-list .row:nth-of-type(4){animation-delay:1.5s}.active .feed-list .row:nth-of-type(5){animation-delay:1.7s}
+.feed-list .av{--size:56px;border-width:3px}
+.feed-list b{display:block;font-size:18px;color:var(--text)}
+.feed-list small{display:block;font-size:15px;font-weight:600;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.feed-list .lang{font-size:13px;font-weight:800;color:var(--green);background:var(--green-soft);padding:3px 10px;border-radius:99px}
+.feed-list .chn{font-size:22px;color:var(--muted)}
+.feed-list .st{font-size:13px;font-weight:800;padding:4px 10px;border-radius:99px;white-space:nowrap}
+.st.done{background:#e3f1ea;color:var(--green)}.st.hand{background:#fdeedd;color:var(--orange-deep)}.st.sale{background:#efe9f6;color:var(--tariq)}
+.dcol{display:flex;flex-direction:column;gap:14px;min-height:0}
+.bars-x{display:flex;flex-direction:column;gap:10px}
+.bars-x div{display:grid;grid-template-columns:64px 1fr;align-items:center;gap:10px;font-weight:800;font-size:15px;color:var(--text)}
+.bars-x i{display:block;height:16px;width:var(--w);border-radius:99px;background:var(--c);transform-origin:left}
+.active .bars-x i{animation:growX 1s ease both;animation-delay:1.2s}
+.topics{display:flex;flex-wrap:wrap;gap:8px}
+.topics span{font-size:15px;font-weight:800;color:var(--brown);background:var(--bg-bottom);padding:6px 12px;border-radius:99px}
+.queue .qrow{display:flex;align-items:center;gap:12px;padding:8px 0}
+.queue .qrow .ms{width:40px;height:40px;border-radius:50%;background:#efe9f6;color:var(--tariq);display:grid;place-items:center;font-size:22px;flex-shrink:0}
+.queue .qrow.urgent .ms{background:#fbe4df;color:#c0392b}
+.queue b{display:block;font-size:16px;color:var(--text)}
+.queue small{display:block;font-size:14px;font-weight:600;color:var(--muted)}
+.dash-note{position:absolute;right:96px;bottom:56px;font-size:15px;font-weight:700;color:var(--muted);letter-spacing:.04em;text-transform:uppercase}
+
+/* ---------- SLIDE 8 : business model ---------- */
+#s-model .cards{position:absolute;top:110px;left:50%;transform:translateX(-50%);width:1300px;bottom:110px;display:grid;grid-template-columns:1fr}
+#s-model .bcard h3{font-size:52px;text-align:center}
+#s-model .cycle{margin-top:80px;height:540px}
+#s-model .cycle .cn .ic{width:160px;height:160px}#s-model .cycle .cn .ic .ms{font-size:86px}
+#s-model .cycle .cn b{font-size:31px}
+#s-model .cycle .ca{font-size:56px;margin-top:56px}
+#s-model .cycle svg.back{top:330px;height:170px}
+#s-model .cycle .ww{top:468px;font-size:38px}
+#s-model .pricing-line{font-size:23px}
+.bcard{background:#fff;border-radius:36px;box-shadow:0 18px 50px rgba(140,65,21,.09);padding:46px 50px;position:relative;display:flex;flex-direction:column}
+.bcard h3{font-size:38px;margin-bottom:10px}
+.cycle{position:relative;display:grid;grid-template-columns:1fr 46px 1fr 46px 1fr;align-items:start;margin-top:70px;height:520px}
+.cycle .cn{display:flex;flex-direction:column;align-items:center;text-align:center;gap:16px}
+.cycle .cn .ic{width:130px;height:130px;border-radius:50%;background:var(--green-soft);display:grid;place-items:center}
+.cycle .cn .ic .ms{font-size:70px;color:var(--green)}
+.cycle .cn b{font-family:'Poppins';font-weight:700;font-size:25px;color:var(--brown);line-height:1.2}
+.cycle .ca{font-size:44px;color:var(--orange);margin-top:44px;text-align:center}
+.cycle svg.back{position:absolute;left:0;right:0;top:290px;width:100%;height:170px;overflow:visible}
+.cycle .ww{position:absolute;left:50%;top:420px;transform:translateX(-50%);display:flex;align-items:center;gap:10px;
+  font-family:'Poppins';font-weight:800;font-size:32px;color:var(--orange-deep);background:#fff;padding:0 16px}
+.cycle .ww .ms{font-size:40px;color:var(--orange)}
+.pricing-line{display:flex;justify-content:center;gap:14px;align-items:center;margin-top:auto;font-weight:800;font-size:20px;color:var(--muted)}
+.pricing-line span{background:var(--bg-bottom);padding:8px 16px;border-radius:99px}
+.pricing-line .ms{color:var(--line)}
+.route{display:flex;align-items:center;gap:26px;padding:30px 0;border-bottom:2px dashed var(--grey-2)}
+.route:last-child{border-bottom:0}
+.route .ic{width:110px;height:110px;border-radius:30px;background:var(--bg-bottom);display:grid;place-items:center;flex-shrink:0}
+.route .ic .ms{font-size:60px;color:var(--brown)}
+.route b{font-family:'Poppins';font-weight:700;font-size:32px;color:var(--brown);display:block}
+.route span{font-size:22px;font-weight:700;color:var(--muted)}
+.route .go{margin-left:auto;font-size:46px;color:var(--orange)}
+
+/* ---------- SLIDE 9 : innovation ---------- */
+#s-innov .matrix{left:160px;top:200px}
+#s-innov .matrix .q.lit{background:radial-gradient(circle at 50% 60%,#fff6e3,#ffe2b0);border:3px solid var(--orange);animation:glowPulse 2.6s ease-in-out infinite;overflow:hidden}
+#s-innov .matrix .q.lit img.agent{position:absolute;bottom:-150px;left:50%;height:470px;transform:translateX(-50%)}
+#s-innov .matrix .q.lit .mini{position:absolute;bottom:18px;display:flex;flex-direction:column;align-items:center;gap:4px;font-weight:800;font-size:16px;color:var(--brown)}
+#s-innov .matrix .q.lit .mini .p-photo{--ps:74px;border-width:4px}
+#s-innov .matrix .q.lit .mini.l{left:18px}#s-innov .matrix .q.lit .mini.r{right:18px}
+#s-innov .say{position:absolute;right:120px;top:300px;width:640px}
+#s-innov .say .was{font-family:'Poppins';font-weight:600;font-size:40px;color:var(--muted);text-decoration:line-through;text-decoration-color:rgba(140,65,21,.45);text-decoration-thickness:4px}
+#s-innov .say .now{font-family:'Poppins';font-weight:800;font-size:76px;color:var(--green);line-height:1.05;margin-top:28px}
+#s-innov .say .now small{display:block;font-size:40px;color:var(--brown);font-weight:700;margin-top:14px}
+#s-innov h2{position:absolute;top:70px;left:0;right:0;text-align:center;font-size:48px}
+
+/* ---------- competition ---------- */
+#s-comp h2{position:absolute;top:50px;left:0;right:0;text-align:center;font-size:50px}
+.ctable{position:absolute;left:90px;right:90px;top:140px;display:grid;border-radius:30px;overflow:hidden;background:#fff;
+  box-shadow:0 18px 50px rgba(140,65,21,.1);border:1px solid var(--line-light)}
+.ctable .r{display:contents}
+.ctable .c{padding:18px 14px;display:flex;align-items:center;justify-content:center;text-align:center;border-top:1px solid #f1ebe4;font-weight:700;font-size:21px;color:var(--text)}
+.ctable .hd .c{border-top:0;flex-direction:column;gap:6px;font-family:'Poppins';font-weight:600;font-size:19px;color:var(--brown);background:#fdf6ec;line-height:1.2;padding:18px 12px}
+.ctable .hd .c .ms{font-size:32px;color:var(--orange-deep)}
+.ctable .c.name{justify-content:flex-start;text-align:left;gap:14px;padding-left:28px}
+.ctable .c.name b{font-family:'Poppins';font-size:28px;color:var(--brown);display:block;line-height:1.1}
+.ctable .c.name small{display:block;font-size:17px;font-weight:700;color:var(--muted);margin-top:3px}
+.ctable .y,.ctable .n,.ctable .p{width:52px;height:52px;border-radius:50%;display:grid;place-items:center;font-size:32px}
+.ctable .y{background:var(--green-soft);color:var(--green)}
+.ctable .n{background:#f3efea;color:#b9aea4}
+.ctable .p{background:#fdeedd;color:var(--orange-deep)}
+.ctable .note{display:block;font-size:16px;font-weight:700;color:var(--muted);margin-top:4px}
+.ctable .cellwrap{display:flex;flex-direction:column;align-items:center}
+.ctable .us .c{background:linear-gradient(90deg,#eaf5ef,#f4faf6);border-top:3px solid var(--green)}
+.ctable .us .c.name b{color:var(--green)}
+.ctable .us .heads{display:flex}
+.ctable .us .heads .av{--size:54px;margin-left:-12px;border-width:3px}
+.ctable .us .heads .av:first-child{margin-left:0}
+.active .ctable .r:not(.hd) .c{animation:fade .6s ease both;animation-delay:calc(var(--row,0) * .18s + .4s)}
+.comp-src{position:absolute;left:90px;right:90px;bottom:26px;font-size:15px;color:var(--muted);line-height:1.4}
+
+/* ---------- SLIDE 10 : why us ---------- */
+#s-team h2{position:absolute;top:66px;left:0;right:0;text-align:center;font-size:54px}
+#s-team .scene{position:absolute;left:0;right:0;bottom:0;height:640px}
+#s-team .scene svg{position:absolute;inset:0;width:100%;height:100%}
+.bank-label{position:absolute;display:flex;flex-direction:column;align-items:center;gap:12px;text-align:center}
+.bank-label .ic{width:96px;height:96px;border-radius:50%;background:#fff;display:grid;place-items:center;box-shadow:0 10px 26px rgba(0,0,0,.12)}
+.bank-label .ic .ms{font-size:54px;color:var(--green)}
+.bank-label b{font-family:'Poppins';font-weight:700;font-size:30px;color:var(--brown);background:rgba(255,255,255,.88);padding:6px 20px;border-radius:99px}
+.founders{position:absolute;left:50%;top:420px;transform:translateX(-50%);display:flex;gap:34px}
+.founder{display:flex;flex-direction:column;align-items:center;text-align:center;width:290px}
+.founder .p-photo{--ps:170px;border-width:6px}
+.founder .p-name{margin-top:12px;font-size:32px}
+.founder .tagline{font-size:19px;font-weight:700;color:var(--text);line-height:1.3;margin-top:6px;background:rgba(255,255,255,.88);padding:6px 12px;border-radius:14px}
+.connected-badge{position:absolute;right:70px;top:150px;display:flex;align-items:center;gap:12px;background:#fff;padding:10px 22px 10px 10px;border-radius:999px;
+  box-shadow:0 10px 26px rgba(0,0,0,.1);font-weight:800;font-size:20px;color:var(--green)}
+.connected-badge .ic{width:46px;height:46px;border-radius:50%;background:var(--green);color:#fff;display:grid;place-items:center}
+
+/* ---------- SLIDE 11 : close ---------- */
+#s-close .mosaic{position:absolute;top:60px;left:80px;right:80px;height:760px;display:grid;grid-template-columns:1.25fr 1fr 1fr 1.1fr;grid-template-rows:1fr 1fr;gap:22px}
+.mtile{position:relative;border-radius:30px;overflow:hidden;box-shadow:0 16px 40px rgba(90,50,20,.16);background:#ddd}
+.mtile img{width:100%;height:100%;object-fit:cover;display:block}
+.mtile.tall{grid-row:span 2}
+.mtile .talk{position:absolute;left:16px;bottom:16px;display:flex;align-items:center;gap:10px}
+.mtile .talk .av{--size:78px}
+.mtile .talk .waveform{height:38px;padding:0 14px;gap:4px}
+.mtile .talk .waveform i{width:5px;height:22px}
+.mtile .girl-scene{position:absolute;inset:0}
+.float{position:absolute;display:flex;align-items:center;gap:6px;z-index:3}
+.fhead{--fs:150px;display:block;width:var(--fs);height:calc(var(--fs) * 1.08);flex-shrink:0;
+  background:var(--img) no-repeat;background-size:calc(var(--fs) * 4) auto;background-position:50% calc(var(--fs) * -0.11);
+  filter:drop-shadow(0 0 3px #fff) drop-shadow(0 0 2px #fff) drop-shadow(0 10px 16px rgba(0,0,0,.35));
+  -webkit-mask-image:linear-gradient(to bottom,#000 70%,transparent 100%);mask-image:linear-gradient(to bottom,#000 70%,transparent 100%)}
+.float[style*="--fs"] .fhead{--fs:inherit}
+.float .waveform{height:40px;padding:0 14px;gap:4px;margin-top:30px}
+.float.v{flex-direction:column;gap:0}
+.float.v .waveform{margin-top:-8px}
+.float .waveform i{width:5px;height:22px}
+.active .float{animation:floatIn .8s cubic-bezier(.2,.7,.2,1) both;animation-delay:calc(var(--d,0s) + .6s)}
+@keyframes floatIn{from{opacity:0;transform:translateY(14px) scale(.92)}to{opacity:1;transform:none}}
+.active .fhead{animation:bob 3.2s ease-in-out infinite}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+#s-close .final{position:absolute;left:0;right:0;bottom:70px;text-align:center}
+#s-close .final h2{font-size:60px;color:var(--brown);font-weight:800}
+#s-close .final .thanks{display:flex;justify-content:center;align-items:center;gap:22px;margin-top:22px;font-family:'Poppins';font-weight:700;font-size:30px;color:var(--green)}
+#s-close .final .thanks img{height:46px}
+
+/* ---------- chrome: hint, notes, progress ---------- */
+#progress{position:fixed;left:0;bottom:0;height:3px;background:var(--orange);transition:width .4s ease;z-index:50;opacity:.7}
+#hint{position:fixed;left:50%;bottom:18px;transform:translateX(-50%);background:rgba(0,0,0,.65);color:#fff;font:600 14px Nunito,sans-serif;
+  padding:8px 16px;border-radius:99px;z-index:60;transition:opacity 1s ease;pointer-events:none}
+#notes-panel{position:fixed;left:0;right:0;bottom:0;max-height:40vh;overflow:auto;background:rgba(20,16,12,.94);color:#f4ece4;z-index:70;
+  padding:20px 32px 28px;font:400 18px/1.55 Nunito,sans-serif;transform:translateY(100%);transition:transform .3s ease}
+#notes-panel.open{transform:none}
+#notes-panel h4{font:700 14px Nunito,sans-serif;letter-spacing:.08em;text-transform:uppercase;color:#f2a51a;margin-bottom:8px}
+#notes-panel p{margin-bottom:10px;max-width:1200px}
+#notes-panel .flag{color:#ffb38a;font-size:16px}
+#counter{position:fixed;right:18px;bottom:14px;color:rgba(255,255,255,.5);font:700 13px Nunito,sans-serif;z-index:55;display:none}
+body.show-counter #counter{display:block}
+</style>
+</head>
+<body>
+<div id="viewport"><div id="stage">
+
+<!-- ============ 0 · TITLE ============ -->
+<section class="slide" id="s-title">
+  <div class="center">
+    <span class="pill a-rise"><span class="ms">emoji_events</span>Pears Challenge 2026 · East Africa</span>
+    <img class="big-logo a-rise" style="--d:.15s" src="images/brand/inua_logo.png" alt="iNua Technologies">
+    <h1 class="a-rise" style="--d:.3s">AI experts that talk with rural communities</h1>
+    <div class="sub a-rise" style="--d:.45s"><span>On any phone</span><i class="dot"></i><span>In local languages</span><i class="dot"></i><span>24/7</span></div>
+    <div class="team-heads a-rise" style="--d:.6s">
+      <i style="--img:url('images/agents/baraka.png');--z:1"></i>
+      <i style="--img:url('images/agents/nuru.png');--z:2"></i>
+      <i style="--img:url('images/agents/josef.png');--z:3"></i>
+      <i style="--img:url('images/agents/chris.png');--z:4"></i>
+      <i style="--img:url('images/agents/nia.png');--z:5"></i>
+      <i style="--img:url('images/agents/tariq.png');--z:4"></i>
+      <i style="--img:url('images/agents/mary.png');--z:3"></i>
+      <i style="--img:url('images/agents/gift.png');--z:2"></i>
+      <i style="--img:url('images/agents/inua.png');--z:1"></i>
+    </div>
+  </div>
+  <div class="founders a-fade" style="--d:.9s">Michal Avidar · Adi Livnat · Gilad Ovadia</div>
+  <div class="notes">
+    <p>[Title, about 5 seconds] We're iNua Technologies. We give organisations working with rural communities AI experts that talk with people on any phone, in their own language.</p>
+    <p class="flag">⚑ This title script is new (the draft has no title slide). Adjust as you like.</p>
+  </div>
+</section>
+
+<!-- ============ 1 · GABRIEL ============ -->
+<section class="slide" id="s-gabriel">
+  <div class="half left">
+    <div class="girl-scene" data-mood="night" data-girl-x="0.32"></div>
+    <div class="fphone seq-missed a-rise" style="--d:.3s">
+      <div class="fp-speaker"></div>
+      <div class="fp-screen">
+        <div class="fp-layer fp-missed"><div class="fp-icon"><span class="ms">phone_missed</span></div><div class="fp-l1">No answer</div><div class="fp-l2">Child Helpline</div></div>
+        <div class="fp-layer fp-ringing"><div class="fp-icon ring"><span class="ms">call</span></div><div class="fp-l1">Calling…</div><div class="fp-l2">Child Helpline</div></div>
+      </div>
+      <div class="fp-keys"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+    </div>
+    <div class="tag-illustrative"><span class="ms" style="font-size:18px">info</span>Illustrative story</div>
+  </div>
+  <div class="half right">
+    <div class="person a-rise" data-person="gabriel" style="--d:.2s"></div>
+    <div class="stat">
+      <div class="num a-pop" style="--d:.6s">60%</div>
+      <div class="num-label a-rise" style="--d:.8s">of calls answered</div>
+      <div class="phones" id="phones10"></div>
+    </div>
+    <div class="funding a-fade" style="--d:2.2s">
+      <div class="fr"><span class="fl"><span class="ms">call</span>Helpline</span><div class="track"><div class="solid" style="--d:2.4s"></div></div></div>
+      <div class="fr"><span class="fl"><span class="ms">savings</span>Donor projects</span><div class="track">
+        <div class="seg" style="left:0;width:27%;--d:2.7s"></div><div class="tick" style="left:28%"></div>
+        <div class="seg" style="left:36%;width:22%;--d:3s"></div><div class="tick" style="left:59%"></div>
+        <div class="seg" style="left:70%;width:18%;--d:3.3s"></div><div class="tick" style="left:89%"></div>
+      </div></div>
+    </div>
+    <div class="source a-fade" style="--d:1.6s"><b>Source:</b> <span data-org="gabriel">Lifeline Childline Zambia</span>, organisation-reported (first half of 2026)</div>
+  </div>
+  <img class="logo-corner on-dark" src="images/brand/inua_logo.png" alt="">
+  <div class="notes">
+    <p>A twelve-year-old girl in a village in Zambia finally finds the courage to call the free child helpline. It rings, and rings, and no one answers.</p>
+    <p>Gabriel knows her well. He works at Lifeline Childline Zambia, the national child helpline. Today only about 60% of their calls are answered, and as Gabriel told us, how quickly they answer and how many calls they miss is one of their key KPIs. And you never know which missed call was the emergency. The helpline is mostly donor funded, but donors fund projects with end dates, and a helpline never closes. Every counsellor they add makes the system bill bigger. They can only answer as many calls as they have people free to take them.</p>
+    <p class="flag">⚑ In the Oct 27 call, Gabriel said his team's deep dive traced most missed calls to one mobile network provider's outages, not to counsellor availability. Confirm the cause with him before saying "as many calls as they have people free".</p>
+    <p class="flag">⚑ "Gabriel knows her well" makes the child sound real. The screen says "Illustrative story"; consider saying it aloud too.</p>
+  </div>
+</section>
+
+<!-- ============ 2 · TOM ============ -->
+<section class="slide" id="s-tom">
+  <div class="half left">
+    <img class="photo-fill" src="images/photos/farmer_advisory.jpg" alt="A farmer holding a basic phone in her field">
+    <div class="thought a-pop" style="--d:.5s"><span class="ms">solar_power</span><span class="q">?</span></div>
+    <div class="tag-illustrative"><span class="ms" style="font-size:18px">info</span>Illustrative story</div>
+  </div>
+  <div class="half right">
+    <div class="person a-rise" data-person="tom" style="--d:.2s"></div>
+    <div class="tom-top">
+      <div class="agents-row a-rise" style="--d:.4s">
+        <span class="ms">headset_mic</span><div class="big-n">60</div><div class="big-l">call-centre<br>agents</div>
+      </div>
+      <div class="cust a-rise" style="--d:.6s">
+        <div class="dotfield small" id="dots-cust"></div>
+        <div class="lg"><b>50–60k</b>customers</div>
+      </div>
+    </div>
+    <div class="leads-box a-rise" style="--d:1s">
+      <div class="leads-head">
+        <span class="chip"><span class="ms">database</span>Already in their system</span>
+        <span class="idle"><span class="ms">hourglass_empty</span>No one is calling them</span>
+      </div>
+      <div class="dotfield" id="dots-leads"></div>
+      <div class="leads-n"><b>250,000</b> existing leads</div>
+    </div>
+    <div class="source a-fade" style="--d:1.6s"><b>Source:</b> <span data-org="tom">SunCulture</span>, organisation-reported (call, Aug 2026) · each dot ≈ 1,000 people</div>
+  </div>
+  <img class="logo-corner on-dark" src="images/brand/inua_logo.png" alt="">
+  <div class="notes">
+    <p>A farmer in Kenya is curious about a solar pump, but she isn't sure it's worth it, and no one has time to call her and help her decide.</p>
+    <p>Tom works at SunCulture, which sells solar irrigation to smallholder farmers on pay-as-you-go. They serve 50,000 to 60,000 customers with a call centre of about 60 agents, but around 250,000 leads are already sitting in their system, and no one is calling them. Their plan to grow is to offer those farmers something valuable first, like weather alerts and planting advice, so they build trust and become customers. But that means talking to every farmer one by one, and they can only have as many conversations as they have agents free to take them.</p>
+    <p class="flag">⚑ The screen says "call-centre agents" so it isn't confused with iNua's AI agents. Consider saying it the same way.</p>
+    <p class="flag">⚑ Script updated to match the screen: "250,000 leads already in their system" (was "250,000 farmers they could reach"). Confirm that figure with Tom.</p>
+  </div>
+</section>
+
+<!-- ============ 3 · SAME PROBLEM ============ -->
+<section class="slide" id="s-same">
+  <div class="prob-text">
+    <h1 class="a-rise">The problem</h1>
+    <div class="pblock a-rise" style="--d:.5s">
+      <span class="plabel what">What</span>
+      <p class="what-t">Organisations can't hold <em>meaningful, one-to-one conversations</em> with rural people at scale.</p>
+    </div>
+    <div class="pblock a-rise" style="--d:1.2s">
+      <span class="plabel why">Why</span>
+      <p class="why-t">Every conversation still depends on someone being free to take it.</p>
+    </div>
+  </div>
+  <div class="prob-visual">
+    <div class="pcard a-rise" style="--d:.2s">
+      <div class="girl-scene" data-mood="night" data-girl-x="0.5" style="position:absolute;inset:0"></div>
+      <div class="who"><div class="person" data-person="gabriel" data-meta="none"></div></div>
+      <div class="cap"><span class="ms">phone_missed</span>Missed calls</div>
+    </div>
+    <div class="vjoin"><div class="node a-pop" style="--d:1.3s"><span class="ms">headset_mic</span><span class="one">1</span></div></div>
+    <div class="pcard a-rise" style="--d:.35s">
+      <img class="photo-fill" src="images/photos/farmer_advisory.jpg" alt="">
+      <div class="who"><div class="person" data-person="tom" data-meta="none"></div></div>
+      <div class="cap"><span class="ms">person_off</span>Leads never called</div>
+    </div>
+  </div>
+  <img class="logo-corner" src="images/brand/inua_logo.png" alt="">
+  <div class="notes">
+    <p>A child helpline trying to protect children, and a company trying to grow. One counts missed calls, the other counts farmers it never reaches. And both are limited in their ability to provide their service to the people who need it. Underneath, it's the same problem: organizations in East Africa can't hold meaningful, one-to-one conversations with rural people at scale, because today every conversation depends on someone being available to take it.</p>
+  </div>
+</section>
+
+<!-- ============ 4 · SCALE OR QUALITY ============ -->
+<section class="slide" id="s-matrix">
+  <div class="matrix a-fade">
+    <div class="ax-y"></div><div class="ax-x"></div>
+    <div class="lab-y"><span class="ms">star</span>Quality</div>
+    <div class="lab-x">Scale<span class="ms">groups</span></div>
+    <div class="grid">
+      <div class="q a-rise" style="--d:.3s"><div class="ic"><span class="ms">support_agent</span></div><div class="lbl">Call centres &amp;<br>field teams</div></div>
+      <div class="q empty a-pop" style="--d:1.4s"><span class="ms big">question_mark</span></div>
+      <div class="q dim"></div>
+      <div class="q a-rise" style="--d:.7s"><div class="ic"><span class="ms">campaign</span></div><div class="lbl">Bulk SMS &amp;<br>IVR</div></div>
+    </div>
+  </div>
+  <div class="stats">
+    <div class="a-rise" style="--d:1.8s">
+      <div class="stat-n">23%</div>
+      <div class="stat-l">of rural Africans use the internet</div>
+      <div class="bars">
+        <div class="bar"><span>Urban</span><div class="track"><div class="fill" style="width:57%;--d:2.1s"></div></div><span>57%</span></div>
+        <div class="bar rural"><span>Rural</span><div class="track"><div class="fill" style="width:23%;--d:2.3s"></div></div><span>23%</span></div>
+      </div>
+      <div class="source"><b>Source:</b> ITU, Africa regional digital development report 2025 (data for 2024)</div>
+    </div>
+    <div class="a-rise" style="--d:2.6s">
+      <div class="stat-n">60%</div>
+      <div class="stat-l">of mobile connections in East Africa aren't smartphones</div>
+      <div class="phonemix">
+        <i class="mfp"></i><i class="mfp"></i><i class="mfp"></i><i class="mfp"></i><i class="mfp"></i><i class="mfp"></i>
+        <i class="msp"></i><i class="msp"></i><i class="msp"></i><i class="msp"></i>
+      </div>
+      <div class="pm-legend"><span><i class="mfp"></i>Basic &amp; feature phones</span><span><i class="msp"></i>Smartphones</span></div>
+      <div class="source"><b>Source:</b> GSMA, The Mobile Economy Sub-Saharan Africa 2024 (EAC, 2023: smartphones = 40% of connections)</div>
+    </div>
+  </div>
+  <img class="logo-corner" src="images/brand/inua_logo.png" alt="">
+  <div class="notes">
+    <p>Today, organizations have to choose. Call centres and field teams give real, quality conversations, but they only stretch as far as the people available. Bulk SMS and IVR reach millions, but they speak at people, not with them, and no one can ask a question back. The obvious fix would be apps and chatbots, but according to the ITU, only 23% of rural Africans use the internet, and according to the GSMA, 6 in 10 mobile connections in East Africa still aren't smartphones. So the corner that matters most, scale and quality together, is still empty.</p>
+    <p class="flag">⚑ The draft names the 23% source two ways ("Digital Development Dashboard" on the slide, "Africa regional report" in the references). This slide uses the report, which the reference link points to.</p>
+    <p class="flag">⚑ New figure (replaces the 25% coverage stat): GSMA, The Mobile Economy Sub-Saharan Africa 2024, p. 8: EAC smartphone adoption 40% of connections in 2023 (Sub-Saharan Africa overall: 51%). Add it to the references list: https://event-assets.gsma.com/pdf/GSMA_ME_SSA_2024_Web.pdf</p>
+  </div>
+</section>
+
+<!-- ============ 5 · WHO ============ -->
+<section class="slide" id="s-who">
+  <h2 class="a-rise">Gabriel and Tom are not alone</h2>
+  <div class="tiles">
+    <div class="tile a-rise" style="--d:.3s">
+      <div class="seg-title"><span class="ms">support_agent</span>Professional helplines</div>
+      <div class="person col" data-person="gabriel"></div>
+      <ul class="pains">
+        <li><span class="ms">phone_missed</span>4 in 10 calls missed</li>
+        <li><span class="ms">trending_up</span>Calls triple in a drought</li>
+        <li><span class="ms">edit_note</span>Follow-ups tracked by hand</li>
+      </ul>
+      <q>How quickly you respond to calls. How many of these calls do you miss?</q>
+    </div>
+    <div class="tile a-rise" style="--d:.5s">
+      <div class="seg-title"><span class="ms">agriculture</span>Agri companies</div>
+      <div class="person col" data-person="tom"></div>
+      <ul class="pains">
+        <li><span class="ms">hourglass_empty</span>Leads sit untouched</li>
+        <li><span class="ms">app_blocking</span>Apps and forms don't land</li>
+        <li><span class="ms">groups</span>Too few agents to advise every farmer</li>
+      </ul>
+      <q>The word we've been using is customer intimacy.</q>
+    </div>
+    <div class="tile a-rise" style="--d:.7s">
+      <div class="seg-title"><span class="ms">solar_power</span>Solar pay&#8209;as&#8209;you&#8209;go</div>
+      <div class="person col" data-person="milan"></div>
+      <ul class="pains">
+        <li><span class="ms">fact_check</span>Verification calls by hand</li>
+        <li><span class="ms">phone_disabled</span>No proof a call happened</li>
+        <li><span class="ms">gpp_bad</span>Fake and duplicate sales</li>
+      </ul>
+      <q>And he says, ‘Nobody ever called me.’</q>
+    </div>
+    <div class="tile a-rise" style="--d:.9s">
+      <div class="seg-title"><span class="ms">volunteer_activism</span>NGOs supporting rural populations</div>
+      <div class="person col" data-person="david"></div>
+      <ul class="pains">
+        <li><span class="ms">directions_walk</span>Teams walk for miles</li>
+        <li><span class="ms">mobile_off</span>No smartphones</li>
+        <li><span class="ms">flood</span>Areas cut off in disasters</li>
+      </ul>
+      <q>They can go for miles, walking and telling people what's coming.</q>
+    </div>
+  </div>
+  <div class="around a-fade" style="--d:1.4s">
+    <span><b>Sources:</b> our calls with each organisation, Aug–Nov 2026 (figures organisation-reported)</span>
+  </div>
+  <div class="notes">
+    <p>Gabriel and Tom are not alone. Milan runs a solar pay-as-you-go company in Zimbabwe. David leads programmes for an NGO in Mozambique. Helplines, agricultural companies, pay-as-you-go providers, NGOs: each one meets the same wall at its call centre.</p>
+    <p>These organizations are our customers. But the people who feel the problem most are the ones they're trying to reach: the child, the farmer, the rural customer on a basic phone, speaking their own language. And around them sit the funders, telecoms and field teams that keep these services running.</p>
+    <p class="flag">⚑ The tile quotes are shortened from the draft. The local Lifeline transcript is from Oct 27, not Nov 13; check the date for Gabriel's quote.</p>
+    <p class="flag">⚑ Pains are drafted from local call notes (Lifeline summary, SunCulture transcript, Kumusha proposal, ADRA deck) because the Customer Pains Summary Google Doc wasn't accessible. Swap in that tab's wording once shared.</p>
+    <p class="flag">⚑ Portraits of Gabriel, Tom, Milan and David are AI-generated placeholders. Replace them with real photos (with permission) before submitting, because judges will read them as the real people.</p>
+  </div>
+</section>
+
+<!-- ============ 6 · IMAGINE NOW (2 steps) ============ -->
+<section class="slide" id="s-imagine" data-steps="2">
+  <div class="head a-rise"><h2>Every call answered. Every farmer heard.</h2></div>
+  <div class="panels">
+    <div class="panel gab">
+      <div class="visual gab-visual">
+        <div class="girl-scene" data-mood="warm" data-girl-x="0.2"></div>
+        <div class="fphone">
+          <div class="fp-speaker"></div>
+          <div class="fp-screen">
+            <div class="fp-layer fp-connected"><div class="fp-icon"><span class="ms">call</span></div><div class="fp-l1">Connected</div><div class="fp-l2">in her language</div></div>
+          </div>
+          <div class="fp-keys"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+        </div>
+        <div class="waveform"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+        <div class="agent-bubble a-pop" style="--d:.3s"><img src="images/agents/nia.png" alt="Nia"><span class="agent-chip name" style="--c:var(--nia)">Nia</span></div>
+        <div class="hdr"><div class="person" data-person="gabriel" data-meta="none"></div><div><small>Inbound</small><b data-org="gabriel">Lifeline Childline Zambia</b></div></div>
+      </div>
+      <div class="steps">
+        <div class="step"><div class="ic"><span class="ms">call</span></div><div class="t">Answered 24/7,<br>in her language</div></div>
+        <span class="ms step-arrow">arrow_forward</span>
+        <div class="step"><div class="ic"><span class="ms">forum</span></div><div class="t">Understood</div></div>
+        <span class="ms step-arrow">arrow_forward</span>
+        <div class="step"><div class="ic"><span class="ms">support_agent</span></div><div class="t">Handed to a<br>counsellor</div></div>
+      </div>
+      <div class="tags"><span>Availability</span><span>Local languages</span><span>Inbound calls</span><span>Human handover</span></div>
+    </div>
+    <div class="panel tom">
+      <div class="visual tom-visual">
+        <img class="photo-fill" src="images/photos/farmer_call.jpg" alt="A farmer talking on the phone in her field">
+        <div class="waveform"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+        <div class="agent-bubble"><img src="images/agents/chris.png" alt="Chris"><span class="agent-chip name" style="--c:var(--chris)">Chris</span></div>
+        <div class="callout"><span class="ms">thunderstorm</span>Rain is coming. Plant after Thursday.</div>
+        <div class="hdr"><div class="person" data-person="tom" data-meta="none"></div><div><small>Outbound</small><b data-org="tom">SunCulture</b></div></div>
+      </div>
+      <div class="steps">
+        <div class="step"><div class="ic"><span class="ms">phone_forwarded</span></div><div class="t">Calls the<br>farmer</div></div>
+        <span class="ms step-arrow">arrow_forward</span>
+        <div class="step"><div class="ic"><span class="ms">assignment</span></div><div class="t">Asks, listens,<br>records</div></div>
+        <span class="ms step-arrow">arrow_forward</span>
+        <div class="step"><div class="ic"><span class="ms">potted_plant</span></div><div class="t">Advice now, sale<br>when she's ready</div></div>
+      </div>
+      <div class="tags"><span>Outbound calls</span><span>Uses existing farmer data</span><span>Data collection</span><span>Handover to sales</span></div>
+    </div>
+  </div>
+  <img class="logo-corner" src="images/brand/inua_logo.png" alt="">
+  <div class="notes">
+    <p>[Step 1: Gabriel panel] Now imagine Gabriel's helpline with iNua. The girl calls, and the first thing that happens is that she's answered, immediately, day or night, in her own language. That alone moves Gabriel's most important KPI. If she has a general question, the agent answers it, using Lifeline's own approved guidance. If it's more than that, the agent stays with her, keeps her talking, and flags the case. A counsellor picks up, already knowing her story, and she gets the help she needs, in time.</p>
+    <p>[Press → for step 2: Tom panel] Now imagine Tom. SunCulture already has data on 250,000 farmers who aren't customers yet. With iNua, it doesn't wait for them to call. The agent calls each farmer, on any phone, in her language, already knowing who she is. It asks what she's growing this season and what's worrying her, and records every answer in her profile. It gives her useful advice right away, like a warning before the rain. And when she's ready for a pump, the call goes straight to Tom's sales team, who now know exactly what she needs. Every call adds value for the farmer and gives SunCulture a better chance to make the sale.</p>
+    <p class="flag">⚑ Gabriel's agent is Nia here, to match the experts slide. The weather line in Chris's bubble is illustrative.</p>
+  </div>
+</section>
+
+<!-- ============ 7 · TECHNOLOGY ============ -->
+<section class="slide" id="s-tech">
+  <h2 class="a-rise">One agent. Every channel. Every expert.</h2>
+  <svg class="tlinks" viewBox="0 0 1920 1080" aria-hidden="true">
+    <g fill="none" stroke="#eab683" stroke-width="3" stroke-dasharray="6 10" stroke-linecap="round">
+      <path d="M440 300 C 500 310, 530 350, 560 400"/>
+      <path d="M440 570 C 490 570, 520 570, 560 570"/>
+      <path d="M440 830 C 500 820, 530 780, 560 740"/>
+      <path d="M840 350 C 790 360, 760 400, 735 440"/>
+      <path d="M840 660 C 790 660, 760 650, 735 640"/>
+    </g>
+  </svg>
+  <div class="tech-hero a-fade" style="--d:.1s"><img src="images/agents/inua.png" alt="iNua agent"></div>
+  <div class="tnode a-rise" style="left:70px;top:230px;--d:.3s"><div class="ic"><span class="ms">call</span></div><div><b>Channels people already use</b>
+    <div class="chan"><span><span class="ms">call</span>Voice</span><span><span class="ms">sms</span>SMS</span><span><span class="ms">chat</span>WhatsApp</span></div>
+    <small>Voice &amp; SMS on any basic phone</small></div></div>
+  <div class="tnode a-rise" style="left:70px;top:520px;--d:.45s"><div class="ic"><span class="ms">translate</span></div><div><b>Human-like, in local languages</b></div></div>
+  <div class="tnode a-rise" style="left:70px;top:760px;--d:.6s"><div class="ic"><span class="ms">menu_book</span></div><div><b>Your knowledge, your team</b><small>Trained on your guidance · hands over to a person</small></div></div>
+  <div class="tnode r a-rise" style="left:850px;top:290px;--d:.75s"><div class="ic"><span class="ms">payments</span></div><div><b>Connects to your tools</b><small>Mobile money · phone lines</small></div></div>
+  <div class="tnode r a-rise" style="left:850px;top:600px;--d:.9s"><div class="ic"><span class="ms">insights</span></div><div><b>Insights</b><small>Every conversation becomes data</small></div></div>
+  <div class="convo a-rise" style="--d:.5s">
+    <div class="convo-head"><span class="ms">call</span><b>One call</b><span class="tag">Kiswahili</span><span class="tag">21:10</span><span class="live"><i></i>Live</span></div>
+    <div class="thread">
+      <div class="msg me" style="--d:1s">My pump stopped working.</div>
+      <div class="msg ag" style="--d:1.4s;--c:var(--nia)"><span class="av av-nia"></span><div><em>Nia · Support</em>Let's fix it. Restart it now, with the panel in the sun.</div></div>
+      <div class="msg me" style="--d:1.9s">It works! Can I pay this month?</div>
+      <div class="msg ag" style="--d:2.3s;--c:var(--josef)"><span class="av av-josef"></span><div><em>Josef · Payments</em>Payment request sent to your mobile money. <span class="ok"><span class="ms">check_circle</span>Paid</span></div></div>
+      <div class="msg me" style="--d:2.8s">When should I water my maize?</div>
+      <div class="msg ag" style="--d:3.2s;--c:var(--chris)"><span class="av av-chris"></span><div><em>Chris · Agronomy</em>Early morning, every two days until the rains.</div></div>
+      <div class="msg handover" style="--d:3.8s"><span class="hic"><span class="ms">support_agent</span></span><div><em>Your team</em>Wants a bigger pump: handed to sales, with a summary</div></div>
+    </div>
+  </div>
+  <div class="convo-foot a-fade" style="--d:4.2s">
+    <span><span class="ms">sync_alt</span>No transfers between experts</span>
+    <span><span class="ms">person_check</span>People step in only where they're needed</span>
+  </div>
+  <img class="logo-corner" src="images/brand/inua_logo.png" alt="">
+  <div class="notes">
+    <p>Behind every story is the same agent. It works on the channels people already use: voice calls and SMS on any basic phone, without internet, and WhatsApp where they have data. It holds real, human-like conversations in local languages, and it's trained on each organization's own knowledge.</p>
+    <p>And in one conversation, people reach every expert they need. A farmer calls about a broken pump, Nia helps fix it, Josef collects the payment by mobile money, and Chris answers a question about watering, all in the same call, with no transfers. When something really needs a person, like a bigger sale or an urgent case, it goes to the team with a summary. So people spend their time on the conversations that actually need them.</p>
+    <p class="flag">⚑ New script lines for the "one conversation, every expert" part. The conversation on screen is illustrative.</p>
+    <p class="flag">⚑ CRM: iNua's source-of-truth doc lists integrations as an open item, so the script no longer mentions it.</p>
+  </div>
+</section>
+
+<!-- ============ 7b · RIGHT EXPERT ============ -->
+<section class="slide" id="s-experts">
+  <h2 class="a-rise">The right expert for every organisation</h2>
+  <svg class="xlinks" viewBox="0 0 1920 1080" aria-hidden="true">
+    <g fill="none" stroke="#6a4c93" stroke-width="4" stroke-dasharray="3 12" stroke-linecap="round" opacity=".75">
+      <path d="M690 300 C 800 320, 860 360, 900 440"/>
+      <path d="M1230 300 C 1120 320, 1060 360, 1020 440"/>
+    </g>
+  </svg>
+  <div class="xgrid">
+    <div class="xcol a-rise" style="--d:.3s">
+      <div class="xseg"><span class="ms">support_agent</span>Helpline</div>
+      <div class="person" data-person="gabriel"></div>
+      <span class="ms arrow">south</span>
+      <div class="stage"><img src="images/agents/nia.png" alt="Nia"></div>
+      <div class="chips"><span class="agent-chip" style="--c:var(--nia)">Nia <small>Support</small></span></div>
+    </div>
+    <div class="xcol a-rise" style="--d:.5s">
+      <div class="xseg"><span class="ms">solar_power</span>Solar pay-as-you-go</div>
+      <div class="person" data-person="milan"></div>
+      <span class="ms arrow">south</span>
+      <div class="stage"><img src="images/agents/josef.png" alt="Josef"></div>
+      <div class="chips"><span class="agent-chip" style="--c:var(--josef)">Josef <small>Payments</small></span></div>
+    </div>
+    <div class="xcol center a-rise" style="--d:.9s">
+      <div class="shared">For Milan &amp; Tom</div>
+      <div class="stage"><img src="images/agents/tariq.png" alt="Tariq"></div>
+      <div class="chips"><span class="agent-chip" style="--c:var(--tariq)">Tariq <small>Sales</small></span></div>
+    </div>
+    <div class="xcol a-rise" style="--d:.7s">
+      <div class="xseg"><span class="ms">agriculture</span>Farmer support</div>
+      <div class="person" data-person="tom"></div>
+      <span class="ms arrow">south</span>
+      <div class="stage"><img src="images/agents/chris.png" alt="Chris"></div>
+      <div class="chips"><span class="agent-chip" style="--c:var(--chris)">Chris <small>Agronomy</small></span></div>
+    </div>
+    <div class="xcol a-rise" style="--d:1.1s">
+      <div class="xseg"><span class="ms">volunteer_activism</span>Rural NGO</div>
+      <div class="person" data-person="david"></div>
+      <span class="ms arrow">south</span>
+      <div class="stage"><img src="images/agents/mary.png" alt="Mary"></div>
+      <div class="chips"><span class="agent-chip" style="--c:var(--mary)">Mary <small>Emergency</small></span></div>
+    </div>
+  </div>
+  <div class="line a-fade" style="--d:1.6s">One platform. The right expert for every organisation.</div>
+  <img class="logo-corner" src="images/brand/inua_logo.png" alt="">
+  <div class="notes">
+    <p>Every organisation gets the experts it needs, and experts can work for more than one. For Gabriel, Nia answers every call and hands urgent ones to a counsellor. For Milan, Josef follows up with payment reminders and mobile money collection. For Tom, Chris gives farmers advice that builds trust before the sale. And Tariq, our sales expert, works for both of them: he turns Milan's late-night leads and Tom's warmed-up farmers into sales. For David, Mary takes emergency reports and warns communities, no smartphone needed.</p>
+    <p class="flag">⚑ Script reordered to match the new layout, and Tariq now also serves Tom.</p>
+  </div>
+</section>
+
+<!-- ============ 7c · DASHBOARD ============ -->
+<section class="slide" id="s-dash">
+  <h2 class="a-rise">Every conversation, in one place</h2>
+  <div class="feeders">
+    <div class="feed a-rise" style="--d:.2s"><span class="av av-nia"></span><span class="ch"><span class="ms">call</span></span></div>
+    <div class="feed a-rise" style="--d:.3s"><span class="av av-josef"></span><span class="ch"><span class="ms">sms</span></span></div>
+    <div class="feed a-rise" style="--d:.4s"><span class="av av-tariq"></span><span class="ch"><span class="ms">chat</span></span></div>
+    <div class="feed a-rise" style="--d:.5s"><span class="av av-chris"></span><span class="ch"><span class="ms">call</span></span></div>
+    <div class="feed a-rise" style="--d:.6s"><span class="av av-mary"></span><span class="ch"><span class="ms">call</span></span></div>
+  </div>
+  <svg class="flow" viewBox="0 0 1920 1080" aria-hidden="true">
+    <g fill="none" stroke="#eab683" stroke-width="3" stroke-dasharray="4 10" stroke-linecap="round">
+      <path d="M300 300 C 400 300, 420 520, 520 560"/><path d="M300 440 C 400 440, 430 540, 520 570"/>
+      <path d="M300 580 C 400 580, 440 580, 520 580"/><path d="M300 720 C 400 720, 430 610, 520 590"/>
+      <path d="M300 860 C 400 860, 420 640, 520 600"/>
+    </g>
+  </svg>
+  <div class="dash a-rise" style="--d:.4s">
+    <aside class="dside">
+      <img src="images/brand/inua_logo.png" alt="iNua">
+      <nav><span class="on"><span class="ms">space_dashboard</span>Overview</span><span><span class="ms">forum</span>Conversations</span><span><span class="ms">smart_toy</span>Agents</span>
+        <span><span class="ms">support_agent</span>Handovers</span><span><span class="ms">insights</span>Insights</span><span><span class="ms">contacts</span>Contacts</span></nav>
+    </aside>
+    <div class="dmain">
+      <div class="dtop"><b>Overview · Today</b><span class="chip">All channels</span><span class="chip">All languages</span><span class="chip">All agents</span><span class="live"><i></i>Live</span></div>
+      <div class="kpis">
+        <div class="kpi"><span class="ms">forum</span><b>1,248</b><small>Conversations today</small></div>
+        <div class="kpi"><span class="ms">translate</span><b>7</b><small>Languages</small></div>
+        <div class="kpi"><span class="ms">payments</span><b>312</b><small>Payments collected</small></div>
+        <div class="kpi warm"><span class="ms">support_agent</span><b>38</b><small>Handed to your team</small></div>
+      </div>
+      <div class="dgrid">
+        <div class="panel-d feed-list">
+          <h4>Live conversations</h4>
+          <div class="row"><span class="av av-nia"></span><div><b>Caller · Lusaka</b><small>Wants to report a case</small></div><span class="lang">Bemba</span><span class="ms chn">call</span><span class="st hand">Counsellor</span></div>
+          <div class="row"><span class="av av-chris"></span><div><b>Farmer · Kitui</b><small>Armyworm on maize: advice given</small></div><span class="lang">Kiswahili</span><span class="ms chn">call</span><span class="st done">Resolved</span></div>
+          <div class="row"><span class="av av-josef"></span><div><b>Customer · Bulawayo</b><small>Mobile money payment confirmed</small></div><span class="lang">Shona</span><span class="ms chn">sms</span><span class="st done">Resolved</span></div>
+          <div class="row"><span class="av av-tariq"></span><div><b>Lead · Nakuru</b><small>Ready for a bigger pump</small></div><span class="lang">English</span><span class="ms chn">chat</span><span class="st sale">Sales team</span></div>
+          <div class="row"><span class="av av-mary"></span><div><b>Household · Sofala</b><small>Flood warning confirmed</small></div><span class="lang">Portuguese</span><span class="ms chn">call</span><span class="st done">Resolved</span></div>
+          <div class="row"><span class="av av-nia"></span><div><b>Customer · Ndola</b><small>Token resent after payment</small></div><span class="lang">Nyanja</span><span class="ms chn">sms</span><span class="st done">Resolved</span></div>
+        </div>
+        <div class="dcol">
+          <div class="panel-d">
+            <h4>By expert</h4>
+            <div class="bars-x">
+              <div><span>Nia</span><i style="--w:86%;--c:var(--nia)"></i></div>
+              <div><span>Chris</span><i style="--w:64%;--c:var(--chris)"></i></div>
+              <div><span>Josef</span><i style="--w:52%;--c:var(--josef)"></i></div>
+              <div><span>Tariq</span><i style="--w:38%;--c:var(--tariq)"></i></div>
+              <div><span>Mary</span><i style="--w:22%;--c:var(--mary)"></i></div>
+            </div>
+          </div>
+          <div class="panel-d">
+            <h4>What people ask about</h4>
+            <div class="topics"><span>Payments</span><span>Pump repair</span><span>Planting dates</span><span>Child protection</span><span>Floods</span><span>New products</span></div>
+          </div>
+          <div class="panel-d queue">
+            <h4>Needs a person</h4>
+            <div class="qrow urgent"><span class="ms">priority_high</span><div><b>Urgent case · Lusaka</b><small>To counsellor, with summary</small></div></div>
+            <div class="qrow"><span class="ms">sell</span><div><b>Big order · Nakuru</b><small>To sales team, with summary</small></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="dash-note a-fade" style="--d:1.4s">Illustrative data</div>
+  <img class="logo-corner" src="images/brand/inua_logo.png" alt="">
+  <div class="notes">
+    <p>And every conversation, from every expert and every channel, lands in one place. Each organisation sees what people are asking, which cases need a person, and what's changing on the ground, as it happens. Their team doesn't need to listen to every call; they focus on the conversations that actually need them.</p>
+    <p class="flag">⚑ New slide and new script. The numbers, names and places on the dashboard are illustrative, and the slide says so.</p>
+  </div>
+</section>
+
+<!-- ============ 8 · BUSINESS MODEL ============ -->
+<section class="slide" id="s-model">
+  <div class="cards">
+    <div class="bcard a-rise" style="--d:.1s">
+      <h3>A win-win model</h3>
+      <div class="cycle">
+        <div class="cn"><div class="ic"><span class="ms">phone_in_talk</span></div><b>They use iNua</b></div>
+        <span class="ms ca">arrow_forward</span>
+        <div class="cn"><div class="ic"><span class="ms">trending_up</span></div><b>They reach more people and grow</b></div>
+        <span class="ms ca">arrow_forward</span>
+        <div class="cn"><div class="ic"><span class="ms">handshake</span></div><b>They use more, we grow with them</b></div>
+        <svg class="back" viewBox="0 0 740 170" preserveAspectRatio="none" aria-hidden="true">
+          <defs><marker id="arr" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#f2a51a"/></marker></defs>
+          <path d="M630 6 C 630 150, 110 150, 110 14" fill="none" stroke="#f2a51a" stroke-width="6" stroke-linecap="round" stroke-dasharray="2 14" marker-end="url(#arr)"/>
+        </svg>
+        <div class="ww"><span class="ms">sync</span>Win-win</div>
+      </div>
+      <div class="pricing-line"><span>One-time setup</span><span class="ms">arrow_forward</span><span>Then pay for what you use</span></div>
+    </div>
+  </div>
+  <img class="logo-corner" src="images/brand/inua_logo.png" alt="">
+  <div class="notes">
+    <p>Our model is usage-based. After a one-time setup, organizations pay for the conversations they actually have: the call minutes and messages. That makes it a win-win. The more they use iNua, the more people they reach, the more they grow, and as they scale, we grow with them. We only do well when our customers do.</p>
+    <p class="flag">⚑ iNua's source-of-truth doc describes the model as an onboarding fee plus a monthly subscription that scales with volume, channels and seats. The draft says "usage-based". Agree on one description before recording.</p>
+  </div>
+</section>
+
+<!-- ============ 9 · INNOVATION ============ -->
+<section class="slide" id="s-innov">
+  <div class="matrix">
+    <div class="ax-y"></div><div class="ax-x"></div>
+    <div class="lab-y"><span class="ms">star</span>Quality</div>
+    <div class="lab-x">Scale<span class="ms">groups</span></div>
+    <div class="grid">
+      <div class="q"><div class="ic"><span class="ms">support_agent</span></div><div class="lbl">Call centres &amp;<br>field teams</div></div>
+      <div class="q lit a-pop" style="--d:.5s">
+        <img class="agent" src="images/agents/inua.png" alt="iNua agent">
+        <div class="mini l"><div class="person" data-person="gabriel" data-meta="none"></div></div>
+        <div class="mini r"><div class="person" data-person="tom" data-meta="none"></div></div>
+      </div>
+      <div class="q dim"></div>
+      <div class="q"><div class="ic"><span class="ms">campaign</span></div><div class="lbl">Bulk SMS &amp;<br>IVR</div></div>
+    </div>
+  </div>
+  <div class="say">
+    <div class="was a-rise" style="--d:1s">Until now: scale or quality.</div>
+    <div class="now a-rise" style="--d:1.4s">Now: both.<small>In local languages.</small></div>
+  </div>
+  <img class="logo-corner" src="images/brand/inua_logo.png" alt="">
+  <div class="notes">
+    <p>Remember the empty corner? Until now, organizations had to choose. They could give people real, quality conversations, but only as many as they had people to hold them. Or they could reach everyone at once, but only by talking at them. iNua brings both together: conversations that are personal, two-way and in the person's own language, at the scale of a whole country. Gabriel answers every call. Tom reaches every farmer. That's our innovation: quality at scale, in local languages.</p>
+  </div>
+</section>
+
+<!-- ============ 9b · COMPETITION ============ -->
+<section class="slide" id="s-comp">
+  <h2 class="a-rise">How we compare</h2>
+  <div class="ctable a-rise" style="--d:.2s;grid-template-columns:400px repeat(5,minmax(0,1fr))">
+    <div class="r hd"><div class="c name"></div>
+      <div class="c"><span class="ms">phone_iphone</span>AI voice on<br>basic phones</div>
+      <div class="c"><span class="ms">forum</span>Voice, SMS &amp; WhatsApp<br>in one place</div>
+      <div class="c"><span class="ms">groups</span>Experts trained on<br>your knowledge</div>
+      <div class="c"><span class="ms">public</span>Where</div>
+      <div class="c"><span class="ms">payments</span>Cost to<br>organisations</div></div>
+    <div class="r us" style="--row:0"><div class="c name"><div class="heads"><span class="av av-nia"></span><span class="av av-chris"></span><span class="av av-tariq"></span></div><div><b>iNua</b><small>Your own team of experts</small></div></div><div class="c"><div class="cellwrap"><span class="y"><span class="ms">check</span></span></div></div><div class="c"><div class="cellwrap"><span class="y"><span class="ms">check</span></span></div></div><div class="c"><div class="cellwrap"><span class="y"><span class="ms">check</span></span><span class=note>Plus human handover</span></div></div><div class="c ">Across East Africa</div><div class="c "><b style="color:var(--green);font-size:22px">Much lower</b></div></div>
+    <div class="r " style="--row:1"><div class="c name"><div><b>Viamo</b><small>Voice platform, 20 countries</small></div></div><div class="c"><div class="cellwrap"><span class="y"><span class="ms">check</span></span></div></div><div class="c"><div class="cellwrap"><span class="p"><span class="ms">remove</span></span><span class=note>Mainly voice</span></div></div><div class="c"><div class="cellwrap"><span class="p"><span class="ms">remove</span></span><span class=note>One assistant (AVA)</span></div></div><div class="c ">20 countries</div><div class="c "><b style="color:var(--orange-deep);font-size:22px">Higher</b></div></div>
+    <div class="r " style="--row:2"><div class="c name"><div><b>Pindo</b><small>Voice AI for banks &amp; utilities</small></div></div><div class="c"><div class="cellwrap"><span class="y"><span class="ms">check</span></span></div></div><div class="c"><div class="cellwrap"><span class="n"><span class="ms">close</span></span><span class=note>Voice only</span></div></div><div class="c"><div class="cellwrap"><span class="p"><span class="ms">remove</span></span><span class=note>Transactions</span></div></div> <div class="c ">Rwanda</div><div class="c ">Per minute</div></div>
+    <div class="r " style="--row:3"><div class="c name"><div><b>Caantin</b><small>AI call centre &amp; debt collection</small></div></div><div class="c"><div class="cellwrap"><span class="p"><span class="ms">remove</span></span><span class=note>Phone calls</span></div></div><div class="c"><div class="cellwrap"><span class="y"><span class="ms">check</span></span></div></div><div class="c"><div class="cellwrap"><span class="p"><span class="ms">remove</span></span><span class=note>Debt collection</span></div></div><div class="c ">Zambia</div><div class="c ">Not public</div></div>
+    <div class="r " style="--row:4"><div class="c name"><div><b>Proto</b><small>AI agents for institutions</small></div></div><div class="c"><div class="cellwrap"><span class="n"><span class="ms">close</span></span><span class=note>Calls "coming soon"</span></div></div><div class="c"><div class="cellwrap"><span class="p"><span class="ms">remove</span></span><span class=note>No phone calls</span></div></div><div class="c"><div class="cellwrap"><span class="y"><span class="ms">check</span></span></div></div><div class="c ">Banks &amp; regulators</div><div class="c ">Monthly plans</div></div>
+    <div class="r " style="--row:5"><div class="c name"><div><b>TextIt</b><small>Scripted message flows</small></div></div><div class="c"><div class="cellwrap"><span class="n"><span class="ms">close</span></span><span class=note>Scripted IVR</span></div></div><div class="c"><div class="cellwrap"><span class="p"><span class="ms">remove</span></span><span class=note>Scripted, not AI</span></div></div><div class="c"><div class="cellwrap"><span class="n"><span class="ms">close</span></span></div></div><div class="c ">Global</div><div class="c ">Subscription</div></div>
+  </div>
+  <div class="comp-src a-fade" style="--d:1.6s"><b>Sources:</b> company websites and press, checked Nov 2026 (viamo.io, pindo.ai, proto.cx, textit.com; TechCabal on Caantin). Viamo publishes no pricing for organisations; the cost comparison is iNua's own.</div>
+  <img class="logo-corner" src="images/brand/inua_logo.png" alt="">
+  <div class="notes">
+    <p>We're not the only ones bringing AI to phones in Africa. Viamo runs a voice assistant on basic phones across many countries, but it's one assistant, sold on custom contracts, at a much higher cost. Pindo builds voice AI for banks and utilities, and its deployments are in Rwanda. Others focus on debt collection, smartphone channels or scripted flows. iNua gives every organisation its own team of experts, on voice, SMS and WhatsApp, in one place, at a much lower cost.</p>
+    <p class="flag">⚑ New slide and new script. Viamo DOES offer two-way AI voice on basic phones (its assistant AVA, launched 2023–2025) and transfers callers to humans, so don't claim otherwise on camera.</p>
+    <p class="flag">⚑ "Much lower cost than Viamo": Viamo publishes no pricing for organisations, so there's no public source. Be ready to back it with a real quote or customer comparison, or soften it.</p>
+    <p class="flag">⚑ Pindo: deployments are publicly verified only in Rwanda, but its site says "East Africa" and lists Luganda and Swahili. Say "deployments in Rwanda", not "only in Rwanda".</p>
+    <p class="flag">⚑ Watch: SautiLabs (AI phone agents on any phone, trained on your documents, voice only) is the closest match to iNua's voice product. Not shown on the slide.</p>
+  </div>
+</section>
+
+<!-- ============ 10 · WHY US ============ -->
+<section class="slide" id="s-team">
+  <h2 class="a-rise">A bridge between two worlds</h2>
+  <div class="connected-badge a-pop" style="--d:2s"><div class="girl-scene" data-mood="warm" data-girl-x="0.5" data-zoom="1" style="width:64px;height:64px;border-radius:50%"></div><span class="ic"><span class="ms">call</span></span>Connected</div>
+  <div class="scene">
+    <svg viewBox="0 0 1920 640" preserveAspectRatio="none" aria-hidden="true">
+      <defs>
+        <clipPath id="rbank"><path d="M1380 640 L1380 470 C1500 420 1700 400 1920 420 L1920 640 Z"/></clipPath>
+        <linearGradient id="river" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#cfe6ea"/><stop offset="1" stop-color="#a9d0d6"/></linearGradient>
+      </defs>
+      <rect x="0" y="540" width="1920" height="100" fill="url(#river)"/>
+      <!-- left bank + Tel Aviv-ish skyline -->
+      <path d="M0 640 L0 430 C180 410 380 420 540 470 L540 640 Z" fill="#d9e6df"/>
+      <g transform="translate(20 70) scale(.85)">
+      <g fill="#9fbcae">
+        <rect x="70" y="250" width="58" height="180" rx="4"/><rect x="140" y="190" width="70" height="240" rx="4"/>
+        <circle cx="250" cy="150" r="0"/><rect x="222" y="140" width="62" height="290" rx="30"/>
+        <polygon points="300,430 300,170 340,120 380,170 380,430"/><rect x="392" y="200" width="66" height="230" rx="4"/>
+        <rect x="466" y="280" width="50" height="170" rx="4"/>
+      </g>
+      <g fill="#c7dbd1"><rect x="150" y="210" width="10" height="10"/><rect x="170" y="210" width="10" height="10"/><rect x="150" y="240" width="10" height="10"/><rect x="190" y="270" width="10" height="10"/><rect x="404" y="220" width="10" height="10"/><rect x="424" y="250" width="10" height="10"/></g>
+      </g>
+      <!-- right bank: rural landscape -->
+      <image href="images/brand/farm_landscape.png" x="1380" y="140" width="560" height="560" preserveAspectRatio="xMidYMax slice" clip-path="url(#rbank)"/>
+      <path d="M1380 640 L1380 470 C1500 420 1700 400 1920 420" fill="none" stroke="#e6c79b" stroke-width="4"/>
+      <!-- bridge -->
+      <path d="M520 470 C 800 300, 1120 300, 1400 470" fill="none" stroke="#8c4115" stroke-width="12" stroke-linecap="round"/>
+      <path d="M520 470 L 1400 470" stroke="#8c4115" stroke-width="10" stroke-linecap="round"/>
+      <g stroke="#b97a4a" stroke-width="4">
+        <line x1="640" y1="400" x2="640" y2="470"/><line x1="760" y1="352" x2="760" y2="470"/><line x1="880" y1="330" x2="880" y2="470"/>
+        <line x1="1000" y1="326" x2="1000" y2="470"/><line x1="1120" y1="340" x2="1120" y2="470"/><line x1="1240" y1="372" x2="1240" y2="470"/>
+      </g>
+    </svg>
+    <div class="bank-label a-rise" style="left:140px;top:350px;--d:.4s"><div class="ic"><span class="ms">laptop_mac</span></div><b>Advanced technology</b></div>
+    <div class="bank-label a-rise" style="right:110px;top:300px;--d:.6s"><div class="ic"><span class="ms">phone_iphone</span></div><b>Close to communities</b></div>
+  </div>
+  <div class="founders">
+    <div class="founder a-rise" style="--d:.9s"><div class="person col" data-person="michal" data-meta="none"></div><div class="p-name">Michal</div><div class="tagline">Software developer · lived and volunteered with local communities</div></div>
+    <div class="founder a-rise" style="--d:1.1s"><div class="person col" data-person="adi" data-meta="none"></div><div class="p-name">Adi</div><div class="tagline">Business perspective</div></div>
+    <div class="founder a-rise" style="--d:1.3s"><div class="person col" data-person="gilad" data-meta="none"></div><div class="p-name">Gilad</div><div class="tagline">Background in Africa's agriculture world</div></div>
+  </div>
+  <img class="logo-corner" src="images/brand/inua_logo.png" alt="">
+  <div class="notes">
+    <p>So why us? We stand between two worlds. On one side, we come from Tel Aviv's tech world, building advanced technology. Michal is a software developer. On the other side, we've spent years in close touch with local communities, curious about daily life there and committed to the people we work with. Gilad comes from Africa's agriculture world, Michal has lived and volunteered with local communities, and we bring the business perspective to make it last. We bring proven technology to where it's needed most.</p>
+    <p class="flag">⚑ Adi isn't named in the script ("we bring the business perspective"). Consider "Adi brings the business perspective". Gilad's photo is missing: add images/people/gilad.jpg.</p>
+  </div>
+</section>
+
+<!-- ============ 11 · CLOSE ============ -->
+<section class="slide" id="s-close">
+  <div class="mosaic">
+    <div class="mtile tall a-rise" style="--d:.1s"><img src="images/photos/farmer_call.jpg" alt="">
+      <div class="float r" style="top:40px;right:14px;--fs:200px"><span class="waveform" style="--wc:var(--chris)"><i></i><i></i><i></i><i></i><i></i></span><i class="fhead" style="--img:url('images/agents/chris.png')"></i></div></div>
+    <div class="mtile a-rise" style="--d:.25s"><img src="images/photos/shopkeeper.jpg" alt="" style="object-position:30% 60%">
+      <div class="float v" style="top:6px;right:2px;--fs:124px"><i class="fhead" style="--img:url('images/agents/tariq.png')"></i><span class="waveform" style="--wc:var(--tariq)"><i></i><i></i><i></i><i></i><i></i></span></div></div>
+    <div class="mtile a-rise" style="--d:.4s"><div class="girl-scene" data-mood="warm" data-girl-x="0.34"></div>
+      <div class="float r" style="top:70px;right:10px"><span class="waveform" style="--wc:var(--nia)"><i></i><i></i><i></i><i></i><i></i></span><i class="fhead" style="--img:url('images/agents/nia.png')"></i></div></div>
+    <div class="mtile tall a-rise" style="--d:.55s"><img src="images/photos/beekeeper.jpg" alt="">
+      <div class="float l" style="top:60px;left:10px;--fs:190px"><i class="fhead" style="--img:url('images/agents/gift.png')"></i><span class="waveform" style="--wc:var(--gift)"><i></i><i></i><i></i><i></i><i></i></span></div></div>
+    <div class="mtile a-rise" style="--d:.7s"><img src="images/photos/stressed_farmer.jpg" alt="" style="object-position:50% 25%">
+      <div class="float l" style="top:16px;left:6px"><i class="fhead" style="--img:url('images/agents/nuru.png')"></i><span class="waveform" style="--wc:var(--nuru)"><i></i><i></i><i></i><i></i><i></i></span></div></div>
+    <div class="mtile a-rise" style="--d:.85s"><img src="images/photos/farmer_advisory.jpg" alt="">
+      <div class="float r" style="top:14px;right:6px"><span class="waveform" style="--wc:var(--mary)"><i></i><i></i><i></i><i></i><i></i></span><i class="fhead" style="--img:url('images/agents/mary.png')"></i></div></div>
+  </div>
+  <div class="final">
+    <h2 class="a-rise" style="--d:1.3s">Every one of them deserves someone who answers.</h2>
+    <div class="thanks a-fade" style="--d:1.8s"><img src="images/brand/inua_logo.png" alt="iNua Technologies"><span>Thank you</span></div>
+  </div>
+  <div class="notes">
+    <p>Behind every organisation are thousands of people like these. Farmers, families, children, communities. With iNua, every one of them can reach the right expert, in their own language, any time. Thank you.</p>
+  </div>
+</section>
+
+</div></div>
+
+<div id="progress"></div>
+<div id="counter"></div>
+<div id="hint">← → navigate · N script · A anonymise orgs · F fullscreen · C counter</div>
+<div id="notes-panel"><h4 id="notes-title">Script</h4><div id="notes-body"></div></div>
+
+<script>
+/* =========================================================
+   PEOPLE — edit here.
+   Drop a photo at the given path (e.g. images/people/gabriel.jpg)
+   and it appears automatically. Until then an initial is shown.
+   orgAnon is used when anonymised mode is on (press A).
+   ========================================================= */
+const PEOPLE = {
+  gabriel:{name:'Gabriel', org:'Lifeline Childline Zambia', orgAnon:'A national child helpline · Zambia', photo:'images/people/gabriel.jpg', logo:null},
+  tom:    {name:'Tom',     org:'SunCulture · Kenya',        orgAnon:'A solar irrigation company · Kenya', photo:'images/people/tom.jpg', logo:null},
+  milan:  {name:'Milan',   org:'Kumusha Power · Zimbabwe',  orgAnon:'A solar pay-as-you-go company · Zimbabwe', photo:'images/people/milan.jpg', logo:'images/logos/kumusha.png', logoH:76},
+  david:  {name:'David',   org:'ADRA Mozambique',           orgAnon:'An NGO supporting farmers · Mozambique', photo:'images/people/david.jpg', logo:'images/logos/adra.png'},
+  michal: {name:'Michal',  org:'Co-founder', orgAnon:'Co-founder', photo:'images/people/michal.jpg', pos:'38% 30%'},
+  adi:    {name:'Adi',     org:'Co-founder', orgAnon:'Co-founder', photo:'images/people/adi.jpg', pos:'50% 16%'},
+  gilad:  {name:'Gilad',   org:'Co-founder', orgAnon:'Co-founder', photo:'images/people/gilad.jpg'}
+};
+/* Short org names used inside sentences / sources (data-org="…") */
+const ORG_SHORT = {
+  gabriel:{real:'Lifeline Childline Zambia', anon:'A national child helpline in Zambia'},
+  tom:{real:'SunCulture', anon:'A solar irrigation company in Kenya'},
+  milan:{real:'Kumusha Power', anon:'A solar PAYGo company in Zimbabwe'},
+  david:{real:'ADRA Mozambique', anon:'An NGO in Mozambique'}
+};
+let ANON = false;
+
+function renderPeople(){
+  document.querySelectorAll('[data-person]').forEach(el=>{
+    const p = PEOPLE[el.dataset.person]; if(!p) return;
+    const noMeta = el.dataset.meta === 'none';
+    const org = ANON ? p.orgAnon : p.org;
+    el.innerHTML =
+      `<div class="p-photo"><span class="p-initial">${p.name[0]}</span><span class="p-missing">photo</span>`+
+      `<img src="${p.photo}" alt="${p.name}" style="object-position:${p.pos||'50% 30%'}" onload="this.parentNode.querySelector('.p-missing').remove()" onerror="this.remove()"></div>`+
+      (noMeta ? '' : `<div class="p-meta"><div class="p-name">${p.name}</div><div class="p-org">${org}</div>${p.logo?`<img class="p-logo" src="${p.logo}" alt="" style="height:${p.logoH||34}px">`:''}</div>`);
+  });
+  document.querySelectorAll('[data-org]').forEach(el=>{
+    const o = ORG_SHORT[el.dataset.org]; if(o) el.textContent = ANON ? o.anon : o.real;
+  });
+  document.body.classList.toggle('anon', ANON);
+}
+
+/* ---------- the girl: an illustrated silhouette scene (SVG) ---------- */
+let gid = 0;
+function girlSVG(mood, gx, aspect, zoom){
+  const id = 'g'+(gid++);
+  const night = mood === 'night';
+  const sky = night ? ['#151629','#33284a','#6e4553'] : ['#fff1d6','#ffd9a3','#f7b46f'];
+  const far = night ? '#2a2340' : '#f0b47a';
+  const near = night ? '#1b1729' : '#d98e55';
+  const hut = night ? '#221c33' : '#c97b45';
+  const fig = night ? '#0e0c17' : '#7a3f1e';
+  const glow = night ? 'rgba(220,235,255,.9)' : 'rgba(170,255,210,.95)';
+  const screen = night ? '#e6f0ff' : '#b9ffd9';
+  /* the scene widens with its container so the girl is never cropped */
+  const H = 900, W = Math.max(500, Math.round(H*(aspect||0.89)));
+  const X = Math.round(W*gx) - 100;
+  const k = W/800;
+  const stars = night ? Array.from({length:Math.round(40*k)},(_,i)=>{const x=(i*137)%W, y=(i*71)%360+10, r=(i%3)+1;return `<circle cx="${x}" cy="${y}" r="${r*0.9}" fill="#fff" opacity="${0.25+((i*13)%50)/100}"/>`}).join('') : '';
+  const mx = W-150;
+  const sun = night ? `<mask id="${id}m"><rect width="${W}" height="${H}" fill="#fff"/><circle cx="${mx+20}" cy="136" r="42" fill="#000"/></mask><circle cx="${mx}" cy="150" r="46" fill="#f4ead2" opacity=".92" mask="url(#${id}m)"/>` :
+                      `<circle cx="${W*0.75}" cy="560" r="150" fill="#fff4cf" opacity=".85"/>`;
+  let vb = `0 0 ${W} ${H}`;
+  if(zoom){ const vw = 330, vh = Math.round(vw/(aspect||1)); vb = `${X+100-vw/2} ${Math.min(375, H-vh)} ${vw} ${vh}`; }
+  return `<svg viewBox="${vb}" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
+  <defs>
+    <linearGradient id="${id}s" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${sky[0]}"/><stop offset=".55" stop-color="${sky[1]}"/><stop offset="1" stop-color="${sky[2]}"/></linearGradient>
+    <radialGradient id="${id}g"><stop offset="0" stop-color="${glow}"/><stop offset="1" stop-color="${glow.replace(/[\d.]+\)$/,'0)')}"/></radialGradient>
+  </defs>
+  <rect width="${W}" height="${H}" fill="url(#${id}s)"/>${stars}${sun}
+  <path d="M0 640 C${160*k} 600 ${300*k} 610 ${420*k} 630 C${560*k} 650 ${680*k} 600 ${W} 610 L${W} 900 L0 900 Z" fill="${far}"/>
+  <g fill="${hut}">
+    <rect x="${70*k}" y="600" width="96" height="70" rx="6"/><path d="M${70*k-18} 606 L${70*k+48} 548 L${70*k+114} 606 Z"/>
+    <rect x="${W-200}" y="590" width="84" height="64" rx="6"/><path d="M${W-216} 596 L${W-158} 544 L${W-100} 596 Z"/>
+    <rect x="${W-88}" y="520" width="9" height="90"/><ellipse cx="${W-84}" cy="516" rx="66" ry="16"/>
+  </g>
+  <path d="M0 760 C${200*k} 730 ${420*k} 745 ${W} 720 L${W} 900 L0 900 Z" fill="${near}"/>
+  <g transform="translate(${X} 400) scale(1.05)">
+    <circle cx="128" cy="86" r="70" fill="url(#${id}g)"/>
+    <circle class="g-ring" cx="128" cy="86" r="34" fill="none" stroke="${screen}" stroke-width="2.5" opacity="${night?0.8:0}"/>
+    <circle class="g-ring r2" cx="128" cy="86" r="34" fill="none" stroke="${screen}" stroke-width="2.5" opacity="${night?0.8:0}"/>
+    <g fill="${fig}">
+      <path d="M86 50 C58 44 34 66 36 100 C37 120 46 134 58 142 C52 124 50 104 58 86 C64 74 74 66 88 64 Z"/>
+      <circle cx="82" cy="54" r="7"/>
+      <ellipse cx="100" cy="66" rx="34" ry="27"/>
+      <ellipse cx="100" cy="80" rx="31" ry="35"/>
+      <rect x="90" y="106" width="20" height="22" rx="6"/>
+      <path d="M60 136 C76 121 124 121 140 136 L158 268 C120 280 80 280 42 268 Z"/>
+      <rect x="76" y="262" width="15" height="96" rx="7"/><rect x="109" y="262" width="15" height="96" rx="7"/>
+      <ellipse cx="80" cy="360" rx="14" ry="7"/><ellipse cx="120" cy="360" rx="14" ry="7"/>
+    </g>
+    <g fill="none" stroke="${fig}" stroke-width="15" stroke-linecap="round">
+      <path d="M63 142 C50 178 48 208 54 236"/>
+      <path d="M137 142 C154 152 162 168 160 186"/>
+      <path d="M160 186 C152 154 142 124 130 104"/>
+    </g>
+    <circle cx="128" cy="100" r="9" fill="${fig}"/>
+    <rect x="119" y="66" width="14" height="27" rx="3" fill="${screen}" transform="rotate(-14 126 80)"/>
+  </g>
+</svg>`;
+}
+function renderGirls(){
+  document.querySelectorAll('.girl-scene').forEach(el=>{
+    const w = el.offsetWidth || 800, h = el.offsetHeight || 900;
+    el.innerHTML = girlSVG(el.dataset.mood||'night', parseFloat(el.dataset.girlX||'0.4'), w/h, el.dataset.zoom==='1');
+  });
+}
+
+/* ---------- small generated visuals ---------- */
+function renderPhones(){
+  const el = document.getElementById('phones10');
+  el.innerHTML = Array.from({length:10},(_,i)=> i<6
+    ? `<span class="ok a-pop" style="--d:${1+i*0.08}s"><span class="ms">call</span></span>`
+    : `<span class="miss a-pop" style="--d:${1.6+(i-6)*0.15}s"><span class="ms">phone_missed</span></span>`).join('');
+}
+function renderDots(){
+  let c = ''; for(let i=0;i<55;i++) c += `<i class="c" style="--i:${i}"></i>`;
+  document.getElementById('dots-cust').innerHTML = c;
+  let l = ''; for(let i=0;i<250;i++) l += `<i style="--i:${i+60}"></i>`;
+  document.getElementById('dots-leads').innerHTML = l;
+}
+function renderCrowd(){
+  const el = document.getElementById('crowd'); if(!el) return;
+  const person = (h,phone,c)=>`<svg viewBox="0 0 40 100" style="height:${h}%"><g fill="${c}"><circle cx="20" cy="14" r="10"/><path d="M8 30 C12 25 28 25 32 30 L35 70 L5 70 Z"/><rect x="11" y="68" width="7" height="30" rx="3"/><rect x="22" y="68" width="7" height="30" rx="3"/></g>${phone?`<rect x="27" y="8" width="6" height="11" rx="1.5" fill="#f2a51a"/>`:''}</svg>`;
+  const cols = ['#c9a27e','#b98d66','#d8b896','#a77b55'];
+  el.innerHTML = Array.from({length:16},(_,i)=>person(70+((i*37)%30), i%3===0, cols[i%4])).join('');
+}
+
+/* ---------- deck engine ---------- */
+const slides = [...document.querySelectorAll('.slide')];
+let cur = 0;
+function fit(){
+  const s = Math.min(window.innerWidth/1920, window.innerHeight/1080);
+  document.getElementById('stage').style.transform = `scale(${s})`;
+}
+function show(i, step){
+  i = Math.max(0, Math.min(slides.length-1, i));
+  const changed = i !== cur || !slides[i].classList.contains('active');
+  slides.forEach((s,k)=>{ if(k!==i) s.classList.remove('active'); });
+  const sl = slides[i];
+  if(changed){ sl.classList.remove('active'); void sl.offsetWidth; sl.classList.add('active'); }
+  if(sl.dataset.steps) sl.dataset.step = step ?? 0;
+  cur = i;
+  document.getElementById('progress').style.width = ((i+1)/slides.length*100)+'%';
+  document.getElementById('counter').textContent = `${i+1} / ${slides.length}`;
+  const n = sl.querySelector('.notes');
+  document.getElementById('notes-title').textContent = `Script · slide ${i+1} of ${slides.length}`;
+  document.getElementById('notes-body').innerHTML = n ? n.innerHTML : '';
+  history.replaceState(null,'','#'+(i+1)+(sl.dataset.steps?'.'+sl.dataset.step:''));
+}
+function next(){
+  const sl = slides[cur];
+  if(sl.dataset.steps && +sl.dataset.step < +sl.dataset.steps-1){ sl.dataset.step = +sl.dataset.step+1; history.replaceState(null,'','#'+(cur+1)+'.'+sl.dataset.step); return; }
+  show(cur+1);
+}
+function prev(){
+  const sl = slides[cur];
+  if(sl.dataset.steps && +sl.dataset.step > 0){ sl.dataset.step = +sl.dataset.step-1; history.replaceState(null,'','#'+(cur+1)+'.'+sl.dataset.step); return; }
+  if(cur>0){ const p = slides[cur-1]; show(cur-1, p.dataset.steps ? +p.dataset.steps-1 : undefined); }
+}
+document.addEventListener('keydown',e=>{
+  if(['ArrowRight','PageDown',' ','Enter'].includes(e.key)){ e.preventDefault(); next(); }
+  else if(['ArrowLeft','PageUp','Backspace'].includes(e.key)){ e.preventDefault(); prev(); }
+  else if(e.key==='Home') show(0);
+  else if(e.key==='End') show(slides.length-1);
+  else if(e.key==='n'||e.key==='N') document.getElementById('notes-panel').classList.toggle('open');
+  else if(e.key==='a'||e.key==='A'){ ANON=!ANON; renderPeople(); }
+  else if(e.key==='c'||e.key==='C') document.body.classList.toggle('show-counter');
+  else if(e.key==='f'||e.key==='F'){ document.fullscreenElement ? document.exitFullscreen() : document.documentElement.requestFullscreen(); }
+});
+document.getElementById('viewport').addEventListener('click',e=>{ (e.clientX < window.innerWidth*0.25) ? prev() : next(); });
+window.addEventListener('resize',fit);
+
+renderPeople(); renderGirls(); renderPhones(); renderDots(); renderCrowd(); fit();
+if(new URLSearchParams(location.search).has('static')){ document.body.classList.add('static'); document.getElementById('hint').style.display='none'; }
+if(new URLSearchParams(location.search).has('anon')){ ANON=true; renderPeople(); }
+const m = location.hash.match(/^#(\d+)(?:\.(\d+))?/);
+show(m ? +m[1]-1 : 0, m && m[2] ? +m[2] : undefined);
+setTimeout(()=>{ document.getElementById('hint').style.opacity=0; }, 4500);
+</script>
+</body>
+</html>
