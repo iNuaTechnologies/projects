@@ -598,6 +598,36 @@ h1,h2,h3,h4{font-family:'Poppins',sans-serif;color:var(--brown);font-weight:700;
 .active .ctable .r:not(.hd) .c{animation:fade .6s ease both;animation-delay:calc(var(--row,0) * .18s + .4s)}
 .comp-src{position:absolute;left:90px;right:90px;bottom:26px;font-size:15px;color:var(--muted);line-height:1.4}
 
+/* ---------- where we work ---------- */
+#s-where h2{position:absolute;top:50px;left:0;right:0;text-align:center;font-size:50px}
+.map-wrap{position:absolute;left:60px;top:120px;width:880px;height:958px}
+.map-wrap img{width:100%;height:100%;display:block}
+.mpin{position:absolute;width:0;height:0}
+.mpin i{position:absolute;left:-11px;top:-11px;width:22px;height:22px;border-radius:50%;background:var(--orange);border:4px solid #fff;box-shadow:0 4px 12px rgba(0,0,0,.25)}
+.mpin i::after{content:'';position:absolute;inset:-4px;border-radius:50%;border:3px solid var(--orange);animation:pulseRing 2s ease-out infinite}
+.mpin span{position:absolute;white-space:nowrap;font-family:'Poppins';font-weight:700;font-size:22px;color:var(--brown);background:#fff;padding:4px 14px;border-radius:99px;box-shadow:0 6px 16px rgba(140,65,21,.15)}
+.mpin.up span{left:0;bottom:22px;transform:translateX(-50%)}
+.mpin.right span{left:24px;top:-16px}
+.mpin.left span{right:24px;top:6px}
+.client-card{position:absolute;left:1000px;right:110px;top:150px;bottom:90px;background:#fff;border-radius:36px;box-shadow:0 20px 56px rgba(140,65,21,.1);
+  padding:40px 46px;display:flex;flex-direction:column;gap:26px;overflow:hidden}
+.cc-top{display:flex;align-items:center;justify-content:space-between}
+.cc-top .naf{height:190px;margin:-34px 0 -40px -22px}
+.cc-tag{display:inline-flex;align-items:center;gap:8px;background:var(--green);color:#fff;font-weight:800;font-size:19px;padding:8px 18px;border-radius:99px}
+.cc-tag .ms{font-size:24px}
+.cc-num{display:flex;align-items:center;gap:22px}
+.cc-num b{font-family:'Poppins';font-weight:800;font-size:190px;line-height:.85;color:var(--green)}
+.cc-num span{font-family:'Poppins';font-weight:700;font-size:38px;color:var(--brown);line-height:1.15}
+.cc-countries{display:flex;flex-wrap:wrap;gap:10px}
+.cc-countries > span{display:inline-flex;align-items:center;gap:6px;background:var(--bg-bottom);font-weight:800;font-size:20px;color:var(--brown);padding:8px 16px;border-radius:99px}
+.cc-countries .ms{font-size:22px;color:var(--orange-deep)}
+.cc-amara{margin-top:auto;display:flex;align-items:flex-end;gap:20px;background:linear-gradient(135deg,#fff8ea,#fdf0dc);border-radius:26px;padding:0 26px 0 0;height:300px;overflow:hidden}
+.cc-amara img{height:320px;margin:0 -50px -20px -40px;flex-shrink:0}
+.cc-amara > div{padding-bottom:30px;align-self:center}
+.cc-amara ul{list-style:none;margin-top:16px;display:flex;flex-direction:column;gap:12px}
+.cc-amara li{display:flex;align-items:center;gap:10px;font-weight:800;font-size:20px;color:var(--text)}
+.cc-amara li .ms{width:40px;height:40px;border-radius:50%;background:#fff;color:#b8860b;display:grid;place-items:center;font-size:22px;flex-shrink:0}
+
 /* ---------- SLIDE 10 : why us ---------- */
 #s-team h2{position:absolute;top:66px;left:0;right:0;text-align:center;font-size:54px}
 #s-team .scene{position:absolute;left:0;right:0;bottom:0;height:640px}
@@ -1197,6 +1227,34 @@ body.show-counter #counter{display:block}
     <p class="flag">⚑ "Much lower cost than Viamo": Viamo publishes no pricing for organisations, so there's no public source. Be ready to back it with a real quote or customer comparison, or soften it.</p>
     <p class="flag">⚑ Pindo: deployments are publicly verified only in Rwanda, but its site says "East Africa" and lists Luganda and Swahili. Say "deployments in Rwanda", not "only in Rwanda".</p>
     <p class="flag">⚑ Watch: SautiLabs (AI phone agents on any phone, trained on your documents, voice only) is the closest match to iNua's voice product. Not shown on the slide.</p>
+  </div>
+</section>
+
+<!-- ============ 9c · WHERE WE WORK ============ -->
+<section class="slide" id="s-where">
+  <h2 class="a-rise">Where we work today</h2>
+  <div class="map-wrap a-fade" style="--d:.2s"><img src="images/brand/africa_map.svg" alt="Map of Africa with Nigeria, Uganda, Rwanda and Kenya highlighted"><div class="mpin up a-pop" style="left:40.91%;top:33.46%;--d:0.80s"><i></i><span>Nigeria</span></div><div class="mpin up a-pop" style="left:68.01%;top:42.02%;--d:1.05s"><i></i><span>Uganda</span></div><div class="mpin left a-pop" style="left:65.28%;top:45.37%;--d:1.30s"><i></i><span>Rwanda</span></div><div class="mpin right a-pop" style="left:74.07%;top:42.71%;--d:1.55s"><i></i><span>Kenya</span></div></div>
+  <div class="client-card a-rise" style="--d:.4s">
+    <div class="cc-top"><img class="naf" src="images/logos/naf.png" alt="New Africa Fund"><span class="cc-tag"><span class="ms">handshake</span>Our client</span></div>
+    <div class="cc-num"><b>15</b><span>organisations<br>we support</span></div>
+    <div class="cc-countries"><span><span class="ms">location_on</span>Nigeria</span><span><span class="ms">location_on</span>Uganda</span><span><span class="ms">location_on</span>Rwanda</span><span><span class="ms">location_on</span>Kenya</span></div>
+    <div class="cc-amara">
+      <img src="images/agents/amara.png" alt="Amara">
+      <div>
+        <span class="agent-chip" style="--c:#b8860b">Amara <small>Fundraising</small></span>
+        <ul>
+          <li><span class="ms">chat</span>Talks with donors on WhatsApp</li>
+          <li><span class="ms">payments</span>Collects mobile money donations</li>
+          <li><span class="ms">space_dashboard</span>A dashboard for every organisation</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <img class="logo-corner" src="images/brand/inua_logo.png" alt="">
+  <div class="notes">
+    <p>Today, we already work with the New Africa Fund. Through them, we support 15 organisations in Nigeria, Uganda, Rwanda and Kenya. Each one has Amara, our fundraising expert, who talks with their donors on WhatsApp, collects donations by mobile money, and gives every organisation its own dashboard.</p>
+    <p class="flag">⚑ New slide and new script. iNua's internal notes mark the fund's name and this pilot as confidential. Confirm the New Africa Fund agreed to be named, especially before the public GitHub copy goes live.</p>
+    <p class="flag">⚑ This makes 16 slides; the Pears limit is 15.</p>
   </div>
 </section>
 
