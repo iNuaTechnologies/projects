@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -20 600 240" fill="none">
+  <!-- iNua top-right wave ornament, from pdf/templates/proposal_template.html -->
+  <defs>
+    <linearGradient id="wg" x1="100%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#3B7A22"/>
+      <stop offset="100%" stop-color="#F2A51A"/>
+    </linearGradient>
+  </defs>
+  <path d="M650 -20 C 550 60, 450 100, 300 -20" stroke="url(#wg)" stroke-width="3"/>
+  <path d="M650 -5 C 550 75, 450 115, 270 -20" stroke="url(#wg)" stroke-width="2.2" opacity="0.6"/>
+  <path d="M650 10 C 550 90, 450 130, 240 -20" stroke="url(#wg)" stroke-width="1.6" opacity="0.4"/>
+</svg>
